@@ -1,0 +1,10 @@
+html {
+  font-size: 24px; }
+
+body {
+  font-size: 1.6666666667;
+  display: flex; }
+
+@media (max-width: 360px) {
+  html {
+    font-size: 18px; } }

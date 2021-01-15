@@ -1,0 +1,1 @@
+sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
