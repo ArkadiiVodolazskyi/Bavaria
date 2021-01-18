@@ -1,3 +1,285 @@
-// page-home
-body
-	font-size: rem(40)
+
+// --------------------------- page-home
+section.banner
+	position: relative
+	background-position: center
+	background-repeat: no-repeat
+	background-size: 100%
+	@include block_overlay($color: $b, $opacity: 0.7)
+	.banner_img
+		width: 100%
+		position: relative
+		z-index: -10
+	header
+		width: 100%
+		position: absolute
+		top: 0
+		.contacts
+			backdrop-filter: blur(7px)
+			.wrapper
+				display: flex
+				align-items: center
+				justify-content: space-between
+				> *
+					margin: 0 1rem
+				.logo
+					margin-bottom: -4rem
+					&:hover
+						filter: brightness(120%)
+				.hamb svg
+					fill: $w
+					&:hover
+						path
+							fill: $lBlue
+				.languages li
+					display: inline-block
+					font-size: rem(16)
+					color: $w
+					a
+						text-decoration: underline
+						opacity: 0.6
+						&:hover
+							opacity: 1
+				.empty
+					width: 10%
+				.time, .contact
+					color: $w
+					text-align: right
+					p, a
+						color: $w
+					span
+						font-size: rem(16)
+						opacity: 0.6
+						&:hover
+				.contact
+					position: relative
+					span
+						text-decoration: underline
+					.expand
+						position: absolute
+						top: 0%
+						right: 0
+						transform: translate(110%, -20%)
+						svg
+							fill: $red
+						&:hover svg
+							fill: $lBlue
+				.social
+					display: inline-block
+					li
+						margin-left: 1rem
+					.social_link svg
+						fill: $w
+						&:hover
+							fill: $lBlue
+		nav
+			background-color: $dGrey
+			.wrapper
+				display: flex
+				align-items: center
+				justify-content: flex-end
+				padding: rem(20) 0
+				.links
+					display: flex
+					align-items: center
+					justify-content: center
+					li a
+						margin: 0 1rem
+						font-size: rem(18)
+						font-weight: 500
+						color: $w
+						&:hover
+							color: $lBlue
+				.checkup
+					margin-bottom: -1.5rem
+					background-color: $red
+					color: $w
+					transform: skew(-$skew)
+					&:hover
+						background-color: $lBlue
+					button
+						padding: 1rem 1.5rem
+						transform: skew($skew)
+						font-size: rem(18)
+						font-weight: 500
+	.slogan
+		width: 100%
+		position: absolute
+		bottom: 25%
+		.wrapper h2
+			color: $w
+			font-size: rem(72)
+			line-height: 1.08
+			font-weight: bold
+
+section.services
+	background-color: $dGrey
+	.wrapper
+		height: 100%
+		position: relative
+		.section_title
+			width: rem(200)
+			height: 105%
+			margin-left: -2rem
+			transform: skew(-$skew)
+			@include block_overlay($color: $red, $opacity: 0.9)
+			background-position: center
+			background-repeat: no-repeat
+			background-size: 100%
+			color: $w
+			font-size: rem(72)
+			font-weight: bold
+			line-height: 1.08
+			overflow: visible
+			h3
+				transform: skew($skew)
+				margin-left: rem(-96)
+				padding-top: rem(96)
+		.cards
+			width: 100%
+			height: 62.5%
+			position: absolute
+			top: 55%
+			left: 0%
+			transform: translate(3rem, -50%)
+			display: flex
+			justify-content: flex-start
+			.card
+				width: 20%
+				height: 100%
+				@include block_overlay($color: $b, $opacity: 0.7)
+				transform: skew(-$skew)
+				position: relative
+				&:hover
+					&:before
+						opacity: 0
+				.card_image
+					width: 100%
+					height: 100%
+					position: absolute
+					overflow: hidden
+					img
+						max-height: 100%
+						position: absolute
+						left: 50%
+						transform: translate(-50%, 0)
+				.card_title
+					position: relative
+					transform: translate(-2rem, 1rem)
+					text-align: center
+					&:hover
+						background-color: $red
+						transform: translate(-4rem, 1rem)
+						.card_text
+							opacity: 1
+							visibility: visible
+					h4
+						padding: 1rem 0rem
+						color: $w
+						font-size: rem(36)
+						font-weight: bold
+						line-height: 1.22
+						transform: skew($skew)
+				.card_text
+					width: 150%
+					position: absolute
+					text-align: left
+					color: $w
+					font-size: rem(20)
+					font-weight: 500
+					line-height: 1.2
+					transform: translate(1.5rem, 1.5rem) skew($skew)
+					transition: all 0.6s ease-in
+					opacity: 0
+					visibility: hidden
+		.signup
+			position: absolute
+			right: 0
+			top: rem(96)
+			color: $w
+			&:hover
+				color: $dBlue
+
+section.news
+	.wrapper
+		padding: rem(120) 0
+		.section_title
+			display: flex
+			align-items: center
+			justify-content: space-between
+			h3
+				color: $dGrey
+				font-size: rem(72)
+				font-weight: bold
+				line-height: 1.08
+			.signup
+				color: $dGrey
+				&:hover
+					color: $red
+		.cards
+			.pages
+				padding: rem(72) 0
+				.page
+					display: flex
+					justify-content: space-between
+					.card
+						width: rem(360)
+						height: rem(400)
+						position: relative
+						cursor: pointer
+						background-position: center
+						background-size: cover
+						background-repeat: no-repeat
+						&:hover
+							.block_overlay
+								background-color: rgba($b, 0.7)
+								.date
+									color: $dBlue
+								.arrow
+									opacity: 1
+									visibility: visible
+									fill: $dBlue
+									transform: translate(1.5rem, -50%) rotate(-90deg)
+								.text
+									color: $w
+						.block_overlay
+							width: 100%
+							height: 100%
+							display: flex
+							flex-direction: column
+							justify-content: space-between
+							align-items: flex-start
+							padding: rem(48) 0 rem(60) rem(24)
+							position: absolute
+							top: 0
+							left: 0
+							right: 0
+							bottom: 0
+							background-color: rgba($dw, 1)
+						.date
+							position: relative
+							font-size: rem(16)
+							line-height: 1.25
+							color: $lBlue
+							.arrow
+								opacity: 0
+								visibility: hidden
+								fill: $lBlue
+								position: absolute
+								top: 50%
+								right: 0
+								transform: translate(-2rem, -50%) rotate(-90deg)
+						.text
+							font-size: rem(24)
+							font-weight: 500
+							line-height: 1.25
+			.navpages
+				display: flex
+				justify-content: flex-start
+				align-items: center
+				li
+					margin-right: rem(18)
+					button
+						padding: rem(2) rem(18)
+						background-color: $red
+						&.active
