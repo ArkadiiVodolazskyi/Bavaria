@@ -1,0 +1,69 @@
+footer
+	padding: rem(96) 0
+	background-color: $dGrey
+	.wrapper
+		display: flex
+		justify-content: space-between
+		*
+			color: $w
+			white-space: nowrap
+		> div
+			display: flex
+			flex-direction: column
+		ul li
+			display: block
+		.copyright
+			.logowrap
+				display: flex
+				margin-bottom: rem(70)
+				.logo
+					margin-top: rem(-96)
+					&:hover
+						filter: brightness(120%)
+				.slogan
+					align-self: flex-end
+					margin-left: -1rem
+					font-size: rem(18)
+					font-weight: 500
+			p
+				margin-top: rem(18)
+				font-size: rem(18)
+				font-weight: 500
+		.clients, .services
+			h5
+				margin-bottom: rem(24)
+				font-size: rem(24)
+				font-weight: 500
+				position: relative
+				svg
+					width: 0.7rem
+					height: 1.1rem
+					fill: $red
+					position: absolute
+					left: 0
+					top: 50%
+					transform: translate(-150%, -50%)
+			li a
+				margin-top: rem(18)
+				color: $lGrey
+				text-decoration: underline
+				font-size: rem(18)
+				&:hover
+					color: $lBlue
+		.contacts
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			li
+				display: flex
+				svg
+					width: rem(24)
+					height: rem(24)
+					margin-right: rem(18)
+					fill: $red
+				a
+					display: block
+					&:hover
+						color: $lBlue
+				.phone_list > a
+					margin-bottom: rem(12)

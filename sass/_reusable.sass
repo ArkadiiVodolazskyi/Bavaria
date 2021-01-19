@@ -24,10 +24,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section
 	display: block
 
-body
-	line-height: 1
-
-ol, ul
+ul
 	list-style: none
 
 blockquote, q
@@ -41,6 +38,7 @@ q:before, q:after
 table
 	border-collapse: collapse
 	border-spacing: 0
+
 // +
 button
 	border: none
@@ -98,6 +96,7 @@ html
 	scroll-behavior: smooth
 
 body
+	position: relative
 	opacity: 1
 	visibility: visible
 	&.loading
@@ -105,13 +104,11 @@ body
 		visibility: hidden
 
 section
-	height: rem(960)
 	position: relative
 	&.dark
 		padding: rem(96) 0
 		background-color: $dGrey
 		&:before
-			// content: url("../img_shared/icons/dark_bg1.svg")
 			width: 80%
 			max-height: 100%
 			position: absolute
@@ -126,7 +123,6 @@ section
 		padding: rem(120) 0
 		background-color: $w
 		&:before
-			// content: url("../img_shared/icons/light_bg1.svg")
 			width: 80%
 			max-height: 100%
 			position: absolute
@@ -187,3 +183,167 @@ svg.replaced-svg:not(.native)
 		line-height: 1.08
 	.signup:hover
 		color: $lBlue
+
+.video
+	width: 30%
+	margin-top: rem(36)
+	display: flex
+	align-items: center
+	&:hover
+		a
+			opacity: 1
+			visibility: visible
+		.rect
+			width: 10px
+	.figure
+		width: rem(30)
+		position: relative
+	.triangle
+		width: 0
+		height: 0
+		border-top: 18px solid transparent
+		border-left: 32px solid $w
+		border-bottom: 18px solid transparent
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+	.rect
+		width: 80px
+		height: 60px
+		background-color: $red
+		position: absolute
+		top: 50%
+		left: 30%
+		transform: translate(0%, -50%) skew(-$skew)
+	a
+		color: $w
+		margin-left: rem(28)
+		font-size: rem(16)
+		font-weight: bold
+		letter-spacing: 0.96px
+		text-transform: uppercase
+		opacity: 0
+		visibility: hidden
+
+.navpages_2
+	display: flex
+	align-items: center
+	justify-content: flex-end
+	li button
+		margin: 0 0.3rem
+		font-size: rem(16)
+		font-weight: bold
+		&.active, &:hover
+			color: $lBlue
+	.arrow
+		fill: $dGrey
+		opacity: 0.1
+		&.active
+			opacity: 1
+			&:hover
+				fill: $lBlue
+	.page_prev
+		margin-right: 0.5rem
+		transform: scale(2.5) rotate(90deg)
+	.page_next
+		margin-left: 0.5rem
+		transform: scale(2.5) rotate(-90deg)
+
+.other
+	display: flex
+	justify-content: flex-start
+	margin: rem(100) rem(-18) 0
+	.card
+		width: rem(492)
+		height: rem(400)
+		margin: rem(36) rem(18)
+		cursor: pointer
+		position: relative
+		&:hover
+			.card_bg
+				opacity: 1
+			h5 span
+				background-color: $red
+		.card_bg
+			width: 100%
+			height: 100%
+			position: absolute
+			opacity: 0.4
+		h5
+			height: rem(64)
+			overflow: hidden
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			margin-top: rem(300)
+			font-size: rem(24)
+			font-weight: bold
+			span
+				margin-left: rem(-12)
+				display: inline-block
+				padding: rem(18) rem(24)
+				transform: skew(-$skew)
+				background-color: transparent
+				white-space: nowrap
+
+.checkup
+	width: max-content
+	background-color: $red
+	color: $w
+	transform: skew(-$skew)
+	&:hover
+		background-color: $lBlue
+	button
+		padding: 1rem 1.5rem
+		transform: skew($skew)
+		font-size: rem(18)
+		font-weight: 500
+
+.navpages
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	margin-top: rem(36)
+	li
+		margin-right: rem(18)
+		button
+			padding: rem(2) rem(18)
+			background-color: $red
+			opacity: 0.3
+			&.active
+				opacity: 1
+			&:hover
+				background-color: $lBlue
+
+.facts_title
+	font-size: rem(48)
+	font-weight: bold
+.facts_cards
+	display: flex
+	flex-wrap: wrap
+	margin: 2.5rem -3rem 0
+	.card
+		width: calc(100% / 2 - 3rem)
+		margin: 0.75rem 1.5rem
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: rem(36)
+		transform: skew(-$skew)
+		background-color: $w
+		box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+		.pro_icon
+			min-width: rem(72)
+			min-height: rem(72)
+			transform: skew($skew)
+		.pro_text
+			margin-left: rem(24)
+			transform: skew($skew)
+			font-size: rem(18)
+
+
+
+
+
+

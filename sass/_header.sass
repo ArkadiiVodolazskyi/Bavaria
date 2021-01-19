@@ -1,0 +1,125 @@
+header
+	width: 100%
+	position: absolute
+	z-index: 5
+	top: 0
+	.contacts
+		backdrop-filter: blur(8.2px)
+		.wrapper
+			display: flex
+			align-items: center
+			justify-content: space-between
+			padding: rem(12) 0
+			> *
+				padding: rem(24)
+			.logo
+				margin-top: -1rem
+				margin-bottom: -4rem
+				padding-top: 0
+				padding-bottom: 0
+			.hamb svg
+				fill: $w
+			.languages li
+				display: inline-block
+				font-size: rem(16)
+				color: $w
+				a
+					text-decoration: underline
+					opacity: 0.6
+			.time, .contact
+				color: $w
+				text-align: right
+				p, a
+					color: $w
+				span
+					font-size: rem(16)
+					opacity: 0.6
+					&:hover
+			.contact
+				position: relative
+				padding-right: rem(44)
+				&:hover
+					background-color: $w
+					a
+						color: $dGrey
+					span
+						color: $dGrey
+						position: relative
+						z-index: 20
+						user-select: none
+					.additional
+						opacity: 1
+						visibility: visible
+				p
+					position: relative
+					fill: $red
+					> svg
+						position: absolute
+						top: 50%
+						right: rem(-20)
+						transform: translate(0%, -50%)
+				a
+					font-weight: 500
+					&:hover
+						color: $lBlue
+				span
+					color: $w
+					opacity: 0.6
+					font-size: rem(16)
+					text-decoration: underline
+				.additional
+					width: 100%
+					position: absolute
+					top: 60%
+					left: 0
+					opacity: 0
+					visibility: hidden
+					background-color: $w
+					padding: rem(24) rem(44) rem(24) rem(24)
+					z-index: 10
+					text-align: left
+					> li
+						.type li svg
+							width: rem(20)
+							height: rem(20)
+						a
+							color: $dGrey
+							font-size: rem(23)
+							font-weight: bold
+							&:hover
+								color: $lBlue
+						span
+							font-size: rem(18)
+							color: $dGrey
+							text-decoration: none
+							opacity: 0.5
+						&:not(:first-child)
+							margin-top: rem(24)
+			.social
+				display: inline-block
+				li
+					margin-left: 1rem
+				.social_link svg
+					fill: $w
+					&:hover
+						fill: $lBlue
+	nav
+		background-color: $dGrey
+		.wrapper
+			display: flex
+			align-items: center
+			justify-content: flex-end
+			padding: rem(16) 0
+			.links
+				display: flex
+				align-items: center
+				justify-content: center
+				li a
+					margin: 0 1rem
+					font-size: rem(18)
+					font-weight: 500
+					color: $w
+					&:hover
+						color: $lBlue
+			.checkup
+				margin-bottom: -1.5rem
