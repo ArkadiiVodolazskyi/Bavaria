@@ -1,2 +1,4 @@
 sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 npm install webpack webpack-cli webpack-dev-server path --save-dev
+
+section [light, dark] -> padding, color, .next

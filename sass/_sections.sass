@@ -5,6 +5,7 @@ section.banner
 	background-position: center
 	background-repeat: no-repeat
 	background-size: 100%
+	background-color: transparent
 	@include block_overlay($color: $b, $opacity: 0.7)
 	.banner_img
 		width: 100%
@@ -20,17 +21,16 @@ section.banner
 				display: flex
 				align-items: center
 				justify-content: space-between
+				padding: rem(12) 0
 				> *
-					margin: 0 1rem
+					padding: rem(24)
 				.logo
+					margin-top: -1rem
 					margin-bottom: -4rem
-					&:hover
-						filter: brightness(120%)
+					padding-top: 0
+					padding-bottom: 0
 				.hamb svg
 					fill: $w
-					&:hover
-						path
-							fill: $lBlue
 				.languages li
 					display: inline-block
 					font-size: rem(16)
@@ -38,10 +38,6 @@ section.banner
 					a
 						text-decoration: underline
 						opacity: 0.6
-						&:hover
-							opacity: 1
-				.empty
-					width: 10%
 				.time, .contact
 					color: $w
 					text-align: right
@@ -53,17 +49,59 @@ section.banner
 						&:hover
 				.contact
 					position: relative
+					padding-right: rem(44)
+					&:hover
+						background-color: $w
+						a
+							color: $dGrey
+						span
+							color: $dGrey
+						.additional
+							opacity: 1
+							visibility: visible
+					p
+						position: relative
+						fill: $red
+						> svg
+							position: absolute
+							top: 50%
+							right: rem(-20)
+							transform: translate(0%, -50%)
+					a
+						font-weight: 500
+						&:hover
+							color: $lBlue
 					span
+						color: $w
+						opacity: 0.6
+						font-size: rem(16)
 						text-decoration: underline
-					.expand
+					.additional
+						width: 100%
 						position: absolute
-						top: 0%
-						right: 0
-						transform: translate(110%, -20%)
-						svg
-							fill: $red
-						&:hover svg
-							fill: $lBlue
+						top: 60%
+						left: 0
+						opacity: 0
+						visibility: hidden
+						background-color: $w
+						padding: rem(24) rem(44) rem(24) rem(24)
+						z-index: 10
+						text-align: left
+						> li
+							.type
+							a
+								color: $dGrey
+								font-size: rem(23)
+								font-weight: bold
+								&:hover
+									color: $lBlue
+							span
+								font-size: rem(18)
+								color: $dGrey
+								text-decoration: none
+								opacity: 0.5
+							&:not(:first-child)
+								margin-top: rem(24)
 				.social
 					display: inline-block
 					li
@@ -78,7 +116,7 @@ section.banner
 				display: flex
 				align-items: center
 				justify-content: flex-end
-				padding: rem(20) 0
+				padding: rem(16) 0
 				.links
 					display: flex
 					align-items: center
@@ -106,26 +144,85 @@ section.banner
 		width: 100%
 		position: absolute
 		bottom: 25%
-		.wrapper h2
-			color: $w
-			font-size: rem(72)
-			line-height: 1.08
-			font-weight: bold
+		.wrapper
+			h2
+				color: $w
+				font-size: rem(72)
+				line-height: 1.08
+				font-weight: bold
+			.video
+				width: 30%
+				margin-top: rem(36)
+				display: flex
+				align-items: center
+				&:hover
+					a
+						opacity: 1
+						visibility: visible
+					.rect
+						width: 10px
+				.figure
+					width: rem(30)
+					position: relative
+				.triangle
+					width: 0
+					height: 0
+					border-top: 18px solid transparent
+					border-left: 32px solid $w
+					border-bottom: 18px solid transparent
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%, -50%)
+				.rect
+					width: 80px
+					height: 60px
+					background-color: $red
+					position: absolute
+					top: 50%
+					left: 30%
+					transform: translate(0%, -50%) skew(-$skew)
+				a
+					margin-left: rem(28)
+					font-size: rem(16)
+					font-weight: bold
+					letter-spacing: 0.96px
+					text-transform: uppercase
+					opacity: 0
+					visibility: hidden
+	.banner_figure
+		width: rem(150)
+		height: rem(270)
+		position: absolute
+		bottom: rem(-60)
+		right: rem(420)
+		z-index: 10
+		.empty_line
+			stroke: $red
+			fill: transparent
+			height: rem(270)
+			position: absolute
+		.single_line
+			fill: $w
+			height: rem(170)
+			position: absolute
+			bottom: rem(15)
+			left: -0.7rem
 
 section.services
-	background-color: $dGrey
+	padding: 0
 	.wrapper
 		height: 100%
 		position: relative
-		.section_title
+		.sec_title
 			width: rem(200)
 			height: 105%
 			margin-left: -2rem
 			transform: skew(-$skew)
-			@include block_overlay($color: $red, $opacity: 0.9)
+			@include block_overlay($color: $red, $opacity: 0.7)
 			background-position: center
 			background-repeat: no-repeat
-			background-size: 100%
+			background-size: cover
 			color: $w
 			font-size: rem(72)
 			font-weight: bold
@@ -147,26 +244,27 @@ section.services
 			.card
 				width: 20%
 				height: 100%
-				@include block_overlay($color: $b, $opacity: 0.7)
 				transform: skew(-$skew)
 				position: relative
+				background-color: $dGrey
 				&:hover
-					&:before
-						opacity: 0
+					.card_image, .card_title h4
+						opacity: 1
 				.card_image
 					width: 100%
 					height: 100%
 					position: absolute
 					overflow: hidden
+					opacity: 0.3
 					img
 						max-height: 100%
 						position: absolute
 						left: 50%
-						transform: translate(-50%, 0)
+						transform: translate(-50%, 0) skew($skew)
 				.card_title
 					position: relative
 					transform: translate(-2rem, 1rem)
-					text-align: center
+					text-align: left
 					&:hover
 						background-color: $red
 						transform: translate(-4rem, 1rem)
@@ -174,22 +272,21 @@ section.services
 							opacity: 1
 							visibility: visible
 					h4
-						padding: 1rem 0rem
+						padding: 1rem
 						color: $w
 						font-size: rem(36)
 						font-weight: bold
-						line-height: 1.22
 						transform: skew($skew)
+						opacity: 0.7
 				.card_text
-					width: 150%
+					max-width: rem(400)
+					padding-left: 1.2rem
 					position: absolute
 					text-align: left
 					color: $w
 					font-size: rem(20)
 					font-weight: 500
-					line-height: 1.2
 					transform: translate(1.5rem, 1.5rem) skew($skew)
-					transition: all 0.6s ease-in
 					opacity: 0
 					visibility: hidden
 		.signup
@@ -202,29 +299,18 @@ section.services
 
 section.news
 	.wrapper
-		padding: rem(120) 0
-		.section_title
-			display: flex
-			align-items: center
-			justify-content: space-between
-			h3
-				color: $dGrey
-				font-size: rem(72)
-				font-weight: bold
-				line-height: 1.08
-			.signup
-				color: $dGrey
-				&:hover
-					color: $red
 		.cards
 			.pages
 				padding: rem(72) 0
 				.page
 					display: flex
-					justify-content: space-between
+					justify-content: flex-start
+					flex-wrap: wrap
+					margin: 0 rem(-36)
 					.card
 						width: rem(360)
 						height: rem(400)
+						margin: rem(18)
 						position: relative
 						cursor: pointer
 						background-position: center
@@ -249,7 +335,7 @@ section.news
 							flex-direction: column
 							justify-content: space-between
 							align-items: flex-start
-							padding: rem(48) 0 rem(60) rem(24)
+							padding: rem(48) 1rem rem(60) rem(24)
 							position: absolute
 							top: 0
 							left: 0
@@ -259,7 +345,6 @@ section.news
 						.date
 							position: relative
 							font-size: rem(16)
-							line-height: 1.25
 							color: $lBlue
 							.arrow
 								opacity: 0
@@ -272,7 +357,6 @@ section.news
 						.text
 							font-size: rem(24)
 							font-weight: 500
-							line-height: 1.25
 			.navpages
 				display: flex
 				justify-content: flex-start
@@ -282,4 +366,336 @@ section.news
 					button
 						padding: rem(2) rem(18)
 						background-color: $red
+						opacity: 0.3
 						&.active
+							opacity: 1
+						&:hover
+							background-color: $lBlue
+
+section.portfolio
+	height: rem(1480)
+	background-color: $dGrey
+	.wrapper
+		.main
+			display: flex
+			justify-content: flex-start
+			align-items: center
+			margin-top: rem(50)
+		.main_img
+			width: 55%
+			img
+				width: 100%
+		.text
+			width: rem(620)
+			margin-top: 5rem
+			margin-left: -8rem
+			z-index: 10
+			h4
+				font-size: rem(36)
+				font-weight: bold
+			> div p
+				margin-top: rem(18)
+				font-size: rem(24)
+				font-weight: 500
+		.other
+			display: flex
+			justify-content: flex-start
+			margin: rem(100) rem(-18) 0
+			.card
+				width: rem(492)
+				height: rem(400)
+				margin: rem(36) rem(18)
+				cursor: pointer
+				position: relative
+				&:hover
+					.card_bg
+						opacity: 1
+					h5 span
+						background-color: $red
+				.card_bg
+					width: 100%
+					height: 100%
+					position: absolute
+					opacity: 0.4
+				h5
+					height: rem(64)
+					overflow: hidden
+					display: flex
+					align-items: center
+					justify-content: flex-start
+					margin-top: rem(300)
+					font-size: rem(24)
+					font-weight: bold
+					span
+						margin-left: rem(-12)
+						display: inline-block
+						padding: rem(18) rem(24)
+						transform: skew(-$skew)
+						background-color: transparent
+
+section.info
+	.wrapper
+		.main
+			display: flex
+			justify-content: space-between
+			align-items: center
+			.text
+				width: 50%
+				display: flex
+				align-items: center
+				justify-content: space-between
+				svg
+					min-width: rem(120)
+				div
+					margin-left: rem(50)
+					> p
+						margin-top: rem(18)
+						font-weight: 500
+			.imgs
+				width: 50%
+				position: relative
+				.shard
+					width: rem(240)
+					position: absolute
+					transform: translate(-3rem, -100%)
+				.photo
+					width: 100%
+				.pros
+					width: 65%
+					position: absolute
+					right: 3rem
+					bottom: rem(-70)
+				.pro
+					display: flex
+					justify-content: space-between
+					align-items: center
+					padding: rem(54) rem(30)
+					transform: skew(-$skew)
+					background-color: $w
+					box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+				.pro_arrows
+					display: flex
+					align-items: center
+					position: absolute
+					top: 0.5rem
+					right: 0
+					z-index: 1
+					svg
+						fill: $red
+					.pro_prev
+						transform: rotate(90deg)
+					.pro_next
+						transform: rotate(-90deg)
+				.pro_icon
+					min-width: rem(72)
+					min-height: rem(72)
+					transform: skew($skew)
+				.pro_text
+					margin-left: rem(24)
+					transform: skew($skew)
+					font-size: rem(18)
+
+footer
+	padding: rem(96) 0
+	background-color: $dGrey
+	.wrapper
+		display: flex
+		justify-content: space-between
+		*
+			color: $w
+			white-space: nowrap
+		> div
+			display: flex
+			flex-direction: column
+		ul li
+			display: block
+		.copyright
+			.logowrap
+				display: flex
+				margin-bottom: rem(70)
+				.logo
+					margin-top: rem(-96)
+					&:hover
+						filter: brightness(120%)
+				.slogan
+					align-self: flex-end
+					margin-left: -1rem
+					font-size: rem(18)
+					font-weight: 500
+			p
+				margin-top: rem(18)
+				font-size: rem(18)
+				font-weight: 500
+		.clients, .services
+			h5
+				margin-bottom: rem(24)
+				font-size: rem(24)
+				font-weight: 500
+				position: relative
+				svg
+					width: 0.7rem
+					height: 1.1rem
+					fill: $red
+					position: absolute
+					left: 0
+					top: 50%
+					transform: translate(-150%, -50%)
+			li a
+				margin-top: rem(18)
+				color: $lGrey
+				text-decoration: underline
+				font-size: rem(18)
+				&:hover
+					color: $lBlue
+		.contacts
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			li
+				display: flex
+				svg
+					margin-right: rem(18)
+					fill: $red
+				a
+					display: block
+					&:hover
+						color: $lBlue
+				.phone_list > a
+					margin-bottom: rem(12)
+
+// page-blog
+section.blog_banner
+	height: auto
+	&:before
+		background-color: transparent
+
+section.blog_news
+	height: auto
+	.pages
+		padding: 0
+	.navpages_2
+		display: flex
+		align-items: center
+		justify-content: flex-end
+		li button
+			margin: 0 0.3rem
+			font-size: rem(16)
+			font-weight: bold
+			&.active, &:hover
+				color: $lBlue
+		.arrow
+			fill: $dGrey
+			opacity: 0.1
+			&.active
+				opacity: 1
+				&:hover
+					fill: $lBlue
+		.page_prev
+			margin-right: 0.5rem
+			transform: scale(2.5) rotate(90deg)
+		.page_next
+			margin-left: 0.5rem
+			transform: scale(2.5) rotate(-90deg)
+
+// page-post
+section.post
+	height: auto
+	padding: rem(96) 0
+	background-color: $dw
+	.wrapper
+		width: 65%
+		position: relative
+		*
+			color: $dGrey
+		> *
+			margin-top: rem(48)
+			padding: 0 rem(130)
+	.date
+		margin: 0
+		position: absolute
+		left: rem(130)
+		top: rem(-96)
+		transform: translate(0, -2.5rem) skew(-$skew)
+		padding: rem(30)
+		box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
+		span
+			transform: skew($skew)
+			font-size: rem(16)
+	.blog_title
+		margin-top: 0
+		font-size: rem(48)
+		font-weight: bold
+	p
+		font-size: rem(24)
+		line-height: 1.42
+		&.accent
+			font-size: rem(30)
+			font-weight: 500
+			line-height: 1.33
+	.gallery
+		padding: 0
+		display: flex
+		align-items: center
+		justify-content: space-between
+		.big
+			width: 84%
+		.all
+			width: 15%
+			min-height: 100%
+			overflow: hidden
+			position: relative
+		.tape
+			position: absolute
+			width: 100%
+			max-width: 100%
+			height: auto
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			align-items: flex-end
+			img
+				width: rem(230)
+				height: rem(150)
+		button
+			position: absolute
+			left: 50%
+			&.tape_prev
+				top: 0
+				transform: translate(-50%, 10%) rotate(180deg)
+			&.tape_next
+				bottom: 0
+				transform: translate(-50%, -10%) rotate(180deg)
+	.list_wrapper
+		.list_title
+			font-size: rem(24)
+			font-weight: 500
+			line-height: 1.42
+		.list li
+			margin-top: rem(24)
+			display: flex
+			align-items: center
+			font-size: rem(24)
+			line-height: 1.42
+			svg
+				width: 1rem
+				fill: $red
+				margin-right: rem(18)
+	.share
+		margin: rem(48) rem(130) 0
+		padding: rem(44) 0
+		background-color: $w
+		display: flex
+		justify-content: center
+		align-items: center
+		span
+			font-size: rem(16)
+			font-weight: bold
+			letter-spacing: 0.96px
+			text-transform: uppercase
+		ul
+			li
+				margin-left: rem(12)
+				&:hover svg
+					fill: $lBlue
+			svg
+				fill: $red

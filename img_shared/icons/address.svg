@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <clipPath id="gddouxpw4a">
+            <path fill="transparent" d="M0 0H24V24H0z" transform="translate(1279 5419)"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#gddouxpw4a)" transform="translate(-1279 -5419)">
+        <path fill="transparent" fill-rule="evenodd" d="M20.892 40.6c-16.8 0-16.037-24-.269-24 15.709 0 15.61 24 .269 24zM20.6 18.307c-13.52 0-14.172 20.578.23 20.578 13.156 0 13.24-20.578-.23-20.578zm-4.344 9.262l6.306-7.732 1.985 10-6.015 7.091zm4.266 2.859c2.372 0 2.388-3.712-.041-3.712a1.856 1.856 0 1 0 .043 3.712z" transform="translate(1270.527 5402.404)"/>
+    </g>
+</svg>

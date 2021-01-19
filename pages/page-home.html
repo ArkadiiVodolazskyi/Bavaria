@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>template</title>
+    <title>page-home</title>
 
     <!-- Link libs -->
     <link rel="icon" href="data:;base64,=" />
@@ -14,25 +14,17 @@
   </head>
   <body>
     <section class="banner">
-      <img src="../img_shared/page-home/баннер.png" alt="" class="banner_img" />
+      <img src="../img_shared/page-home/баннер.png" class="banner_img" />
 
       <header class="wow fadeIn">
         <div class="contacts">
           <div class="wrapper">
             <a href="" class="logo">
-              <img
-                src="../img_shared/icons/logo.svg"
-                alt=""
-                class="img-svg native"
-              />
+              <img src="../img_shared/icons/logo.svg" class="img-svg native" />
             </a>
 
             <button class="hamb">
-              <img
-                src="../img_shared/icons/hamburger.svg"
-                alt=""
-                class="img-svg"
-              />
+              <img src="../img_shared/icons/hamburger.svg" class="img-svg" />
             </button>
 
             <ul class="languages">
@@ -40,8 +32,6 @@
                 <a href=""> На українській </a>
               </li>
             </ul>
-
-            <div class="empty"></div>
 
             <div class="time">
               <p>Пн-Сб, 9:00-19:00</p>
@@ -51,15 +41,51 @@
             <div class="contact">
               <p>
                 <a href="+38 048 794-56-54" class="tel">+38 048 794-56-54</a>
+                <img src="../img_shared/icons/arrow.svg" class="img-svg" />
               </p>
               <span>Обратный звонок</span>
-              <button class="expand">
-                <img
-                  src="../img_shared/icons/arrow.svg"
-                  alt=""
-                  class="img-svg"
-                />
-              </button>
+              <ul class="additional">
+                <li>
+                  <ul class="type">
+                    <li>
+                      <img
+                        src="../img_shared/icons/type_telegram.svg"
+                        class="img-svg native"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="../img_shared/icons/type_viber.svg"
+                        class="img-svg native"
+                      />
+                    </li>
+                    <li>
+                      <img
+                        src="../img_shared/icons/type_whatsapp.svg"
+                        class="img-svg native"
+                      />
+                    </li>
+                  </ul>
+                  <a href="+38 048 794-56-54" class="phone"
+                    >+38 048 794-56-54</a
+                  >
+                  <span class="text">Ресепшн</span>
+                </li>
+
+                <li>
+                  <a href="+38 048 794-56-54" class="phone"
+                    >+38 048 794-56-54</a
+                  >
+                  <span class="text">Детейлинг</span>
+                </li>
+
+                <li>
+                  <a href="+38 048 794-56-54" class="phone"
+                    >+38 048 794-56-54</a
+                  >
+                  <span class="text">Малярка</span>
+                </li>
+              </ul>
             </div>
 
             <ul class="social">
@@ -67,18 +93,13 @@
                 <a href="" class="social_link">
                   <img
                     src="../img_shared/icons/instagram.svg"
-                    alt=""
                     class="img-svg"
                   />
                 </a>
               </li>
               <li>
                 <a href="" class="social_link">
-                  <img
-                    src="../img_shared/icons/facebook.svg"
-                    alt=""
-                    class="img-svg"
-                  />
+                  <img src="../img_shared/icons/facebook.svg" class="img-svg" />
                 </a>
               </li>
             </ul>
@@ -109,18 +130,36 @@
             Новый уровень ухода<br />
             за вашим автомобилем
           </h2>
+          <div class="video">
+            <div class="figure">
+              <span class="rect"></span>
+              <span class="triangle"></span>
+            </div>
+            <a href="" class="video_link">Посмотреть видео</a>
+          </div>
         </div>
       </div>
 
-      <button class="next">
-        <img src="../img_shared/icons/arrow.svg" alt="" class="img-svg" />
-      </button>
+      <div class="banner_figure">
+        <img
+          src="../img_shared/icons/empty_line.svg"
+          class="img-svg empty_line"
+        />
+        <img
+          src="../img_shared/icons/single_line.svg"
+          class="img-svg single_line"
+        />
+      </div>
+
+      <a href="#services" class="next">
+        <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+      </a>
     </section>
 
-    <section class="services">
+    <section id="services" class="services dark">
       <div class="wrapper">
         <div
-          class="section_title"
+          class="sec_title"
           style="background-image: url(../img_shared/page-home/услуги.png)"
         >
           <h3>Услуги</h3>
@@ -129,7 +168,7 @@
         <div class="cards">
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/дитейлинг.png" alt="" />
+              <img src="../img_shared/page-home/дитейлинг.png" />
             </div>
             <a href="" class="card_title">
               <h4>Детейлинг</h4>
@@ -142,10 +181,49 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/малярка.png" alt="" />
+              <img src="../img_shared/page-home/малярка.png" />
             </div>
             <a href="" class="card_title">
               <h4>Малярка</h4>
+              <p class="card_text">
+                Малярка позволяет восстановить первозданное лакокрасочное
+                покрытие автомобиля
+              </p>
+            </a>
+          </div>
+
+          <div class="card">
+            <div class="card_image">
+              <img src="../img_shared/page-home/ремонт.png" />
+            </div>
+            <a href="" class="card_title">
+              <h4>Ремонт</h4>
+              <p class="card_text">
+                Малярка позволяет восстановить первозданное лакокрасочное
+                покрытие автомобиля
+              </p>
+            </a>
+          </div>
+
+          <div class="card">
+            <div class="card_image">
+              <img src="../img_shared/page-home/обслуживание.png" />
+            </div>
+            <a href="" class="card_title">
+              <h4>Техническое обслуживание</h4>
+              <p class="card_text">
+                Малярка позволяет восстановить первозданное лакокрасочное
+                покрытие автомобиля
+              </p>
+            </a>
+          </div>
+
+          <div class="card">
+            <div class="card_image">
+              <img src="../img_shared/page-home/диагностика.png" />
+            </div>
+            <a href="" class="card_title">
+              <h4>Диагностика</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
                 покрытие автомобиля
@@ -159,9 +237,13 @@
           онлайн
         </button>
       </div>
+
+      <a href="#news" class="next">
+        <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+      </a>
     </section>
 
-    <section class="news">
+    <section id="news" class="news light">
       <div class="wrapper">
         <div class="section_title">
           <h3>
@@ -188,7 +270,69 @@
                     22 декабря 2020
                     <img
                       src="../img_shared/icons/arrow.svg"
-                      alt=""
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="card"
+                style="
+                  background-image: url(../img_shared/page-home/news_1.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="card"
+                style="
+                  background-image: url(../img_shared/page-home/news_1.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="card"
+                style="
+                  background-image: url(../img_shared/page-home/news_1.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
                       class="img-svg arrow"
                     />
                   </span>
@@ -201,23 +345,224 @@
             </div>
           </div>
           <ul class="navpages">
-            <li><button></button></li>
+            <li><button class="active"></button></li>
             <li><button></button></li>
             <li><button></button></li>
           </ul>
         </div>
       </div>
 
-      <button class="next">
-        <img src="../img_shared/icons/arrow.svg" alt="" class="img-svg" />
-      </button>
+      <a href="#portfolio" class="next">
+        <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+      </a>
     </section>
 
-    <section class="portfolio"></section>
+    <section id="portfolio" class="portfolio dark">
+      <div class="wrapper">
+        <div class="section_title">
+          <h3>Наши работы</h3>
+          <button class="signup">Смотреть<br />все работы</button>
+        </div>
 
-    <section class="info"></section>
+        <div class="main">
+          <div class="main_img">
+            <img src="../img_shared/page-home/наши_работы.png" />
+          </div>
+          <div class="text">
+            <h4>Детейлинг Chevrolet Camaro RS</h4>
+            <div>
+              <p>
+                Chevrolet Camaro RS посетил нашу студию детейлинга для процедур
+                по преображению
+              </p>
+              <p>
+                Оцените как раскрылся и “загорелся” глубокий вишневый металлик
+                после полировки кузова и нанесения защитного покрытия
+              </p>
+              <p>
+                Так же мы наклеили антигравийную плёнку для защиты от сколов и
+                царапин
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <footer></footer>
+        <div class="other">
+          <div class="card">
+            <img
+              src="../img_shared/page-home/дитейлинг_бмв.png"
+              class="card_bg"
+            />
+            <h5>
+              <img
+                src="../img_shared/icons/triple-square.svg"
+                class="img-svg native"
+              />
+              <span>Детейлинг BMW X5</span>
+            </h5>
+          </div>
+          <div class="card">
+            <img
+              src="../img_shared/page-home/техническое_лексус.png"
+              class="card_bg"
+            />
+            <h5>
+              <img
+                src="../img_shared/icons/triple-square.svg"
+                class="img-svg native"
+              />
+              <span
+                >Техническое обслуживание<br />
+                Lexus RX350</span
+              >
+            </h5>
+          </div>
+          <div class="card">
+            <img
+              src="../img_shared/page-home/диагностика_брабус.png"
+              class="card_bg"
+            />
+            <h5>
+              <img
+                src="../img_shared/icons/triple-square.svg"
+                class="img-svg native"
+              />
+              <span
+                >Диагностика и ремонт<br />
+                Brabus G-Wagen</span
+              >
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <a href="#info" class="next">
+        <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+      </a>
+    </section>
+
+    <section id="info" class="info light">
+      <div class="wrapper">
+        <div class="section_title">
+          <h3>
+            Автоцентр<br />
+            BMW Bavaria
+          </h3>
+          <button class="signup">
+            подробнее<br />
+            Об автоцентре
+          </button>
+        </div>
+
+        <div class="main">
+          <div class="text">
+            <img
+              src="../img_shared/icons/triple_shared.svg"
+              class="img-svg native"
+            />
+            <div>
+              <p>
+                Мы занимаемся преображением автомобилей на высочайшем уровне,
+                используя лучшие материалы на рынке автомобильной химии
+                и составов
+              </p>
+              <p>
+                В нашей студии Ваш автомобиль ждёт только бережный подход и
+                пристальное внимание к мелочам
+              </p>
+              <p>Выбирайте исключительно профессионалов в своём деле</p>
+            </div>
+          </div>
+          <div class="imgs">
+            <img src="../img_shared/icons/red_shard.png" class="shard" />
+            <img src="../img_shared/page-home/автоцентр.png" class="photo" />
+            <div class="pros">
+              <div class="pro_arrows">
+                <button class="pro_prev">
+                  <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+                </button>
+                <button class="pro_next">
+                  <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+                </button>
+              </div>
+
+              <div class="pro">
+                <img
+                  src="../img_shared/page-home/pro_icon1.svg"
+                  class="img-svg native pro_icon"
+                />
+                <p class="pro_text">
+                  Доступные цены для каждого клиента. Бережный подход и гарантия
+                  качества
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrapper">
+        <div class="copyright">
+          <div class="logowrap">
+            <a href="" class="logo">
+              <img src="../img_shared/icons/logo.svg" class="img-svg native" />
+            </a>
+            <span class="slogan">Больше, чем стиль</span>
+          </div>
+          <p>© Bavaria 2010-2020</p>
+          <p>Создание сайта — DevPro</p>
+        </div>
+        <div class="clients">
+          <h5>
+            <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+            Клиентам
+          </h5>
+          <ul>
+            <li><a href="">О нас</a></li>
+            <li><a href="">Портфолио</a></li>
+            <li><a href="">Блог</a></li>
+            <li><a href="">Вакансии</a></li>
+            <li><a href="">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="services">
+          <h5>
+            <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+            Услуги
+          </h5>
+          <ul>
+            <li><a href="">Диагностика</a></li>
+            <li><a href="">Техническое обслуживание</a></li>
+            <li><a href="">Ремонт</a></li>
+            <li><a href="">Малярка</a></li>
+            <li><a href="">Детейлинг</a></li>
+          </ul>
+        </div>
+        <ul class="contacts">
+          <li>
+            <img src="../img_shared/icons/address.svg" class="img-svg" />
+            <a href=""> Одесса, ул. Николая Троицкого, 1а </a>
+          </li>
+          <li>
+            <img src="../img_shared/icons/phone.svg" class="img-svg" />
+            <div class="phone_list">
+              <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+              <a href="+38 073 150-01-15"> +38 073 150-01-15 </a>
+            </div>
+          </li>
+          <li>
+            <img src="../img_shared/icons/telegram.svg" class="img-svg" />
+            <a href="office@bavaria.od.ua">office@bavaria.od.ua</a>
+          </li>
+          <li>
+            <img src="../img_shared/icons/time.svg" class="img-svg" />
+            <span>Пн-Сб, 9:00-19:00</span>
+          </li>
+        </ul>
+      </div>
+    </footer>
   </body>
 
   <!-- Link libs -->
