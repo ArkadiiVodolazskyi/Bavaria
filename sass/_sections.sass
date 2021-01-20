@@ -24,26 +24,6 @@ section.banner
 				font-size: rem(72)
 				line-height: 1.08
 				font-weight: bold
-	.banner_figure
-		width: rem(150)
-		height: rem(270)
-		position: absolute
-		bottom: rem(-60)
-		right: rem(420)
-		z-index: 10
-		.empty_line
-			stroke: $red
-			fill: transparent
-			height: rem(270)
-			position: absolute
-		.single_line
-			fill: $w
-			height: rem(170)
-			position: absolute
-			bottom: rem(15)
-			left: -0.7rem
-	.next
-		fill: $w
 
 section.services
 	height: rem(960)
@@ -56,10 +36,11 @@ section.services
 			height: 105%
 			margin-left: -2rem
 			transform: skew(-$skew)
-			@include block_overlay($color: $red, $opacity: 0.7)
+			// @include block_overlay($color: $red, $opacity: 0.7)
 			background-position: center
 			background-repeat: no-repeat
 			background-size: cover
+			background-color: $red
 			color: $w
 			font-size: rem(72)
 			font-weight: bold
@@ -69,6 +50,17 @@ section.services
 				transform: skew($skew)
 				margin-left: rem(-96)
 				padding-top: rem(96)
+			.card_image
+				width: 100%
+				height: 100%
+				position: absolute
+				overflow: hidden
+				img
+					width: auto
+					height: 110%
+					position: absolute
+					left: 50%
+					transform: translate(-50%, 0) skew($skew)
 		.cards
 			width: 100%
 			height: 62.5%
@@ -85,8 +77,16 @@ section.services
 				position: relative
 				background-color: $dGrey
 				&:hover
-					.card_image, .card_title h4
+					.card_image
 						opacity: 1
+					.card_title
+						background-color: $red
+						transform: translate(-4rem, 1rem)
+						h4
+							opacity: 1
+						.card_text
+							opacity: 1
+							visibility: visible
 				.card_image
 					width: 100%
 					height: 100%
@@ -95,7 +95,7 @@ section.services
 					opacity: 0.3
 					img
 						width: auto
-						max-height: 100%
+						height: 105%
 						position: absolute
 						left: 50%
 						transform: translate(-50%, 0) skew($skew)
@@ -103,12 +103,6 @@ section.services
 					position: relative
 					transform: translate(-2rem, 1rem)
 					text-align: left
-					&:hover
-						background-color: $red
-						transform: translate(-4rem, 1rem)
-						.card_text
-							opacity: 1
-							visibility: visible
 					h4
 						padding: 1rem
 						color: $w
@@ -206,13 +200,23 @@ section.portfolio
 			align-items: center
 			margin-top: rem(50)
 		.main_img
-			width: 55%
+			width: 32rem
+			height: 22rem
+			overflow: hidden
+			background-color: $b
+			transform: skew(-$skew)
+			position: relative
 			img
-				width: 100%
+				width: 125%
+				height: auto
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: skew($skew) translate(-40%, -50%)
 		.text
 			width: rem(620)
 			margin-top: 5rem
-			margin-left: -8rem
+			margin-left: -6rem
 			z-index: 10
 			h4
 				font-size: rem(36)
@@ -223,6 +227,7 @@ section.portfolio
 				font-weight: 500
 
 section.info
+	padding: rem(120) 0 rem(165)
 	.wrapper
 		.main
 			display: flex
@@ -254,14 +259,27 @@ section.info
 					position: absolute
 					right: 3rem
 					bottom: rem(-70)
-				.pro
+				.pro_cards
+					position: relative
+					height: rem(170)
+					transform: skew(-$skew)
+					background-color: $w
+					box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+				.pro_card
+					height: 100%
 					display: flex
 					justify-content: space-between
 					align-items: center
 					padding: rem(54) rem(30)
-					transform: skew(-$skew)
-					background-color: $w
-					box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+					position: absolute
+					opacity: 0
+					visibility: hidden
+					svg, p
+						transform: skew($skew)
+					&.active
+						opacity: 1
+						visibility: visible
+						transform: translateX(0%)
 				.pro_arrows
 					display: flex
 					align-items: center
@@ -269,8 +287,10 @@ section.info
 					top: 0.5rem
 					right: 0
 					z-index: 1
-					svg
+					button
 						fill: $red
+						&:hover
+							fill: $lBlue
 					.pro_prev
 						transform: rotate(90deg)
 					.pro_next
@@ -366,22 +386,7 @@ section.post
 				bottom: 0
 				transform: translate(-50%, -10%) rotate(180deg)
 	.list_wrapper
-		margin-top: rem(48)
 		padding: 0 rem(130)
-		.list_title
-			font-size: rem(24)
-			font-weight: 500
-			line-height: 1.42
-		.list li
-			margin-top: rem(24)
-			display: flex
-			align-items: center
-			font-size: rem(24)
-			line-height: 1.42
-			svg
-				width: 0.5rem !important
-				fill: $red
-				margin-right: rem(18)
 	.share
 		margin: rem(48) rem(130) 0
 		padding: rem(44) 0
@@ -408,79 +413,6 @@ section.vacancies
 	padding: rem(96) 0
 	.wrapper
 		width: 55%
-		.vacancy
-			position: relative
-			padding: rem(48) rem(130) rem(48) rem(48)
-			box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
-			background-color: $dw
-			height: rem(120)
-			> *:not(h3)
-				opacity: 0
-				visibility: hidden
-			&:not(:first-child)
-				margin-top: rem(36)
-			&.active
-				height: auto
-				background-color: $w
-				> *
-					opacity: 1
-					visibility: visible
-				h3
-					color: $red
-				.expand
-					transform: rotate(180deg)
-					fill: $red
-			h3
-				color: $dGrey
-				text-align: left
-				font-size: rem(24)
-				font-weight: 500
-			.expand
-				width: 2rem
-				position: absolute
-				top: 2rem
-				right: 2rem
-				fill: $dGrey
-				transform: rotate(0deg)
-				opacity: 1 !important
-				visibility: visible !important
-				svg
-					width: 100%
-					height: 100%
-				&:hover
-					fill: $lBlue
-			p
-				margin-top: rem(36)
-				font-size: rem(18)
-				line-height: 1.56
-			.list_wrapper
-				margin-top: rem(48)
-				.list_title
-					font-size: rem(24)
-					font-weight: 500
-				.list li
-					margin-top: rem(24)
-					display: flex
-					align-items: center
-					font-size: rem(18)
-					line-height: 1.56
-					svg
-						width: 0.5rem
-						max-width: 0.5rem
-						fill: $red
-						margin-right: rem(18)
-			.send
-				margin-top: rem(48)
-				padding: rem(20)
-				background-color: $red
-				transform: skew(-$skew)
-				&:hover
-					background-color: $lBlue
-				span
-					color: $w
-					transform: skew($skew)
-					font-size: rem(18)
-					font-weight: 500
 
 section.facts
 	padding: rem(120) 0
@@ -517,11 +449,6 @@ section.info_about
 		width: 90%
 		height: rem(400)
 		margin-left: auto
-		// display: flex
-		// flex-direction: column
-		// justify-content: space-between
-		// align-items: center
-		// padding: 3rem 3rem 3rem 10rem
 		transform: skew(-$skew)
 		background-color: $red
 		position: relative
@@ -759,6 +686,7 @@ section.map_banner
 // page-service_post
 section.workshop
 	padding: rem(96) 0
+	background-color: $dw
 	color: $dGrey
 	.wrapper
 		display: flex
@@ -838,6 +766,26 @@ section.workshop
 			.facts_cards
 				width: 95%
 				margin: rem(48) 0 0
+		.pricelist
+			width:	100%
+			margin-top: rem(48)
+			td
+				padding: rem(18)
+				border: none
+				font-size: rem(16)
+				white-space: nowrap
+				&:nth-child(1)
+					width: 60%
+				&:nth-child(2), &:nth-child(3)
+					width: 20%
+			thead td
+				text-transform: uppercase
+				font-weight: bold
+				border-bottom: 2px solid $red
+			tbody td
+				border-bottom: 1px solid rgba($lGrey, 0.3)
+		.checkup
+			margin-top: rem(48)
 
 section.popular
 	height: rem(960)
@@ -845,6 +793,7 @@ section.popular
 section.workplan
 	padding: rem(150) 0 rem(96)
 	color: $dGrey
+	background-color: $dw
 	.wrapper
 		display: flex
 		flex-direction: column
@@ -856,6 +805,7 @@ section.workplan
 			line-height: 1.42
 	.right_text
 		width: 65%
+		margin-top: rem(96)
 		align-self: flex-end
 		h3
 			margin-top: rem(96)
@@ -868,15 +818,223 @@ section.workplan
 			padding: 0
 			counter-reset: my-counter
 			li
+				display: flex
+				align-items: center
 				counter-increment: my-counter
 				&::before
-					content: counter(my-counter) ". "
-					background-color: red
+					margin-right: rem(24)
+					content: counter(my-counter)
+					display: inline-block
+					width: rem(24)
+					height: rem(50)
+					padding: rem(10) rem(10) 0 rem(36)
+					font-size: rem(48)
+					font-weight: bold
+					background-color: $red
+					color: $w
+					transform: skew(-$skew)
 				&:not(:first-child)
 					margin-top: rem(36)
 					font-size: rem(24)
 					line-height: 1.42
+	.up_photos
+		width: 100%
+		height: rem(570)
+		position: relative
+		h2
+			width: 30%
+			font-size: rem(48)
+			font-weight: bold
+			.brand
+				max-width: rem(180)
+				margin-top: rem(12)
+		> img
+			position: absolute
+			&:nth-of-type(1)
+				width: rem(756)
+				height: rem(540)
+				top: 0
+				right: 0
+				z-index: 1
+			&:nth-of-type(2)
+				width: rem(400)
+				height: rem(280)
+				top: rem(260)
+				left: rem(96)
+				z-index: 2
+			&:nth-of-type(3)
+				width: rem(360)
+				height: rem(540)
+				top: rem(130)
+				left: rem(530)
+				z-index: 3
+	.white_rect
+		width: 40%
+		height: 40%
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translate(-50%, 0) skew(-$skew)
+		background-color: $w
+	.shared_stripes
 
+section.galleryexamps
+	padding: rem(120) 0
+	.wrapper
+		h2
+			font-size: rem(48)
+			font-weight: bold
+		.gallery
+			display: flex
+			flex-wrap: wrap
+			margin: rem(72) -0.75rem 0
+			img
+				width: calc(100% / 4 - 1.5rem)
+				margin: 0.75rem
+
+section.reviews
+	padding: rem(120) 0
+	background-color: $dGrey
+	.wrapper
+	.quote_cards
+		display: flex
+		justify-content: space-between
+	.quote_card
+		width: calc(50% - 0.75rem)
+		padding: rem(48) rem(36)
+		background-color: $w
+		.date
+			color: $red
+			font-size: rem(16)
+		p
+			font-size: rem(24)
+			font-weight: 500
+			svg
+				display: block
+				width: rem(18)
+				height: rem(18)
+				margin-top: rem(84)
+				margin-bottom: rem(18)
+				fill: $red
+	.arrows
+		display: flex
+		justify-content: flex-end
+		margin-top: rem(48)
+		position: relative
+		right: 0
+		bottom: 0
+		button
+			fill: $w
+			opacity: 0.5
+			&.active
+				opacity: 1
+			&:hover
+				fill: $lBlue
+			svg
+				transform: scale(2.5)
+		.quote_prev
+			transform: rotate(90deg)
+		.quote_next
+			margin-left: 0.5rem
+			transform: rotate(-90deg)
+
+section.workexamps
+	padding: rem(120) 0
+	color: $dGrey
+	.wrapper
+		h2
+			font-size: rem(48)
+			font-weight: bold
+		.exampscards
+			display: flex
+			margin: rem(72) -0.75rem 0
+		.card
+			width: calc(100% / 4 - 0.75rem)
+			height: rem(260)
+			margin: 0.75rem
+			span
+				margin-top: rem(8)
+				opacity: 0.4
+				font-size: rem(16)
+				user-select: none
+
+section.request
+	padding: rem(120) 0
+	background-color: $dw
+	.wrapper
+		display: flex
+		justify-content: space-between
+	.left_text
+		width: 40%
+		h2
+			font-size: rem(48)
+			font-weight: bold
+		p
+			width: 80%
+			margin-top: rem(24)
+			font-size: rem(24)
+			line-height: 1.42
+	.right_form
+		width: 55%
+		form
+			margin-top: rem(96)
+		input
+			background-color: transparent
+			border: none
+		input[type=text]
+			display: block
+			padding: rem(12) 0
+			border-bottom: 2px solid $dGrey
+			font-size: rem(18)
+		input[type=tel]
+			display: block
+			margin-top: rem(36)
+			padding: rem(12) 0
+			border-bottom: 2px solid $dGrey
+			font-size: rem(18)
+		.checkup
+			margin-top: rem(36)
+		input[type=submit]
+
+section.faq
+	padding: rem(96) 0
+	background-color: $dw
+	.wrapper
+	.faq_list
+		width: rem(1020)
+		margin: 0 auto
+	.faq_item
+		margin: 0
+		height: 3.3rem
+		padding-top: rem(24)
+		padding-bottom: rem(24)
+		background-color: $w
+		&:not(:first-child)
+			border-top: 1px solid rgba($lGrey, 0.3)
+		.expand
+			top: 1.1rem
+
+section.adv
+	padding: rem(160) 0 rem(80)
+	background-color: $w
+	.wrapper
+		display: flex
+		justify-content: space-between
+	.left_text
+		width: 50%
+		h2
+			font-size: rem(48)
+			font-weight: bold
+		p
+			margin-top: rem(48)
+			font-size: rem(24)
+			line-height: 1.42
+	.right_img
+		width: 45%
+		text-align: right
+		.shard
+			width: rem(240)
+			margin-top: rem(-50)
 
 
 

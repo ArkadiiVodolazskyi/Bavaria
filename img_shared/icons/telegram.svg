@@ -1,10 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <defs>
-        <clipPath id="vu88c69yfa">
-            <path fill="transparent" d="M0 0H24V24H0z" transform="translate(1279 5566)"/>
-        </clipPath>
-    </defs>
-    <g clip-path="url(#vu88c69yfa)" transform="translate(-1279 -5566)">
-        <path fill="transparent" fill-rule="evenodd" d="M23.822 40.737l-7.109-6.248-.531.328.626 1.673-3.642 2.6.736-5.667L24.728 23.29l-.546-.053-12.748 8.157-6.777-2.146L27.9 18.974l.754.179z" transform="translate(1274.343 5548.145)"/>
+    <g transform="translate(-1279 -5566)">
+        <path fill="transparent" d="M23.822 40.737l-7.109-6.248-.531.328.626 1.673-3.642 2.6.736-5.667L24.728 23.29l-.546-.053-12.748 8.157-6.777-2.146L27.9 18.974l.754.179z" transform="translate(1274.343 5548.145)"/>
     </g>
 </svg>

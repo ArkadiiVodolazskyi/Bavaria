@@ -104,6 +104,8 @@ header
 					&:hover
 						fill: $lBlue
 	nav
+		position: relative
+		z-index: -1
 		background-color: $dGrey
 		.wrapper
 			display: flex
@@ -123,3 +125,139 @@ header
 						color: $lBlue
 			.checkup
 				margin-bottom: -1.5rem
+
+#expandedMenu
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 500
+	width: 100vw
+	height: 100vh
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	display: flex
+	color: $w
+	&.expanded
+		opacity: 1
+		visibility: visible
+	> *:not(.closeOverlay):not(.languages)
+		width: 25%
+		height: 100%
+		padding: rem(280) rem(48) 0 rem(108)
+		background: linear-gradient(207deg, #181f29, #153155)
+		backdrop-filter: blur(30px)
+	.clients, .services
+		h5
+			font-size: rem(24)
+			font-weight: bold
+			position: relative
+			svg
+				width: 0.7rem
+				height: 1.1rem
+				fill: $red
+				position: absolute
+				left: 0
+				top: 50%
+				transform: translate(-2rem, -50%)
+		ul
+			margin-top: rem(36)
+		li
+			display: block
+			&:not(:first-child)
+				margin-top: rem(36)
+			a
+				font-size: rem(20)
+				font-weight: 500
+				&:hover
+					color: $lBlue
+	.contacts
+		display: flex
+		flex-direction: column
+		> li
+			display: flex
+			position: relative
+			&:not(:first-child)
+				margin-top: rem(48)
+			> svg
+				width: rem(24)
+				height: rem(24)
+				position: absolute
+				top: 0
+				left: 0
+				transform: translate(-2rem, 3px)
+				fill: $red
+			a
+				display: block
+				&:hover
+					color: $lBlue
+			.phone_list > a
+				margin-bottom: rem(12)
+		.social
+			text-align: center
+			fill: $w
+			li
+				&:not(:first-child)
+					margin-left: rem(18)
+				a
+					fill: $w
+					&:hover
+						fill: $lBlue
+					svg
+						width: rem(36)
+						height: rem(36)
+	.phones
+		> li
+			display: flex
+			position: absolute
+			.phone:not(:first-child)
+				margin-top: rem(48)
+			> svg
+				width: rem(24)
+				height: rem(24)
+				position: absolute
+				top: 0
+				left: 0
+				transform: translate(-2rem, 3px)
+				fill: $red
+			a
+				display: block
+				&:hover
+					color: $lBlue
+	.phone_list
+		display: flex
+		flex-wrap: wrap
+	.phone
+		.phone_first
+			display: flex
+			align-items: center
+			justify-content: space-between
+			a
+				font-size: rem(24)
+				font-weight: bold
+		span
+			display: flex
+			align-items: center
+			opacity: 0.5
+			font-size: rem(18)
+		.phone_type
+			margin-left: rem(20)
+			svg
+				width: rem(20)
+				height: rem(20)
+	.languages
+		position: absolute
+		top: rem(72)
+		right: rem(72)
+		li
+			display: flex
+			align-items: center
+			a
+				margin-left: rem(18)
+				font-size: rem(18)
+				text-decoration: underline
+		svg
+			fill: $w
+			width: rem(24)
+			height: rem(24)
+

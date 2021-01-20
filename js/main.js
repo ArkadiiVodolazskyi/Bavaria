@@ -63,97 +63,188 @@ window.addEventListener("load", () => {
     });
     wow.init();
   })();
+
+  // header - expand hamb
+  (function () {
+    const hamb = document.querySelector(".hamb");
+    const expandedMenu = document.querySelector("#expandedMenu");
+    if (expandedMenu) {
+      const closeExpanded = document.querySelector(
+        "#expandedMenu .closeOverlay",
+      );
+
+      hamb.addEventListener("click", () => {
+        expandedMenu.classList.add("expanded");
+      });
+      closeExpanded.addEventListener("click", () => {
+        expandedMenu.classList.remove("expanded");
+      });
+    }
+  })();
+
+  // page-home - change info pros
+  (function () {
+    const pros = [...document.querySelectorAll(".pro_card")];
+
+    if (pros) {
+      const pro_prev = document.querySelector(".pro_prev");
+      const pro_next = document.querySelector(".pro_next");
+
+      // Default
+      let proIndex = 0;
+      pros[proIndex].classList.add("active");
+      for (let i = 1; i < pros.length; i++) {
+        pros[i].style.transform = "translateX(100%)";
+      }
+
+      function changePros(proIndex) {}
+
+      pro_prev.addEventListener("click", () => {
+        proIndex--;
+        if (proIndex < 0) {
+          proIndex = 0;
+        } else {
+          pros[proIndex + 1].style.transform = "translateX(100%)";
+          pros[proIndex + 1].classList.remove("active");
+          pros[proIndex].classList.add("active");
+          pros[proIndex].style.transform = "translateX(0%)";
+        }
+      });
+      pro_next.addEventListener("click", () => {
+        proIndex++;
+        if (proIndex > pros.length - 1) {
+          proIndex = pros.length - 1;
+        } else {
+          pros[proIndex - 1].style.transform = "translateX(-100%)";
+          pros[proIndex - 1].classList.remove("active");
+          pros[proIndex].classList.add("active");
+          pros[proIndex].style.transform = "translateX(0%)";
+        }
+      });
+    }
+  })();
+
+  // page-vacancies - expand
+  (function () {
+    const vacancies = [...document.querySelectorAll(".vacancy")];
+
+    if (vacancies.length) {
+      const vacExpands = [...document.querySelectorAll(".expand")];
+
+      // Default
+      vacancies[0].classList.add("active");
+
+      for (let i = 0; i < vacExpands.length; i++) {
+        vacExpands[i].addEventListener("click", () => {
+          if (vacancies[i].classList.contains("active")) {
+            vacancies[i].classList.remove("active");
+          } else {
+            for (let j = 0; j < vacancies.length; j++) {
+              vacancies[j].classList.remove("active");
+            }
+
+            vacancies[i].classList.add("active");
+          }
+        });
+      }
+    }
+  })();
+
+  // page-about - master slider
+  (function () {
+    const masterNames = [...document.querySelectorAll(".master_name .name")];
+
+    if (masterNames.length) {
+      const masterImgs = [...document.querySelectorAll(".master_img img")];
+      const masterPrev = document.querySelector(".master_prev");
+      const masterNext = document.querySelector(".master_next");
+
+      // Default
+      masterIndex = 0;
+      masterNames[masterIndex].classList.add("active");
+      masterImgs[masterIndex].classList.add("active");
+      masterPrev.classList.remove("active");
+      masterNext.classList.add("active");
+
+      function masterChange(masterIndex) {
+        if (masterIndex < 0) {
+          masterIndex = 0;
+          masterPrev.classList.remove("active");
+        } else if (masterIndex > masterNames.length - 1) {
+          masterIndex = masterNames.length - 1;
+          masterNext.classList.remove("active");
+        } else {
+          masterPrev.classList.add("active");
+          masterNext.classList.add("active");
+        }
+
+        if (masterIndex - 1 < 0) {
+          masterPrev.classList.remove("active");
+        }
+        if (masterIndex + 1 > masterNames.length - 1) {
+          masterNext.classList.remove("active");
+        }
+
+        for (let i = 0; i < masterNames.length; i++) {
+          masterNames[i].classList.remove("active");
+          masterImgs[i].classList.remove("active");
+        }
+
+        masterNames[masterIndex].classList.add("active");
+        masterImgs[masterIndex].classList.add("active");
+      }
+
+      masterPrev.addEventListener("click", () => {
+        masterIndex--;
+
+        masterChange(masterIndex);
+      });
+
+      masterNext.addEventListener("click", () => {
+        masterIndex++;
+
+        masterChange(masterIndex);
+      });
+    }
+  })();
+
+  // page-service_post - expand nav
+  (function () {
+    const navPoints = [...document.querySelectorAll("aside .list > li")];
+
+    if (navPoints.length) {
+      for (let i = 0; i < navPoints.length; i++) {
+        navPoints[i].addEventListener("click", (e) => {
+          e.preventDefault();
+          navPoints[i].classList.toggle("active");
+        });
+      }
+    }
+  })();
+
+  // connect_form - open form, open overlay
+  (function () {
+    const connect_wrapper = document.getElementById("connect_wrapper");
+
+    if (connect_wrapper) {
+      const connectBtn = document.querySelectorAll(".openConnect");
+      const overlay = document.getElementById("overlay");
+      const closeConnect = document.getElementById("closeConnect");
+
+      connectBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          overlay.classList.add("active");
+          connect_wrapper.classList.add("active");
+        });
+      });
+      closeConnect.addEventListener("click", () => {
+        connect_wrapper.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+      overlay.addEventListener("click", () => {
+        connect_wrapper.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+    }
+  })();
 });
-
-// ! remove to page load while code is fully ready
-
-// + page-vacancies - expand
-// (function () {
-//   const vacancies = [...document.querySelectorAll(".vacancy")];
-//   const vacExpands = [...document.querySelectorAll(".expand")];
-
-//   // Default
-//   vacancies[0].classList.add("active");
-
-//   for (let i = 0; i < vacExpands.length; i++) {
-//     vacExpands[i].addEventListener("click", () => {
-//       if (vacancies[i].classList.contains("active")) {
-//         vacancies[i].classList.remove("active");
-//       } else {
-//         for (let j = 0; j < vacancies.length; j++) {
-//           vacancies[j].classList.remove("active");
-//         }
-
-//         vacancies[i].classList.add("active");
-//       }
-//     });
-//   }
-// })();
-
-// + page-about - master slider
-// (function () {
-//   const masterPrev = document.querySelector(".master_prev");
-//   const masterNext = document.querySelector(".master_next");
-
-//   const masterNames = [...document.querySelectorAll(".master_name .name")];
-//   const masterImgs = [...document.querySelectorAll(".master_img img")];
-
-//   // Default
-//   masterIndex = 0;
-//   masterNames[masterIndex].classList.add("active");
-//   masterImgs[masterIndex].classList.add("active");
-//   masterPrev.classList.remove("active");
-//   masterNext.classList.add("active");
-
-//   function masterChange(masterIndex) {
-//     if (masterIndex < 0) {
-//       masterIndex = 0;
-//       masterPrev.classList.remove("active");
-//     } else if (masterIndex > masterNames.length - 1) {
-//       masterIndex = masterNames.length - 1;
-//       masterNext.classList.remove("active");
-//     } else {
-//       masterPrev.classList.add("active");
-//       masterNext.classList.add("active");
-//     }
-
-//     if (masterIndex - 1 < 0) {
-//       masterPrev.classList.remove("active");
-//     }
-//     if (masterIndex + 1 > masterNames.length - 1) {
-//       masterNext.classList.remove("active");
-//     }
-
-//     for (let i = 0; i < masterNames.length; i++) {
-//       masterNames[i].classList.remove("active");
-//       masterImgs[i].classList.remove("active");
-//     }
-
-//     masterNames[masterIndex].classList.add("active");
-//     masterImgs[masterIndex].classList.add("active");
-//   }
-
-//   masterPrev.addEventListener("click", () => {
-//     masterIndex--;
-
-//     masterChange(masterIndex);
-//   });
-
-//   masterNext.addEventListener("click", () => {
-//     masterIndex++;
-
-//     masterChange(masterIndex);
-//   });
-// })();
-
-// page-service_post - expand nav
-(function () {
-  const navPoints = [...document.querySelectorAll("aside .list > li")];
-
-  for (let i = 0; i < navPoints.length; i++) {
-    navPoints[i].addEventListener("click", (e) => {
-      e.preventDefault();
-      navPoints[i].classList.toggle("active");
-    });
-  }
-})();

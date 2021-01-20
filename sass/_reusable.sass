@@ -97,6 +97,7 @@ html
 
 body
 	position: relative
+	z-index: 1
 	opacity: 1
 	visibility: visible
 	&.loading
@@ -117,8 +118,6 @@ section
 			transform: translate(-10%, -50%)
 		*
 			color: $w
-		.next
-			fill: $w
 	&.light
 		padding: rem(120) 0
 		background-color: $w
@@ -131,12 +130,12 @@ section
 			transform: translate(0, -50%)
 		*
 			color: $dGrey
-		.next
-			fill: $dGrey
 
 .wrapper
 	width: 80%
 	margin: 0 auto
+	position: relative
+	z-index: 5
 
 svg.replaced-svg:not(.native)
 	fill: inherit
@@ -147,13 +146,19 @@ svg.replaced-svg:not(.native)
 
 .next
 	position: absolute
+	z-index: 20
 	bottom: rem(36)
 	left: 50%
 	transform: translate(-50%, 0)
-	&:hover svg
+	cursor: pointer
+	fill: $w
+	&.dark
+		fill: $dGrey
+	&:hover
 		fill: $lBlue
 	svg
-		transform: scale(2.5)
+		width: rem(36)
+		height: rem(20)
 
 .signup
 	text-align: right
@@ -263,8 +268,8 @@ svg.replaced-svg:not(.native)
 		&:hover
 			.card_bg
 				opacity: 1
-			h5 span
-				background-color: $red
+			h5 p:before
+				width: 100%
 		.card_bg
 			width: 100%
 			height: 100%
@@ -279,12 +284,27 @@ svg.replaced-svg:not(.native)
 			margin-top: rem(300)
 			font-size: rem(24)
 			font-weight: bold
-			span
+			svg
+				position: relative
+				z-index: 10
+			p
 				margin-left: rem(-12)
 				display: inline-block
 				padding: rem(18) rem(24)
 				transform: skew(-$skew)
 				background-color: transparent
+				position: relative
+				&:before
+					content: ""
+					position: absolute
+					top: 0
+					left: 0
+					width: 0%
+					height: 100%
+					background-color: $red
+					transition: all 0.2s linear
+			span
+				transform: skew($skew)
 				white-space: nowrap
 
 .checkup
@@ -294,11 +314,12 @@ svg.replaced-svg:not(.native)
 	transform: skew(-$skew)
 	&:hover
 		background-color: $lBlue
-	button
+	button, input
 		padding: 1rem 1.5rem
 		transform: skew($skew)
 		font-size: rem(18)
 		font-weight: 500
+		cursor: pointer
 
 .navpages
 	display: flex
@@ -341,6 +362,257 @@ svg.replaced-svg:not(.native)
 			margin-left: rem(24)
 			transform: skew($skew)
 			font-size: rem(18)
+
+.list_wrapper
+	margin-top: rem(48)
+	.list_title
+		font-size: rem(24)
+		font-weight: 500
+	.list li
+		margin-top: rem(24)
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+		font-size: rem(24)
+		line-height: 1.56
+		svg
+			width: 1.5%
+			padding-top: 5px
+			fill: $red
+		span
+			width: 96%
+
+.vacancy
+	position: relative
+	padding: rem(48) rem(130) rem(48) rem(48)
+	box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
+	background-color: $dw
+	height: rem(120)
+	> *:not(h3)
+		opacity: 0
+		visibility: hidden
+	&:not(:first-child)
+		margin-top: rem(36)
+	&.active
+		height: auto
+		background-color: $w
+		> *
+			opacity: 1
+			visibility: visible
+		h3
+			color: $red
+		.expand
+			transform: rotate(180deg)
+			fill: $red
+	h3
+		color: $dGrey
+		text-align: left
+		font-size: rem(24)
+		font-weight: 500
+	.expand
+		width: 2rem
+		position: absolute
+		top: 2rem
+		right: 2rem
+		fill: $dGrey
+		transform: rotate(0deg)
+		opacity: 1 !important
+		visibility: visible !important
+		svg
+			width: 100%
+			height: 100%
+		&:hover
+			fill: $lBlue
+	p
+		margin-top: rem(36)
+		font-size: rem(18)
+		line-height: 1.56
+	.send
+		margin-top: rem(48)
+		padding: rem(20)
+		background-color: $red
+		transform: skew(-$skew)
+		&:hover
+			background-color: $lBlue
+		span
+			color: $w
+			transform: skew($skew)
+			font-size: rem(18)
+			font-weight: 500
+
+.closeOverlay
+	padding: 0
+	position: absolute
+	top: rem(72)
+	left: rem(72)
+	fill: $w
+	z-index: 950
+	svg
+		width: rem(48)
+		height: rem(48)
+	&:hover
+		fill: $lBlue
+
+#overlay
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 950
+	width: 100%
+	height: 100%
+	opacity: 0
+	visibility: hidden
+	backdrop-filter: blur(8.2px)
+	cursor: pointer
+	&.active
+		opacity: 1
+		visibility: visible
+
+#connect_wrapper
+	width: 50%
+	max-height: rem(550)
+	position: fixed
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%) skew(-$skew)
+	z-index: 960
+	opacity: 0
+	visibility: hidden
+	padding: 3rem 5rem
+	background-color: $w
+	&.active
+		opacity: 1
+		visibility: visible
+	#connect_form
+		transform: skew($skew)
+		width: 55%
+		h2
+			font-size: rem(36)
+			font-weight: bold
+			color: $dGrey
+		input[type=text], input[type=tel], textarea
+			width: 100%
+			margin-top: rem(36)
+			border: none
+			border-bottom: 2px solid $dGrey
+			color: $lGrey
+			font-size: rem(18)
+			padding: rem(12) 0
+		textarea
+			max-width: 100%
+			max-height: rem(180)
+		.checkup
+			margin-top: rem(36)
+		input[type=submit]
+			background-color: transparent
+			border: 1px solid transparent
+	.connect_img
+		position: absolute
+		width: rem(436)
+		height: rem(600)
+		top: 50%
+		right: 0.5rem
+		transform: translate(0%, -50%) skew($skew)
+	.connect_figure
+		transform: skew($skew)
+		position: absolute
+		height: rem(270)
+		right: 1.25rem
+		bottom: -3rem
+	#closeConnect
+		transform: skew($skew)
+		position: absolute
+		top: rem(24)
+		right: rem(24)
+		fill: $red
+		&:hover
+			fill: $lBlue
+
+// figures
+.figure_1
+	width: rem(150)
+	height: rem(270)
+	position: absolute
+	bottom: rem(-60)
+	right: rem(420)
+	z-index: 10
+	svg
+		width: 100%
+		height: 100%
+.figure_2
+	position: absolute
+	z-index: 0
+	top: 0
+	left: rem(723)
+	> *
+		position: absolute
+		top: 0
+	.figure_21
+		background-color: $lBlue
+		transform: skew(-$skew)
+		width: rem(179)
+		height: rem(155)
+		left: 0
+	.figure_22
+		width: rem(206)
+		height: rem(211)
+		left: 0
+	.figure_23
+		background-color: $red
+		transform: skew(-$skew)
+		width: 4.3rem
+		height: rem(107)
+		left: 5.6rem
+.figure_3
+	position: absolute
+	top: 0
+	left: 38rem
+	> *
+		position: absolute
+	.figure_31
+		background-color: $red
+		transform: skew(-$skew)
+		width: 7.5rem
+		height: 22rem
+	.figure_32
+		background-color: $dBlue
+		transform: skew(-$skew)
+		width: 3rem
+		height: rem(245)
+		top: rem(-54)
+		left: 8.5rem
+	.figure_33
+		background-color: $lBlue
+		transform: skew(-$skew)
+		width: 2rem
+		height: rem(169)
+		top: rem(-70)
+		left: 8rem
+.figure_4
+	width: rem(150)
+	height: rem(270)
+	position: absolute
+	bottom: -6rem
+	right: rem(490)
+	z-index: 10
+	.figure_41
+		position: absolute
+		width: auto
+		height: 10rem
+	.figure_42
+		position: absolute
+		width: auto
+		height: 11rem
+
+
+
+
+
+
+
+
 
 
 
