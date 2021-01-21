@@ -605,6 +605,27 @@ svg.replaced-svg:not(.native)
 		position: absolute
 		width: auto
 		height: 11rem
+.figure_6
+	position: absolute
+	top: 0
+	bottom: 0
+	width: 25%
+	height: 100%
+	fill: transparent
+	svg
+		position: absolute
+		top: 0
+		height: 100%
+		&:nth-child(1)
+			left: 0
+	&.dark
+		left: 5%
+		svg, path
+			stroke: rgba($dBlue, 0.04) !important
+	&.light
+		left: 46%
+		svg, path
+			stroke: rgba($w, 0.04) !important
 
 
 

@@ -2,3 +2,17 @@ sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 npm install webpack webpack-cli webpack-dev-server path --save-dev
 
 section [light, dark] -> padding, color, .next
+
+
+let clonedSlider = slider.cloneNode(true); // true - also copy child nodes
+clonedSlider.classList.add("fullscreen");
+
+
+<?php while ( have_rows('cards3') ): the_row();
+	while ( have_rows('about2') ): the_row(); ?>
+	<?php $block = "title";
+		if ( have_rows ($block) ):
+		while ( have_rows ($block) ): the_row(); ?>
+		<?php the_sub_field('text'); ?>
+	<?php endwhile; endif; ?>
+<?php endwhile; endwhile; ?>

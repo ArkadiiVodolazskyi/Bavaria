@@ -86,7 +86,7 @@ window.addEventListener("load", () => {
   (function () {
     const pros = [...document.querySelectorAll(".pro_card")];
 
-    if (pros) {
+    if (pros.length) {
       const pro_prev = document.querySelector(".pro_prev");
       const pro_next = document.querySelector(".pro_next");
 
@@ -245,6 +245,71 @@ window.addEventListener("load", () => {
         connect_wrapper.classList.remove("active");
         overlay.classList.remove("active");
       });
+    }
+  })();
+
+  // page-news_post - gallery interaction
+  (function () {
+    const galleries = [...document.querySelectorAll(".gallery")];
+
+    if (galleries.length) {
+      for (let i = 0; i < galleries.length; i++) {
+        const images = [...galleries[i].querySelectorAll(".tape > img")];
+
+        if (images.length) {
+          // Copy all to the big one
+          const tape = galleries[i].querySelector(".tape");
+          let clonedTape = tape.cloneNode(true);
+          clonedTape.classList = "big";
+          galleries[i].appendChild(clonedTape);
+
+          const bigImages = [...clonedTape.querySelectorAll("img")];
+
+          // Default
+          let currentTransf = 0;
+          const transDif = 170;
+          imageIndex = 0;
+          images[imageIndex].classList.add("active");
+          bigImages[imageIndex].classList.add("active");
+
+          // Change active on tape image click
+          for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener("click", () => {
+              for (let j = 0; j < images.length; j++) {
+                images[j].classList.remove("active");
+                bigImages[j].classList.remove("active");
+              }
+              images[i].classList.add("active");
+              bigImages[i].classList.add("active");
+            });
+          }
+
+          // Move tape with imgs
+          const tape_prev = galleries[i].querySelector(".tape_prev");
+          const tape_next = galleries[i].querySelector(".tape_next");
+
+          tape_prev.addEventListener("click", () => {
+            imageIndex--;
+            if (imageIndex < 0) {
+              imageIndex = 0;
+            } else {
+              currentTransf += transDif;
+              tape.style.transform = `matrix(1, 0, 0, 1, 0, ${transDif})`;
+            }
+            console.log(imageIndex, currentTransf);
+          });
+          tape_next.addEventListener("click", () => {
+            imageIndex++;
+            if (imageIndex > bigImages.length - 1) {
+              imageIndex = bigImages.length - 1;
+            } else {
+              currentTransf -= transDif;
+              tape.style.transform = `matrix(1, 0, 0, 1, 0, ${transDif})`;
+            }
+            console.log(imageIndex, currentTransf);
+          });
+        }
+      }
     }
   })();
 });

@@ -148,7 +148,24 @@ section.news
 						background-position: center
 						background-size: cover
 						background-repeat: no-repeat
+						&:before
+							content: ""
+							position: absolute
+							z-index: -1
+							top: rem(-40)
+							left: 0
+							background-color: $red
+							transform: skew(-$skew) translate(100%, 0)
+							height: rem(271)
+							width: 3rem
+							opacity: 0
+							visibility: hidden
+							transition: all 0.3s linear
 						&:hover
+							&:before
+								opacity: 1
+								visibility: visible
+								transform: skew(-$skew) translate(0, 0)
 							.block_overlay
 								background-color: rgba($b, 0.7)
 								.date
@@ -357,34 +374,67 @@ section.post
 		display: flex
 		align-items: center
 		justify-content: space-between
+		position: relative
 		.big
-			width: 84%
+			width: 85%
+			padding-top: 38vw
+			margin-right: rem(18)
+			position: relative
+			order: 1
+			img
+				width: 100%
+				height: 100%
+				position: absolute
+				top: 0
+				left: 0
+				opacity: 0
+				visibility: hidden
+				&.active
+					opacity: 1
+					visibility: visible
 		.all
 			width: 15%
-			min-height: 100%
+			padding-top: 34vw
 			overflow: hidden
 			position: relative
+			order: 2
+			position: relative
 		.tape
-			position: absolute
 			width: 100%
-			max-width: 100%
-			height: auto
+			height: 100%
 			display: flex
 			flex-direction: column
 			justify-content: space-between
 			align-items: flex-end
+			position: absolute
+			top: 0
+			left: 0
+			transform: translateY(0px)
 			img
 				width: rem(230)
 				height: rem(150)
-		button
+				cursor: pointer
+				opacity: 0.3
+				&:not(:first-child)
+					margin-top: rem(18)
+				&.active, &:hover
+					opacity: 1
+		> button
 			position: absolute
-			left: 50%
+			z-index: 20
+			right: 4rem
+			fill: $dGrey
+			&:hover
+				fill: $lBlue
+			svg
+				width: rem(36)
+				height: rem(20)
 			&.tape_prev
 				top: 0
-				transform: translate(-50%, 10%) rotate(180deg)
+				transform: translate(50%, 10%) rotate(180deg)
 			&.tape_next
 				bottom: 0
-				transform: translate(-50%, -10%) rotate(180deg)
+				transform: translate(50%, -10%) rotate(0deg)
 	.list_wrapper
 		padding: 0 rem(130)
 	.share
@@ -413,12 +463,16 @@ section.vacancies
 	padding: rem(96) 0
 	.wrapper
 		width: 55%
+	p, li span
+		font-size: rem(18)
 
 section.facts
 	padding: rem(120) 0
 	background-color: $dw
 	.wrapper
 		width: 55%
+	.figure_2
+		left: 75%
 
 // page-about
 section.info_about
