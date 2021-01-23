@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <div id="overlay"></div>
+    <button id="closeOverlay">
+      <img src="../img_shared/icons/cross.svg" class="img-svg" />
+    </button>
+
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
@@ -119,6 +124,14 @@
         <div class="wrapper">
           <h2>Кузовной цех</h2>
         </div>
+      </div>
+
+      <div class="figure_1">
+        <img
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
+        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
     </section>
 
@@ -235,11 +248,10 @@
 
     <section class="services dark popular">
       <div class="wrapper">
-        <div
-          class="sec_title"
-          style="background-image: url(../img_shared/page-home/услуги.png)"
-        >
-          <h3>Услуги</h3>
+        <h3>Популярные услуги</h3>
+
+        <div class="sec_title">
+          <img src="../img_shared/page-home/услуги.png" >
         </div>
 
         <div class="cards">
@@ -309,6 +321,15 @@
           </div>
         </div>
 
+        <div class="master_arrows">
+          <button class="master_prev">
+            <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+          </button>
+          <button class="master_next">
+            <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+          </button>
+        </div>
+
         <button class="signup">
           Записаться<br />
           онлайн
@@ -342,14 +363,20 @@
         </div>
       </div>
 
-      <div class="white_rect"></div>
-      <div class="shared_stripes"></div>
+      <div class="figure_8" style="width: 40%; height: 40%; top: 0; left: 30%; "></div>
+
+      <div class="figure_10" style="top: -3rem; left: 68%;">
+        <img
+          src="../img_shared/figures/figure_101.svg"
+          class="img-svg native figure_101"
+        />
+      </div>
     </section>
 
     <section class="workexamps">
       <div class="wrapper">
         <h2>Примеры работ</h2>
-        <div class="exampscards">
+        <div class="exampscards lightbox">
           <div class="card">
             <img src="../img_shared/service_post/service_post_examp1.png" alt="">
             <span>Антигравийная пленка</span>
@@ -368,6 +395,12 @@
           </div>
         </div>
       </div>
+
+      <div class="figure_2" style="left: 75%">
+        <div class="figure_21"></div>
+        <img class="figure_22" src="../img_shared/figures/figure_22.png" />
+        <div class="figure_23"></div>
+      </div>
     </section>
 
     <section class="request">
@@ -378,13 +411,23 @@
             и мы перезвоним вам чтобы уточнить все детали</p>
         </div>
         <div class="right_form">
-          <form>
-            <input type="text" id="name" placeholder="Ваше имя">
-            <input type="tel" id="phone" placeholder="Номер телефона">
+          <form id="connect_form_2">
+            <input type="text" id="connect_name" placeholder="Ваше имя" />
+            <input type="tel" id="connect_tel" placeholder="Номер телефона" />
             <div class="checkup">
-              <input type="submit" value="Записаться на осмотр">
+              <input
+                id="connect_submit"
+                type="submit"
+                value="Отправить сообщение"
+              />
             </div>
           </form>
+          <img src="../img_shared/connect_img.png" class="connect_img" />
+          <img
+            src="../img_shared/figures/figure_1.svg"
+            class="img-svg native connect_figure"
+          />
+          <div class="figure_8"></div>
         </div>
       </div>
     </section>

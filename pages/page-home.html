@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <div id="overlay"></div>
+    <button id="closeOverlay">
+      <img src="../img_shared/icons/cross.svg" class="img-svg" />
+    </button>
+
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
@@ -99,12 +104,12 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="./page-about.html">Портфолио</a></li>
+            <li><a href="./page-service_post.html">Диагностика</a></li>
+            <li><a href="./page-service_post2.html">Техническое обслуживание</a></li>
+            <li><a href="./page-service_post3.html">Ремонт</a></li>
+            <li><a href="./page-vacancies.html">Малярка</a></li>
+            <li><a href="./page-contacts.html">Детейлинг</a></li>
           </ul>
 
           <div class="checkup">
@@ -134,7 +139,11 @@
       </div>
 
       <div class="figure_1">
-        <img class="img-svg native" src="../img_shared/figures/figure_1.svg" />
+        <img
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
+        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
 
       <a href="#services" class="next">
@@ -144,11 +153,10 @@
 
     <section id="services" class="services dark">
       <div class="wrapper">
-        <div class="sec_title">
-          <div class="card_image">
-            <img src="../img_shared/page-home/услуги.png" />
-          </div>
-          <h3>Услуги</h3>
+        <h3>Услуги</h3>
+
+        <div class="figure_11" style="z-index: 0; left: 0%">
+          <img src="../img_shared/figures/figure_111.png" />
         </div>
 
         <div class="cards">
@@ -224,7 +232,11 @@
         </button>
       </div>
 
-      <div class="figure_6 light">
+      <div class="figure_6 light" style="left: 47%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 63%">
         <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
 
@@ -240,7 +252,7 @@
             Новости<br />
             и события
           </h3>
-          <button class="signup">
+          <a href="./page-blog.html" class="signup">
             Будь в курсе<br />
             Всех новостей
           </button>
@@ -252,7 +264,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
                 "
               >
                 <div class="block_overlay">
@@ -273,7 +285,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
                 "
               >
                 <div class="block_overlay">
@@ -294,7 +306,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
                 "
               >
                 <div class="block_overlay">
@@ -315,7 +327,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
                 "
               >
                 <div class="block_overlay">
@@ -342,13 +354,13 @@
         </div>
       </div>
 
-      <div class="figure_2">
+      <div class="figure_2" style="left: 60%">
         <div class="figure_21"></div>
         <img class="figure_22" src="../img_shared/figures/figure_22.png" />
         <div class="figure_23"></div>
       </div>
 
-      <div class="figure_6 dark">
+      <div class="figure_6 dark" style="left: 47%">
         <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
 
@@ -361,7 +373,7 @@
       <div class="wrapper">
         <div class="section_title">
           <h3>Наши работы</h3>
-          <button class="signup">Смотреть<br />все работы</button>
+          <a href="./page-portfolio.html" class="signup">Смотреть<br />все работы</button>
         </div>
 
         <div class="main">
@@ -390,7 +402,7 @@
         <div class="other">
           <div class="card">
             <img
-              src="../img_shared/page-home/дитейлинг_бмв.png"
+              src="../img_shared/service_gallery/service_gallery1.png"
               class="card_bg"
             />
             <h5>
@@ -403,7 +415,7 @@
           </div>
           <div class="card">
             <img
-              src="../img_shared/page-home/техническое_лексус.png"
+              src="../img_shared/service_gallery/service_gallery2.png"
               class="card_bg"
             />
             <h5>
@@ -421,7 +433,7 @@
           </div>
           <div class="card">
             <img
-              src="../img_shared/page-home/диагностика_брабус.png"
+              src="../img_shared/service_gallery/service_gallery3.png"
               class="card_bg"
             />
             <h5>
@@ -454,7 +466,19 @@
         <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
 
-      <div class="figure_6 light">
+      <div class="figure_6 light" style="left: -10%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 20%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 45%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 70%">
         <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
 
@@ -553,6 +577,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="figure_6 red" style="height: 45%; left: 30%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
     </section>
 
@@ -734,13 +762,7 @@
           <a href=""> На українській </a>
         </li>
       </ul>
-
-      <button class="closeOverlay">
-        <img src="../img_shared/icons/cross.svg" class="img-svg" />
-      </button>
     </div>
-
-    <div id="overlay"></div>
 
     <div id="connect_wrapper">
       <form id="connect_form">

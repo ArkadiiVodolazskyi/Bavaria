@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <div id="overlay"></div>
+    <button id="closeOverlay">
+      <img src="../img_shared/icons/cross.svg" class="img-svg" />
+    </button>
+
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
@@ -29,6 +34,8 @@
               <a href=""> На українській </a>
             </li>
           </ul>
+
+          <div class="empty" style="width: 10%"></div>
 
           <div class="time">
             <p>Пн-Сб, 9:00-19:00</p>
@@ -97,23 +104,27 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="./pages/page-about.html">Портфолио</a></li>
+            <li><a href="./pages/page-service_post.html">Диагностика</a></li>
+            <li>
+              <a href="./pages/page-service_post2.html"
+                >Техническое обслуживание</a
+              >
+            </li>
+            <li><a href="./pages/page-service_post3.html">Ремонт</a></li>
+            <li><a href="./pages/page-vacancies.html">Малярка</a></li>
+            <li><a href="./pages/page-contacts.html">Детейлинг</a></li>
           </ul>
 
           <div class="checkup">
-            <button>Записаться на осмотр</button>
+            <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
       </nav>
     </header>
 
     <section class="banner">
-      <img src="../img_shared/page-home/баннер.png" class="banner_img" />
+      <img src="../img_shared/page-home/banner.png" class="banner_img" />
 
       <div class="slogan">
         <div class="wrapper">
@@ -131,15 +142,12 @@
         </div>
       </div>
 
-      <div class="banner_figure">
+      <div class="figure_1">
         <img
-          src="../img_shared/icons/empty_line.svg"
-          class="img-svg empty_line"
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
         />
-        <img
-          src="../img_shared/icons/single_line.svg"
-          class="img-svg single_line"
-        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
 
       <a href="#services" class="next">
@@ -149,17 +157,16 @@
 
     <section id="services" class="services dark">
       <div class="wrapper">
-        <div
-          class="sec_title"
-          style="background-image: url(../img_shared/page-home/услуги.png)"
-        >
-          <h3>Услуги</h3>
+        <h3>Услуги</h3>
+
+        <div class="figure_11" style="z-index: 0; left: 0%">
+          <img src="../img_shared/figures/figure_111.png" />
         </div>
 
         <div class="cards">
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/дитейлинг.png" />
+              <img src="../img_shared/page-home/detailing.png" />
             </div>
             <a href="" class="card_title">
               <h4>Детейлинг</h4>
@@ -172,7 +179,7 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/малярка.png" />
+              <img src="../img_shared/page-home/painting.png" />
             </div>
             <a href="" class="card_title">
               <h4>Малярка</h4>
@@ -185,7 +192,7 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/ремонт.png" />
+              <img src="../img_shared/page-home/repairing.png" />
             </div>
             <a href="" class="card_title">
               <h4>Ремонт</h4>
@@ -198,7 +205,7 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/обслуживание.png" />
+              <img src="../img_shared/page-home/services.png" />
             </div>
             <a href="" class="card_title">
               <h4>Техническое обслуживание</h4>
@@ -211,7 +218,7 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/диагностика.png" />
+              <img src="../img_shared/page-home/diagnostics.png" />
             </div>
             <a href="" class="card_title">
               <h4>Диагностика</h4>
@@ -229,6 +236,14 @@
         </button>
       </div>
 
+      <div class="figure_6 light" style="left: 47%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 63%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
       <a href="#news" class="next">
         <img src="../img_shared/icons/arrow.svg" class="img-svg" />
       </a>
@@ -241,10 +256,10 @@
             Новости<br />
             и события
           </h3>
-          <button class="signup">
+          <a href="./pages/page-blog.html" class="signup">
             Будь в курсе<br />
             Всех новостей
-          </button>
+          </a>
         </div>
 
         <div class="cards">
@@ -253,7 +268,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
                 "
               >
                 <div class="block_overlay">
@@ -274,7 +289,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
                 "
               >
                 <div class="block_overlay">
@@ -295,7 +310,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
                 "
               >
                 <div class="block_overlay">
@@ -316,7 +331,7 @@
               <div
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
                 "
               >
                 <div class="block_overlay">
@@ -343,7 +358,17 @@
         </div>
       </div>
 
-      <a href="#portfolio" class="next">
+      <div class="figure_2" style="left: 60%">
+        <div class="figure_21"></div>
+        <img class="figure_22" src="../img_shared/figures/figure_22.png" />
+        <div class="figure_23"></div>
+      </div>
+
+      <div class="figure_6 dark" style="left: 47%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <a href="#portfolio" class="next dark">
         <img src="../img_shared/icons/arrow.svg" class="img-svg" />
       </a>
     </section>
@@ -352,12 +377,14 @@
       <div class="wrapper">
         <div class="section_title">
           <h3>Наши работы</h3>
-          <button class="signup">Смотреть<br />все работы</button>
+          <a href="./pages/page-portfolio.html" class="signup"
+            >Смотреть<br />все работы</a
+          >
         </div>
 
         <div class="main">
           <div class="main_img">
-            <img src="../img_shared/page-home/наши_работы.png" />
+            <img src="../img_shared/page-home/our_works.png" />
           </div>
           <div class="text">
             <h4>Детейлинг Chevrolet Camaro RS</h4>
@@ -381,50 +408,84 @@
         <div class="other">
           <div class="card">
             <img
-              src="../img_shared/page-home/дитейлинг_бмв.png"
+              src="../img_shared/service_gallery/service_gallery1.png"
               class="card_bg"
             />
             <h5>
               <img
-                src="../img_shared/icons/triple-square.svg"
+                src="../img_shared/figures/figure_5.svg"
                 class="img-svg native"
               />
-              <span>Детейлинг BMW X5</span>
+              <p><span>Детейлинг BMW X5</span></p>
             </h5>
           </div>
           <div class="card">
             <img
-              src="../img_shared/page-home/техническое_лексус.png"
+              src="../img_shared/service_gallery/service_gallery2.png"
               class="card_bg"
             />
             <h5>
               <img
-                src="../img_shared/icons/triple-square.svg"
+                src="../img_shared/figures/figure_5.svg"
                 class="img-svg native"
               />
-              <span
-                >Техническое обслуживание<br />
-                Lexus RX350</span
-              >
+              <p>
+                <span
+                  >Техническое обслуживание<br />
+                  Lexus RX350</span
+                >
+              </p>
             </h5>
           </div>
           <div class="card">
             <img
-              src="../img_shared/page-home/диагностика_брабус.png"
+              src="../img_shared/service_gallery/service_gallery3.png"
               class="card_bg"
             />
             <h5>
               <img
-                src="../img_shared/icons/triple-square.svg"
+                src="../img_shared/figures/figure_5.svg"
                 class="img-svg native"
               />
-              <span
-                >Диагностика и ремонт<br />
-                Brabus G-Wagen</span
-              >
+              <p>
+                <span
+                  >Диагностика и ремонт<br />
+                  Brabus G-Wagen</span
+                >
+              </p>
             </h5>
           </div>
         </div>
+      </div>
+
+      <div class="figure_3">
+        <div class="figure_31"></div>
+        <div class="figure_32"></div>
+        <div class="figure_33"></div>
+      </div>
+
+      <div class="figure_4">
+        <img
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
+        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
+      </div>
+
+      <div class="figure_6 light" style="left: -10%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 20%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 45%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
+      </div>
+
+      <div class="figure_6 light" style="left: 70%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
 
       <a href="#info" class="next">
@@ -439,10 +500,10 @@
             Автоцентр<br />
             BMW Bavaria
           </h3>
-          <button class="signup">
+          <a href="./page-about.html" class="signup">
             подробнее<br />
             Об автоцентре
-          </button>
+          </a>
         </div>
 
         <div class="main">
@@ -466,7 +527,7 @@
           </div>
           <div class="imgs">
             <img src="../img_shared/icons/red_shard.png" class="shard" />
-            <img src="../img_shared/page-home/автоцентр.png" class="photo" />
+            <img src="../img_shared/page-home/autocenter.png" class="photo" />
             <div class="pros">
               <div class="pro_arrows">
                 <button class="pro_prev">
@@ -477,19 +538,55 @@
                 </button>
               </div>
 
-              <div class="pro">
-                <img
-                  src="../img_shared/page-home/pro_icon1.svg"
-                  class="img-svg native pro_icon"
-                />
-                <p class="pro_text">
-                  Доступные цены для каждого клиента. Бережный подход и гарантия
-                  качества
-                </p>
+              <div class="pro_cards">
+                <div class="pro_card">
+                  <img
+                    src="../img_shared/page-home/pro_icon1.svg"
+                    class="img-svg native pro_icon"
+                  />
+                  <p class="pro_text">
+                    Доступные цены для каждого клиента. Бережный подход
+                    и гарантия качества
+                  </p>
+                </div>
+                <div class="pro_card">
+                  <img
+                    src="../img_shared/page-home/pro_icon1.svg"
+                    class="img-svg native pro_icon"
+                  />
+                  <p class="pro_text">
+                    Доступные цены для каждого клиента. Бережный подход
+                    и гарантия качества
+                  </p>
+                </div>
+                <div class="pro_card">
+                  <img
+                    src="../img_shared/page-home/pro_icon1.svg"
+                    class="img-svg native pro_icon"
+                  />
+                  <p class="pro_text">
+                    Доступные цены для каждого клиента. Бережный подход
+                    и гарантия качества
+                  </p>
+                </div>
+                <div class="pro_card">
+                  <img
+                    src="../img_shared/page-home/pro_icon1.svg"
+                    class="img-svg native pro_icon"
+                  />
+                  <p class="pro_text">
+                    Доступные цены для каждого клиента. Бережный подход
+                    и гарантия качества
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="figure_6 red" style="height: 45%; left: 30%">
+        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
       </div>
     </section>
 
@@ -554,6 +651,148 @@
         </ul>
       </div>
     </footer>
+
+    <div id="expandedMenu">
+      <div class="clients">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Клиентам
+        </h5>
+        <ul>
+          <li><a href="">О нас</a></li>
+          <li><a href="">Портфолио</a></li>
+          <li><a href="">Блог</a></li>
+          <li><a href="">Вакансии</a></li>
+          <li><a href="">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="services">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Услуги
+        </h5>
+        <ul>
+          <li><a href="">Диагностика</a></li>
+          <li><a href="">Техническое обслуживание</a></li>
+          <li><a href="">Ремонт</a></li>
+          <li><a href="">Малярка</a></li>
+          <li><a href="">Детейлинг</a></li>
+        </ul>
+      </div>
+      <ul class="contacts">
+        <li>
+          <img src="../img_shared/icons/address.svg" class="img-svg" />
+          <a href=""> Одесса, ул. Николая Троицкого, 1а </a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/telegram.svg" class="img-svg" />
+          <a href="office@bavaria.od.ua">office@bavaria.od.ua</a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/time.svg" class="img-svg" />
+          <span>Пн-Сб, 9:00-19:00</span>
+        </li>
+        <li>
+          <div class="checkup">
+            <button>Свяжитесь с нами</button>
+          </div>
+        </li>
+        <li>
+          <ul class="social">
+            <li>
+              <a href="" class="social_link">
+                <img src="../img_shared/icons/instagram.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="" class="social_link">
+                <img src="../img_shared/icons/facebook.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="" class="social_link">
+                <img src="../img_shared/icons/youtube.svg" class="img-svg" />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="phones">
+        <li>
+          <img src="../img_shared/icons/phone.svg" class="img-svg" />
+          <div class="phone_list">
+            <div class="phone">
+              <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+              <div class="phone_first">
+                <span>Ресепшн</span>
+                <div class="phone_type">
+                  <img
+                    src="../img_shared/icons/type_telegram.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_viber.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_whatsapp.svg"
+                    class="img-svg native"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Детейлинг</span>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Малярка</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="languages">
+        <li>
+          <img src="../img_shared/icons/language.svg" class="img-svg" />
+          <a href=""> На українській </a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="connect_wrapper">
+      <form id="connect_form">
+        <h2>Свяжитесь с нами</h2>
+        <input type="text" id="connect_name" placeholder="Ваше имя" />
+        <input type="tel" id="connect_tel" placeholder="Номер телефона" />
+        <textarea id="connect_msg" placeholder="Ваше сообщение"></textarea>
+        <div class="checkup">
+          <input
+            id="connect_submit"
+            type="submit"
+            value="Отправить сообщение"
+          />
+        </div>
+      </form>
+      <img src="../img_shared/connect_img.png" class="connect_img" />
+      <img
+        src="../img_shared/figures/figure_1.svg"
+        class="img-svg native connect_figure"
+      />
+      <button id="closeConnect">
+        <img src="../img_shared/icons/cross2.svg" class="img-svg" />
+      </button>
+    </div>
   </body>
 
   <!-- Link libs -->

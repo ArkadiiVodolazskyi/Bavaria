@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <div id="overlay"></div>
+    <button id="closeOverlay">
+      <img src="../img_shared/icons/cross.svg" class="img-svg" />
+    </button>
+
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
@@ -119,6 +124,14 @@
         <div class="wrapper">
           <h2>Кузовной цех</h2>
         </div>
+      </div>
+
+      <div class="figure_1">
+        <img
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
+        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
     </section>
 
@@ -239,7 +252,7 @@
     <section class="galleryexamps">
       <div class="wrapper">
         <h2>Примеры работ</h2>
-        <div class="gallery">
+        <div class="gallery lightbox">
           <img src="../img_shared/service_gallery/service_gallery1.png">
           <img src="../img_shared/service_gallery/service_gallery2.png">
           <img src="../img_shared/service_gallery/service_gallery3.png">
@@ -250,6 +263,12 @@
           <img src="../img_shared/service_gallery/service_gallery3.png">
         </div>
       </div>
+
+      <div class="figure_2" style="left: 75%">
+        <div class="figure_21"></div>
+        <img class="figure_22" src="../img_shared/figures/figure_22.png" />
+        <div class="figure_23"></div>
+      </div>
     </section>
 
     <section class="reviews">
@@ -259,14 +278,28 @@
             <span class="date">Александр, 22 декабря 2020</span>
             <p class="quote">
               <img src="../img_shared/icons/quote.svg"  class="img-svg">
-              Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать. Очень легко и быстро подключаются к устройству и переключаются между устройствами. Отлично держатся в ушах и не напрягают, как затычки.
+              Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать.
             </p>
           </div>
           <div class="quote_card">
             <span class="date">Александр, 22 декабря 2020</span>
             <p class="quote">
               <img src="../img_shared/icons/quote.svg"  class="img-svg">
-              Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать. Очень легко и быстро подключаются к устройству и переключаются между устройствами. Отлично держатся в ушах и не напрягают, как затычки.
+              Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать. Очень легко и быстро подключаются к устройству и переключаются между устройствами. Отлично держатся в ушах и не напрягают, как затычки. Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать.
+            </p>
+          </div>
+          <div class="quote_card">
+            <span class="date">Александр, 22 декабря 2020</span>
+            <p class="quote">
+              <img src="../img_shared/icons/quote.svg"  class="img-svg">
+              Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать. Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать. Очень приятная и качественная вещь. Коробочку просто приятно держать в руках и открывать/закрывать.
+            </p>
+          </div>
+          <div class="quote_card">
+            <span class="date">Александр, 22 декабря 2020</span>
+            <p class="quote">
+              <img src="../img_shared/icons/quote.svg"  class="img-svg">
+              Очень приятная и качественная вещь.
             </p>
           </div>
         </div>
@@ -279,9 +312,19 @@
           </button>
         </div>
       </div>
+
+      <div
+        class="figure_7 red"
+        style="width: 20rem; height: 22.5rem; left: 35%"
+      >
+        <img
+          class="img-svg figure_71"
+          src="../img_shared/figures/figure_71.svg"
+        />
+      </div>
     </section>
 
-    <section class="workplan">
+    <section class="workplan" style="padding-top: 0;">
       <div class="wrapper">
         <div class="right_text">
           <h3>Этапы приема автомобиля</h3>
@@ -302,11 +345,17 @@
         </div>
       </div>
 
-      <div class="white_rect"></div>
-      <div class="shared_stripes"></div>
+      <div class="figure_8" style="width: 40%; height: 70%; top: 0; left: 25%; "></div>
+
+      <div class="figure_10" style="top: -3rem; left: 15%;">
+        <img
+          src="../img_shared/figures/figure_101.svg"
+          class="img-svg native figure_101"
+        />
+      </div>
     </section>
 
-    <section class="request" style="height: 600px; background-color: #fff;">
+    <section class="request" style="background-color: #fff; padding: 5.3rem 0 5.2rem;">
       <div class="wrapper">
         <div class="left_text">
           <h2>Запишитесь на осмотр</h2>
@@ -314,13 +363,25 @@
             и мы перезвоним вам чтобы уточнить все детали</p>
         </div>
         <div class="right_form">
-          <form>
-            <input type="text" id="name" placeholder="Ваше имя">
-            <input type="tel" id="phone" placeholder="Номер телефона">
+          <form id="connect_form_2">
+            <input type="text" id="connect_name" placeholder="Ваше имя" />
+            <input type="tel" id="connect_tel" placeholder="Номер телефона" />
             <div class="checkup">
-              <input type="submit" value="Записаться на осмотр">
+              <input
+                id="connect_submit"
+                type="submit"
+                value="Отправить сообщение"
+              />
             </div>
           </form>
+          <img src="../img_shared/connect_img.png" class="connect_img" />
+          <img
+            src="../img_shared/figures/figure_1.svg"
+            class="img-svg native connect_figure"
+          />
+          <div class="figure_8"
+            style="background-color: rgba(141, 193, 251, 0.3);"
+          ></div>
         </div>
       </div>
     </section>
@@ -342,6 +403,117 @@
               обрадует многих владельцев яблочных наушников, а кого-то, возможно,
               и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
+              наушников по разным причинам, но чаще всего это боязнь потери, ведь
+              AirPods’ы действительно держатся в ухе не так хорошо как, например,
+              спортивные внутриканальные наушники.
+            </p>
+
+            <button class="send">
+              <span>Отправить резюме</span>
+            </button>
           </div>
           <div class="vacancy faq_item">
             <h3>
@@ -357,6 +529,117 @@
               обрадует многих владельцев яблочных наушников, а кого-то, возможно,
               и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
+              наушников по разным причинам, но чаще всего это боязнь потери, ведь
+              AirPods’ы действительно держатся в ухе не так хорошо как, например,
+              спортивные внутриканальные наушники.
+            </p>
+
+            <button class="send">
+              <span>Отправить резюме</span>
+            </button>
           </div>
           <div class="vacancy faq_item">
             <h3>
@@ -372,6 +655,117 @@
               обрадует многих владельцев яблочных наушников, а кого-то, возможно,
               и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
+              наушников по разным причинам, но чаще всего это боязнь потери, ведь
+              AirPods’ы действительно держатся в ухе не так хорошо как, например,
+              спортивные внутриканальные наушники.
+            </p>
+
+            <button class="send">
+              <span>Отправить резюме</span>
+            </button>
           </div>
           <div class="vacancy faq_item">
             <h3>
@@ -387,8 +781,125 @@
               обрадует многих владельцев яблочных наушников, а кого-то, возможно,
               и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="list_wrapper">
+              <h5 class="list_title">Обязанности</h5>
+              <ul class="list">
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Airpods Secure Fit изготовлены из качественного
+                    силикона</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
+                    наушники</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
+                </li>
+                <li>
+                  <img
+                    src="../img_shared/icons/single_line.svg"
+                    class="img-svg"
+                  />
+                  <span
+                    >Кроме того, за счет более плотного прилегания слегка
+                    улучшится и звукоизоляция</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
+              наушников по разным причинам, но чаще всего это боязнь потери, ведь
+              AirPods’ы действительно держатся в ухе не так хорошо как, например,
+              спортивные внутриканальные наушники.
+            </p>
+
+            <button class="send">
+              <span>Отправить резюме</span>
+            </button>
           </div>
         </div>
+      </div>
+
+      <div class="figure_11" style="height: 672px; left: 20%;">
+        <img src="../img_shared/figures/figure_111.png"
+          style="width: 220%; height: 170%;"
+         />
       </div>
     </section>
 
