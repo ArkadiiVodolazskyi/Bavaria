@@ -88,7 +88,9 @@ window.addEventListener("load", () => {
 
   // header - expand hamb
   (function () {
-    const hamb = document.querySelector(".hamb");
+    const hamb =
+      document.querySelector(".hamb") ||
+      document.querySelector(".hamb_animate");
     const expandedMenu = document.querySelector("#expandedMenu");
     if (expandedMenu) {
       hamb.addEventListener("click", () => {
@@ -378,9 +380,12 @@ window.addEventListener("load", () => {
 
     if (video && openVideo) {
       openVideo.addEventListener("click", () => {
-        openOverlay();
-        video.classList.add("activeOverlay");
+        openOverlay(video);
       });
+      // Stop video on close
+      // closeOverlay.addEventListener("click", () => {
+      //   video.querySelector("iframe").getPlayerState(2);
+      // });
     }
   })();
 
@@ -491,6 +496,81 @@ window.addEventListener("load", () => {
           quotes[i].classList.add("active");
         }
       });
+    }
+  })();
+
+  // page-main - navpages - change pages in news section
+  (function () {
+    const pages = [
+      ...document.querySelectorAll("section.news:not(.blog_news) .pages .page"),
+    ];
+
+    if (pages.length) {
+      const navpagesWrapper = document.querySelector("section.news .navpages");
+
+      for (let i = 0; i < pages.length; i++) {
+        const newNavpage = document.createElement("li");
+        navpagesWrapper.appendChild(newNavpage);
+      }
+
+      const navPages = [...navpagesWrapper.querySelectorAll("li")];
+
+      // Default
+      pages[0].classList.add("active");
+      navPages[0].classList.add("active");
+
+      for (let i = 0; i < navPages.length; i++) {
+        navPages[i].addEventListener("click", () => {
+          for (let j = 0; j < pages.length; j++) {
+            pages[j].classList.remove("active");
+            navPages[j].classList.remove("active");
+          }
+          pages[i].classList.add("active");
+          navPages[i].classList.add("active");
+        });
+      }
+    }
+  })();
+
+  // copyLink button
+  (function () {
+    const copyLinks = [...document.querySelectorAll(".copyLink")];
+
+    if (copyLinks.length) {
+      const copyMsgs = [...document.querySelectorAll(".savedMsg")];
+
+      for (let i = 0; i < copyLinks.length; i++) {
+        copyLinks[i].addEventListener("click", () => {
+          const copyText = document.URL;
+          navigator.clipboard.writeText(copyText);
+
+          copyMsgs[i].classList.add("active");
+          setTimeout(() => {
+            copyMsgs[i].classList.remove("active");
+          }, 1000);
+        });
+      }
+    }
+  })();
+
+  // folio-main - change work types
+  (function () {
+    const navBtns = [
+      ...document.querySelectorAll(".portfolio_main nav button"),
+    ];
+
+    if (navBtns.length) {
+      // Default
+      navBtns[0].classList.add("active");
+
+      for (let i = 0; i < navBtns.length; i++) {
+        navBtns[i].addEventListener("click", () => {
+          for (let j = 0; j < navBtns.length; j++) {
+            navBtns[j].classList.remove("active");
+          }
+          navBtns[i].classList.add("active");
+        });
+      }
     }
   })();
 });

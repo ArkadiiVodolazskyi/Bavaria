@@ -16,3 +16,22 @@ clonedSlider.classList.add("fullscreen");
 		<?php the_sub_field('text'); ?>
 	<?php endwhile; endif; ?>
 <?php endwhile; endwhile; ?>
+
+
+
+@keyframes fadeIn
+	0%
+		opacity: 0
+		visibility: hidden
+	100%
+		opacity: 1
+		visibility: visible
+
+	opacity: 0
+	visibility: hidden
+	&.activeOverlay
+		opacity: 1
+		visibility: visible
+		animation: fadeIn
+		animation-duration: 0.5s
+		animation-delay: 1.8s

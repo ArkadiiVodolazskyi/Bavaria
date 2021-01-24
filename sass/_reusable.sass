@@ -26,6 +26,8 @@ footer, header, hgroup, menu, nav, section
 
 ul
 	list-style: none
+	li
+		position: relative
 
 blockquote, q
 	quotes: none
@@ -59,9 +61,9 @@ $w: #fff
 $b: #000
 $dw: #f1f2f3
 
-$red: #d63d37
+$red: #d63d37 // rgb(214, 61, 55)
 $lBlue: #8dc1fb
-$dBlue: #2d568a
+$dBlue: #2d568a // rgb(45, 86, 138)
 $lGrey: #737a84
 
 // ---------------------------------------------------------------- Functions
@@ -77,6 +79,15 @@ $lGrey: #737a84
 		height: 100%
 		background-color: rgba($color, $opacity)
 		transition: all 0.3s linear
+
+// Keyframes --------------------------------------------------
+@keyframes fadeIn
+	0%
+		opacity: 0
+		visibility: hidden
+	100%
+		opacity: 1
+		visibility: visible
 
 // ---------------------------------------------------------------- Common styles
 *
@@ -107,29 +118,48 @@ body
 section
 	position: relative
 	&.dark
-		padding: rem(96) 0
 		background-color: $dGrey
-		&:before
-			width: 80%
-			max-height: 100%
-			position: absolute
-			left: 50%
-			top: 50%
-			transform: translate(-10%, -50%)
 		*
 			color: $w
 	&.light
-		padding: rem(120) 0
 		background-color: $w
-		&:before
-			width: 80%
-			max-height: 100%
-			position: absolute
-			left: rem(150)
-			top: 50%
-			transform: translate(0, -50%)
 		*
 			color: $dGrey
+	.wrapper > h3
+		width: 100%
+		position: relative
+		z-index: 15
+		font-size: rem(72)
+		font-weight: bold
+		line-height: 1.08
+		display: flex
+		justify-content: space-between
+		align-items: center
+		.signup
+			justify-self: flex-end
+			text-align: right
+			font-size: rem(16)
+			line-height: 1.25
+			font-weight: bold
+			letter-spacing: 0.96px
+			text-transform: uppercase
+			position: relative
+			z-index: 20
+			&:hover
+				color: $lBlue
+			&:before
+				content: ""
+				width: 15px
+				height: 60px
+				background-color: $red
+				position: absolute
+				left: -1.2rem
+				top: 50%
+				transform: translate(0%, -50%) skew(-$skew)
+	&.p-4
+		padding: rem(96) 0
+	&.p-5
+		padding: rem(120) 0
 
 .wrapper
 	width: 80%
@@ -159,24 +189,6 @@ svg.replaced-svg:not(.native)
 	svg
 		width: rem(36)
 		height: rem(20)
-
-.signup
-	text-align: right
-	font-size: rem(16)
-	line-height: 1.25
-	font-weight: bold
-	letter-spacing: 0.96px
-	text-transform: uppercase
-	position: relative
-	&:before
-		content: ""
-		width: 15px
-		height: 60px
-		background-color: $red
-		position: absolute
-		left: 0
-		top: 50%
-		transform: translate(-120%, -50%) skew(-$skew)
 
 .section_title
 	display: flex
@@ -317,7 +329,7 @@ svg.replaced-svg:not(.native)
 	transform: skew(-$skew)
 	&:hover
 		background-color: $lBlue
-	button, input
+	button, input, a
 		padding: 1rem 1.5rem
 		transform: skew($skew)
 		font-size: rem(18)
@@ -328,17 +340,17 @@ svg.replaced-svg:not(.native)
 	display: flex
 	justify-content: flex-start
 	align-items: center
-	margin-top: rem(72)
+	margin-top: 2rem
 	li
 		margin-right: rem(18)
-		button
-			padding: rem(2) rem(18)
-			background-color: $red
-			opacity: 0.3
-			&.active
-				opacity: 1
-			&:hover
-				background-color: $lBlue
+		padding: rem(2) rem(18)
+		background-color: $red
+		opacity: 0.3
+		cursor: pointer
+		&.active
+			opacity: 1
+		&:hover
+			background-color: $lBlue
 
 .master_arrows
 	position: absolute
@@ -468,13 +480,15 @@ svg.replaced-svg:not(.native)
 	position: fixed
 	top: rem(72)
 	left: rem(72)
-	fill: $red
+	fill: $w
 	z-index: 990
 	opacity: 0
 	visibility: hidden
 	&.activeOverlay
-		opacity: 1
-		visibility: visible
+		animation: fadeIn
+		animation-duration: 0.5s
+		animation-delay: 0.8s
+		animation-fill-mode: forwards
 	&:hover
 		fill: $lBlue
 	svg
@@ -771,10 +785,32 @@ svg.replaced-svg:not(.native)
 		left: 50%
 		top: 50%
 		transform: translate(-50%, -50%) skew($skew)
+.figure_12
+	position: absolute
+	top: 0
+	bottom: 0
+	height: 100%
+	width: auto
 
-
-
-
+.copyLink
+	padding: 0
+	position: relative
+.savedMsg
+	position: absolute
+	top: 110%
+	left: 50%
+	transform: translate(-50%, 0)
+	font-size: 0.6rem
+	width: max-content
+	padding: 0.5rem
+	background-color: rgba($dGrey, 0.85)
+	color: $w !important
+	border-radius: 5px
+	opacity: 0
+	visibility: hidden
+	&.active
+		opacity: 1
+		visibility: visible
 
 
 

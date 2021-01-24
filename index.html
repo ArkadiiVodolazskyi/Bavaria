@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>page-home</title>
+    <title>index</title>
 
     <!-- Link libs -->
     <link rel="icon" href="data:;base64,=" />
@@ -13,20 +13,55 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <!-- Header -->
     <div id="overlay"></div>
     <button id="closeOverlay">
       <img src="../img_shared/icons/cross.svg" class="img-svg" />
     </button>
-
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
-          <a href="" class="logo">
-            <img src="../img_shared/icons/logo.svg" class="img-svg native" />
+          <a href="./pages/page-main.html" class="logo_animate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_1"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_2"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_3"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <h1>
+              Bavaria
+              <span>Автоцентр</span>
+            </h1>
           </a>
 
-          <button class="hamb">
-            <img src="../img_shared/icons/hamburger.svg" class="img-svg" />
+          <button class="hamb_animate">
+            <div class="line_1"></div>
+            <div class="line_2"></div>
+            <div class="line_3"></div>
           </button>
 
           <ul class="languages">
@@ -88,12 +123,12 @@
 
           <ul class="social">
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.instagram.com/" class="social_link">
                 <img src="../img_shared/icons/instagram.svg" class="img-svg" />
               </a>
             </li>
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.facebook.com/" class="social_link">
                 <img src="../img_shared/icons/facebook.svg" class="img-svg" />
               </a>
             </li>
@@ -104,12 +139,18 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="./page-about.html">Портфолио</a></li>
-            <li><a href="./page-service_post.html">Диагностика</a></li>
-            <li><a href="./page-service_post2.html">Техническое обслуживание</a></li>
-            <li><a href="./page-service_post3.html">Ремонт</a></li>
-            <li><a href="./page-vacancies.html">Малярка</a></li>
-            <li><a href="./page-contacts.html">Детейлинг</a></li>
+            <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+            <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="./pages/page-services_inner.html"
+                >Техническое обслуживание</a
+              >
+            </li>
+            <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+            <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="./pages/page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
 
           <div class="checkup">
@@ -118,9 +159,10 @@
         </div>
       </nav>
     </header>
+    <!-- Header -->
 
     <section class="banner">
-      <img src="../img_shared/page-home/баннер.png" class="banner_img" />
+      <img src="../img_shared/page-home/banner.png" class="banner_img" />
 
       <div class="slogan">
         <div class="wrapper">
@@ -133,7 +175,9 @@
               <span class="rect"></span>
               <span class="triangle"></span>
             </div>
-            <a href="" class="video_link">Посмотреть видео</a>
+            <a href="./pages/page-about_us.html" class="video_link"
+              >Посмотреть видео</a
+            >
           </div>
         </div>
       </div>
@@ -153,7 +197,13 @@
 
     <section id="services" class="services dark">
       <div class="wrapper">
-        <h3>Услуги</h3>
+        <h3>
+          Услуги
+          <a href="./pages/page-services_inner.html" class="signup">
+            Записаться<br />
+            онлайн
+          </a>
+        </h3>
 
         <div class="figure_11" style="z-index: 0; left: 0%">
           <img src="../img_shared/figures/figure_111.png" />
@@ -162,9 +212,9 @@
         <div class="cards">
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/дитейлинг.png" />
+              <img src="../img_shared/page-home/detailing.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Детейлинг</h4>
               <p class="card_text">
                 Полировка позволяет восстановить первозданное лакокрасочное
@@ -175,9 +225,9 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/малярка.png" />
+              <img src="../img_shared/page-home/painting.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Малярка</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
@@ -188,9 +238,9 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/ремонт.png" />
+              <img src="../img_shared/page-home/repairing.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Ремонт</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
@@ -201,9 +251,9 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/обслуживание.png" />
+              <img src="../img_shared/page-home/services.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Техническое обслуживание</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
@@ -214,9 +264,9 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/диагностика.png" />
+              <img src="../img_shared/page-home/diagnostics.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Диагностика</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
@@ -225,43 +275,58 @@
             </a>
           </div>
         </div>
-
-        <button class="signup">
-          Записаться<br />
-          онлайн
-        </button>
       </div>
 
-      <div class="figure_6 light" style="left: 47%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 42%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
 
-      <div class="figure_6 light" style="left: 63%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 58%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
 
       <a href="#news" class="next">
         <img src="../img_shared/icons/arrow.svg" class="img-svg" />
       </a>
     </section>
 
-    <section id="news" class="news light">
+    <section id="news" class="news light p-5">
       <div class="wrapper">
-        <div class="section_title">
-          <h3>
-            Новости<br />
-            и события
-          </h3>
-          <a href="./page-blog.html" class="signup">
+        <h3>
+          Новости<br />
+          и события
+
+          <a href="./pages/page-blog_main.html" class="signup">
             Будь в курсе<br />
             Всех новостей
-          </button>
-        </div>
+          </a>
+        </h3>
 
         <div class="cards">
           <div class="pages">
             <div class="page">
-              <div
+              <a
+                href="./pages/page-blog_inner.html"
                 class="card"
                 style="
                   background-image: url(../img_shared/service_gallery/service_gallery1.png);
@@ -280,9 +345,10 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./pages/page-blog_inner.html"
                 class="card"
                 style="
                   background-image: url(../img_shared/service_gallery/service_gallery2.png);
@@ -301,9 +367,10 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./pages/page-blog_inner.html"
                 class="card"
                 style="
                   background-image: url(../img_shared/service_gallery/service_gallery3.png);
@@ -322,9 +389,10 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./pages/page-blog_inner.html"
                 class="card"
                 style="
                   background-image: url(../img_shared/service_gallery/service_gallery4.png);
@@ -343,42 +411,154 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
+            </div>
+
+            <div class="page">
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
-          <ul class="navpages">
-            <li><button class="active"></button></li>
-            <li><button></button></li>
-            <li><button></button></li>
-          </ul>
+          <ul class="navpages"></ul>
         </div>
       </div>
 
-      <div class="figure_2" style="left: 60%">
+      <div class="figure_2" style="left: 38%">
         <div class="figure_21"></div>
         <img class="figure_22" src="../img_shared/figures/figure_22.png" />
         <div class="figure_23"></div>
       </div>
 
-      <div class="figure_6 dark" style="left: 47%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 8%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(45, 86, 138, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 24%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(45, 86, 138, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
 
       <a href="#portfolio" class="next dark">
         <img src="../img_shared/icons/arrow.svg" class="img-svg" />
       </a>
     </section>
 
-    <section id="portfolio" class="portfolio dark">
+    <section id="portfolio" class="portfolio dark p-4">
       <div class="wrapper">
-        <div class="section_title">
-          <h3>Наши работы</h3>
-          <a href="./page-portfolio.html" class="signup">Смотреть<br />все работы</button>
-        </div>
+        <h3>
+          Наши работы
+          <a href="./pages/page-folio_main.html" class="signup"
+            >Смотреть<br />все работы</a
+          >
+        </h3>
 
         <div class="main">
           <div class="main_img">
-            <img src="../img_shared/page-home/наши_работы.png" />
+            <img src="../img_shared/page-home/our_works.png" />
           </div>
           <div class="text">
             <h4>Детейлинг Chevrolet Camaro RS</h4>
@@ -400,7 +580,7 @@
         </div>
 
         <div class="other">
-          <div class="card">
+          <a href="./pages/page-folio_inner.html" class="card">
             <img
               src="../img_shared/service_gallery/service_gallery1.png"
               class="card_bg"
@@ -412,8 +592,8 @@
               />
               <p><span>Детейлинг BMW X5</span></p>
             </h5>
-          </div>
-          <div class="card">
+          </a>
+          <a href="./pages/page-folio_inner.html" class="card">
             <img
               src="../img_shared/service_gallery/service_gallery2.png"
               class="card_bg"
@@ -430,8 +610,8 @@
                 >
               </p>
             </h5>
-          </div>
-          <div class="card">
+          </a>
+          <a href="./pages/page-folio_inner.html" class="card">
             <img
               src="../img_shared/service_gallery/service_gallery3.png"
               class="card_bg"
@@ -448,9 +628,51 @@
                 >
               </p>
             </h5>
-          </div>
+          </a>
         </div>
       </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: -2%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 32%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 64%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
 
       <div class="figure_3">
         <div class="figure_31"></div>
@@ -466,22 +688,6 @@
         <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
 
-      <div class="figure_6 light" style="left: -10%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
-
-      <div class="figure_6 light" style="left: 20%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
-
-      <div class="figure_6 light" style="left: 45%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
-
-      <div class="figure_6 light" style="left: 70%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
-
       <a href="#info" class="next">
         <img src="../img_shared/icons/arrow.svg" class="img-svg" />
       </a>
@@ -489,16 +695,15 @@
 
     <section id="info" class="info light">
       <div class="wrapper">
-        <div class="section_title">
-          <h3>
-            Автоцентр<br />
-            BMW Bavaria
-          </h3>
-          <button class="signup">
+        <h3>
+          Автоцентр<br />
+          BMW Bavaria
+
+          <a href="./pages/page-about_us.html" class="signup">
             подробнее<br />
             Об автоцентре
-          </button>
-        </div>
+          </a>
+        </h3>
 
         <div class="main">
           <div class="text">
@@ -521,7 +726,7 @@
           </div>
           <div class="imgs">
             <img src="../img_shared/icons/red_shard.png" class="shard" />
-            <img src="../img_shared/page-home/автоцентр.png" class="photo" />
+            <img src="../img_shared/page-home/autocenter.png" class="photo" />
             <div class="pros">
               <div class="pro_arrows">
                 <button class="pro_prev">
@@ -579,16 +784,27 @@
         </div>
       </div>
 
-      <div class="figure_6 red" style="height: 45%; left: 30%">
-        <img src="../img_shared/figures/figure_6.svg" class="img-svg" />
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 25%; height: 45%"
+        viewbox="0,0 140,273"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(214, 61, 55, 0.1)"
+          stroke-width="1px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
     </section>
 
+    <!-- Footer -->
     <footer>
       <div class="wrapper">
         <div class="copyright">
           <div class="logowrap">
-            <a href="" class="logo">
+            <a href="#" class="logo">
               <img src="../img_shared/icons/logo.svg" class="img-svg native" />
             </a>
             <span class="slogan">Больше, чем стиль</span>
@@ -602,11 +818,11 @@
             Клиентам
           </h5>
           <ul>
-            <li><a href="">О нас</a></li>
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Блог</a></li>
-            <li><a href="">Вакансии</a></li>
-            <li><a href="">Контакты</a></li>
+            <li><a href="./pages/page-about_us.html">О нас</a></li>
+            <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+            <li><a href="./pages/page-blog_main.html">Блог</a></li>
+            <li><a href="./pages/page-vacancies.html">Вакансии</a></li>
+            <li><a href="./pages/page-contacts.html">Контакты</a></li>
           </ul>
         </div>
         <div class="services">
@@ -615,11 +831,17 @@
             Услуги
           </h5>
           <ul>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="./pages/page-services_inner.html"
+                >Техническое обслуживание</a
+              >
+            </li>
+            <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+            <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="./pages/page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
         </div>
         <ul class="contacts">
@@ -645,7 +867,6 @@
         </ul>
       </div>
     </footer>
-
     <div id="expandedMenu">
       <div class="clients">
         <h5>
@@ -653,11 +874,11 @@
           Клиентам
         </h5>
         <ul>
-          <li><a href="">О нас</a></li>
-          <li><a href="">Портфолио</a></li>
-          <li><a href="">Блог</a></li>
-          <li><a href="">Вакансии</a></li>
-          <li><a href="">Контакты</a></li>
+          <li><a href="./pages/page-about_us.html">О нас</a></li>
+          <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+          <li><a href="./pages/page-blog_main.html">Блог</a></li>
+          <li><a href="./pages/page-vacancies.html">Вакансии</a></li>
+          <li><a href="./pages/page-contacts.html">Контакты</a></li>
         </ul>
       </div>
       <div class="services">
@@ -666,11 +887,15 @@
           Услуги
         </h5>
         <ul>
-          <li><a href="">Диагностика</a></li>
-          <li><a href="">Техническое обслуживание</a></li>
-          <li><a href="">Ремонт</a></li>
-          <li><a href="">Малярка</a></li>
-          <li><a href="">Детейлинг</a></li>
+          <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
+          <li>
+            <a href="./pages/page-services_inner.html"
+              >Техническое обслуживание</a
+            >
+          </li>
+          <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+          <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
+          <li><a href="./pages/page-services_deteiling.html">Детейлинг</a></li>
         </ul>
       </div>
       <ul class="contacts">
@@ -688,23 +913,23 @@
         </li>
         <li>
           <div class="checkup">
-            <button>Свяжитесь с нами</button>
+            <a href="./pages/page-contacts.html">Свяжитесь с нами</a>
           </div>
         </li>
         <li>
           <ul class="social">
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.instagram.com/" class="social_link">
                 <img src="../img_shared/icons/instagram.svg" class="img-svg" />
               </a>
             </li>
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.facebook.com/" class="social_link">
                 <img src="../img_shared/icons/facebook.svg" class="img-svg" />
               </a>
             </li>
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.youtube.com/" class="social_link">
                 <img src="../img_shared/icons/youtube.svg" class="img-svg" />
               </a>
             </li>
@@ -763,7 +988,6 @@
         </li>
       </ul>
     </div>
-
     <div id="connect_wrapper">
       <form id="connect_form">
         <h2>Свяжитесь с нами</h2>
@@ -787,6 +1011,7 @@
         <img src="../img_shared/icons/cross2.svg" class="img-svg" />
       </button>
     </div>
+    <!-- Footer -->
   </body>
 
   <!-- Link libs -->

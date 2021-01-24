@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>page-service_post2</title>
+    <title>page-services_malyarka</title>
 
     <!-- Link libs -->
     <link rel="icon" href="data:;base64,=" />
@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <!-- Header -->
     <div id="overlay"></div>
     <button id="closeOverlay">
       <img src="../img_shared/icons/cross.svg" class="img-svg" />
     </button>
-
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
-          <a href="" class="logo">
+          <a href="../index.html" class="logo">
             <img src="../img_shared/icons/logo.svg" class="img-svg native" />
           </a>
 
@@ -34,6 +34,8 @@
               <a href=""> На українській </a>
             </li>
           </ul>
+
+          <div class="empty" style="width: 10%"></div>
 
           <div class="time">
             <p>Пн-Сб, 9:00-19:00</p>
@@ -86,12 +88,12 @@
 
           <ul class="social">
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.instagram.com/" class="social_link">
                 <img src="../img_shared/icons/instagram.svg" class="img-svg" />
               </a>
             </li>
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.facebook.com/" class="social_link">
                 <img src="../img_shared/icons/facebook.svg" class="img-svg" />
               </a>
             </li>
@@ -102,20 +104,25 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="page-folio_main.html">Портфолио</a></li>
+            <li><a href="page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="page-services_inner.html">Техническое обслуживание</a>
+            </li>
+            <li><a href="page-services_inner.html">Ремонт</a></li>
+            <li><a href="page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
 
           <div class="checkup">
-            <button>Записаться на осмотр</button>
+            <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
       </nav>
     </header>
+    <!-- Header -->
 
     <section class="banner blog_banner">
       <img src="../img_shared/page-paint/paint_banner.png" class="banner_img" />
@@ -250,16 +257,16 @@
       <div class="wrapper">
         <h3>Популярные услуги</h3>
 
-        <div class="sec_title">
-          <img src="../img_shared/page-home/услуги.png" >
+        <div class="figure_11" style="z-index: 0; left: 0%">
+          <img src="../img_shared/figures/figure_111.png" />
         </div>
 
         <div class="cards">
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/page-home/дитейлинг.png" />
+              <img src="../img_shared/page-home/detailing.png" />
             </div>
-            <a href="" class="card_title">
+            <a href="./pages/page-services_deteiling.html" class="card_title">
               <h4>Детейлинг</h4>
               <p class="card_text">
                 Полировка позволяет восстановить первозданное лакокрасочное
@@ -270,10 +277,10 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/service_post2/popular_21.png" />
+              <img src="../img_shared/page-home/painting.png" />
             </div>
-            <a href="" class="card_title">
-              <h4>Тонировка</h4>
+            <a href="./pages/page-services_deteiling.html" class="card_title">
+              <h4>Малярка</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
                 покрытие автомобиля
@@ -283,10 +290,10 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/service_post2/popular_22.png" />
+              <img src="../img_shared/page-home/repairing.png" />
             </div>
-            <a href="" class="card_title">
-              <h4>Шумоизоляция</h4>
+            <a href="./pages/page-services_deteiling.html" class="card_title">
+              <h4>Ремонт</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
                 покрытие автомобиля
@@ -296,10 +303,10 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/service_post2/popular_23.png" />
+              <img src="../img_shared/page-home/services.png" />
             </div>
-            <a href="" class="card_title">
-              <h4>Химчистка</h4>
+            <a href="./pages/page-services_deteiling.html" class="card_title">
+              <h4>Техническое обслуживание</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
                 покрытие автомобиля
@@ -309,10 +316,23 @@
 
           <div class="card">
             <div class="card_image">
-              <img src="../img_shared/service_post2/popular_24.png" />
+              <img src="../img_shared/page-home/diagnostics.png" />
             </div>
-            <a href="" class="card_title">
-              <h4>Антигравийная пленка</h4>
+            <a href="./pages/page-services_deteiling.html" class="card_title">
+              <h4>Диагностика</h4>
+              <p class="card_text">
+                Малярка позволяет восстановить первозданное лакокрасочное
+                покрытие автомобиля
+              </p>
+            </a>
+          </div>
+
+          <div class="card">
+            <div class="card_image">
+              <img src="../img_shared/page-home/repairing.png" />
+            </div>
+            <a href="./pages/page-services_deteiling.html" class="card_title">
+              <h4>Ремонт</h4>
               <p class="card_text">
                 Малярка позволяет восстановить первозданное лакокрасочное
                 покрытие автомобиля
@@ -329,30 +349,18 @@
             <img src="../img_shared/icons/arrow.svg" class="img-svg" />
           </button>
         </div>
-
-        <button class="signup">
-          Записаться<br />
-          онлайн
-        </button>
       </div>
     </section>
 
     <section class="workplan">
       <div class="wrapper">
-        <div class="up_photos">
-          <h2>
-            Сертифицированные специалисты
-            <img src="../img_shared/icons/brand_rupes.png" class="brand">
-          </h2>
-          <img src="../img_shared/service_post2/blog_gallery1.png">
-          <img src="../img_shared/service_post2/post_banner.png">
-          <img src="../img_shared/service_gallery/service_gallery2.png">
+        <div class="left_text">
+          <p>
+            Кузовной ремонт — это очень ответственная, трудоемкая и требующая высокого качества работа. Мы предлагаем услуги по кузовному ремонту любой сложности и покраске, используя только высококачественные материалы и высокотехнологичный инструмент, которыми пользуются только профессионалы своего дела.
+          </p>
         </div>
         <div class="right_text">
-          <h3
-            style="margin-top: 4rem;" >
-            Этапы приема автомобиля
-          </h3>
+          <h3>Этапы приема автомобиля</h3>
           <ol type="1" start="1">
             <li>
               Мойка автомобиля при владельце
@@ -370,8 +378,14 @@
         </div>
       </div>
 
-      <div class="white_rect"></div>
-      <div class="shared_stripes"></div>
+      <div class="figure_8" style="width: 40%; height: 40%; top: 0; left: 30%; "></div>
+
+      <div class="figure_10" style="top: -3rem; left: 68%;">
+        <img
+          src="../img_shared/figures/figure_101.svg"
+          class="img-svg native figure_101"
+        />
+      </div>
     </section>
 
     <section class="workexamps">
@@ -402,6 +416,34 @@
         <img class="figure_22" src="../img_shared/figures/figure_22.png" />
         <div class="figure_23"></div>
       </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 12%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(45, 86, 138, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 26%"
+        viewbox="0,0 140,270"
+      >
+        <path
+          fill="transparent"
+          stroke="rgba(45, 86, 138, 0.04)"
+          stroke-width="0.5px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
     </section>
 
     <section class="request">
@@ -433,11 +475,12 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <div class="wrapper">
         <div class="copyright">
           <div class="logowrap">
-            <a href="" class="logo">
+            <a href="../index.html" class="logo">
               <img src="../img_shared/icons/logo.svg" class="img-svg native" />
             </a>
             <span class="slogan">Больше, чем стиль</span>
@@ -451,11 +494,11 @@
             Клиентам
           </h5>
           <ul>
-            <li><a href="">О нас</a></li>
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Блог</a></li>
-            <li><a href="">Вакансии</a></li>
-            <li><a href="">Контакты</a></li>
+            <li><a href="page-about_us.html">О нас</a></li>
+            <li><a href="page-folio_main.html">Портфолио</a></li>
+            <li><a href="page-blog_main.html">Блог</a></li>
+            <li><a href="page-vacancies.html">Вакансии</a></li>
+            <li><a href="page-contacts.html">Контакты</a></li>
           </ul>
         </div>
         <div class="services">
@@ -464,11 +507,15 @@
             Услуги
           </h5>
           <ul>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="page-services_inner.html">Техническое обслуживание</a>
+            </li>
+            <li><a href="page-services_inner.html">Ремонт</a></li>
+            <li><a href="page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
         </div>
         <ul class="contacts">
@@ -494,6 +541,149 @@
         </ul>
       </div>
     </footer>
+    <div id="expandedMenu">
+      <div class="clients">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Клиентам
+        </h5>
+        <ul>
+          <li><a href="page-about_us.html">О нас</a></li>
+          <li><a href="page-folio_main.html">Портфолио</a></li>
+          <li><a href="page-blog_main.html">Блог</a></li>
+          <li><a href="page-vacancies.html">Вакансии</a></li>
+          <li><a href="page-contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="services">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Услуги
+        </h5>
+        <ul>
+          <li><a href="page-services_inner.html">Диагностика</a></li>
+          <li>
+            <a href="page-services_inner.html">Техническое обслуживание</a>
+          </li>
+          <li><a href="page-services_inner.html">Ремонт</a></li>
+          <li><a href="page-services_malyarka.html">Малярка</a></li>
+          <li><a href="page-services_deteiling.html">Детейлинг</a></li>
+        </ul>
+      </div>
+      <ul class="contacts">
+        <li>
+          <img src="../img_shared/icons/address.svg" class="img-svg" />
+          <a href=""> Одесса, ул. Николая Троицкого, 1а </a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/telegram.svg" class="img-svg" />
+          <a href="office@bavaria.od.ua">office@bavaria.od.ua</a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/time.svg" class="img-svg" />
+          <span>Пн-Сб, 9:00-19:00</span>
+        </li>
+        <li>
+          <div class="checkup">
+            <button class="openConnect">Свяжитесь с нами</button>
+          </div>
+        </li>
+        <li>
+          <ul class="social">
+            <li>
+              <a href="https://www.instagram.com/" class="social_link">
+                <img src="../img_shared/icons/instagram.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/" class="social_link">
+                <img src="../img_shared/icons/facebook.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" class="social_link">
+                <img src="../img_shared/icons/youtube.svg" class="img-svg" />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="phones">
+        <li>
+          <img src="../img_shared/icons/phone.svg" class="img-svg" />
+          <div class="phone_list">
+            <div class="phone">
+              <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+              <div class="phone_first">
+                <span>Ресепшн</span>
+                <div class="phone_type">
+                  <img
+                    src="../img_shared/icons/type_telegram.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_viber.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_whatsapp.svg"
+                    class="img-svg native"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Детейлинг</span>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Малярка</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="languages">
+        <li>
+          <img src="../img_shared/icons/language.svg" class="img-svg" />
+          <a href=""> На українській </a>
+        </li>
+      </ul>
+    </div>
+    <div id="connect_wrapper">
+      <form id="connect_form">
+        <h2>Свяжитесь с нами</h2>
+        <input type="text" id="connect_name" placeholder="Ваше имя" />
+        <input type="tel" id="connect_tel" placeholder="Номер телефона" />
+        <textarea id="connect_msg" placeholder="Ваше сообщение"></textarea>
+        <div class="checkup">
+          <input
+            id="connect_submit"
+            type="submit"
+            value="Отправить сообщение"
+          />
+        </div>
+      </form>
+      <img src="../img_shared/connect_img.png" class="connect_img" />
+      <img
+        src="../img_shared/figures/figure_1.svg"
+        class="img-svg native connect_figure"
+      />
+      <button id="closeConnect">
+        <img src="../img_shared/icons/cross2.svg" class="img-svg" />
+      </button>
+    </div>
+    <!-- Footer -->
   </body>
 
   <!-- Link libs -->

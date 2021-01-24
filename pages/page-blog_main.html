@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>page-blog</title>
+    <title>page-blog_main</title>
 
     <!-- Link libs -->
     <link rel="icon" href="data:;base64,=" />
@@ -13,10 +13,15 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <!-- Header -->
+    <div id="overlay"></div>
+    <button id="closeOverlay">
+      <img src="../img_shared/icons/cross.svg" class="img-svg" />
+    </button>
     <header class="wow fadeIn">
       <div class="contacts">
         <div class="wrapper">
-          <a href="" class="logo">
+          <a href="../index.html" class="logo">
             <img src="../img_shared/icons/logo.svg" class="img-svg native" />
           </a>
 
@@ -29,6 +34,8 @@
               <a href=""> На українській </a>
             </li>
           </ul>
+
+          <div class="empty" style="width: 10%"></div>
 
           <div class="time">
             <p>Пн-Сб, 9:00-19:00</p>
@@ -81,12 +88,12 @@
 
           <ul class="social">
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.instagram.com/" class="social_link">
                 <img src="../img_shared/icons/instagram.svg" class="img-svg" />
               </a>
             </li>
             <li>
-              <a href="" class="social_link">
+              <a href="https://www.facebook.com/" class="social_link">
                 <img src="../img_shared/icons/facebook.svg" class="img-svg" />
               </a>
             </li>
@@ -97,20 +104,25 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="./page-folio_main.html">Портфолио</a></li>
+            <li><a href="./page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="./page-services_inner.html">Техническое обслуживание</a>
+            </li>
+            <li><a href="./page-services_inner.html">Ремонт</a></li>
+            <li><a href="./page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="./page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
 
           <div class="checkup">
-            <button>Записаться на осмотр</button>
+            <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
       </nav>
     </header>
+    <!-- Header -->
 
     <section class="banner blog_banner">
       <img src="../img_shared/page-blog/blog_banner.png" class="banner_img" />
@@ -125,7 +137,11 @@
       </div>
 
       <div class="figure_1">
-        <img class="img-svg native" src="../img_shared/figures/figure_1.svg" />
+        <img
+          class="img-svg native figure_41"
+          src="../img_shared/figures/figure_41.svg"
+        />
+        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
       </div>
     </section>
 
@@ -135,10 +151,10 @@
           <div class="pages">
             <div class="page">
               <a
-                href="./page-news_post.html"
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
                 "
               >
                 <div class="block_overlay">
@@ -156,32 +172,11 @@
                 </div>
               </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="../img_shared/icons/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению Chevrolet Camaro RS посетил нашу
-                    студию детейлинга для процедур по преображению
-                  </p>
-                </div>
-              </div>
-
-              <div
-                class="card"
-                style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
                 "
               >
                 <div class="block_overlay">
@@ -197,12 +192,13 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
                 "
               >
                 <div class="block_overlay">
@@ -218,12 +214,13 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
                 "
               >
                 <div class="block_overlay">
@@ -239,12 +236,15 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
+            </div>
 
-              <div
+            <div class="page">
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
                 "
               >
                 <div class="block_overlay">
@@ -260,12 +260,13 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
                 "
               >
                 <div class="block_overlay">
@@ -281,12 +282,13 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
                 "
               >
                 <div class="block_overlay">
@@ -302,12 +304,13 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
+              <a
+                href="./page-blog_inner.html"
                 class="card"
                 style="
-                  background-image: url(../img_shared/page-home/news_1.png);
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
                 "
               >
                 <div class="block_overlay">
@@ -323,70 +326,7 @@
                     процедур по преображению
                   </p>
                 </div>
-              </div>
-
-              <div
-                class="card"
-                style="
-                  background-image: url(../img_shared/page-home/news_1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="../img_shared/icons/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </div>
-
-              <div
-                class="card"
-                style="
-                  background-image: url(../img_shared/page-home/news_1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="../img_shared/icons/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </div>
-
-              <div
-                class="card"
-                style="
-                  background-image: url(../img_shared/page-home/news_1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="../img_shared/icons/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
           <ul class="navpages_2">
@@ -412,11 +352,12 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <div class="wrapper">
         <div class="copyright">
           <div class="logowrap">
-            <a href="" class="logo">
+            <a href="../index.html" class="logo">
               <img src="../img_shared/icons/logo.svg" class="img-svg native" />
             </a>
             <span class="slogan">Больше, чем стиль</span>
@@ -430,11 +371,11 @@
             Клиентам
           </h5>
           <ul>
-            <li><a href="">О нас</a></li>
-            <li><a href="">Портфолио</a></li>
-            <li><a href="">Блог</a></li>
-            <li><a href="">Вакансии</a></li>
-            <li><a href="">Контакты</a></li>
+            <li><a href="./page-about_us.html">О нас</a></li>
+            <li><a href="./page-folio_main.html">Портфолио</a></li>
+            <li><a href="./page-blog_main.html">Блог</a></li>
+            <li><a href="./page-vacancies.html">Вакансии</a></li>
+            <li><a href="./page-contacts.html">Контакты</a></li>
           </ul>
         </div>
         <div class="services">
@@ -443,11 +384,15 @@
             Услуги
           </h5>
           <ul>
-            <li><a href="">Диагностика</a></li>
-            <li><a href="">Техническое обслуживание</a></li>
-            <li><a href="">Ремонт</a></li>
-            <li><a href="">Малярка</a></li>
-            <li><a href="">Детейлинг</a></li>
+            <li><a href="./page-services_inner.html">Диагностика</a></li>
+            <li>
+              <a href="./page-services_inner.html">Техническое обслуживание</a>
+            </li>
+            <li><a href="./page-services_inner.html">Ремонт</a></li>
+            <li><a href="./page-services_malyarka.html">Малярка</a></li>
+            <li>
+              <a href="./page-services_deteiling.html">Детейлинг</a>
+            </li>
           </ul>
         </div>
         <ul class="contacts">
@@ -473,6 +418,149 @@
         </ul>
       </div>
     </footer>
+    <div id="expandedMenu">
+      <div class="clients">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Клиентам
+        </h5>
+        <ul>
+          <li><a href="./page-about_us.html">О нас</a></li>
+          <li><a href="./page-folio_main.html">Портфолио</a></li>
+          <li><a href="./page-blog_main.html">Блог</a></li>
+          <li><a href="./page-vacancies.html">Вакансии</a></li>
+          <li><a href="./page-contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="services">
+        <h5>
+          <img src="../img_shared/icons/single_line.svg" class="img-svg" />
+          Услуги
+        </h5>
+        <ul>
+          <li><a href="./page-services_inner.html">Диагностика</a></li>
+          <li>
+            <a href="./page-services_inner.html">Техническое обслуживание</a>
+          </li>
+          <li><a href="./page-services_inner.html">Ремонт</a></li>
+          <li><a href="./page-services_malyarka.html">Малярка</a></li>
+          <li><a href="./page-services_deteiling.html">Детейлинг</a></li>
+        </ul>
+      </div>
+      <ul class="contacts">
+        <li>
+          <img src="../img_shared/icons/address.svg" class="img-svg" />
+          <a href=""> Одесса, ул. Николая Троицкого, 1а </a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/telegram.svg" class="img-svg" />
+          <a href="office@bavaria.od.ua">office@bavaria.od.ua</a>
+        </li>
+        <li>
+          <img src="../img_shared/icons/time.svg" class="img-svg" />
+          <span>Пн-Сб, 9:00-19:00</span>
+        </li>
+        <li>
+          <div class="checkup">
+            <a href="./page-contacts.html">Свяжитесь с нами</a>
+          </div>
+        </li>
+        <li>
+          <ul class="social">
+            <li>
+              <a href="https://www.instagram.com/" class="social_link">
+                <img src="../img_shared/icons/instagram.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/" class="social_link">
+                <img src="../img_shared/icons/facebook.svg" class="img-svg" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" class="social_link">
+                <img src="../img_shared/icons/youtube.svg" class="img-svg" />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="phones">
+        <li>
+          <img src="../img_shared/icons/phone.svg" class="img-svg" />
+          <div class="phone_list">
+            <div class="phone">
+              <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+              <div class="phone_first">
+                <span>Ресепшн</span>
+                <div class="phone_type">
+                  <img
+                    src="../img_shared/icons/type_telegram.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_viber.svg"
+                    class="img-svg native"
+                  />
+                  <img
+                    src="../img_shared/icons/type_whatsapp.svg"
+                    class="img-svg native"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Детейлинг</span>
+            </div>
+
+            <div class="phone">
+              <div class="phone_first">
+                <a href="+38 048 794-56-54"> +38 048 794-56-54 </a>
+                <div class="phone_type"></div>
+              </div>
+              <span>Малярка</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="languages">
+        <li>
+          <img src="../img_shared/icons/language.svg" class="img-svg" />
+          <a href=""> На українській </a>
+        </li>
+      </ul>
+    </div>
+    <div id="connect_wrapper">
+      <form id="connect_form">
+        <h2>Свяжитесь с нами</h2>
+        <input type="text" id="connect_name" placeholder="Ваше имя" />
+        <input type="tel" id="connect_tel" placeholder="Номер телефона" />
+        <textarea id="connect_msg" placeholder="Ваше сообщение"></textarea>
+        <div class="checkup">
+          <input
+            id="connect_submit"
+            type="submit"
+            value="Отправить сообщение"
+          />
+        </div>
+      </form>
+      <img src="../img_shared/connect_img.png" class="connect_img" />
+      <img
+        src="../img_shared/figures/figure_1.svg"
+        class="img-svg native connect_figure"
+      />
+      <button id="closeConnect">
+        <img src="../img_shared/icons/cross2.svg" class="img-svg" />
+      </button>
+    </div>
+    <!-- Footer -->
   </body>
 
   <!-- Link libs -->

@@ -26,42 +26,38 @@ section.banner
 
 section.services
 	height: rem(960)
-	padding: 0
 	.wrapper
 		height: 100%
 		position: relative
 		h3
 			position: absolute
-			z-index: 5
 			left: 0
 			top: rem(96)
-			color: $w
-			font-size: rem(48)
-			font-weight: bold
-			line-height: 1.08
 		.card_image
 			width: 100%
 			height: 100%
 			position: absolute
 			overflow: hidden
+			background-color: $b
+			opacity: 0.3
 			img
 				width: auto
-				height: 110%
+				height: 107%
 				position: absolute
 				left: 50%
 				top: 50%
 				transform: translate(-50%, -50%) skew($skew)
 		.cards
-			width: 100%
+			width: 95%
 			height: 62.5%
 			position: absolute
 			top: 55%
-			left: 3rem
+			left: 2rem
 			transform: translate(0, -50%)
 			display: flex
-			justify-content: flex-start
+			justify-content: space-evenly
 			.card
-				width: 20%
+				width: 19.7%
 				height: 100%
 				transform: skew(-$skew)
 				position: relative
@@ -77,19 +73,6 @@ section.services
 						.card_text
 							opacity: 1
 							visibility: visible
-				.card_image
-					width: 100%
-					height: 100%
-					position: absolute
-					overflow: hidden
-					opacity: 0.3
-					img
-						width: auto
-						height: 105%
-						position: absolute
-						left: 50%
-						top: 50%
-						transform: translate(-50%, -50%	) skew($skew)
 				.card_title
 					position: relative
 					transform: translate(-2rem, 1rem)
@@ -112,24 +95,28 @@ section.services
 					transform: translate(1.5rem, 1.5rem) skew($skew)
 					opacity: 0
 					visibility: hidden
-		.signup
-			position: absolute
-			right: 0
-			top: rem(96)
-			color: $w
-			&:hover
-				color: $dBlue
 
 section.news
 	.wrapper
 		.cards
 			margin-top: rem(72)
 			.pages
+				position: relative
 				.page
 					display: flex
 					justify-content: flex-start
 					flex-wrap: wrap
 					margin: 0 rem(-36)
+					// Temporarily disabled
+					// opacity: 0
+					// visibility: hidden
+					// position: absolute
+					top: 0
+					left: 0
+					&.active
+						opacity: 1
+						visibility: visible
+						position: relative
 					.card
 						width: rem(360)
 						height: rem(400)
@@ -573,6 +560,25 @@ section.about_video
 			h2
 				font-size: rem(36)
 				font-weight: bold
+#video
+	opacity: 0
+	visibility: hidden
+	position: fixed
+	z-index: 955
+	left: 0
+	top: 0
+	width: 100vw
+	height: 100vh
+	&.activeOverlay
+		opacity: 1
+		visibility: visible
+	> img, iframe
+		position: absolute
+		left: 50%
+		top: 50%
+		max-height: 90vh
+		width: auto
+		transform: translate(-50%, -50%)
 
 // page-portfolio
 section.portfolio_main
@@ -860,7 +866,7 @@ section.workshop
 section.popular
 	height: rem(960)
 	.card
-		width: 22% !important
+		width: 24.5% !important
 		opacity: 0
 		visibility: hidden
 		position: absolute !important

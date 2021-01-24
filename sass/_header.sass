@@ -141,12 +141,27 @@ header
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
+		> *:not(.closeOverlay):not(.languages)
+			transform: translateY(0)
+		.languages
+			transform: translateX(0)
+			opacity: 1
+			visibility: visible
 	> *:not(.closeOverlay):not(.languages)
 		width: 25%
 		height: 100%
 		padding: rem(280) rem(48) 0 rem(108)
 		background: linear-gradient(207deg, #181f29, #153155)
 		backdrop-filter: blur(30px)
+		transform: translateY(100%)
+		&:nth-child(1)
+			transition-delay: 0.1s
+		&:nth-child(2)
+			transition-delay: 0.2s
+		&:nth-child(3)
+			transition-delay: 0.3s
+		&:nth-child(4)
+			transition-delay: 0.4s
 	.clients, .services
 		h5
 			font-size: rem(24)
@@ -249,6 +264,10 @@ header
 		position: absolute
 		top: rem(72)
 		right: rem(72)
+		transform: translateX(200%)
+		opacity: 0
+		visibility: hidden
+		transition-delay: 0.6s
 		li
 			display: flex
 			align-items: center
@@ -260,4 +279,90 @@ header
 			fill: $w
 			width: rem(24)
 			height: rem(24)
+
+.logo_animate
+	margin: -1rem 2.5rem -4rem 0
+	padding-top: 0 !important
+	padding-bottom: 0 !important
+	position: relative
+	width: rem(200)
+	height: rem(200)
+	display: flex
+	justify-content: center
+	align-items: center
+	&:hover
+		.line_1
+			transform: translate(-5px, 20px)
+			fill: darken($lBlue, 5%)
+		.line_2
+			fill: lighten($dBlue, 5%)
+		.line_3
+			transform: translate(5px, -20px)
+			fill: darken($red, 15%)
+		h1
+			transform: translate(-50%, -50%)
+	svg
+		margin: 0 -1.1rem
+		height: 100%
+	.line_1
+		fill: $lBlue
+		transform: translate(0, 0)
+	.line_2
+		fill: $dBlue
+		transform: translate(0, 0)
+	.line_3
+		fill: $red
+		transform: translate(0, 0)
+	h1
+		font-family: 'Square'
+		color: $w
+		font-size: 0.9rem
+		text-transform: uppercase
+		text-align: center
+		padding-bottom: 5px
+		white-space: normal !important
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		span
+			font-family: 'Square'
+			color: $w
+			font-size: 0.7rem
+			text-transform: uppercase
+			letter-spacing: 0.3px
+			padding-top: 2px
+			border-top: 1px solid $w
+
+.hamb_animate
+	width: 5rem
+	position: relative
+	display: flex
+	flex-direction: column
+	justify-content: space-evenly
+	align-items: center
+	&:hover
+		.line_1
+			transform: translate(0px, 0)
+			background-color: $lBlue
+		.line_2
+			transform: translate(0, 0)
+			background-color: $dBlue
+		.line_3
+			transform: translate(0px, 0)
+			background-color: $red
+	> div
+		background-color: $w
+		width: 100%
+		height: 4px
+		&:not(:first-child)
+			margin-top: 12px
+	.line_1
+		transform: translate(7px, 0)
+	.line_2
+		transform: translate(0, 0)
+		transition-delay: 0.05s
+	.line_3
+		transform: translate(-7px, 0)
+		transition-delay: 0.1s
 
