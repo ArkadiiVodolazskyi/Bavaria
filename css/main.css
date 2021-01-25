@@ -99,31 +99,7 @@ section {
     z-index: 15;
     font-size: 3rem;
     font-weight: bold;
-    line-height: 1.08;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; }
-    section .wrapper > h3 .signup {
-      justify-self: flex-end;
-      text-align: right;
-      font-size: 0.6666666667rem;
-      line-height: 1.25;
-      font-weight: bold;
-      letter-spacing: 0.96px;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 20; }
-      section .wrapper > h3 .signup:hover {
-        color: #8dc1fb; }
-      section .wrapper > h3 .signup:before {
-        content: "";
-        width: 15px;
-        height: 60px;
-        background-color: #d63d37;
-        position: absolute;
-        left: -1.2rem;
-        top: 50%;
-        transform: translate(0%, -50%) skew(-14deg); }
+    line-height: 1.08; }
   section.p-4 {
     padding: 4rem 0; }
   section.p-5 {
@@ -134,6 +110,29 @@ section {
   margin: 0 auto;
   position: relative;
   z-index: 5; }
+
+.signup {
+  text-align: right;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: bold;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 20;
+  right: 186px;
+  top: 108px; }
+  .signup:hover {
+    color: #8dc1fb; }
+  .signup:before {
+    content: "";
+    width: 0.625rem;
+    height: 2.5rem;
+    background-color: #d63d37;
+    position: absolute;
+    left: -1.2rem;
+    top: 50%;
+    transform: translate(0%, -50%) skew(-14deg); }
 
 svg.replaced-svg:not(.native) {
   fill: inherit;
@@ -155,8 +154,8 @@ svg.replaced-svg:not(.native) {
   .next:hover {
     fill: #8dc1fb; }
   .next svg {
-    width: 1.5rem;
-    height: 0.8333333333rem; }
+    width: 36px;
+    height: 20px; }
 
 .section_title {
   display: flex;
@@ -234,6 +233,22 @@ svg.replaced-svg:not(.native) {
   .navpages_2 .page_next {
     margin-left: 0.5rem;
     transform: scale(2.5) rotate(-90deg); }
+
+.dotsWrapper {
+  margin: 36px 0;
+  display: none; }
+  .dotsWrapper .mobDot {
+    width: 36px;
+    height: 4px;
+    background-color: #d63d37;
+    opacity: 0.3;
+    cursor: pointer; }
+    .dotsWrapper .mobDot:not(:first-child) {
+      margin-left: 18px; }
+    .dotsWrapper .mobDot:hover {
+      opacity: 1; }
+    .dotsWrapper .mobDot.active {
+      opacity: 1; }
 
 .other {
   display: flex;
@@ -754,6 +769,14 @@ svg.replaced-svg:not(.native) {
   transform: skew(-14deg);
   background-color: #d63d37;
   overflow: hidden; }
+  .figure_11:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(214, 61, 55, 0.1); }
   .figure_11 img {
     width: auto;
     height: 110%;
@@ -963,13 +986,30 @@ header {
     font-weight: bold;
     position: relative; }
     #expandedMenu .clients h5 svg, #expandedMenu .services h5 svg {
-      width: 0.7rem;
-      height: 1.1rem;
+      width: 16px;
+      height: 24px;
       fill: #d63d37;
-      position: absolute;
-      left: 0;
+      position: absolute; }
+      #expandedMenu .clients h5 svg.line, #expandedMenu .services h5 svg.line {
+        left: 0;
+        top: 50%;
+        transform: translate(-150%, -50%); }
+    #expandedMenu .clients h5 .arrow, #expandedMenu .services h5 .arrow {
+      width: 16px;
+      height: 24px;
+      right: 0;
       top: 50%;
-      transform: translate(-2rem, -50%); }
+      transform: translate(0%, -50%);
+      cursor: pointer;
+      position: absolute;
+      display: none; }
+      #expandedMenu .clients h5 .arrow > svg, #expandedMenu .services h5 .arrow > svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(0); }
+        #expandedMenu .clients h5 .arrow > svg:hover, #expandedMenu .services h5 .arrow > svg:hover {
+          fill: #8dc1fb; }
   #expandedMenu .clients ul, #expandedMenu .services ul {
     margin-top: 1.5rem; }
   #expandedMenu .clients li, #expandedMenu .services li {
@@ -990,8 +1030,9 @@ header {
       #expandedMenu .contacts > li:not(:first-child) {
         margin-top: 2rem; }
       #expandedMenu .contacts > li > svg {
-        width: 1rem;
-        height: 1rem;
+        width: 24px;
+        height: 24px;
+        margin-right: 18px;
         position: absolute;
         top: 0;
         left: 0;
@@ -1013,16 +1054,16 @@ header {
         #expandedMenu .contacts .social li a:hover {
           fill: #8dc1fb; }
         #expandedMenu .contacts .social li a svg {
-          width: 1.5rem;
-          height: 1.5rem; }
+          width: 36px;
+          height: 36px; }
   #expandedMenu .phones > li {
     display: flex;
     position: absolute; }
     #expandedMenu .phones > li .phone:not(:first-child) {
       margin-top: 2rem; }
     #expandedMenu .phones > li > svg {
-      width: 1rem;
-      height: 1rem;
+      width: 24px;
+      height: 24px;
       position: absolute;
       top: 0;
       left: 0;
@@ -1050,8 +1091,8 @@ header {
   #expandedMenu .phone .phone_type {
     margin-left: 0.8333333333rem; }
     #expandedMenu .phone .phone_type svg {
-      width: 0.8333333333rem;
-      height: 0.8333333333rem; }
+      width: 20px;
+      height: 20px; }
   #expandedMenu .languages {
     position: absolute;
     top: 3rem;
@@ -1069,8 +1110,8 @@ header {
         text-decoration: underline; }
     #expandedMenu .languages svg {
       fill: #fff;
-      width: 1rem;
-      height: 1rem; }
+      width: 24px;
+      height: 24px; }
 
 .logo_animate {
   margin: -1rem 2.5rem -4rem 0;
@@ -1083,15 +1124,15 @@ header {
   justify-content: center;
   align-items: center; }
   .logo_animate:hover .line_1 {
-    transform: translate(-5px, 20px);
+    transform: translate(-0.2rem, 1rem);
     fill: #74b4fa; }
   .logo_animate:hover .line_2 {
     fill: #33629d; }
   .logo_animate:hover .line_3 {
-    transform: translate(5px, -20px);
+    transform: translate(0.2rem, -1rem);
     fill: #a02621; }
-  .logo_animate:hover h1 {
-    transform: translate(-50%, -50%); }
+  .logo_animate:hover .logo_text {
+    fill: white; }
   .logo_animate svg {
     margin: 0 -1.1rem;
     height: 100%; }
@@ -1104,26 +1145,14 @@ header {
   .logo_animate .line_3 {
     fill: #d63d37;
     transform: translate(0, 0); }
-  .logo_animate h1 {
-    font-family: "Square";
-    color: #fff;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    text-align: center;
-    padding-bottom: 5px;
-    white-space: normal !important;
+  .logo_animate .logo_text {
+    width: 65%;
+    height: 100%;
+    fill: #f1f2f3 !important;
     position: absolute;
-    left: 50%;
+    left: 65%;
     top: 50%;
     transform: translate(-50%, -50%); }
-    .logo_animate h1 span {
-      font-family: "Square";
-      color: #fff;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      padding-top: 2px;
-      border-top: 1px solid #fff; }
 
 .hamb_animate {
   width: 5rem;
@@ -1146,7 +1175,7 @@ header {
     width: 100%;
     height: 4px; }
     .hamb_animate > div:not(:first-child) {
-      margin-top: 12px; }
+      margin-top: 0.5rem; }
   .hamb_animate .line_1 {
     transform: translate(7px, 0); }
   .hamb_animate .line_2 {
@@ -1162,14 +1191,16 @@ section.banner {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-color: transparent; }
+  background-color: #000; }
   section.banner:before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
     transition: all 0.3s linear; }
+  section.banner .banner_img_360 {
+    display: none; }
   section.banner .banner_img {
     width: 100%;
     position: relative;
@@ -1256,6 +1287,8 @@ section.services {
           opacity: 0;
           visibility: hidden; }
 
+section.news .signup {
+  top: 171px; }
 section.news .wrapper .cards {
   margin-top: 3rem; }
   section.news .wrapper .cards .pages {
@@ -1341,6 +1374,8 @@ section.news .wrapper .cards {
 section.portfolio {
   height: 61.6666666667rem;
   background-color: #181f29; }
+  section.portfolio .wrapper .signup {
+    top: 1rem; }
   section.portfolio .wrapper .main {
     display: flex;
     justify-content: flex-start;
@@ -1375,6 +1410,8 @@ section.portfolio {
 
 section.info {
   padding: 5rem 0 6.875rem; }
+  section.info .signup {
+    top: 171px; }
   section.info .wrapper .main {
     display: flex;
     justify-content: space-between;
@@ -2262,30 +2299,49 @@ footer {
       margin-bottom: 2.9166666667rem; }
       footer .wrapper .copyright .logowrap .logo {
         margin-top: -4rem; }
+        footer .wrapper .copyright .logowrap .logo svg {
+          width: 100%;
+          height: 100%; }
       footer .wrapper .copyright .logowrap .slogan {
         align-self: flex-end;
         margin-left: -1rem;
         font-size: 0.75rem;
         font-weight: 500; }
-    footer .wrapper .copyright p {
-      margin-top: 0.75rem;
+    footer .wrapper .copyright .creators p {
+      margin-top: 18px;
       font-size: 0.75rem;
       font-weight: 500; }
     footer .wrapper .clients h5, footer .wrapper .services h5 {
-      margin-bottom: 1rem;
       font-size: 1rem;
       font-weight: 500;
       position: relative; }
       footer .wrapper .clients h5 svg, footer .wrapper .services h5 svg {
-        width: 0.7rem;
-        height: 1.1rem;
+        width: 16px;
+        height: 24px;
         fill: #d63d37;
-        position: absolute;
-        left: 0;
+        position: absolute; }
+        footer .wrapper .clients h5 svg.line, footer .wrapper .services h5 svg.line {
+          left: 0;
+          top: 50%;
+          transform: translate(-150%, -50%); }
+      footer .wrapper .clients h5 .arrow, footer .wrapper .services h5 .arrow {
+        width: 16px;
+        height: 24px;
+        right: 2rem;
         top: 50%;
-        transform: translate(-150%, -50%); }
+        transform: translate(0%, -50%);
+        cursor: pointer;
+        position: absolute;
+        display: none; }
+        footer .wrapper .clients h5 .arrow > svg, footer .wrapper .services h5 .arrow > svg {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(0); }
+          footer .wrapper .clients h5 .arrow > svg:hover, footer .wrapper .services h5 .arrow > svg:hover {
+            fill: #8dc1fb; }
     footer .wrapper .clients li a, footer .wrapper .services li a {
-      margin-top: 0.75rem;
+      margin-top: 18px;
       color: #737a84;
       text-decoration: underline;
       font-size: 0.75rem; }
@@ -2297,9 +2353,9 @@ footer {
       justify-content: space-between; }
       footer .wrapper .contacts li {
         display: flex; }
+        footer .wrapper .contacts li:not(:first-child) {
+          margin-top: 20px; }
         footer .wrapper .contacts li svg {
-          width: 1rem;
-          height: 1rem;
           margin-right: 0.75rem;
           fill: #d63d37; }
         footer .wrapper .contacts li a {
@@ -2311,4 +2367,221 @@ footer {
 
 @media (max-width: 360px) {
   html {
-    font-size: 18px; } }
+    font-size: 12px; }
+
+  section {
+    height: auto !important; }
+
+  .wrapper {
+    width: calc(100% -  32px); }
+
+  .figure_1, .figure_2, .figure_4, .figure_12 {
+    display: none; }
+
+  .figure_11 {
+    width: 180px;
+    left: -72px !important; }
+
+  .signup {
+    top: unset !important;
+    bottom: 72px;
+    right: 16px; }
+
+  .next:not(:nth-of-type(1)) {
+    display: none; }
+
+  #closeOverlay {
+    width: 23px;
+    height: 23px;
+    left: 310px;
+    top: 25px; }
+
+  #expandedMenu {
+    flex-direction: column;
+    height: auto; }
+    #expandedMenu > *:not(.closeOverlay):not(.languages) {
+      width: 100%;
+      background: #181f29;
+      padding: 24px 30px 24px 50px; }
+      #expandedMenu > *:not(.closeOverlay):not(.languages):not(:first-child) {
+        border-top: 1px solid rgba(255, 255, 255, 0.1); }
+      #expandedMenu > *:not(.closeOverlay):not(.languages):first-child {
+        padding-top: 84px; }
+    #expandedMenu .languages {
+      left: 50px;
+      top: 24px; }
+      #expandedMenu .languages li a {
+        font-size: 16px; }
+    #expandedMenu .clients h5, #expandedMenu .services h5 {
+      font-size: 24px; }
+      #expandedMenu .clients h5 svg.line, #expandedMenu .services h5 svg.line {
+        transform: translate(-200%, -50%); }
+      #expandedMenu .clients h5 .arrow, #expandedMenu .services h5 .arrow {
+        display: block; }
+    #expandedMenu .clients li > svg, #expandedMenu .services li > svg {
+      top: 50%;
+      transform: translate(-2rem, -50%); }
+    #expandedMenu .clients li a, #expandedMenu .services li a {
+      font-size: 16px;
+      color: #737a84;
+      text-decoration: underline; }
+    #expandedMenu .contacts > li > svg {
+      transform: translate(-3rem, 0px); }
+    #expandedMenu .contacts > li a, #expandedMenu .contacts > li span {
+      font-size: 18px; }
+
+  .mobslider {
+    flex-wrap: nowrap !important; }
+    .mobslider > * {
+      width: 280px !important;
+      flex: 1 0 auto !important; }
+
+  .dotsWrapper {
+    display: block; }
+
+  .other .card {
+    height: 228px; }
+    .other .card h5 {
+      height: auto; }
+      .other .card h5 p:before {
+        display: none; }
+      .other .card h5 span {
+        font-size: 18px; }
+  .other svg {
+    display: none; }
+
+  header .contacts .wrapper .empty, header .contacts .wrapper .time, header .contacts .wrapper .social, header .contacts .wrapper .languages, header .contacts .wrapper .contact > ul, header .contacts .wrapper .contact > span, header .contacts .wrapper .contact > p > svg {
+    display: none; }
+  header .contacts .wrapper .logo_animate, header .contacts .wrapper .hamb_animate, header .contacts .wrapper .contact {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0; }
+  header .contacts .wrapper .logo_animate {
+    margin-right: -1.5rem;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    order: 1; }
+  header .contacts .wrapper .contact {
+    order: 2; }
+    header .contacts .wrapper .contact a {
+      font-size: 16px; }
+    header .contacts .wrapper .contact:hover {
+      background-color: transparent; }
+      header .contacts .wrapper .contact:hover a {
+        color: #8dc1fb; }
+  header .contacts .wrapper .hamb_animate {
+    width: 30px;
+    margin-right: 1rem;
+    order: 3; }
+  header nav {
+    display: none; }
+
+  section.banner {
+    overflow: hidden; }
+    section.banner .banner_img {
+      display: none; }
+    section.banner .banner_img_360 {
+      display: block; }
+    section.banner .slogan {
+      bottom: 15%; }
+      section.banner .slogan br {
+        display: none; }
+    section.banner .video {
+      padding-left: 1.5rem; }
+      section.banner .video a {
+        margin-left: 2.5rem;
+        font-size: 1.5rem; }
+
+  section.services {
+    height: auto;
+    padding: 152px 0 172px; }
+    section.services .wrapper h3 {
+      top: -80px; }
+    section.services .wrapper .figure_11 {
+      top: -152px; }
+    section.services .wrapper .cards {
+      width: 100%;
+      height: auto;
+      position: relative;
+      left: unset;
+      top: unset;
+      transform: translate(0, 0);
+      flex-direction: column; }
+      section.services .wrapper .cards .card {
+        width: 100%;
+        height: 120px;
+        transform: skew(0); }
+        section.services .wrapper .cards .card:hover .card_title {
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) skew(0); }
+        section.services .wrapper .cards .card:not(:first-child) {
+          margin-top: 2px; }
+        section.services .wrapper .cards .card .card_image img {
+          width: auto;
+          height: auto;
+          transform: translate(-50%, -50%) skew(0); }
+        section.services .wrapper .cards .card .card_title {
+          width: min-content;
+          position: absolute;
+          left: 24px;
+          top: 50%;
+          transform: translate(0%, -50%) skew(0); }
+          section.services .wrapper .cards .card .card_title h4 {
+            transform: skew(0); }
+          section.services .wrapper .cards .card .card_title .card_text {
+            display: none; }
+
+  section.news .wrapper .cards .pages .page .card {
+    height: 360px; }
+
+  footer {
+    padding-bottom: 2rem; }
+    footer .wrapper {
+      flex-direction: column;
+      padding-bottom: 4rem; }
+      footer .wrapper .copyright .logowrap .logo {
+        width: 100px;
+        height: 100px; }
+      footer .wrapper .copyright .logowrap .slogan {
+        margin-left: 0;
+        font-size: 16px; }
+      footer .wrapper .copyright .creators {
+        width: 100%;
+        padding: 0 0 0 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: absolute;
+        bottom: 0; }
+        footer .wrapper .copyright .creators p {
+          font-size: 16px; }
+      footer .wrapper .clients, footer .wrapper .services {
+        padding: 24px 0 24px 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        max-height: 6rem;
+        transition-duration: 0.8s; }
+        footer .wrapper .clients.expanded, footer .wrapper .services.expanded {
+          max-height: 500px; }
+          footer .wrapper .clients.expanded ul, footer .wrapper .services.expanded ul {
+            opacity: 1;
+            visibility: visible; }
+          footer .wrapper .clients.expanded h5 .arrow svg, footer .wrapper .services.expanded h5 .arrow svg {
+            transform: translate(-50%, -50%) rotate(180deg); }
+        footer .wrapper .clients h5, footer .wrapper .services h5 {
+          font-size: 24px; }
+          footer .wrapper .clients h5 svg.line, footer .wrapper .services h5 svg.line {
+            transform: translate(-200%, -50%); }
+          footer .wrapper .clients h5 .arrow, footer .wrapper .services h5 .arrow {
+            display: block; }
+        footer .wrapper .clients ul, footer .wrapper .services ul {
+          opacity: 0;
+          visibility: hidden; }
+        footer .wrapper .clients li a, footer .wrapper .services li a {
+          font-size: 16px; }
+      footer .wrapper .contacts {
+        padding: 24px 0 48px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        footer .wrapper .contacts li a, footer .wrapper .contacts li span {
+          font-size: 16px; } }

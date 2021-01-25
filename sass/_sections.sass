@@ -6,8 +6,10 @@ section.banner
 	background-position: center
 	background-repeat: no-repeat
 	background-size: 100%
-	background-color: transparent
-	@include block_overlay($color: $b, $opacity: 0.7)
+	background-color: $b
+	@include block_overlay($color: $b, $opacity: 0.4)
+	.banner_img_360
+		display: none
 	.banner_img
 		width: 100%
 		position: relative
@@ -97,6 +99,8 @@ section.services
 					visibility: hidden
 
 section.news
+	.signup
+		top: 171px
 	.wrapper
 		.cards
 			margin-top: rem(72)
@@ -189,6 +193,8 @@ section.portfolio
 	height: rem(1480)
 	background-color: $dGrey
 	.wrapper
+		.signup
+			top: 1rem
 		.main
 			display: flex
 			justify-content: flex-start
@@ -223,6 +229,8 @@ section.portfolio
 
 section.info
 	padding: rem(120) 0 rem(165)
+	.signup
+		top: 171px
 	.wrapper
 		.main
 			display: flex

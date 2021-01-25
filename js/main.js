@@ -504,10 +504,9 @@ window.addEventListener("load", () => {
     const pages = [
       ...document.querySelectorAll("section.news:not(.blog_news) .pages .page"),
     ];
+    const navpagesWrapper = document.querySelector("section.news .navpages");
 
-    if (pages.length) {
-      const navpagesWrapper = document.querySelector("section.news .navpages");
-
+    if (pages.length && navpagesWrapper) {
       for (let i = 0; i < pages.length; i++) {
         const newNavpage = document.createElement("li");
         navpagesWrapper.appendChild(newNavpage);
@@ -570,6 +569,83 @@ window.addEventListener("load", () => {
           }
           navBtns[i].classList.add("active");
         });
+      }
+    }
+  })();
+
+  // ========= Media =========
+
+  // Expand footer menus
+  (function () {
+    const footerMenus = document.querySelectorAll(
+      "footer .clients, footer .services",
+    );
+
+    if (footerMenus.length) {
+      const expandArrows = document.querySelectorAll("footer .arrow");
+
+      for (let i = 0; i < expandArrows.length; i++) {
+        expandArrows[i].addEventListener("click", () => {
+          console.log(footerMenus[i]);
+          footerMenus[i].classList.toggle("expanded");
+        });
+      }
+    }
+  })();
+
+  // mobslider
+  (function () {
+    const mobsliders = [...document.querySelectorAll(".mobslider")];
+
+    if (mobsliders.length) {
+      for (let i = 0; i < mobsliders.length; i++) {
+        const wrapper = mobsliders[i].parentNode;
+        const cards = [...mobsliders[i].children];
+
+        if (!wrapper.classList.contains("wrapper")) {
+          console.error("Not wrapper.");
+        }
+
+        // Make mobslider dots
+        const dotsWrapper = document.createElement("ul");
+        dotsWrapper.classList.add("dotsWrapper");
+        for (let j = 0; j < cards.length; j++) {
+          const mobDot = document.createElement("li");
+          mobDot.classList.add("mobDot");
+          dotsWrapper.appendChild(mobDot);
+        }
+        wrapper.appendChild(dotsWrapper);
+
+        const mobDots = wrapper.querySelectorAll(".dotsWrapper .mobDot");
+
+        // Find cards widths
+        const newCardsMargins = 8;
+        const cardWidths = [];
+        for (let j = 0; j < cards.length; j++) {
+          cards[j].style.marginLeft = `${newCardsMargins}px`;
+          cards[j].style.marginRight = `${newCardsMargins}px`;
+          cardWidths.push(cards[j].offsetWidth + 2 * newCardsMargins);
+        }
+
+        // Link cards and mobDots together
+        let cardsTranslate = 0;
+        mobDots[0].classList.add("active");
+
+        for (let j = 0; j < mobDots.length; j++) {
+          mobDots[j].addEventListener("click", () => {
+            for (let k = 0; k < j; k++) {
+              cardsTranslate -= cardWidths[k];
+            }
+            mobsliders[
+              i
+            ].style.transform = `matrix(1, 0, 0, 1, ${cardsTranslate}, 0)`;
+            mobDots.forEach((mobDot) => {
+              mobDot.classList.remove("active");
+            });
+            mobDots[j].classList.add("active");
+            cardsTranslate = 0;
+          });
+        }
       }
     }
   })();
