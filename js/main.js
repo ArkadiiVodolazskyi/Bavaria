@@ -586,7 +586,6 @@ window.addEventListener("load", () => {
 
       for (let i = 0; i < expandArrows.length; i++) {
         expandArrows[i].addEventListener("click", () => {
-          console.log(footerMenus[i]);
           footerMenus[i].classList.toggle("expanded");
         });
       }
@@ -599,11 +598,11 @@ window.addEventListener("load", () => {
 
     if (mobsliders.length) {
       for (let i = 0; i < mobsliders.length; i++) {
-        const wrapper = mobsliders[i].parentNode;
+        const wrapper = mobsliders[i].closest(".wrapper");
         const cards = [...mobsliders[i].children];
 
         if (!wrapper.classList.contains("wrapper")) {
-          console.error("Not wrapper.");
+          console.error("Not wrapper for: ", mobsliders[i]);
         }
 
         // Make mobslider dots

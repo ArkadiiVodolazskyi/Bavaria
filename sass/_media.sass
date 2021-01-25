@@ -7,6 +7,18 @@
 		width: calc(100% -  32px)
 	.figure_1, .figure_2, .figure_4, .figure_12
 		display: none
+	.figure_3
+		.figure_31
+			width: 5rem
+			height: 132px
+		.figure_32
+			width: 2.5rem
+			height: 9rem
+			top: -3rem
+			left: 5rem
+		.figure_33
+			top: -4rem
+			left: 4.5rem
 	.figure_11
 		width: 180px
 		left: -72px !important
@@ -14,6 +26,10 @@
 		top: unset !important
 		bottom: 72px
 		right: 16px
+		&:before
+			width: 16px
+			height: 64px
+			left: -2rem
 	.next:not(:nth-of-type(1))
 		display: none
 	#closeOverlay
@@ -60,6 +76,7 @@
 					font-size: 18px
 
 	.mobslider
+		display: flex !important
 		flex-wrap: nowrap !important
 		> *
 			width: 280px !important
@@ -67,6 +84,7 @@
 	.dotsWrapper
 		display: block
 	.other
+		margin: 72px 0 0
 		.card
 			height: 228px
 			h5
@@ -160,12 +178,95 @@
 						top: 50%
 						transform: translate(0%, -50%) skew(0)
 						h4
+							font-size: 24px
 							transform: skew(0)
 						.card_text
 							display: none
 	section.news
-		.wrapper .cards .pages .page .card
-			height: 360px
+		padding-bottom: 10rem
+		.signup
+			bottom: 6rem
+		.wrapper
+			overflow: hidden
+			.cards .pages .page
+				margin: 0 -0.75rem
+				.card
+					height: 360px
+					.date
+						font-size: 16px
+					.text
+						font-size: 18px
+	section.portfolio
+		padding: 72px 0 10rem
+		.signup
+			bottom: 5rem
+		.wrapper
+			overflow: hidden
+			.main
+				margin-top: 3rem
+				flex-direction: column
+			.main_img
+				width: 85%
+				height: 222px
+			.text
+				width: 100%
+				margin: 36px 0 0 0
+				h4
+					font-size: 24px
+				div
+					margin-top: 18px
+					p
+						font-size: 18px
+	section.info
+		padding: 72px 0 10rem
+		overflow: hidden
+		.signup
+			bottom: 5rem
+		.wrapper
+			.main
+				flex-direction: column
+				.text
+					width: 100%
+					margin-top: 36px
+					> svg
+						display: none
+					> div
+						margin: 0
+						p
+							font-size: 18px
+				.imgs
+					width: 100%
+					margin-top: 100px
+					.shard
+						width: 8rem
+						transform: translate(-1.8rem, -100%)
+					.photo
+						width: 140%
+						margin-left: -1.5rem
+					.pros
+						width: 100%
+						position: relative
+						right: unset
+						bottom: unset
+						margin-top: 36px
+						.pro_arrows
+							display: none
+						.pro_cards
+							transform: skew(0)
+							box-shadow: unset
+						.pro_card
+							width: 100% !important
+							position: relative
+							transform: translateX(0) !important
+							opacity: 1
+							visibility: visible
+							box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+							padding: 36px 16px
+							svg
+								transform: skew(0)
+							p
+								transform: skew(0)
+								font-size: 16px
 
 	footer
 		padding-bottom: 2rem

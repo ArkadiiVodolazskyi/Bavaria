@@ -235,7 +235,7 @@ svg.replaced-svg:not(.native) {
     transform: scale(2.5) rotate(-90deg); }
 
 .dotsWrapper {
-  margin: 36px 0;
+  margin: 24px 0 36px;
   display: none; }
   .dotsWrapper .mobDot {
     width: 36px;
@@ -660,8 +660,7 @@ svg.replaced-svg:not(.native) {
 
 .figure_3 {
   position: absolute;
-  top: 0;
-  left: 38rem; }
+  top: 0; }
   .figure_3 > * {
     position: absolute; }
   .figure_3 .figure_31 {
@@ -1479,8 +1478,8 @@ section.info {
         section.info .wrapper .main .imgs .pro_arrows .pro_next {
           transform: rotate(-90deg); }
       section.info .wrapper .main .imgs .pro_icon {
-        min-width: 3rem;
-        min-height: 3rem;
+        min-width: 60px;
+        min-height: 60px;
         transform: skew(14deg); }
       section.info .wrapper .main .imgs .pro_text {
         margin-left: 1rem;
@@ -2378,6 +2377,18 @@ footer {
   .figure_1, .figure_2, .figure_4, .figure_12 {
     display: none; }
 
+  .figure_3 .figure_31 {
+    width: 5rem;
+    height: 132px; }
+  .figure_3 .figure_32 {
+    width: 2.5rem;
+    height: 9rem;
+    top: -3rem;
+    left: 5rem; }
+  .figure_3 .figure_33 {
+    top: -4rem;
+    left: 4.5rem; }
+
   .figure_11 {
     width: 180px;
     left: -72px !important; }
@@ -2386,6 +2397,10 @@ footer {
     top: unset !important;
     bottom: 72px;
     right: 16px; }
+    .signup:before {
+      width: 16px;
+      height: 64px;
+      left: -2rem; }
 
   .next:not(:nth-of-type(1)) {
     display: none; }
@@ -2431,6 +2446,7 @@ footer {
       font-size: 18px; }
 
   .mobslider {
+    display: flex !important;
     flex-wrap: nowrap !important; }
     .mobslider > * {
       width: 280px !important;
@@ -2439,16 +2455,18 @@ footer {
   .dotsWrapper {
     display: block; }
 
-  .other .card {
-    height: 228px; }
-    .other .card h5 {
-      height: auto; }
-      .other .card h5 p:before {
-        display: none; }
-      .other .card h5 span {
-        font-size: 18px; }
-  .other svg {
-    display: none; }
+  .other {
+    margin: 72px 0 0; }
+    .other .card {
+      height: 228px; }
+      .other .card h5 {
+        height: auto; }
+        .other .card h5 p:before {
+          display: none; }
+        .other .card h5 span {
+          font-size: 18px; }
+    .other svg {
+      display: none; }
 
   header .contacts .wrapper .empty, header .contacts .wrapper .time, header .contacts .wrapper .social, header .contacts .wrapper .languages, header .contacts .wrapper .contact > ul, header .contacts .wrapper .contact > span, header .contacts .wrapper .contact > p > svg {
     display: none; }
@@ -2530,12 +2548,97 @@ footer {
           top: 50%;
           transform: translate(0%, -50%) skew(0); }
           section.services .wrapper .cards .card .card_title h4 {
+            font-size: 24px;
             transform: skew(0); }
           section.services .wrapper .cards .card .card_title .card_text {
             display: none; }
 
-  section.news .wrapper .cards .pages .page .card {
-    height: 360px; }
+  section.news {
+    padding-bottom: 10rem; }
+    section.news .signup {
+      bottom: 6rem; }
+    section.news .wrapper {
+      overflow: hidden; }
+      section.news .wrapper .cards .pages .page {
+        margin: 0 -0.75rem; }
+        section.news .wrapper .cards .pages .page .card {
+          height: 360px; }
+          section.news .wrapper .cards .pages .page .card .date {
+            font-size: 16px; }
+          section.news .wrapper .cards .pages .page .card .text {
+            font-size: 18px; }
+
+  section.portfolio {
+    padding: 72px 0 10rem; }
+    section.portfolio .signup {
+      bottom: 5rem; }
+    section.portfolio .wrapper {
+      overflow: hidden; }
+      section.portfolio .wrapper .main {
+        margin-top: 3rem;
+        flex-direction: column; }
+      section.portfolio .wrapper .main_img {
+        width: 85%;
+        height: 222px; }
+      section.portfolio .wrapper .text {
+        width: 100%;
+        margin: 36px 0 0 0; }
+        section.portfolio .wrapper .text h4 {
+          font-size: 24px; }
+        section.portfolio .wrapper .text div {
+          margin-top: 18px; }
+          section.portfolio .wrapper .text div p {
+            font-size: 18px; }
+
+  section.info {
+    padding: 72px 0 10rem;
+    overflow: hidden; }
+    section.info .signup {
+      bottom: 5rem; }
+    section.info .wrapper .main {
+      flex-direction: column; }
+      section.info .wrapper .main .text {
+        width: 100%;
+        margin-top: 36px; }
+        section.info .wrapper .main .text > svg {
+          display: none; }
+        section.info .wrapper .main .text > div {
+          margin: 0; }
+          section.info .wrapper .main .text > div p {
+            font-size: 18px; }
+      section.info .wrapper .main .imgs {
+        width: 100%;
+        margin-top: 100px; }
+        section.info .wrapper .main .imgs .shard {
+          width: 8rem;
+          transform: translate(-1.8rem, -100%); }
+        section.info .wrapper .main .imgs .photo {
+          width: 140%;
+          margin-left: -1.5rem; }
+        section.info .wrapper .main .imgs .pros {
+          width: 100%;
+          position: relative;
+          right: unset;
+          bottom: unset;
+          margin-top: 36px; }
+          section.info .wrapper .main .imgs .pros .pro_arrows {
+            display: none; }
+          section.info .wrapper .main .imgs .pros .pro_cards {
+            transform: skew(0);
+            box-shadow: unset; }
+          section.info .wrapper .main .imgs .pros .pro_card {
+            width: 100% !important;
+            position: relative;
+            transform: translateX(0) !important;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 0 0.5rem 1rem 0 rgba(24, 31, 41, 0.12);
+            padding: 36px 16px; }
+            section.info .wrapper .main .imgs .pros .pro_card svg {
+              transform: skew(0); }
+            section.info .wrapper .main .imgs .pros .pro_card p {
+              transform: skew(0);
+              font-size: 16px; }
 
   footer {
     padding-bottom: 2rem; }
