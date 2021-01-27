@@ -18,15 +18,50 @@
     <button id="closeOverlay">
       <img src="../img_shared/icons/cross.svg" class="img-svg" />
     </button>
-    <header class="wow fadeIn">
+    <header>
       <div class="contacts">
         <div class="wrapper">
-          <a href="../index.html" class="logo">
-            <img src="../img_shared/icons/logo.svg" class="img-svg native" />
+          <a href="./pages/page-main.html" class="logo_animate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_1"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_2"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_3"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <img
+              src="../img_shared/icons/logo_text.svg"
+              class="img-svg logo_text"
+            />
           </a>
 
-          <button class="hamb">
-            <img src="../img_shared/icons/hamburger.svg" class="img-svg" />
+          <button class="hamb_animate">
+            <div class="line_1"></div>
+            <div class="line_2"></div>
+            <div class="line_3"></div>
           </button>
 
           <ul class="languages">
@@ -104,19 +139,21 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="page-folio_main.html">Портфолио</a></li>
-            <li><a href="page-services_inner.html">Диагностика</a></li>
+            <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+            <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
             <li>
-              <a href="page-services_inner.html">Техническое обслуживание</a>
+              <a href="./pages/page-services_inner.html"
+                >Техническое обслуживание</a
+              >
             </li>
-            <li><a href="page-services_inner.html">Ремонт</a></li>
-            <li><a href="page-services_malyarka.html">Малярка</a></li>
+            <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+            <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
             <li>
-              <a href="page-services_deteiling.html">Детейлинг</a>
+              <a href="./pages/page-services_deteiling.html">Детейлинг</a>
             </li>
           </ul>
 
-          <div class="checkup">
+          <div id="navCheckupBtn" class="checkup">
             <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
@@ -129,11 +166,11 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>Кузовной цех</h2>
+          <h2>Полировка кузова</h2>
         </div>
       </div>
 
-      <div class="figure_1">
+      <div class="figure_1 hidden_360">
         <img
           class="img-svg native figure_41"
           src="../img_shared/figures/figure_41.svg"
@@ -145,6 +182,9 @@
     <section class="workshop">
       <div class="wrapper">
         <aside>
+          <button class="navExpand">
+            <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+          </button>
           <ul class="list">
             <li>
               <img
@@ -257,9 +297,9 @@
     </section>
 
     <section class="galleryexamps">
-      <div class="wrapper">
+      <div class="wrapper mobwrapper">
         <h2>Примеры работ</h2>
-        <div class="gallery lightbox">
+        <div class="gallery lightbox mobslider">
           <img src="../img_shared/service_gallery/service_gallery1.png">
           <img src="../img_shared/service_gallery/service_gallery2.png">
           <img src="../img_shared/service_gallery/service_gallery3.png">
@@ -307,8 +347,8 @@
     </section>
 
     <section class="reviews">
-      <div class="wrapper">
-        <div class="quote_cards">
+      <div class="wrapper mobwrapper">
+        <div class="quote_cards mobslider">
           <div class="quote_card">
             <span class="date">Александр, 22 декабря 2020</span>
             <p class="quote">
@@ -426,507 +466,39 @@
         <div class="faq_list">
           <div class="vacancy faq_item">
             <h3>
-              Требуется полировщик со стажем работы от 2 лет
+              Сколько времени занимает полная полировка кузова?
               <button class="expand">
                 <img src="../img_shared/icons/arrow.svg" class="img-svg" />
               </button>
             </h3>
 
             <p>
-              Компания Elago, уже известная серией чехлов для зарядного футляра
-              AirPods выпустила простой, но невероятно полезный аксессуар, который
-              обрадует многих владельцев яблочных наушников, а кого-то, возможно,
-              и склонит к отказу от проводной гарнитуры в пользу новых технологий.
+              Компания Elago, уже известная серией чехлов для зарядного футляра AirPods выпустила простой, но невероятно полезный аксессуар, который обрадует многих владельцев яблочных наушников, а кого-то, возможно, и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
-              наушников по разным причинам, но чаще всего это боязнь потери, ведь
-              AirPods’ы действительно держатся в ухе не так хорошо как, например,
-              спортивные внутриканальные наушники.
-            </p>
-
-            <button class="send">
-              <span>Отправить резюме</span>
-            </button>
           </div>
           <div class="vacancy faq_item">
             <h3>
-              Требуется полировщик со стажем работы от 2 лет
+              Сколько времени занимает полная полировка кузова?
               <button class="expand">
                 <img src="../img_shared/icons/arrow.svg" class="img-svg" />
               </button>
             </h3>
 
             <p>
-              Компания Elago, уже известная серией чехлов для зарядного футляра
-              AirPods выпустила простой, но невероятно полезный аксессуар, который
-              обрадует многих владельцев яблочных наушников, а кого-то, возможно,
-              и склонит к отказу от проводной гарнитуры в пользу новых технологий.
+              Компания Elago, уже известная серией чехлов для зарядного футляра AirPods выпустила простой, но невероятно полезный аксессуар, который обрадует многих владельцев яблочных наушников, а кого-то, возможно, и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
-              наушников по разным причинам, но чаще всего это боязнь потери, ведь
-              AirPods’ы действительно держатся в ухе не так хорошо как, например,
-              спортивные внутриканальные наушники.
-            </p>
-
-            <button class="send">
-              <span>Отправить резюме</span>
-            </button>
           </div>
           <div class="vacancy faq_item">
             <h3>
-              Требуется полировщик со стажем работы от 2 лет
+              Сколько времени занимает полная полировка кузова?
               <button class="expand">
                 <img src="../img_shared/icons/arrow.svg" class="img-svg" />
               </button>
             </h3>
 
             <p>
-              Компания Elago, уже известная серией чехлов для зарядного футляра
-              AirPods выпустила простой, но невероятно полезный аксессуар, который
-              обрадует многих владельцев яблочных наушников, а кого-то, возможно,
-              и склонит к отказу от проводной гарнитуры в пользу новых технологий.
+              Компания Elago, уже известная серией чехлов для зарядного футляра AirPods выпустила простой, но невероятно полезный аксессуар, который обрадует многих владельцев яблочных наушников, а кого-то, возможно, и склонит к отказу от проводной гарнитуры в пользу новых технологий.
             </p>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
-              наушников по разным причинам, но чаще всего это боязнь потери, ведь
-              AirPods’ы действительно держатся в ухе не так хорошо как, например,
-              спортивные внутриканальные наушники.
-            </p>
-
-            <button class="send">
-              <span>Отправить резюме</span>
-            </button>
-          </div>
-          <div class="vacancy faq_item">
-            <h3>
-              Требуется полировщик со стажем работы от 2 лет
-              <button class="expand">
-                <img src="../img_shared/icons/arrow.svg" class="img-svg" />
-              </button>
-            </h3>
-
-            <p>
-              Компания Elago, уже известная серией чехлов для зарядного футляра
-              AirPods выпустила простой, но невероятно полезный аксессуар, который
-              обрадует многих владельцев яблочных наушников, а кого-то, возможно,
-              и склонит к отказу от проводной гарнитуры в пользу новых технологий.
-            </p>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="list_wrapper">
-              <h5 class="list_title">Обязанности</h5>
-              <ul class="list">
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Airpods Secure Fit изготовлены из качественного
-                    силикона</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Сделаны невероятно тонкими – всего 0,2 мм</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Такая толщина позволяет без какого-либо дискомфорта заряжать
-                    наушники</span
-                  >
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span>Вот в ушах AirPods будут сидеть не в пример лучше</span>
-                </li>
-                <li>
-                  <img
-                    src="../img_shared/icons/single_line.svg"
-                    class="img-svg"
-                  />
-                  <span
-                    >Кроме того, за счет более плотного прилегания слегка
-                    улучшится и звукоизоляция</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Многие боятся переходить на AirPods c “тёплых ламповых” проводных
-              наушников по разным причинам, но чаще всего это боязнь потери, ведь
-              AirPods’ы действительно держатся в ухе не так хорошо как, например,
-              спортивные внутриканальные наушники.
-            </p>
-
-            <button class="send">
-              <span>Отправить резюме</span>
-            </button>
           </div>
         </div>
       </div>

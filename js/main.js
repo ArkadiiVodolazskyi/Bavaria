@@ -5,6 +5,7 @@ window.addEventListener("load", () => {
   // Global variables and functions
   const overlay = document.getElementById("overlay");
   const closeOverlay = document.getElementById("closeOverlay");
+  const expandedMenu = document.querySelector("#expandedMenu");
 
   function openOverlay(element) {
     overlay.classList.add("activeOverlay");
@@ -91,7 +92,7 @@ window.addEventListener("load", () => {
     const hamb =
       document.querySelector(".hamb") ||
       document.querySelector(".hamb_animate");
-    const expandedMenu = document.querySelector("#expandedMenu");
+
     if (expandedMenu) {
       hamb.addEventListener("click", () => {
         openOverlay(expandedMenu);
@@ -233,6 +234,14 @@ window.addEventListener("load", () => {
           navPoints[i].classList.toggle("active");
         });
       }
+
+      // Mutate on 360 screens
+      const nav = document.querySelector(".workshop aside");
+      const navExpand = nav.querySelector(".navExpand");
+
+      navExpand.addEventListener("click", () => {
+        nav.classList.toggle("expanded");
+      });
     }
   })();
 
@@ -628,7 +637,7 @@ window.addEventListener("load", () => {
         const cards = [...mobsliders[i].children];
 
         if (!wrapper.classList.contains("mobwrapper")) {
-          console.error("Not wrapper for: ", mobsliders[i]);
+          console.error("No wrapper for: ", mobsliders[i]);
         }
 
         // Make mobslider dots
@@ -672,6 +681,25 @@ window.addEventListener("load", () => {
           });
         }
       }
+    }
+  })();
+
+  // expand expandedMenu menus
+  (function () {
+    const expandedLists = [
+      ...expandedMenu.querySelectorAll(
+        ".clients, .services, .phones, .contacts",
+      ),
+    ];
+    const expandMenuBtns = [...expandedMenu.querySelectorAll(".arrow")];
+
+    for (let i = 0; i < expandMenuBtns.length; i++) {
+      expandMenuBtns[i].addEventListener("click", () => {
+        expandedLists[i].classList.toggle("expanded");
+        if (i == 2) {
+          expandedLists[3].classList.toggle("expanded");
+        }
+      });
     }
   })();
 });

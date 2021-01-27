@@ -65,17 +65,18 @@
 	#closeOverlay
 		width: 23px
 		height: 23px
-		left: 310px
+		left: unset
+		right: 25px
 		top: 25px
 	#expandedMenu
 		flex-direction: column
 		height: auto
+		overflow: auto
 		> *:not(.closeOverlay):not(.languages)
 			width: 100%
+
 			background: $dGrey
 			padding: 24px 30px 24px 50px
-			&:not(:first-child)
-				border-top: 1px solid rgba($w, 0.1)
 			&:first-child
 				padding-top: 84px
 		.languages
@@ -83,8 +84,51 @@
 			top: 24px
 			li a
 				font-size: 16px
-		.clients, .services,
+		.clients
+			order: 1
+		.services
+			order: 2
+			border-top: 1px solid rgba($w, 0.1)
+		.phones
+			order: 3
+			border-top: 1px solid rgba($w, 0.1)
 			h5
+				width: 280px
+				display: block
+				font-size: 24px
+				svg.line
+					transform: translate(-200%, -50%)
+				.arrow
+					display: block
+			> li
+				position: relative
+				margin-top: 20px
+				> svg
+					transform: translate(-3rem, 0px)
+			a
+				font-size: 18px !important
+				font-weight: bold
+			span
+				margin-top: 4px
+				font-size: 16px
+		.contacts
+			order: 4
+			padding-top: 0 !important
+			position: absolute
+			opacity: 0
+			visibility: hidden
+			&.expanded
+				position: relative
+				opacity: 1
+				visibility: visible
+			> li
+				> svg
+					transform: translate(-3rem, 0px)
+				a, span
+					font-size: 18px
+		.clients, .services
+			h5
+				width: 280px
 				font-size: 24px
 				svg.line
 					transform: translate(-200%, -50%)
@@ -98,12 +142,41 @@
 					font-size: 16px
 					color: $lGrey
 					text-decoration: underline
-		.contacts
-			> li
-				> svg
-					transform: translate(-3rem, 0px)
-				a, span
-					font-size: 18px
+		.clients, .services, .phones
+			ul, li
+				position: absolute
+				opacity: 0
+				visibility: hidden
+			&.expanded
+				.arrow svg
+					transform: translate(-50%, -50%) rotate(180deg)
+				ul, li
+					position: relative
+					opacity: 1
+					visibility: visible
+	#connect_wrapper
+		width: 100%
+		max-height: max-content
+		padding: 72px 16px
+		transform: translate(-50%, -50%) skew(0)
+		#connect_form
+			width: 100%
+			transform: skew(0)
+			h2
+				font-size: 22px
+			input, textarea
+				padding: 12px 12px 12px 0
+				font-size: 16px
+				&:not(:nth-child(1))
+					margin-top: 36px
+			textarea
+				height: 80px
+			.checkup
+				margin: 36px 0 0 auto
+		#closeConnect
+			transform: skew(0)
+		.connect_img, .connect_figure
+			display: none
 	.mobslider
 		display: flex !important
 		flex-direction: row !important
@@ -116,8 +189,11 @@
 			flex: 1 0 auto !important
 			margin-top: 0 !important
 			margin-bottom: 0 !important
+			position: relative !important
+			opacity: 1 !important
+			visibility: visible !important
 	.dotsWrapper
-		display: block
+		display: flex
 	.other
 		margin: 72px 0 0
 		.card
@@ -185,8 +261,14 @@
 		nav
 			display: none
 	section.banner
+		height: 600px !important
 		.banner_img
-			display: none
+			height: 100%
+			width: auto
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
 		.banner_img_360
 			display: block
 		.slogan
@@ -198,6 +280,15 @@
 			a
 				margin-left: 2.5rem
 				font-size: 1.5rem
+	section.blog_banner
+		height: 360px !important
+		.banner_img
+			height: 100%
+			width: auto
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
 	section.services
 		height: auto
 		padding: 152px 0 172px
@@ -240,7 +331,9 @@
 						.card_text
 							display: none
 	section.news
-		padding-bottom: 10rem
+		padding-bottom: 12rem
+		.figure_2
+			display: none
 		.signup
 			bottom: 6rem
 		.wrapper
@@ -516,34 +609,46 @@
 				width: 100%
 	section.workshop
 		padding: 0 0 72px
+		overflow: hidden
 		.wrapper
 			flex-direction: column
 			aside
 				width: 360px
 				position: absolute
 				z-index: 15
-				padding: 0
+				padding: 18px 0 36px
 				margin: 0 0 0 -16px
 				max-height: 53px
 				overflow: hidden
 				&.expanded
 					max-height: max-content
+					.navExpand svg
+						transform: translate(-50%, -50%) rotate(180deg)
+					.stripes
+						opacity: 1
+						visibility: visible
+					.sublist
+						height: max-content
+				.navExpand
+					display: block
 				.list > li
 					margin: 0
 					&:not(:first-child)
-						.arrow, .stripes
+						margin-top: 24px
+						.stripes
 							display: none
+					.arrow
+						display: none
 					a
 						padding-left: 30px
 						font-size: 18px
-					.arrow
-						right: 16px
-						top: 25px
 					.stripes
-						top: 27px
-						transform: translate(0, -50%)
-				.sublist > li a
-					font-size: 16px
+						top: 2px
+						transform: translate(0, 0)
+				.sublist > li
+					margin-top: 16px
+					a
+						font-size: 16px
 			main
 				width: 100%
 				margin-top: 6rem
@@ -565,8 +670,38 @@
 								transform: skew(0) !important
 								width: 48px
 								height: 48px
+				.pricelist
+					display: block
+					overflow-x: auto
+					td
+						font-size: 16px
+						padding: 18px
+						&:nth-child(1)
+							max-width: 50%
+							padding-left: 0
+				.checkup
+					margin-top: 36px
+	section.popular
+		padding: 72px 0
+		.wrapper
+			h3
+				position: relative
+				top: 0
+			.figure_11
+				top: -72px
+			.cards
+				margin-top: 36px
+				.card
+					width: 100% !important
+			.master_arrows
+				position: relative
+				bottom: 0
+				margin-top: 36px
+				text-align: right
+				padding-right: 8px
 	section.workplan
 		padding: 72px 0
+		overflow: hidden
 		.wrapper
 		.left_text
 			width: 100%
@@ -578,8 +713,32 @@
 				font-size: 36px
 			ol li
 				font-size: 18px
+		.up_photos
+			height: auto
+			h2
+				width: 100%
+				font-size: 36px
+				word-break: break-word
+				.brand
+					max-width: max-content
+					width: 50%
+			> img
+				position: relative
+				width: auto !important
+				height: auto !important
+				max-width: 400px !important
+				max-height: 400px !important
+				&:nth-of-type(1)
+				&:nth-of-type(2)
+					margin-top: 18px
+					top: unset
+					left: 10%
+				&:nth-of-type(3)
+					left: -5%
+					top: -3rem
 	section.workexamps
 		padding: 72px 0
+		overflow: hidden
 		.wrapper
 			h2
 				font-size: 36px
@@ -589,6 +748,7 @@
 					height: auto
 	section.request
 		padding: 72px 0
+		overflow: hidden
 		.wrapper
 			flex-direction: column
 			.left_text
@@ -606,8 +766,76 @@
 					height: 250px !important
 					left: 15rem !important
 					top: 1rem !important
-
-
+	section.reviews
+		overflow: hidden
+		.figure_7
+			left: unset !important
+			right: 0
+			.figure_71
+				width: auto
+				height: auto
+		.wrapper
+			width: 100% !important
+			.quote_card
+				width: 100% !important
+				.date
+					font-size: 16px
+				p
+					font-size: 18px
+			.arrows
+				display: none
+	section.faq
+		padding: 72px 0
+		.figure_11
+			height: 300px !important
+			max-height: 100%
+			left: -110px !important
+		.wrapper
+			width: 100% !important
+			.faq_list
+				width: 100%
+				.faq_item
+					width: 100%
+					margin: 0
+			.vacancy
+				width: calc( 100% - 32px )
+				margin-left: auto
+				margin-right: auto
+				height: 90px
+				background-color: $dw
+				padding: 0
+				&.active
+					width: 100%
+					height: auto
+					background-color: $w
+					padding: 0 16px 24px
+					h3
+						padding-left: 0
+					.expand
+						right: 2rem
+				h3
+					padding: 2rem 5.4166666667rem 2rem 2rem
+					font-size: 18px
+					.expand
+						width: 18px
+						height: 10px
+						padding: 0
+						top: 3.5rem
+				p
+					font-size: 16px
+	section.adv
+		padding: 72px 0
+		.wrapper
+			flex-direction: column
+			.left_text
+				width: 100%
+				h2
+					font-size: 36px
+				p
+					font-size: 18px
+			.right_img
+				width: 100%
+				margin-top: 36px
 	footer
 		padding-bottom: 2rem
 		.wrapper

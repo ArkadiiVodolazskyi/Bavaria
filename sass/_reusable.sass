@@ -272,14 +272,15 @@ svg.replaced-svg:not(.native)
 	margin: 24px 0 0
 	padding-left: 8px
 	display: none
+	justify-content: flex-start
+	flex-wrap: wrap
 	.mobDot
 		width: 36px
 		height: 4px
 		background-color: $red
 		opacity: 0.3
 		cursor: pointer
-		&:not(:first-child)
-			margin-left: 18px
+		margin: 0 18px 18px 0
 		&:hover
 			opacity: 1
 		&.active
@@ -346,6 +347,8 @@ svg.replaced-svg:not(.native)
 	transform: skew(-$skew)
 	&:hover
 		background-color: $lBlue
+		button, input, a
+			color: $w
 	button, input, a
 		padding: 24px 36px
 		transform: skew($skew)
@@ -566,6 +569,7 @@ svg.replaced-svg:not(.native)
 	right: 1.25rem
 	bottom: -3rem
 #closeConnect
+	padding: 0
 	transform: skew($skew)
 	position: absolute
 	top: rem(24)
@@ -613,6 +617,7 @@ svg.replaced-svg:not(.native)
 	visibility: hidden
 	width: 100vw
 	height: 100vh
+	overflow: hidden
 	&.activeOverlay
 		opacity: 1
 		visibility: visible

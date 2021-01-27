@@ -799,6 +799,23 @@ section.workshop
 		margin-top: rem(-150)
 		background-color: $w
 		box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
+		.navExpand
+			position: absolute
+			z-index: 30
+			padding: 1rem
+			right: 12px
+			top: 16px
+			fill: $red
+			display: none
+			&:hover
+				fill: $lBlue
+			svg
+				width: 18px
+				height: 10px
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%) rotate(0)
 		.list > li
 			display: block
 			width: 100%
@@ -976,6 +993,7 @@ section.workplan
 				margin-top: rem(12)
 		> img
 			position: absolute
+			box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.24)
 			&:nth-of-type(1)
 				width: rem(756)
 				height: rem(540)
@@ -1035,8 +1053,8 @@ section.reviews
 			font-weight: 500
 			svg
 				display: block
-				width: rem(18)
-				height: rem(18)
+				width: 18px
+				height: 18px
 				margin-top: rem(84)
 				margin-bottom: rem(18)
 				fill: $red

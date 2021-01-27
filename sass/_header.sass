@@ -128,9 +128,9 @@ header
 
 #expandedMenu
 	position: fixed
+	z-index: 0
 	top: 0
 	left: 0
-	z-index: 955
 	width: 100vw
 	height: 100vh
 	overflow: hidden
@@ -141,6 +141,7 @@ header
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
+		z-index: 955
 		> *:not(.closeOverlay):not(.languages)
 			transform: translateY(0)
 		.languages
@@ -240,6 +241,36 @@ header
 						width: 36px
 						height: 36px
 	.phones
+		h5
+			display: none
+			font-size: rem(24)
+			font-weight: bold
+			position: relative
+			svg
+				width: 16px
+				height: 24px
+				fill: $red
+				position: absolute
+				&.line
+					left: 0
+					top: 50%
+					transform: translate(-150%, -50%)
+			.arrow
+				width: 16px
+				height: 24px
+				right: 0
+				top: 50%
+				transform: translate(0%, -50%)
+				cursor: pointer
+				position: absolute
+				display: none
+				> svg
+					position: absolute
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%) rotate(0)
+					&:hover
+						fill: $lBlue
 		> li
 			display: flex
 			position: absolute
@@ -280,6 +311,7 @@ header
 				height: 20px
 	.languages
 		position: absolute
+		z-index: 1
 		top: rem(72)
 		right: rem(72)
 		transform: translateX(200%)
