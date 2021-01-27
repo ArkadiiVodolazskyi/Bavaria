@@ -18,15 +18,50 @@
     <button id="closeOverlay">
       <img src="../img_shared/icons/cross.svg" class="img-svg" />
     </button>
-    <header class="wow fadeIn">
+    <header>
       <div class="contacts">
         <div class="wrapper">
-          <a href="../index.html" class="logo">
-            <img src="../img_shared/icons/logo.svg" class="img-svg native" />
+          <a href="./pages/page-main.html" class="logo_animate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_1"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_2"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_3"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <img
+              src="../img_shared/icons/logo_text.svg"
+              class="img-svg logo_text"
+            />
           </a>
 
-          <button class="hamb">
-            <img src="../img_shared/icons/hamburger.svg" class="img-svg" />
+          <button class="hamb_animate">
+            <div class="line_1"></div>
+            <div class="line_2"></div>
+            <div class="line_3"></div>
           </button>
 
           <ul class="languages">
@@ -104,19 +139,21 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="./page-folio_main.html">Портфолио</a></li>
-            <li><a href="./page-services_inner.html">Диагностика</a></li>
+            <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+            <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
             <li>
-              <a href="./page-services_inner.html">Техническое обслуживание</a>
+              <a href="./pages/page-services_inner.html"
+                >Техническое обслуживание</a
+              >
             </li>
-            <li><a href="./page-services_inner.html">Ремонт</a></li>
-            <li><a href="./page-services_malyarka.html">Малярка</a></li>
+            <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+            <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
             <li>
-              <a href="./page-services_deteiling.html">Детейлинг</a>
+              <a href="./pages/page-services_deteiling.html">Детейлинг</a>
             </li>
           </ul>
 
-          <div class="checkup">
+          <div id="navCheckupBtn" class="checkup">
             <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
@@ -127,13 +164,18 @@
     <section class="banner blog_banner">
       <img src="../img_shared/folio_main_banner.png" class="banner_img" />
 
+      <img
+        src="../img_shared/folio_main_banner_360.png"
+        class="banner_img_360"
+      />
+
       <div class="slogan">
         <div class="wrapper">
           <h2>Портфолио</h2>
         </div>
       </div>
 
-      <div class="figure_1">
+      <div class="figure_1 hidden_360">
         <img
           class="img-svg native figure_41"
           src="../img_shared/figures/figure_41.svg"
@@ -145,6 +187,9 @@
     <section class="portfolio_main">
       <div class="wrapper">
         <nav>
+          <p class="nav_arrow">
+            <img src="../img_shared/icons/arrow.svg" class="img-svg" />
+          </p>
           <button>
             <span>Все работы</span>
           </button>

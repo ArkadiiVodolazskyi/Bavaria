@@ -18,15 +18,50 @@
     <button id="closeOverlay">
       <img src="../img_shared/icons/cross.svg" class="img-svg" />
     </button>
-    <header class="wow fadeIn">
+    <header>
       <div class="contacts">
         <div class="wrapper">
-          <a href="../index.html" class="logo">
-            <img src="../img_shared/icons/logo.svg" class="img-svg native" />
+          <a href="./pages/page-main.html" class="logo_animate">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_1"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_2"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="35 24 87 169"
+              class="line_3"
+            >
+              <path
+                d="M42.26 0h43.105l-42.26 169.04H0z"
+                transform="translate(36 24)"
+              />
+            </svg>
+            <img
+              src="../img_shared/icons/logo_text.svg"
+              class="img-svg logo_text"
+            />
           </a>
 
-          <button class="hamb">
-            <img src="../img_shared/icons/hamburger.svg" class="img-svg" />
+          <button class="hamb_animate">
+            <div class="line_1"></div>
+            <div class="line_2"></div>
+            <div class="line_3"></div>
           </button>
 
           <ul class="languages">
@@ -104,19 +139,21 @@
       <nav>
         <div class="wrapper">
           <ul class="links">
-            <li><a href="./page-folio_main.html">Портфолио</a></li>
-            <li><a href="./page-services_inner.html">Диагностика</a></li>
+            <li><a href="./pages/page-folio_main.html">Портфолио</a></li>
+            <li><a href="./pages/page-services_inner.html">Диагностика</a></li>
             <li>
-              <a href="./page-services_inner.html">Техническое обслуживание</a>
+              <a href="./pages/page-services_inner.html"
+                >Техническое обслуживание</a
+              >
             </li>
-            <li><a href="./page-services_inner.html">Ремонт</a></li>
-            <li><a href="./page-services_malyarka.html">Малярка</a></li>
+            <li><a href="./pages/page-services_inner.html">Ремонт</a></li>
+            <li><a href="./pages/page-services_malyarka.html">Малярка</a></li>
             <li>
-              <a href="./page-services_deteiling.html">Детейлинг</a>
+              <a href="./pages/page-services_deteiling.html">Детейлинг</a>
             </li>
           </ul>
 
-          <div class="checkup">
+          <div id="navCheckupBtn" class="checkup">
             <button class="openConnect">Записаться на осмотр</button>
           </div>
         </div>
@@ -126,6 +163,11 @@
 
     <section class="banner blog_banner">
       <img src="../img_shared/service_banner.png" class="banner_img" />
+
+      <img
+        src="../img_shared/folio_inner_banner_360.png"
+        class="banner_img_360"
+      />
     </section>
 
     <section class="post service_post">
@@ -149,8 +191,8 @@
           <button class="tape_prev">
             <img src="../img_shared/icons/arrow.svg" class="img-svg" />
           </button>
-          <div class="all">
-            <div class="tape">
+          <div class="all mobwrapper">
+            <div class="tape mobslider">
               <img src="../img_shared/service_gallery/service_gallery1.png" />
               <img src="../img_shared/service_gallery/service_gallery2.png" />
               <img src="../img_shared/service_gallery/service_gallery3.png" />
@@ -255,70 +297,106 @@
       </div>
     </section>
 
-    <section class="also">
-      <div class="wrapper">
-        <h2 class="also_title">Читайте также</h2>
+    <section class="news light p-5 also_news">
+      <div class="wrapper mobwrapper">
+        <h3>Читайте также</h3>
 
-        <div class="other">
-          <div class="card">
-            <img
-              src="../img_shared/service_gallery/service_gallery1.png"
-              class="card_bg"
-            />
-            <h5>
-              <img
-                src="../img_shared/figures/figure_5.svg"
-                class="img-svg native"
-              />
-              <p><span>Детейлинг BMW X5</span></p>
-            </h5>
-          </div>
-          <div class="card">
-            <img
-              src="../img_shared/service_gallery/service_gallery2.png"
-              class="card_bg"
-            />
-            <h5>
-              <img
-                src="../img_shared/figures/figure_5.svg"
-                class="img-svg native"
-              />
-              <p>
-                <span
-                  >Техническое обслуживание<br />
-                  Lexus RX350</span
-                >
-              </p>
-            </h5>
-          </div>
-          <div class="card">
-            <img
-              src="../img_shared/service_gallery/service_gallery3.png"
-              class="card_bg"
-            />
-            <h5>
-              <img
-                src="../img_shared/figures/figure_5.svg"
-                class="img-svg native"
-              />
-              <p>
-                <span
-                  >Диагностика и ремонт<br />
-                  Brabus G-Wagen</span
-                >
-              </p>
-            </h5>
+        <div class="cards">
+          <div class="pages">
+            <div class="page mobslider">
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="./pages/page-blog_inner.html"
+                class="card"
+                style="
+                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
+                "
+              >
+                <div class="block_overlay">
+                  <span class="date">
+                    22 декабря 2020
+                    <img
+                      src="../img_shared/icons/arrow.svg"
+                      class="img-svg arrow"
+                    />
+                  </span>
+                  <p class="text">
+                    Chevrolet Camaro RS посетил нашу студию детейлинга для
+                    процедур по преображению
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
-
-        <ul class="navpages">
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ul>
       </div>
 
-      <div class="figure_2" style="left: 75%">
+      <div class="figure_2" style="left: 74%">
         <div class="figure_21"></div>
         <img class="figure_22" src="../img_shared/figures/figure_22.png" />
         <div class="figure_23"></div>
@@ -327,7 +405,7 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="figure_12"
-        style="left: 9%"
+        style="left: 8%"
         viewbox="0,0 140,270"
       >
         <path

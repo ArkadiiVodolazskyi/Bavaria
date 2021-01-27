@@ -559,17 +559,43 @@ window.addEventListener("load", () => {
     ];
 
     if (navBtns.length) {
+      // Mutate to dropdown on 360 screens
+      const nav = document.querySelector(".portfolio_main nav");
+      const navExpand = nav.querySelector(".nav_arrow");
+
+      navExpand.addEventListener("click", () => {
+        nav.classList.toggle("expanded");
+      });
+
       // Default
       navBtns[0].classList.add("active");
 
       for (let i = 0; i < navBtns.length; i++) {
-        navBtns[i].addEventListener("click", () => {
+        navBtns[i].addEventListener("click", (e) => {
           for (let j = 0; j < navBtns.length; j++) {
             navBtns[j].classList.remove("active");
           }
           navBtns[i].classList.add("active");
+          if (nav.classList.contains("expanded")) {
+            nav.classList.remove("expanded");
+          }
         });
       }
+    }
+  })();
+
+  // make button fixed on scroll
+  (function () {
+    const navCheckupBtn = document.getElementById("navCheckupBtn");
+
+    if (navCheckupBtn) {
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 250) {
+          navCheckupBtn.classList.add("toBottom");
+        } else {
+          navCheckupBtn.classList.remove("toBottom");
+        }
+      });
     }
   })();
 
@@ -598,10 +624,10 @@ window.addEventListener("load", () => {
 
     if (mobsliders.length) {
       for (let i = 0; i < mobsliders.length; i++) {
-        const wrapper = mobsliders[i].closest(".wrapper");
+        const wrapper = mobsliders[i].closest(".mobwrapper");
         const cards = [...mobsliders[i].children];
 
-        if (!wrapper.classList.contains("wrapper")) {
+        if (!wrapper.classList.contains("mobwrapper")) {
           console.error("Not wrapper for: ", mobsliders[i]);
         }
 

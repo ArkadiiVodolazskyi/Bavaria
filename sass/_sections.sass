@@ -336,13 +336,13 @@ section.post
 		left: rem(130)
 		top: rem(-96)
 		transform: translate(0, -2rem) skew(-$skew)
-		padding: rem(24) rem(30)
+		padding: 24px 30px
 		z-index: 20
 		background-color: $w
 		box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
 		span
 			transform: skew($skew)
-			font-size: rem(16)
+			font-size: 16px
 	.blog_title
 		padding: 0 rem(130)
 		margin-top: 0
@@ -439,9 +439,10 @@ section.post
 			text-transform: uppercase
 		ul
 			li
-				margin-left: rem(12)
 				&:hover svg
 					fill: $lBlue
+				&:not(:first-child)
+					margin-left: 12px
 			svg
 				fill: $red
 
@@ -598,6 +599,7 @@ section.portfolio_main
 		display: flex
 		transform: skew(-$skew)
 		box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
+		position: relative
 		button
 			margin: 0 -1px
 			flex: 1
@@ -612,6 +614,26 @@ section.portfolio_main
 			transform: skew($skew)
 			font-size: rem(16)
 			letter-spacing: 0.96px
+		.nav_arrow
+			display: none
+			fill: $red
+			width: 18px
+			height: 10px
+			position: absolute
+			z-index: 20
+			right: 1.5rem
+			top: 30px
+			transform: translate(0, -50%)
+			cursor: pointer
+			&:hover
+				fill: $lBlue
+			svg
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
 	.other
 		margin-top: rem(72)
 		.card
@@ -805,8 +827,8 @@ section.workshop
 				font-size: rem(24)
 				font-weight: bold
 			.stripes
-				width: rem(18)
-				height: rem(18)
+				width: 18px
+				height: 18px
 				position: absolute
 				top: 0.5rem
 				left: 0
@@ -814,8 +836,8 @@ section.workshop
 				opacity: 0
 				visibility: hidden
 			.arrow
-				width: rem(14)
-				height: rem(8)
+				width: 14px
+				height: 8px
 				fill: $red
 				position: absolute
 				top: 0.5rem
@@ -925,8 +947,10 @@ section.workplan
 				display: flex
 				align-items: center
 				counter-increment: my-counter
+				font-size: rem(24)
+				line-height: 1.42
 				&::before
-					margin-right: rem(24)
+					margin-right: 24px
 					content: counter(my-counter)
 					display: inline-block
 					width: rem(24)
@@ -939,8 +963,6 @@ section.workplan
 					transform: skew(-$skew)
 				&:not(:first-child)
 					margin-top: rem(36)
-					font-size: rem(24)
-					line-height: 1.42
 	.up_photos
 		width: 100%
 		height: rem(570)
@@ -1054,7 +1076,7 @@ section.workexamps
 			span
 				margin-top: rem(8)
 				opacity: 0.4
-				font-size: rem(16)
+				font-size: 16px
 				user-select: none
 
 section.request

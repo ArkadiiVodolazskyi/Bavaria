@@ -225,7 +225,7 @@ svg.replaced-svg:not(.native)
 		left: 50%
 		transform: translate(-50%, -50%)
 	.rect
-		width: 80px
+		width: rem(80)
 		height: 60px
 		background-color: $red
 		position: absolute
@@ -235,7 +235,7 @@ svg.replaced-svg:not(.native)
 	a, button
 		color: $w
 		margin-left: rem(28)
-		font-size: rem(16)
+		font-size: 16px
 		font-weight: bold
 		letter-spacing: 0.96px
 		text-transform: uppercase
@@ -247,6 +247,7 @@ svg.replaced-svg:not(.native)
 	display: flex
 	align-items: center
 	justify-content: flex-end
+	min-height: 32px
 	li button
 		margin: 0 0.3rem
 		font-size: rem(16)
@@ -268,7 +269,8 @@ svg.replaced-svg:not(.native)
 		transform: scale(2.5) rotate(-90deg)
 
 .dotsWrapper
-	margin: 24px 0 36px
+	margin: 24px 0 0
+	padding-left: 8px
 	display: none
 	.mobDot
 		width: 36px
@@ -345,9 +347,9 @@ svg.replaced-svg:not(.native)
 	&:hover
 		background-color: $lBlue
 	button, input, a
-		padding: 1rem 1.5rem
+		padding: 24px 36px
 		transform: skew($skew)
-		font-size: rem(18)
+		font-size: 18px
 		font-weight: 500
 		cursor: pointer
 
@@ -411,7 +413,7 @@ svg.replaced-svg:not(.native)
 		.pro_text
 			margin-left: rem(24)
 			transform: skew($skew)
-			font-size: rem(18)
+			font-size: 18px
 
 .list_wrapper
 	margin-top: rem(48)
@@ -452,8 +454,10 @@ svg.replaced-svg:not(.native)
 		h3
 			color: $red
 		.expand
-			transform: rotate(180deg)
 			fill: $red
+			right: calc( 2rem + 16px )
+			svg
+				transform: translate(-50%, -50%) rotate(180deg)
 	h3
 		color: $dGrey
 		text-align: left
@@ -465,21 +469,25 @@ svg.replaced-svg:not(.native)
 		top: 2rem
 		right: 2rem
 		fill: $dGrey
-		transform: rotate(0deg)
 		opacity: 1 !important
 		visibility: visible !important
+		&:hover
+			fill: $lBlue
 		svg
 			width: 100%
 			height: 100%
-		&:hover
-			fill: $lBlue
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%) rotate(0deg)
 	p
 		margin-top: rem(36)
 		font-size: rem(18)
 		line-height: 1.56
 	.send
+		display: block
 		margin-top: rem(48)
-		padding: rem(20)
+		padding: 20px
 		background-color: $red
 		transform: skew(-$skew)
 		&:hover
@@ -487,7 +495,7 @@ svg.replaced-svg:not(.native)
 		span
 			color: $w
 			transform: skew($skew)
-			font-size: rem(18)
+			font-size: 18px
 			font-weight: 500
 
 #closeOverlay
@@ -813,6 +821,22 @@ svg.replaced-svg:not(.native)
 	bottom: 0
 	height: 100%
 	width: auto
+.figure_13
+	width: rem(150)
+	height: rem(270)
+	position: absolute
+	bottom: -6rem
+	z-index: 10
+	.figure_41
+		position: absolute
+		width: auto
+		height: 10rem
+		fill: transparent !important
+		stroke: $w !important
+	.figure_42
+		position: absolute
+		width: auto
+		height: 11rem
 
 .copyLink
 	padding: 0
@@ -822,7 +846,7 @@ svg.replaced-svg:not(.native)
 	top: 110%
 	left: 50%
 	transform: translate(-50%, 0)
-	font-size: 0.6rem
+	font-size: 12px
 	width: max-content
 	padding: 0.5rem
 	background-color: rgba($dGrey, 0.85)

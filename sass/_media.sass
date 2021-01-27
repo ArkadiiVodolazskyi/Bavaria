@@ -4,8 +4,8 @@
 	section
 		height: auto !important
 	.wrapper
-		width: calc(100% -  32px)
-	.figure_1, .figure_2, .figure_4, .figure_12
+		width: calc(100% -  32px) !important
+	.hidden_360, .figure_4, .figure_8 > .figure_42, .figure_9, .figure_10, .figure_12
 		display: none
 	.figure_3
 		.figure_31
@@ -19,9 +19,35 @@
 		.figure_33
 			top: -4rem
 			left: 4.5rem
+	.figure_1
+		width: 75px
+		height: 172px
+		left: unset
+		right: 32px
+		.figure_41
+			height: 172px !important
+		.figure_42
+			height: 140px !important
+			left: -2.3rem
+			bottom: -1rem
 	.figure_11
 		width: 180px
 		left: -72px !important
+	.figure_2
+		.figure_21
+			width: 2rem
+			height: 4rem
+		.figure_22
+			width: auto
+			height: 6rem
+		.figure_23
+			width: 3rem
+			height: 3rem
+			left: 3rem
+	.figure_8
+		width: 80% !important
+		height: 200px !important
+		left: 3rem !important
 	.signup
 		top: unset !important
 		bottom: 72px
@@ -32,6 +58,10 @@
 			left: -2rem
 	.next:not(:nth-of-type(1))
 		display: none
+	.checkup
+		button, input, a
+			padding: 16px 18px !important
+
 	#closeOverlay
 		width: 23px
 		height: 23px
@@ -74,13 +104,18 @@
 					transform: translate(-3rem, 0px)
 				a, span
 					font-size: 18px
-
 	.mobslider
 		display: flex !important
+		flex-direction: row !important
 		flex-wrap: nowrap !important
+		align-items: flex-start !important
+		margin-left: 0 !important
+		margin-right: 0 !important
 		> *
 			width: 280px !important
 			flex: 1 0 auto !important
+			margin-top: 0 !important
+			margin-bottom: 0 !important
 	.dotsWrapper
 		display: block
 	.other
@@ -95,6 +130,30 @@
 					font-size: 18px
 		svg
 			display: none
+	.navpages_2
+		justify-content: center
+		li
+			font-size: 16px
+			button
+				font-size: 16px
+	.list_wrapper
+		.list_title
+			font-size: 18px
+			line-height: 1.44
+		.list li
+			svg
+				width: 3%
+			span
+				width: 94%
+				font-size: 18px
+	#connect_form_2
+		width: 100%
+		input:not([type=submit])
+			margin-top: 36px !important
+			font-size: 16px !important
+		.checkup
+			margin: 36px 0 0 auto !important
+
 
 	header
 		.contacts .wrapper
@@ -125,9 +184,7 @@
 				order: 3
 		nav
 			display: none
-
 	section.banner
-		overflow: hidden
 		.banner_img
 			display: none
 		.banner_img_360
@@ -267,6 +324,289 @@
 							p
 								transform: skew(0)
 								font-size: 16px
+	section.blog_news
+		padding: 72px 0
+		.wrapper .cards
+			margin-top: 0
+			.pages .page .card
+				width: 100%
+				height: 203px
+	section.post
+		padding: 72px 0
+		.wrapper
+			> *:not(.date)
+				padding: 0
+			.date
+				top: -7rem
+			p
+				font-size: 18px
+				&.accent
+					font-size: 20px
+			.gallery
+				button, .big
+					display: none
+				.all
+					width: 100%
+					padding: 0
+				.tape
+					position: relative
+					img
+						width: 328px
+						height: 220px
+						opacity: 1
+			.share
+				margin-left: 0
+				margin-right: 0
+				padding: 24px 36px
+				flex-direction: column
+				span
+					font-size: 16px
+					text-align: center
+				ul
+					margin-top: 18px
+					li a, li button
+						padding: 0
+	section.also_news
+		padding: 72px 0
+		.figure_2
+			display: block
+	section.vacancies
+		padding: 72px 0
+		.wrapper
+			width: 100% !important
+			.vacancy
+				width: calc( 100% - 32px )
+				margin-left: auto
+				margin-right: auto
+				height: 90px
+				background-color: $dw
+				padding: 0
+				&.active
+					width: 100%
+					height: auto
+					background-color: $w
+					padding: 0 16px 24px
+				h3
+					padding: 2rem 5.4166666667rem 2rem 2rem
+					font-size: 18px
+					.expand
+						width: 18px
+						height: 10px
+						padding: 0
+						top: 3.5rem
+				p
+					font-size: 16px
+				.send
+					margin-left: auto
+	section.facts
+		.figure_2
+			display: block
+		.wrapper
+			width: 100% !important
+		.facts_title
+			margin-left: 16px
+			font-size: 36px
+		.facts_cards .card
+			width: calc( 360px - 16px ) !important
+			transform: skew(0)
+			svg
+				transform: skew(0)
+			p
+				transform: skew(0)
+				font-size: 16px
+		.dotsWrapper
+			margin-left: 16px
+	section.info_about
+		padding: 72px 0 0
+		.figure_13
+			right: -40px !important
+		.wrapper
+			flex-direction: column
+		.left_text
+			width: 100%
+			padding-bottom: 7rem
+			p
+				font-size: 18px
+				&.accent
+					font-size: 20px
+		.right_master
+			width: 100%
+			.master
+				margin-right: -4rem
+			.master_bg
+				height: 20rem
+			.master_name .name
+				width: 40%
+				h5
+					font-size: 24px
+				span
+					font-size: 16px
+			.master_img
+				left: -20%
+	section.about_video
+		padding: 72px 0
+		.figure_7
+			width: 10rem !important
+			height: 173px !important
+			left: 5% !important
+		.wrapper
+			.video_text
+				right: 0
+				transform: translate(0, 0)
+				h2
+					font-size: 24px
+			.video
+				margin-top: 3rem
+				margin-left: 1.5rem
+	section.portfolio_main
+		padding: 0 0 72px
+		.wrapper
+			nav
+				width: 360px
+				transform: skew(0)
+				flex-direction: column
+				max-height: 60px
+				position: absolute
+				z-index: 15
+				left: -16px
+				top: 0
+				&.expanded
+					max-height: max-content
+					.nav_arrow
+						transform: rotate(180deg)
+					button
+						opacity: 1
+						visibility: visible
+						position: relative
+				button
+					width: 100%
+					background-color: $w
+					color: $dGrey
+					text-align: left
+					padding: 1.2rem
+					opacity: 0
+					visibility: hidden
+					position: absolute
+					&.active
+						opacity: 1
+						visibility: visible
+						position: relative
+				span
+					transform: skew(0)
+					font-size: 16px
+					font-weight: bold
+				.nav_arrow
+					display: block
+			.other
+				margin-top: 0
+				padding-top: 72px
+				flex-direction: column
+				.card
+					width: 100%
+					margin: 0 0 18px 0
+	section.service_post
+		padding: 36px 0 72px
+		overflow: hidden
+		.result
+			flex-direction: column
+			.left_text
+				width: 100%
+				font-size: 18px
+			.right_works
+				width: 100%
+	section.workshop
+		padding: 0 0 72px
+		.wrapper
+			flex-direction: column
+			aside
+				width: 360px
+				position: absolute
+				z-index: 15
+				padding: 0
+				margin: 0 0 0 -16px
+				max-height: 53px
+				overflow: hidden
+				&.expanded
+					max-height: max-content
+				.list > li
+					margin: 0
+					&:not(:first-child)
+						.arrow, .stripes
+							display: none
+					a
+						padding-left: 30px
+						font-size: 18px
+					.arrow
+						right: 16px
+						top: 25px
+					.stripes
+						top: 27px
+						transform: translate(0, -50%)
+				.sublist > li a
+					font-size: 16px
+			main
+				width: 100%
+				margin-top: 6rem
+				p
+					font-size: 18px
+					&.accent
+						font-size: 20px
+				.brands
+					.facts_title
+						margin-top: 2rem
+					.facts_cards
+						width: 100%
+						.card
+							transform: skew(0)
+							.pro_text
+								transform: skew(0)
+								font-size: 18px
+							.pro_icon
+								transform: skew(0) !important
+								width: 48px
+								height: 48px
+	section.workplan
+		padding: 72px 0
+		.wrapper
+		.left_text
+			width: 100%
+			p
+				font-size: 18px
+		.right_text
+			width: 100%
+			h3
+				font-size: 36px
+			ol li
+				font-size: 18px
+	section.workexamps
+		padding: 72px 0
+		.wrapper
+			h2
+				font-size: 36px
+			.exampscards
+				margin: 36px 0
+				.card
+					height: auto
+	section.request
+		padding: 72px 0
+		.wrapper
+			flex-direction: column
+			.left_text
+				width: 100%
+				h2
+					font-size: 36px
+				p
+					width: 100%
+					font-size: 18px
+			.right_form
+				width: 100%
+				.connect_img, .connect_figure
+					display: none
+				.figure_8
+					height: 250px !important
+					left: 15rem !important
+					top: 1rem !important
+
 
 	footer
 		padding-bottom: 2rem
