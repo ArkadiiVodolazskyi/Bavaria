@@ -84,7 +84,8 @@ body {
     visibility: hidden; }
 
 section {
-  position: relative; }
+  position: relative;
+  z-index: 1; }
   section.dark {
     background-color: #181f29; }
     section.dark * {
@@ -106,7 +107,7 @@ section {
     padding: 5rem 0; }
 
 .wrapper {
-  width: 80%;
+  width: 1536px;
   margin: 0 auto;
   position: relative;
   z-index: 5; }
@@ -316,7 +317,7 @@ svg.replaced-svg:not(.native) {
     .checkup:hover button, .checkup:hover input, .checkup:hover a {
       color: #fff; }
   .checkup button, .checkup input, .checkup a {
-    padding: 24px 36px;
+    padding: 1rem 1.5rem;
     transform: skew(14deg);
     font-size: 18px;
     font-weight: 500;
@@ -534,7 +535,6 @@ svg.replaced-svg:not(.native) {
   transform: skew(14deg);
   position: absolute;
   z-index: 3;
-  height: 11.25rem;
   right: 1.25rem;
   bottom: -3rem; }
 
@@ -1248,8 +1248,9 @@ header {
 
 #navCheckupBtn.toBottom {
   position: fixed;
-  right: 152px;
-  bottom: 72px; }
+  right: 8%;
+  bottom: 72px;
+  z-index: 500; }
 
 section.banner {
   position: relative;
@@ -2386,6 +2387,8 @@ section.adv {
       margin-top: -2.0833333333rem; }
 
 footer {
+  position: relative;
+  z-index: 1;
   padding: 4rem 0;
   background-color: #181f29; }
   footer .wrapper {
@@ -2471,15 +2474,24 @@ footer {
         footer .wrapper .contacts li .phone_list > a {
           margin-bottom: 0.5rem; }
 
+@media (max-width: 1536px) {
+  html {
+    font-size: 20px; }
+
+  .wrapper {
+    width: 1280px; }
+
+  header .empty {
+    display: none; } }
+@media (max-width: 1280px) {
+  .wrapper {
+    width: calc(100% -  32px); } }
 @media (max-width: 360px) {
   html {
     font-size: 12px; }
 
   section {
     height: auto !important; }
-
-  .wrapper {
-    width: calc(100% -  32px) !important; }
 
   .hidden_360, .figure_4, .figure_8 > .figure_42, .figure_9, .figure_10, .figure_12 {
     display: none; }

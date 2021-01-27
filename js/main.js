@@ -598,6 +598,13 @@ window.addEventListener("load", () => {
     const navCheckupBtn = document.getElementById("navCheckupBtn");
 
     if (navCheckupBtn) {
+      console.log(window.pageYOffset);
+      if (window.pageYOffset > 250) {
+        console.log(window.pageYOffset);
+        navCheckupBtn.classList.add("toBottom");
+      } else {
+        navCheckupBtn.classList.remove("toBottom");
+      }
       window.addEventListener("scroll", () => {
         if (window.pageYOffset > 250) {
           navCheckupBtn.classList.add("toBottom");

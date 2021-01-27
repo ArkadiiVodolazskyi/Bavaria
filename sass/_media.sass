@@ -1,10 +1,21 @@
+@media (max-width: 1536px)
+	html
+		font-size: 20px
+	.wrapper
+		width: 1280px
+	header
+		.empty
+			display: none
+
+@media (max-width: 1280px)
+	.wrapper
+		width: calc(100% -  32px)
+
 @media (max-width: 360px)
 	html
 		font-size: $fontSize360
 	section
 		height: auto !important
-	.wrapper
-		width: calc(100% -  32px) !important
 	.hidden_360, .figure_4, .figure_8 > .figure_42, .figure_9, .figure_10, .figure_12
 		display: none
 	.figure_3
