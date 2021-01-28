@@ -2,7 +2,7 @@
 // --------------------------- page-home
 section.banner
 	position: relative
-	z-index: 1
+	z-index: 3
 	background-position: center
 	background-repeat: no-repeat
 	background-size: 100%
@@ -188,6 +188,7 @@ section.news
 section.portfolio
 	height: rem(1480)
 	background-color: $dGrey
+	z-index: 3
 	.wrapper
 		.signup
 			top: 1rem
@@ -321,6 +322,7 @@ section.post
 	height: auto
 	padding: rem(96) 0
 	background-color: $dw
+	z-index: 3
 	.wrapper
 		width: 65%
 		position: relative
@@ -435,10 +437,9 @@ section.post
 			text-transform: uppercase
 		ul
 			li
+				margin-left: 12px
 				&:hover svg
 					fill: $lBlue
-				&:not(:first-child)
-					margin-left: 12px
 			svg
 				fill: $red
 

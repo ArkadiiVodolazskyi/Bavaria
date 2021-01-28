@@ -6,8 +6,8 @@
 		//acf_add_options_page($args);
 
 		acf_add_options_page(array(
-			'page_title' 	=> 'Theme General Settings',
-			'menu_title'	=> 'Options',
+			'page_title' 	=> 'Общие',
+			'menu_title'	=> 'Общие',
 			'menu_slug' 	=> 'acf-options',
 			'capability'	=> 'edit_posts',
 			'redirect'		=> false
@@ -58,4 +58,74 @@
 	}
 
 	add_action( 'after_setup_theme', 'theme_setup' );
+
+
+	// Create custom post types
+	add_action('init', 'my_custom_init');
+
+	function my_custom_init() {
+
+		// Create custom post type - blog
+		register_post_type('blog', array(
+			'labels'             => array(
+				'name'               => 'Блог',
+				'singular_name'      => 'Блог',
+				'add_new'            => 'Добавить новость',
+				'add_new_item'       => 'Добавить новость',
+				'edit_item'          => 'Редактировать новость',
+				'new_item'           => 'Добавить новость',
+				'view_item'          => 'Посмотреть новость',
+				'search_items'       => 'Найти новость',
+				'not_found'          => 'Новостей не найдено',
+				'not_found_in_trash' => 'В корзине новостей не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Блог'
+			),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'rewrite' => array( 'slug' => 'blog', 'with_front' => false ),
+			'has_archive' => 'blog',
+		));
+
+		// Create custom post type - folio
+		register_post_type('folio', array(
+			'labels'             => array(
+				'name'               => 'Портфолио',
+				'singular_name'      => 'Портфолио',
+				'add_new'            => 'Добавить работу',
+				'add_new_item'       => 'Добавить работу',
+				'edit_item'          => 'Редактировать работу',
+				'new_item'           => 'Добавить работу',
+				'view_item'          => 'Посмотреть работу',
+				'search_items'       => 'Найти работу',
+				'not_found'          => 'Работ не найдено',
+				'not_found_in_trash' => 'В корзине работ не найдено',
+				'parent_item_colon'  => '',
+				'menu_name'          => 'Портфолио'
+			),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
+			'rewrite' => array( 'slug' => 'folio', 'with_front' => false ),
+			'has_archive' => 'folio',
+		));
+
+	}
 ?>
