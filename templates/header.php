@@ -37,7 +37,7 @@
 		</li>
 		<li>
 			<img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
-			<a href="<?= get_field('contacts', 'options')['email']; ?>">
+			<a href="mailto:<?= get_field('contacts', 'options')['email']; ?>">
 				<?= get_field('contacts', 'options')['email']; ?>
 			</a>
 		</li>
@@ -79,7 +79,7 @@
 
 				<?php while(have_rows('phones', 'options')): the_row(); ?>
 					<div class="phone">
-						<a href="<?= get_sub_field('number'); ?>">
+						<a href="tel:<?= get_sub_field('number'); ?>">
 							<?= get_sub_field('number'); ?>
 						</a>
 						<div class="phone_first">
@@ -204,7 +204,7 @@
 			</div>
 
 			<div class="contact">
-					<a href="<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
+					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
 						<?= get_field('phones', 'options')[0]['number']; ?>
 					</a>
 					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
@@ -227,7 +227,7 @@
 										<?php endif; ?>
 								<?php endforeach; ?>
 							</ul>
-							<a href="<?= get_sub_field('number'); ?>" class="phone">
+							<a href="tel:<?= get_sub_field('number'); ?>" class="phone">
 								<?= get_sub_field('number'); ?>
 							</a>
 							<span class="text">

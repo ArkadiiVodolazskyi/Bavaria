@@ -49,7 +49,7 @@
 				<div class="phone_list">
 					<?php while(have_rows('contacts', 'options')): the_row();
 								while(have_rows('phones')): the_row(); ?>
-						<a href="<?= get_sub_field('phone'); ?>">
+						<a href="tel:<?= get_sub_field('phone'); ?>">
 							<?= get_sub_field('phone'); ?>
 						</a>
 					<?php endwhile; endwhile; ?>
@@ -57,7 +57,7 @@
 			</li>
 			<li>
 				<img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
-				<a href="<?= get_field('contacts', 'options')['email']; ?>">
+				<a href="mailto:<?= get_field('contacts', 'options')['email']; ?>">
 					<?= get_field('contacts', 'options')['email']; ?>
 				</a>
 			</li>

@@ -544,7 +544,7 @@ section.about_video
 				transform: skew(-$skew)
 				background-color: $dGrey
 				overflow: hidden
-				img
+				img, iframe
 					width: auto
 					height: 100%
 					position: absolute
@@ -784,6 +784,7 @@ section.workshop
 	padding: rem(96) 0
 	background-color: $dw
 	color: $dGrey
+	z-index: 3
 	.wrapper
 		display: flex
 		justify-content: space-between
@@ -896,6 +897,7 @@ section.workshop
 				white-space: nowrap
 				&:nth-child(1)
 					width: 60%
+					padding-left: 0
 				&:nth-child(2), &:nth-child(3)
 					width: 20%
 			thead td
@@ -981,6 +983,7 @@ section.workplan
 		width: 100%
 		height: rem(570)
 		position: relative
+		margin-bottom: 3rem
 		h2
 			width: 30%
 			font-size: rem(48)
@@ -1083,11 +1086,12 @@ section.workexamps
 			font-weight: bold
 		.exampscards
 			display: flex
+			flex-wrap: wrap
 			margin: rem(72) -0.75rem 0
 		.card
 			width: calc(100% / 4 - 0.75rem)
 			height: rem(260)
-			margin: 0.75rem
+			margin: 0.75rem 0.75rem 2rem
 			span
 				margin-top: rem(8)
 				opacity: 0.4

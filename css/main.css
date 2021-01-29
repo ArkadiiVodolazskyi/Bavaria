@@ -49,7 +49,8 @@ li, a, span {
   display: inline-block; }
 
 img {
-  width: 100%; }
+  width: 100%;
+  user-select: none; }
 
 @keyframes fadeIn {
   0% {
@@ -366,20 +367,21 @@ svg.replaced-svg:not(.native) {
 .facts_cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   margin: 2.5rem -3rem 0; }
   .facts_cards .card {
     width: calc(100% / 2 - 3rem);
     margin: 0.75rem 1.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 1.5rem;
     transform: skew(-14deg);
     background-color: #fff;
     box-shadow: 0 0.5rem 1rem 0 rgba(24, 31, 41, 0.12); }
     .facts_cards .card .pro_icon {
-      min-width: 3rem;
-      min-height: 3rem;
+      max-width: 3rem;
+      max-height: 3rem;
       transform: skew(14deg); }
     .facts_cards .card .pro_text {
       margin-left: 1rem;
@@ -425,8 +427,7 @@ svg.replaced-svg:not(.native) {
     .vacancy.active h3 {
       color: #d63d37; }
     .vacancy.active .expand {
-      fill: #d63d37;
-      right: calc( 2rem + 16px ); }
+      fill: #d63d37; }
       .vacancy.active .expand svg {
         transform: translate(-50%, -50%) rotate(180deg); }
   .vacancy h3 {
@@ -435,7 +436,8 @@ svg.replaced-svg:not(.native) {
     font-size: 1rem;
     font-weight: 500; }
   .vacancy .expand {
-    width: 2rem;
+    width: 1.5rem;
+    height: 0.8333333333rem;
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -483,6 +485,10 @@ svg.replaced-svg:not(.native) {
     animation-duration: 0.5s;
     animation-delay: 0.8s;
     animation-fill-mode: forwards; }
+  #closeOverlay.red {
+    fill: #d63d37; }
+  #closeOverlay.accent {
+    transform: scale(1.5); }
   #closeOverlay:hover {
     fill: #8dc1fb; }
   #closeOverlay svg {
@@ -1792,7 +1798,7 @@ section.about_video {
         transform: skew(-14deg);
         background-color: #181f29;
         overflow: hidden; }
-        section.about_video .wrapper .video_left .img_bg img {
+        section.about_video .wrapper .video_left .img_bg img, section.about_video .wrapper .video_left .img_bg iframe {
           width: auto;
           height: 100%;
           position: absolute;
@@ -2020,7 +2026,8 @@ section.map_banner {
 section.workshop {
   padding: 4rem 0;
   background-color: #f1f2f3;
-  color: #181f29; }
+  color: #181f29;
+  z-index: 3; }
   section.workshop .wrapper {
     display: flex;
     justify-content: space-between; }
@@ -2129,7 +2136,8 @@ section.workshop {
         font-size: 0.6666666667rem;
         white-space: nowrap; }
         section.workshop main .pricelist td:nth-child(1) {
-          width: 60%; }
+          width: 60%;
+          padding-left: 0; }
         section.workshop main .pricelist td:nth-child(2), section.workshop main .pricelist td:nth-child(3) {
           width: 20%; }
       section.workshop main .pricelist thead td {
@@ -2214,7 +2222,8 @@ section.workplan {
   section.workplan .up_photos {
     width: 100%;
     height: 23.75rem;
-    position: relative; }
+    position: relative;
+    margin-bottom: 3rem; }
     section.workplan .up_photos h2 {
       width: 30%;
       font-size: 2rem;
@@ -2314,11 +2323,12 @@ section.workexamps {
     font-weight: bold; }
   section.workexamps .wrapper .exampscards {
     display: flex;
+    flex-wrap: wrap;
     margin: 3rem -0.75rem 0; }
   section.workexamps .wrapper .card {
     width: calc(100% / 4 - 0.75rem);
     height: 10.8333333333rem;
-    margin: 0.75rem; }
+    margin: 0.75rem 0.75rem 2rem; }
     section.workexamps .wrapper .card span {
       margin-top: 0.3333333333rem;
       opacity: 0.4;

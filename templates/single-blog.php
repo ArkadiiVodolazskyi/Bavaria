@@ -29,6 +29,9 @@
           </span></div>
           <h2 class="blog_title">
             <?= get_the_title(); ?>
+            <?php echo get_the_ID();
+            $type = get_post_type(get_the_ID());
+            echo $type; ?>
           </h2>
 
           <?php while ( have_rows('page-blog_inner') ): the_row(); ?>

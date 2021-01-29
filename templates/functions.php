@@ -92,8 +92,8 @@
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-			'rewrite' => array( 'slug' => 'blog', 'with_front' => false ),
-			'has_archive' => 'blog',
+			// 'rewrite' => array( 'slug' => 'blog', 'with_front' => false ),
+			// 'has_archive' => 'blog',
 		));
 
 		// Create custom post type - folio
@@ -127,5 +127,61 @@
 			'has_archive' => 'folio',
 		));
 
+		// Create custom taxonomy - service
+		register_taxonomy('service_type', array('service_inner'), array(
+			'labels' => array(
+					'name'=>'Категории обслуживания'
+			),
+			'hierarchical' => true
+		));
+
+		// Create custom post type - service -> service_inner
+		register_post_type('service_inner', array(
+					'labels'             => array(
+					'name'               => 'Услуга',
+					'singular_name'      => 'Услуги',
+					'add_new'            => 'Добавить новую',
+					'add_new_item'       => 'Добавить новую',
+					'edit_item'          => 'Редактировать запись',
+					'new_item'           => 'Новая запись',
+					'view_item'          => 'Посмотреть запись',
+					'search_items'       => 'Найти запись',
+					'not_found'          => 'Записей не найдено',
+					'not_found_in_trash' => 'В корзине записей не найдено',
+					'parent_item_colon'  => '',
+					'menu_name'          => 'Услуги'
+				),
+					'public'             => true,
+					'publicly_queryable' => true,
+					'show_ui'            => true,
+					'show_in_menu'       => true,
+					'query_var'          => true,
+					'rewrite'            => true,
+					'capability_type'    => 'post',
+					'has_archive'        => false,
+					'hierarchical'       => false,
+					'menu_position'      => null,
+					'supports'           => array('title','editor','author','thumbnail','excerpt','comments'
+				),
+				'rewrite' => array( 'slug' => 'service/%service_type%', 'with_front' => false ),
+				// 'has_archive' => 'service',
+			)
+		);
+
+	}
+
+	// services
+	## Отфильтруем ЧПУ произвольного типа
+	add_filter('post_type_link', 'services_permalink', 1, 2);
+
+	function services_permalink( $permalink, $post ){
+		// выходим если это не наш тип записи: без холдера %service_type%
+		if( strpos($permalink, '%service_type%') === FALSE )
+			return $permalink;
+
+		// Получаем элементы таксы
+		$terms = get_the_terms($post, 'service_type');
+		$taxonomy_slug = $terms[0]->slug;
+		return str_replace('%service_type%', $taxonomy_slug, $permalink );
 	}
 ?>

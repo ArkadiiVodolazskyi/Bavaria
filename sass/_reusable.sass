@@ -50,6 +50,7 @@ li, a, span
 	display: inline-block
 img
 	width: 100%
+	user-select: none
 
 // ---------------------------------------------------------------- Variables
 $fontSize1920: 24px
@@ -399,20 +400,21 @@ svg.replaced-svg:not(.native)
 .facts_cards
 	display: flex
 	flex-wrap: wrap
+	justify-content: space-evenly
 	margin: 2.5rem -3rem 0
 	.card
 		width: calc(100% / 2 - 3rem)
 		margin: 0.75rem 1.5rem
 		display: flex
-		justify-content: space-between
+		justify-content: flex-start
 		align-items: center
 		padding: rem(36)
 		transform: skew(-$skew)
 		background-color: $w
 		box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
 		.pro_icon
-			min-width: rem(72)
-			min-height: rem(72)
+			max-width: rem(72)
+			max-height: rem(72)
 			transform: skew($skew)
 		.pro_text
 			margin-left: rem(24)
@@ -459,7 +461,6 @@ svg.replaced-svg:not(.native)
 			color: $red
 		.expand
 			fill: $red
-			right: calc( 2rem + 16px )
 			svg
 				transform: translate(-50%, -50%) rotate(180deg)
 	h3
@@ -468,7 +469,8 @@ svg.replaced-svg:not(.native)
 		font-size: rem(24)
 		font-weight: 500
 	.expand
-		width: 2rem
+		width: rem(36)
+		height: rem(20)
 		position: absolute
 		top: 2rem
 		right: 2rem
@@ -516,6 +518,10 @@ svg.replaced-svg:not(.native)
 		animation-duration: 0.5s
 		animation-delay: 0.8s
 		animation-fill-mode: forwards
+	&.red
+		fill: $red
+	&.accent
+		transform: scale(1.5)
 	&:hover
 		fill: $lBlue
 	svg

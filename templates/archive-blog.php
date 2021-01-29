@@ -26,9 +26,9 @@
       <div class="figure_1">
         <img
           class="img-svg native figure_41"
-          src="../img_shared/figures/figure_41.svg"
+          src="<?= B_IMG_DIR ?>/figure_41.svg"
         />
-        <img class="figure_42" src="../img_shared/figures/figure_42.png" />
+        <img class="figure_42" src="<?= B_IMG_DIR ?>/figure_42.png" />
       </div>
     </section>
 
@@ -40,25 +40,11 @@
 
             <?php
               $posts = get_posts( [
-                'post_type'    => 'blog',
-                'post_status'  => 'publish',
-                'posts_per_page'   => -1,
-                'orderby' => 'date',
-                'order' => 'DESC',
+                'post_type' => 'any',
+                'numberposts' => -1
               ] );
 
-              // создаем экземпляр
-              $my_posts = new WP_Query;
-
-              // делаем запрос
-              $myposts = $my_posts->query( array(
-                'post_type' => 'blog'
-              ) );
-
-              // обрабатываем результат
-              foreach( $myposts as $pst ){
-                echo esc_html( $pst->post_title );
-              }
+              var_dump($posts);
 
               foreach( $posts as $post ) {
                 setup_postdata($post);
@@ -67,6 +53,8 @@
                 $img = get_field('banner');
                 $date = get_the_date();
                 $post_title = $post->post_title;
+
+                echo $post;
               ?>
 
                 <a
