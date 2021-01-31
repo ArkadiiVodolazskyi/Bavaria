@@ -16,7 +16,12 @@
 		<?php wp_head(); ?>
   </head>
   <body>
-		<?php get_header(); ?>
+    <?php get_header(); ?>
+
+    <!-- Fullscreen video -->
+    <div id="video">
+      <?= get_field('video_section')['video']; ?>
+    </div>
 
     <section class="banner blog_banner">
       <img src="<?= get_field('banner'); ?>" class="banner_img" />
@@ -96,7 +101,7 @@
       <div class="wrapper">
         <div class="video_left">
           <div class="img_bg">
-            <?= get_field('video_section')['video']; ?>
+            <img src="<?= get_field('video_section')['thumbnail']; ?>" >
           </div>
         </div>
         <div class="video_text">
@@ -115,13 +120,49 @@
 
       <div
         class="figure_7 red"
-        style="width: 20rem; height: 22.5rem; left: 35%"
-      >
+        style="width: 20rem; height: 22.5rem; left: 35%">
         <img
           class="img-svg figure_71"
           src="<?= B_IMG_DIR ?>/figure_71.svg"
         />
       </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: -2%"
+        viewbox="0,0 140,270">
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 32%"
+        viewbox="0,0 140,270">
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="figure_12"
+        style="left: 64%"
+        viewbox="0,0 140,270">
+        <path
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.04)"
+          stroke-width="0.3px"
+          d="M67.708 0h69.062L69.062 270.833H0z"
+        />
+      </svg>
     </section>
 
     <?php if (get_field('facts', 'options')): ?>

@@ -19,12 +19,7 @@
 		<?php get_header(); ?>
 
     <section class="banner blog_banner map_banner">
-      <div class="banner_img map">
-        <div class="map_overlay"></div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2753.207173154689!2d30.713861115997297!3d46.36527747912191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c7cb41dc502481%3A0x3394adabb5779b8!2z0LLRg9C70LjRhtGPINCc0LjQutC-0LvQuCDQotGA0L7Rl9GG0YzQutC-0LPQviwgMSwg0J7QtNC10YHQsCwg0J7QtNC10YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDY1MDAw!5e0!3m2!1sru!2sua!4v1611058761658!5m2!1sru!2sua"
-        ></iframe>
-      </div>
+      <div class="banner_img map"></div>
 
       <div class="wrapper">
         <div class="contact_info">
@@ -111,6 +106,26 @@
         </div>
       </div>
     </section>
+
+    <script>
+      // Initialize GMaps
+      function initMap() {
+        const coordinates = { lat: <?= get_field('coords')['lat']; ?>, lng: <?= get_field('coords')['lng']; ?> };
+        const map = new google.maps.Map(document.querySelector(".map"), {
+          center: coordinates,
+          zoom: 17,
+          disableDefaultUI: true,
+          scrollwheel: true,
+        });
+        const marker = new google.maps.Marker({
+          position: coordinates,
+          map: map,
+          icon: '<?= get_field('mark'); ?>',
+        });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?= get_field('gmaps_api_key', 'options'); ?>&callback=initMap"></script>
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>

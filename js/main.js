@@ -13,6 +13,7 @@ window.addEventListener("load", () => {
     element.classList.add("activeOverlay");
 
     closeOverlay.addEventListener("click", () => {
+      closeOverlay.classList.remove("red");
       const activeOverlays = document.querySelectorAll(".activeOverlay");
       activeOverlays.forEach((activeOverlay) => {
         activeOverlay.classList.remove("activeOverlay");
@@ -24,25 +25,6 @@ window.addEventListener("load", () => {
       });
     });
   }
-
-  // Initialize GMaps
-  (function () {
-    function initMap() {
-      const coordinates = { lat: 46.36541074235588, lng: 30.716028340841838 };
-      const map = new google.maps.Map(document.querySelector(".map"), {
-        center: coordinates,
-        zoom: 17,
-        disableDefaultUI: false,
-        scrollwheel: true,
-      });
-      const marker = new google.maps.Marker({
-        position: coordinates,
-        map: map,
-      });
-    }
-
-    const key = "AIzaSyAUP-_EwsSSdNItxU_gnpAfsC_rdGv_qsg";
-  })();
 
   // Use .img-svg on image to remove it with svg version
   (function () {
@@ -391,10 +373,6 @@ window.addEventListener("load", () => {
       openVideo.addEventListener("click", () => {
         openOverlay(video);
       });
-      // Stop video on close
-      // closeOverlay.addEventListener("click", () => {
-      //   video.querySelector("iframe").getPlayerState(2);
-      // });
     }
   })();
 
@@ -434,6 +412,7 @@ window.addEventListener("load", () => {
         for (let j = 0; j < imgs.length; j++) {
           imgs[j].addEventListener("click", () => {
             openOverlay(clonedLightbox);
+            closeOverlay.classList.add("red");
 
             clonedImgs.forEach((image) => {
               image.classList.remove("activeOverlay");
@@ -461,6 +440,15 @@ window.addEventListener("load", () => {
             clonedImgs[clonedImgIndex - 1].classList = "";
             clonedImgs[clonedImgIndex].classList = "activeOverlay";
           }
+        });
+
+        // Accent on close btn to find
+        // clonedTape, clonedLightbox
+        clonedTape.addEventListener("click", () => {
+          closeOverlay.classList.add("accent");
+          setTimeout(() => {
+            closeOverlay.classList.remove("accent");
+          }, 500);
         });
       }
     }
@@ -598,9 +586,7 @@ window.addEventListener("load", () => {
     const navCheckupBtn = document.getElementById("navCheckupBtn");
 
     if (navCheckupBtn) {
-      console.log(window.pageYOffset);
       if (window.pageYOffset > 250) {
-        console.log(window.pageYOffset);
         navCheckupBtn.classList.add("toBottom");
       } else {
         navCheckupBtn.classList.remove("toBottom");

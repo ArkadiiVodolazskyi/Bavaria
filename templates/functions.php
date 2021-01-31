@@ -39,17 +39,10 @@
 		wp_register_script( 'wowjs', B_JS_DIR . "/libs/wow.min.js", array(), null, true );
 		wp_register_script( 'mainjs', B_JS_DIR . "/main.js", array(), date("h:i:s"), true );
 
-		// Get API Key from ACF
-		$apikey = get_field('gmaps_api_key', 'options');
-
-		wp_register_script( 'gmaps', "https://maps.googleapis.com/maps/api/js?key=" . $apikey . "&callback=initMap", array(), false, true );
-
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'slick' );
 		wp_enqueue_script( 'wowjs' );
 		wp_enqueue_script( 'mainjs' );
-
-		wp_enqueue_script( 'gmaps' );
 	}
 
 	function theme_setup() {
@@ -92,8 +85,8 @@
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-			// 'rewrite' => array( 'slug' => 'blog', 'with_front' => false ),
-			// 'has_archive' => 'blog',
+			'rewrite' => array( 'slug' => 'blog', 'with_front' => false ),
+			'has_archive' => 'blog',
 		));
 
 		// Create custom post type - folio

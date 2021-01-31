@@ -127,93 +127,43 @@
         <div class="cards">
           <div class="pages">
             <div class="page mobslider">
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+              <?php
+                $posts = get_posts( [
+                  'post_type' => 'blog',
+                  'numberposts' => 4
+                ] );
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+                foreach( $posts as $post ) {
+                  setup_postdata($post);
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+                  $url = get_permalink();
+                  $img = get_field('banner');
+                  $date = get_the_date();
+                  $post_title = $post->post_title;
+                ?>
+
+                  <a
+                    href="<?= $url; ?>"
+                    class="card"
+                    style="background-image: url(<?= $img; ?>); ">
+
+                    <div class="block_overlay">
+                      <span class="date">
+                        <?= $date; ?>
+                        <img
+                          src="<?= B_IMG_DIR ?>/arrow.svg"
+                          class="img-svg arrow"
+                        />
+                      </span>
+                      <p class="text">
+                        <?= $post_title; ?>
+                      </p>
+                    </div>
+                  </a>
+
+              <?php }; wp_reset_postdata(); ?>
+
             </div>
           </div>
         </div>
@@ -221,7 +171,7 @@
 
       <div class="figure_2" style="left: 74%">
         <div class="figure_21"></div>
-        <img class="figure_22" src="../img_shared/figures/figure_22.png" />
+        <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
         <div class="figure_23"></div>
       </div>
 

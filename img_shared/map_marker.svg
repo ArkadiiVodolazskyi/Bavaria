@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="70" viewBox="0 0 120 70">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_91" data-name="Path 91" d="M20,0A20,20,0,0,1,40,20c0,11.046-20,40-20,40S0,31.046,0,20A20,20,0,0,1,20,0Z" transform="translate(1320 439)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_155" data-name="Group 155" transform="translate(-1075 -556)">
+    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(1103 610)" fill="none" stroke="#d63d37" stroke-width="1" opacity="0.4">
+      <ellipse cx="32" cy="6" rx="32" ry="6" stroke="none"/>
+      <ellipse cx="32" cy="6" rx="31.5" ry="5.5" fill="none"/>
+    </g>
+    <g id="Group_154" data-name="Group 154">
+      <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(1075 606)" fill="none" stroke="#d63d37" stroke-width="1" opacity="0.1">
+        <ellipse cx="60" cy="10" rx="60" ry="10" stroke="none"/>
+        <ellipse cx="60" cy="10" rx="59.5" ry="9.5" fill="none"/>
+      </g>
+      <g id="Group_153" data-name="Group 153">
+        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1092 608)" fill="none" stroke="#d63d37" stroke-width="1" opacity="0.2">
+          <ellipse cx="43" cy="8" rx="43" ry="8" stroke="none"/>
+          <ellipse cx="43" cy="8" rx="42.5" ry="7.5" fill="none"/>
+        </g>
+        <g id="Mask_Group_22" data-name="Mask Group 22" transform="translate(-205 117)" clip-path="url(#clip-path)">
+          <g id="Group_72" data-name="Group 72" transform="translate(71.218 59.218)">
+            <path id="Path_88" data-name="Path 88" d="M14.891,0H30.08L15.189,59.564H0Z" transform="translate(1237 380)" fill="#8dc1fb" fill-rule="evenodd"/>
+            <path id="Path_89" data-name="Path 89" d="M553.891,0H569.08L554.189,59.564H539Z" transform="translate(727.484 380)" fill="#d63d37" fill-rule="evenodd"/>
+            <path id="Path_90" data-name="Path 90" d="M284.891,0h14.891L284.891,59.564H270Z" transform="translate(981.891 380)" fill="#2d568a" fill-rule="evenodd"/>
+          </g>
+          <circle id="Ellipse_2" data-name="Ellipse 2" cx="9" cy="9" r="9" transform="translate(1331 450)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

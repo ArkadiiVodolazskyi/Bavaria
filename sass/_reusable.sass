@@ -94,11 +94,14 @@ $lGrey: #737a84
 *
 	font-family: 'Inter', sans-serif
 	font-size: $fontSize1920
-	transition: all 0.3s ease
 	color: inherit
 	text-decoration: none
 	box-sizing: border-box
 	line-height: 1.2
+
+// Transitions
+a, button, svg, img
+	transition: all 0.3s ease
 
 html
 	width: 100vw
@@ -183,6 +186,7 @@ svg.replaced-svg:not(.native)
 	transform: translate(-50%, 0)
 	cursor: pointer
 	fill: $w
+	transition: none
 	&.dark
 		fill: $dGrey
 	&:hover
@@ -216,6 +220,7 @@ svg.replaced-svg:not(.native)
 	.figure
 		width: rem(30)
 		position: relative
+		transition: all 0.3s ease
 	.triangle
 		width: 0
 		height: 0
@@ -226,6 +231,7 @@ svg.replaced-svg:not(.native)
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
+		transition: all 0.3s ease
 	.rect
 		width: rem(80)
 		height: 60px
@@ -234,6 +240,7 @@ svg.replaced-svg:not(.native)
 		top: 50%
 		left: 30%
 		transform: translate(0%, -50%) skew(-$skew)
+		transition: all 0.3s ease
 	a, button
 		color: $w
 		margin-left: rem(28)
@@ -300,6 +307,12 @@ svg.replaced-svg:not(.native)
 		cursor: pointer
 		position: relative
 		background-color: $dGrey
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		align-items: flex-start
+		padding-bottom: rem(40)
+		overflow: hidden
 		&:hover
 			.card_bg
 				opacity: 1
@@ -309,6 +322,9 @@ svg.replaced-svg:not(.native)
 			width: 100%
 			height: 100%
 			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
 			opacity: 0.4
 		h5
 			height: rem(64)
@@ -320,6 +336,7 @@ svg.replaced-svg:not(.native)
 			font-size: rem(24)
 			font-weight: bold
 			svg
+				flex: 1 0 auto
 				position: relative
 				z-index: 10
 			p
@@ -340,13 +357,13 @@ svg.replaced-svg:not(.native)
 					transition: all 0.2s linear
 			span
 				transform: skew($skew)
-				white-space: nowrap
 
 .checkup
 	width: max-content
 	background-color: $red
 	color: $w
 	transform: skew(-$skew)
+	transition: all 0.3s ease
 	&:hover
 		background-color: $lBlue
 		button, input, a
@@ -445,18 +462,20 @@ svg.replaced-svg:not(.native)
 	padding: rem(48) rem(130) rem(48) rem(48)
 	box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
 	background-color: $dw
-	height: rem(120)
+	max-height: rem(120)
+	transition: all 0.3s ease
 	> *:not(h3)
 		opacity: 0
 		visibility: hidden
 	&:not(:first-child)
 		margin-top: rem(36)
 	&.active
-		height: auto
+		max-height: max-content
 		background-color: $w
 		> *
 			opacity: 1
 			visibility: visible
+			transition: all 0.3s ease
 		h3
 			color: $red
 		.expand
@@ -541,6 +560,7 @@ svg.replaced-svg:not(.native)
 	visibility: hidden
 	backdrop-filter: blur(8.2px)
 	cursor: pointer
+	transition: all 0.3s ease
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
@@ -557,6 +577,7 @@ svg.replaced-svg:not(.native)
 	visibility: hidden
 	padding: 3rem 5rem
 	background-color: $w
+	transition: all 0.3s ease
 	&.activeOverlay
 		opacity: 1
 		visibility: visible

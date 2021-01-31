@@ -147,102 +147,42 @@
       </div>
     </section>
 
-    <section class="news light p-5 also_news">
+    <section class="news p-5">
       <div class="wrapper mobwrapper">
         <h3>Читайте также</h3>
 
-        <div class="cards">
-          <div class="pages">
-            <div class="page mobslider">
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery1.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+        <div class="other mobslider">
+          <?php
+            $posts = get_posts( [
+              'post_type' => 'folio',
+              'numberposts' => 3
+            ] );
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery2.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+            foreach( $posts as $post ) {
+              setup_postdata($post);
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery3.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
+              $url = get_permalink();
+              $img = get_field('banner');
+              $post_title = $post->post_title; ?>
 
-              <a
-                href="./pages/page-blog_inner.html"
-                class="card"
-                style="
-                  background-image: url(../img_shared/service_gallery/service_gallery4.png);
-                "
-              >
-                <div class="block_overlay">
-                  <span class="date">
-                    22 декабря 2020
-                    <img
-                      src="<?= B_IMG_DIR ?>/arrow.svg"
-                      class="img-svg arrow"
-                    />
-                  </span>
-                  <p class="text">
-                    Chevrolet Camaro RS посетил нашу студию детейлинга для
-                    процедур по преображению
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div>
+            <a href="<?= $url; ?>" class="card">
+              <img
+                src="<?= $img; ?>"
+                class="card_bg"
+              />
+              <h5>
+                <img
+                  src="<?= B_IMG_DIR ?>/figure_5.svg"
+                  class="img-svg native"
+                />
+                <p><span>
+                  <?= $post_title; ?>
+                </span></p>
+              </h5>
+            </a>
+
+          <?php }; wp_reset_postdata(); ?>
+
         </div>
       </div>
 

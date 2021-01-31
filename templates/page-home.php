@@ -141,93 +141,43 @@
             <div class="cards">
               <div class="pages">
                 <div class="page mobslider">
-                  <a
-                    href="./pages/page-blog_inner.html"
-                    class="card"
-                    style="
-                      background-image: url(<?= B_IMG_DIR ?>/service_gallery1.png);
-                    "
-                  >
-                    <div class="block_overlay">
-                      <span class="date">
-                        22 декабря 2020
-                        <img
-                          src="<?= B_IMG_DIR ?>/arrow.svg"
-                          class="img-svg arrow"
-                        />
-                      </span>
-                      <p class="text">
-                        Chevrolet Camaro RS посетил нашу студию детейлинга для
-                        процедур по преображению
-                      </p>
-                    </div>
-                  </a>
 
-                  <a
-                    href="./pages/page-blog_inner.html"
-                    class="card"
-                    style="
-                      background-image: url(<?= B_IMG_DIR ?>/service_gallery2.png);
-                    "
-                  >
-                    <div class="block_overlay">
-                      <span class="date">
-                        22 декабря 2020
-                        <img
-                          src="<?= B_IMG_DIR ?>/arrow.svg"
-                          class="img-svg arrow"
-                        />
-                      </span>
-                      <p class="text">
-                        Chevrolet Camaro RS посетил нашу студию детейлинга для
-                        процедур по преображению
-                      </p>
-                    </div>
-                  </a>
+                  <?php
+                    $posts = get_posts( [
+                      'post_type' => 'blog',
+                      'numberposts' => 4
+                    ] );
 
-                  <a
-                    href="./pages/page-blog_inner.html"
-                    class="card"
-                    style="
-                      background-image: url(<?= B_IMG_DIR ?>/service_gallery3.png);
-                    "
-                  >
-                    <div class="block_overlay">
-                      <span class="date">
-                        22 декабря 2020
-                        <img
-                          src="<?= B_IMG_DIR ?>/arrow.svg"
-                          class="img-svg arrow"
-                        />
-                      </span>
-                      <p class="text">
-                        Chevrolet Camaro RS посетил нашу студию детейлинга для
-                        процедур по преображению
-                      </p>
-                    </div>
-                  </a>
+                    foreach( $posts as $post ) {
+                      setup_postdata($post);
 
-                  <a
-                    href="./pages/page-blog_inner.html"
-                    class="card"
-                    style="
-                      background-image: url(<?= B_IMG_DIR ?>/service_gallery4.png);
-                    "
-                  >
-                    <div class="block_overlay">
-                      <span class="date">
-                        22 декабря 2020
-                        <img
-                          src="<?= B_IMG_DIR ?>/arrow.svg"
-                          class="img-svg arrow"
-                        />
-                      </span>
-                      <p class="text">
-                        Chevrolet Camaro RS посетил нашу студию детейлинга для
-                        процедур по преображению
-                      </p>
-                    </div>
-                  </a>
+                      $url = get_permalink();
+                      $img = get_field('banner');
+                      $date = get_the_date();
+                      $post_title = $post->post_title;
+                    ?>
+
+                      <a
+                        href="<?= $url; ?>"
+                        class="card"
+                        style="background-image: url(<?= $img; ?>); ">
+
+                        <div class="block_overlay">
+                          <span class="date">
+                            <?= $date; ?>
+                            <img
+                              src="<?= B_IMG_DIR ?>/arrow.svg"
+                              class="img-svg arrow"
+                            />
+                          </span>
+                          <p class="text">
+                            <?= $post_title; ?>
+                          </p>
+                        </div>
+                      </a>
+
+                  <?php }; wp_reset_postdata(); ?>
+
                 </div>
               </div>
             </div>
@@ -305,55 +255,38 @@
 
 
             <div class="other mobslider">
-              <a href="./pages/page-folio_inner.html" class="card">
-                <img
-                  src="<?= B_IMG_DIR ?>/service_gallery1.png"
-                  class="card_bg"
-                />
-                <h5>
+
+              <?php
+                $posts = get_posts( [
+                  'post_type' => 'folio',
+                  'numberposts' => 3
+                ] );
+
+                foreach( $posts as $post ) {
+                  setup_postdata($post);
+
+                  $url = get_permalink();
+                  $img = get_field('banner');
+                  $post_title = $post->post_title; ?>
+
+                <a href="<?= $url; ?>" class="card">
                   <img
-                    src="<?= B_IMG_DIR ?>/figure_5.svg"
-                    class="img-svg native"
+                    src="<?= $img; ?>"
+                    class="card_bg"
                   />
-                  <p><span>Детейлинг BMW X5</span></p>
-                </h5>
-              </a>
-              <a href="./pages/page-folio_inner.html" class="card">
-                <img
-                  src="<?= B_IMG_DIR ?>/service_gallery2.png"
-                  class="card_bg"
-                />
-                <h5>
-                  <img
-                    src="<?= B_IMG_DIR ?>/figure_5.svg"
-                    class="img-svg native"
-                  />
-                  <p>
-                    <span
-                      >Техническое обслуживание<br />
-                      Lexus RX350</span
-                    >
-                  </p>
-                </h5>
-              </a>
-              <a href="./pages/page-folio_inner.html" class="card">
-                <img
-                  src="<?= B_IMG_DIR ?>/service_gallery3.png"
-                  class="card_bg"
-                />
-                <h5>
-                  <img
-                    src="<?= B_IMG_DIR ?>/figure_5.svg"
-                    class="img-svg native"
-                  />
-                  <p>
-                    <span
-                      >Диагностика и ремонт<br />
-                      Brabus G-Wagen</span
-                    >
-                  </p>
-                </h5>
-              </a>
+                  <h5>
+                    <img
+                      src="<?= B_IMG_DIR ?>/figure_5.svg"
+                      class="img-svg native"
+                    />
+                    <p><span>
+                      <?= $post_title; ?>
+                    </span></p>
+                  </h5>
+                </a>
+
+              <?php }; wp_reset_postdata(); ?>
+
             </div>
           </div>
 
@@ -414,6 +347,7 @@
 
       <?php while ( have_rows('about') ): the_row(); ?>
         <section id="info" class="info light">
+
           <?php while ( have_rows('link') ): the_row(); ?>
             <a href="<?= get_sub_field('url'); ?>" class="signup">
               <?= get_sub_field('text'); ?>

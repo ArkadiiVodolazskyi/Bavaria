@@ -62,11 +62,13 @@ img {
 * {
   font-family: "Inter", sans-serif;
   font-size: 24px;
-  transition: all 0.3s ease;
   color: inherit;
   text-decoration: none;
   box-sizing: border-box;
   line-height: 1.2; }
+
+a, button, svg, img {
+  transition: all 0.3s ease; }
 
 html {
   width: 100vw;
@@ -150,7 +152,8 @@ svg.replaced-svg:not(.native) {
   left: 50%;
   transform: translate(-50%, 0);
   cursor: pointer;
-  fill: #fff; }
+  fill: #fff;
+  transition: none; }
   .next.dark {
     fill: #181f29; }
   .next:hover {
@@ -182,7 +185,8 @@ svg.replaced-svg:not(.native) {
     width: 10px; }
   .video .figure {
     width: 1.25rem;
-    position: relative; }
+    position: relative;
+    transition: all 0.3s ease; }
   .video .triangle {
     width: 0;
     height: 0;
@@ -192,7 +196,8 @@ svg.replaced-svg:not(.native) {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); }
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease; }
   .video .rect {
     width: 3.3333333333rem;
     height: 60px;
@@ -200,7 +205,8 @@ svg.replaced-svg:not(.native) {
     position: absolute;
     top: 50%;
     left: 30%;
-    transform: translate(0%, -50%) skew(-14deg); }
+    transform: translate(0%, -50%) skew(-14deg);
+    transition: all 0.3s ease; }
   .video a, .video button {
     color: #fff;
     margin-left: 1.1666666667rem;
@@ -266,7 +272,13 @@ svg.replaced-svg:not(.native) {
     margin: 1.5rem 0.75rem;
     cursor: pointer;
     position: relative;
-    background-color: #181f29; }
+    background-color: #181f29;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 1.6666666667rem;
+    overflow: hidden; }
     .other .card:hover .card_bg {
       opacity: 1; }
     .other .card:hover h5 p:before {
@@ -275,6 +287,9 @@ svg.replaced-svg:not(.native) {
       width: 100%;
       height: 100%;
       position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       opacity: 0.4; }
     .other .card h5 {
       height: 2.6666666667rem;
@@ -286,6 +301,7 @@ svg.replaced-svg:not(.native) {
       font-size: 1rem;
       font-weight: bold; }
       .other .card h5 svg {
+        flex: 1 0 auto;
         position: relative;
         z-index: 10; }
       .other .card h5 p {
@@ -305,14 +321,14 @@ svg.replaced-svg:not(.native) {
           background-color: #d63d37;
           transition: all 0.2s linear; }
       .other .card h5 span {
-        transform: skew(14deg);
-        white-space: nowrap; }
+        transform: skew(14deg); }
 
 .checkup {
   width: max-content;
   background-color: #d63d37;
   color: #fff;
-  transform: skew(-14deg); }
+  transform: skew(-14deg);
+  transition: all 0.3s ease; }
   .checkup:hover {
     background-color: #8dc1fb; }
     .checkup:hover button, .checkup:hover input, .checkup:hover a {
@@ -412,18 +428,20 @@ svg.replaced-svg:not(.native) {
   padding: 2rem 5.4166666667rem 2rem 2rem;
   box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12);
   background-color: #f1f2f3;
-  height: 5rem; }
+  max-height: 5rem;
+  transition: all 0.3s ease; }
   .vacancy > *:not(h3) {
     opacity: 0;
     visibility: hidden; }
   .vacancy:not(:first-child) {
     margin-top: 1.5rem; }
   .vacancy.active {
-    height: auto;
+    max-height: max-content;
     background-color: #fff; }
     .vacancy.active > * {
       opacity: 1;
-      visibility: visible; }
+      visibility: visible;
+      transition: all 0.3s ease; }
     .vacancy.active h3 {
       color: #d63d37; }
     .vacancy.active .expand {
@@ -507,7 +525,8 @@ svg.replaced-svg:not(.native) {
   opacity: 0;
   visibility: hidden;
   backdrop-filter: blur(8.2px);
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all 0.3s ease; }
   #overlay.activeOverlay {
     opacity: 1;
     visibility: visible; }
@@ -523,7 +542,8 @@ svg.replaced-svg:not(.native) {
   opacity: 0;
   visibility: hidden;
   padding: 3rem 5rem;
-  background-color: #fff; }
+  background-color: #fff;
+  transition: all 0.3s ease; }
   #connect_wrapper.activeOverlay {
     opacity: 1;
     visibility: visible; }
@@ -893,7 +913,8 @@ header {
       header .contacts .wrapper .contact {
         position: relative;
         padding-right: 1.8333333333rem;
-        fill: #d63d37; }
+        fill: #d63d37;
+        transition: all 0.3s ease; }
         header .contacts .wrapper .contact:hover {
           background-color: #fff; }
           header .contacts .wrapper .contact:hover a {
@@ -932,7 +953,8 @@ header {
           background-color: #fff;
           padding: 1rem 1.8333333333rem 1rem 1rem;
           z-index: 10;
-          text-align: left; }
+          text-align: left;
+          transition: all 0.3s ease; }
           header .contacts .wrapper .contact .additional > li .type li svg {
             width: 0.8333333333rem;
             height: 0.8333333333rem; }
@@ -991,7 +1013,8 @@ header {
   opacity: 0;
   visibility: hidden;
   display: flex;
-  color: #fff; }
+  color: #fff;
+  transition: all 0.3s ease; }
   #expandedMenu.activeOverlay {
     opacity: 1;
     visibility: visible;
@@ -1008,7 +1031,8 @@ header {
     padding: 11.6666666667rem 2rem 0 4.5rem;
     background: linear-gradient(207deg, #181f29, #153155);
     backdrop-filter: blur(30px);
-    transform: translateY(100%); }
+    transform: translateY(100%);
+    transition: all 0.3s ease; }
     #expandedMenu > *:not(.closeOverlay):not(.languages):nth-child(1) {
       transition-delay: 0.1s; }
     #expandedMenu > *:not(.closeOverlay):not(.languages):nth-child(2) {
@@ -1169,7 +1193,8 @@ header {
     visibility: hidden;
     transition-delay: 0.6s;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    transition: all 0.3s ease; }
     #expandedMenu .languages li {
       display: flex;
       align-items: center; }
@@ -1240,6 +1265,7 @@ header {
     transform: translate(0px, 0);
     background-color: #d63d37; }
   .hamb_animate > div {
+    transition: all 0.3s ease;
     background-color: #fff;
     width: 100%;
     height: 4px; }
@@ -1306,14 +1332,16 @@ section.services {
       position: absolute;
       overflow: hidden;
       background-color: #000;
-      opacity: 0.3; }
+      opacity: 0.3;
+      transition: all 0.3s ease; }
       section.services .wrapper .card_image img {
         width: auto;
         height: 107%;
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) skew(14deg); }
+        transform: translate(-50%, -50%) skew(14deg);
+        transition: all 0.3s ease; }
     section.services .wrapper .cards {
       width: 95%;
       height: 62.5%;
@@ -1342,7 +1370,8 @@ section.services {
         section.services .wrapper .cards .card .card_title {
           position: relative;
           transform: translate(-2rem, 1rem);
-          text-align: left; }
+          text-align: left;
+          transition: all 0.3s ease; }
           section.services .wrapper .cards .card .card_title h4 {
             padding: 1rem;
             color: #fff;
@@ -1407,12 +1436,9 @@ section.news .wrapper .cards {
           transform: skew(-14deg) translate(0, 0); }
         section.news .wrapper .cards .pages .page .card:hover .block_overlay {
           background-color: rgba(0, 0, 0, 0.7); }
-          section.news .wrapper .cards .pages .page .card:hover .block_overlay .date {
-            color: #2d568a; }
           section.news .wrapper .cards .pages .page .card:hover .block_overlay .arrow {
             opacity: 1;
             visibility: visible;
-            fill: #2d568a;
             transform: translate(1.5rem, -50%) rotate(-90deg); }
           section.news .wrapper .cards .pages .page .card:hover .block_overlay .text {
             color: #fff; }
@@ -1429,7 +1455,8 @@ section.news .wrapper .cards {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #f1f2f3; }
+          background-color: #f1f2f3;
+          transition: all 0.3s ease; }
         section.news .wrapper .cards .pages .page .card .date {
           position: relative;
           font-size: 0.6666666667rem;
@@ -1532,7 +1559,8 @@ section.info {
         padding: 2.25rem 1.25rem;
         position: absolute;
         opacity: 0;
-        visibility: hidden; }
+        visibility: hidden;
+        transition: all 0.3s ease; }
         section.info .wrapper .main .imgs .pro_card svg, section.info .wrapper .main .imgs .pro_card p {
           transform: skew(14deg); }
         section.info .wrapper .main .imgs .pro_card.active {
@@ -1631,7 +1659,8 @@ section.post {
         top: 0;
         left: 0;
         opacity: 0;
-        visibility: hidden; }
+        visibility: hidden;
+        transition: all 0.3s ease; }
         section.post .gallery .big img.active {
           opacity: 1;
           visibility: visible; }
@@ -1652,12 +1681,14 @@ section.post {
       position: absolute;
       top: 0;
       left: 0;
-      transform: translateY(0px); }
+      transform: translateY(0px);
+      transition: all 0.3s ease; }
       section.post .gallery .tape img {
         width: 9.5833333333rem;
         height: 6.25rem;
         cursor: pointer;
-        opacity: 0.3; }
+        opacity: 0.3;
+        transition: all 0.3s ease; }
         section.post .gallery .tape img:not(:first-child) {
           margin-top: 0.75rem; }
         section.post .gallery .tape img.active, section.post .gallery .tape img:hover {
@@ -1829,7 +1860,8 @@ section.about_video {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  transition: all 0.3s ease; }
   #video.activeOverlay {
     opacity: 1;
     visibility: visible; }
@@ -1838,7 +1870,8 @@ section.about_video {
     left: 50%;
     top: 50%;
     max-height: 90vh;
-    width: auto;
+    width: 80%;
+    height: inherit;
     transform: translate(-50%, -50%); }
 
 section.portfolio_main {
@@ -1949,7 +1982,7 @@ section.also {
     margin-top: 2rem; }
 
 section.map_banner {
-  height: 40rem; }
+  margin-bottom: -1rem; }
   section.map_banner .wrapper {
     padding: 13.3333333333rem 0 4.1666666667rem; }
   section.map_banner .map {
@@ -1957,16 +1990,17 @@ section.map_banner {
     height: 40rem;
     position: absolute;
     z-index: 1; }
-  section.map_banner iframe {
-    width: 100%;
-    height: 100%; }
-  section.map_banner .map_overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to right, rgba(24, 31, 41, 0.78), rgba(24, 31, 41, 0.22)); }
+    section.map_banner .map:before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right, rgba(24, 31, 41, 0.78), rgba(24, 31, 41, 0.08), rgba(24, 31, 41, 0.01)); }
   section.map_banner .contact_info {
-    width: 40%;
+    width: 35%;
     position: relative;
     z-index: 5;
     color: #fff; }
@@ -2078,7 +2112,9 @@ section.workshop {
         visibility: visible; }
       section.workshop aside .list > li.active .sublist {
         height: max-content;
-        margin-top: 0.75rem; }
+        margin-top: 0.75rem;
+        opacity: 1;
+        visibility: visible; }
       section.workshop aside .list > li a {
         font-size: 1rem;
         font-weight: bold; }
@@ -2101,7 +2137,10 @@ section.workshop {
         transform: translate(0, -50%); }
     section.workshop aside .sublist {
       height: 0;
-      overflow: hidden; }
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease; }
       section.workshop aside .sublist li {
         display: block;
         color: #181f29; }
@@ -2278,7 +2317,8 @@ section.reviews {
     background-color: #fff;
     opacity: 0;
     visibility: hidden;
-    position: absolute; }
+    position: absolute;
+    transition: all 0.3s ease; }
     section.reviews .quote_card.active {
       opacity: 1;
       visibility: visible;

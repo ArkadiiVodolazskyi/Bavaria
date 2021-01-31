@@ -40,11 +40,9 @@
 
             <?php
               $posts = get_posts( [
-                'post_type' => 'any',
+                'post_type' => 'blog',
                 'numberposts' => -1
               ] );
-
-              var_dump($posts);
 
               foreach( $posts as $post ) {
                 setup_postdata($post);
@@ -53,8 +51,6 @@
                 $img = get_field('banner');
                 $date = get_the_date();
                 $post_title = $post->post_title;
-
-                echo $post;
               ?>
 
                 <a
