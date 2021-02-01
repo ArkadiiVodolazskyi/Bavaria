@@ -106,7 +106,7 @@ section.news
 		top: 171px
 	.wrapper
 		.cards
-			margin-top: rem(72)
+			margin-top: 24px
 			.pages
 				position: relative
 				.page
@@ -707,13 +707,15 @@ section.also
 
 // page-contacts
 section.map_banner
+	width: 100%
 	// height: rem(960)
-	margin-bottom: -1rem
+	padding-bottom: rem(100)
+	background-color: $dGrey
 	.wrapper
-		padding: rem(320) 0 rem(100)
+		padding: rem(320) 0 0
 	.map
 		width: 100%
-		height: rem(960)
+		height: 100%
 		position: absolute
 		z-index: 1
 		&:before
@@ -740,10 +742,11 @@ section.map_banner
 				&:not(:first-child)
 					margin-top: rem(24)
 				> svg
-					width: rem(24)
-					height: rem(24)
-					margin-right: rem(18)
+					width: 24px
+					height: 24px
+					margin-right: 18px
 					fill: $red
+					flex-shrink: 0
 				a
 					display: block
 					&:hover
@@ -763,8 +766,8 @@ section.map_banner
 				.phone_type
 					margin-left: rem(20)
 					svg
-						width: rem(20)
-						height: rem(20)
+						width: 20px
+						height: 20px
 			> span
 				opacity: 0.5
 				font-size: rem(18)
@@ -782,8 +785,8 @@ section.map_banner
 					&:hover
 						fill: $lBlue
 					svg
-						width: rem(36)
-						height: rem(36)
+						width: 36px
+						height: 36px
 
 // page-service_post
 section.workshop

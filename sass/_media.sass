@@ -76,8 +76,7 @@
 	#closeOverlay
 		width: 23px
 		height: 23px
-		left: unset
-		right: 25px
+		left: 315px
 		top: 25px
 	#expandedMenu
 		flex-direction: column
@@ -97,6 +96,8 @@
 				font-size: 16px
 		.clients
 			order: 1
+			&:not(:first-child)
+				border-top: 1px solid rgba($w, 0.1)
 		.services
 			order: 2
 			border-top: 1px solid rgba($w, 0.1)
@@ -261,6 +262,8 @@
 				order: 2
 				a
 					font-size: 16px
+				> svg
+					display: none
 				&:hover
 					background-color: transparent
 					a
@@ -845,6 +848,42 @@
 			.right_img
 				width: 100%
 				margin-top: 36px
+	section.map_banner
+		height: auto !important
+		display: flex
+		flex-direction: column
+		overflow: hidden
+		padding-bottom: 0
+		.banner_img.map
+			width: 100%
+			max-width: 360px
+			height: 480px
+			position: relative !important
+			order: 2
+			overflow: hidden
+			left: unset
+			top: unset
+			transform: none
+			&::before
+				background: none
+		.wrapper
+			order: 1
+			padding: 136px 0 36px 0
+			max-width: 360px
+		.contact_info
+			width: 100%
+			.below
+				flex-direction: column
+				align-items: flex-start
+				margin-top: 0
+			.social, .checkup
+				margin: 36px 0 0 0
+			h2
+				font-size: 24px
+			a, .phone .phone_first a, .contacts span
+				font-size: 18px
+			.phone > span
+				font-size: 16px
 	footer
 		padding-bottom: 2rem
 		.wrapper

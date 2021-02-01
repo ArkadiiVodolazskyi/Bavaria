@@ -125,7 +125,7 @@
       }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?= get_field('gmaps_api_key', 'options'); ?>&callback=initMap"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=<?= get_field('gmaps_api_key', 'options'); ?>&callback=initMap"></script>
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>

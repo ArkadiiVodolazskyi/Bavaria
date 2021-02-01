@@ -695,4 +695,73 @@ window.addEventListener("load", () => {
       });
     }
   })();
+
+  // Styling Gravity Forms
+  (function () {
+    const gf1 = document.getElementById("gform_1");
+
+    const inputs = [
+      ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
+    ]; // name, tel, msg
+    const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
+    const subWrapper = gf1.querySelector(".gform_footer "); // send wrapper (bg)
+    const submit = gf1.querySelector("#gform_submit_button_1"); // send
+    const imgs = document.querySelectorAll(".connect_img, .connect_figure");
+
+    const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+
+    for (let i = 0; i < inputs.length; i++) {
+      // On focus move label up
+      inputs[i].addEventListener("focus", () => {
+        labels[i].classList.add("focused");
+      });
+      inputs[i].addEventListener("blur", () => {
+        if (inputs[i].value === "") {
+          labels[i].classList.remove("focused");
+        }
+      });
+      inputs[i].addEventListener("keyup", () => {
+        if (inputs[0].value === "") {
+          inputs[0].classList.add("invalid");
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
+        } else {
+          inputs[0].classList.remove("invalid");
+        }
+
+        if (telRegex.test(inputs[1].value) === false) {
+          inputs[1].classList.add("invalid");
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
+        } else {
+          inputs[1].classList.remove("invalid");
+        }
+
+        if (
+          inputs[0].value !== "" &&
+          telRegex.test(inputs[1].value) !== false
+        ) {
+          subWrapper.classList.remove("invalid");
+          submit.disabled = false;
+        }
+      });
+    }
+
+    // If inputs are not valid, prevent submission
+    gf1.addEventListener("submit", () => {
+      imgs.forEach((img) => {
+        img.style.display = "none";
+      });
+      console.log("Form submitted");
+    });
+
+    // Add hints
+    // const inputWrapperName = gf1.querySelector(".ginput_container:nth-of-type(1)");
+    // console.log(inputWrapperName);
+
+    // const hintName = document.createElement("span");
+    // hintName.classList.add("hint");
+    // hintName.innerText = "Заполните это поле.".
+    // inputWrapperName.appendChild(hintName);
+  })();
 });

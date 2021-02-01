@@ -149,14 +149,14 @@
 					'show_ui'            => true,
 					'show_in_menu'       => true,
 					'query_var'          => true,
-					'rewrite'            => true,
+					'rewrite'            => false,
 					'capability_type'    => 'post',
 					'has_archive'        => false,
 					'hierarchical'       => false,
 					'menu_position'      => null,
 					'supports'           => array('title','editor','author','thumbnail','excerpt','comments'
 				),
-				'rewrite' => array( 'slug' => 'service/%service_type%', 'with_front' => false ),
+				// 'rewrite' => array( 'slug' => 'service/%service_type%', 'with_front' => false ),
 				// 'has_archive' => 'service',
 			)
 		);
@@ -172,9 +172,22 @@
 		if( strpos($permalink, '%service_type%') === FALSE )
 			return $permalink;
 
-		// Получаем элементы таксы
+		// // Получаем элементы таксы
+		// $terms = get_the_terms($post, 'service_type');
+		// $taxonomy_slug = $terms[0]->slug;
+		// return str_replace('%service_type%', $taxonomy_slug, $permalink );
+
 		$terms = get_the_terms($post, 'service_type');
-		$taxonomy_slug = $terms[0]->slug;
-		return str_replace('%service_type%', $taxonomy_slug, $permalink );
+		if( ! is_wp_error($terms) && !empty($terms) && is_object($terms[0]) ) {
+			$taxonomy_slug = $terms[0]->slug;
+			return str_replace('%service_type%', $taxonomy_slug, $permalink );
+		}
+		else {
+			$slug = str_replace('%service_type%', $taxonomy_slug, $permalink );
+			$basename = basename($slug);
+			$slug = str_replace('/' . $basename, $basename, $slug );
+			return $slug;
+		}
 	}
+
 ?>

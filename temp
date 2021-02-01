@@ -35,3 +35,10 @@ clonedSlider.classList.add("fullscreen");
 		animation: fadeIn
 		animation-duration: 0.5s
 		animation-delay: 1.8s
+
+
+
+class="program-card wow fadeInRight"
+data-wow-offset="-400"
+data-wow-duration="0.5s"
+data-wow-delay="<?= get_row_index()*0.2?>s"

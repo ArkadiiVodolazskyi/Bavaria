@@ -153,7 +153,7 @@
 
                       $url = get_permalink();
                       $img = get_field('banner');
-                      $date = get_the_date();
+                      $date = date_i18n( 'j F Y', get_the_date(), false );
                       $post_title = $post->post_title;
                     ?>
 
@@ -317,7 +317,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="figure_12"
-            style="left: 64%"
+            style="left: 54%"
             viewbox="0,0 140,270">
             <path
               fill="transparent"

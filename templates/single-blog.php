@@ -150,7 +150,7 @@
 
                     <div class="block_overlay">
                       <span class="date">
-                        <?= $date; ?>
+                        <?= date_i18n( 'j F Y', $date, false ); ?>
                         <img
                           src="<?= B_IMG_DIR ?>/arrow.svg"
                           class="img-svg arrow"

@@ -90,6 +90,20 @@ $lGrey: #737a84
 		opacity: 1
 		visibility: visible
 
+@keyframes jump
+	0%
+		transform: translate(-50%, 0%)
+	25%
+		transform: translate(-50%, -30%)
+	100%
+		transform: translate(-50%, 0%)
+
+@keyframes lineGrow
+	0%
+		max-height: 0px !important
+	100%
+		max-height: 2000px !important
+
 // ---------------------------------------------------------------- Common styles
 *
 	font-family: 'Inter', sans-serif
@@ -159,6 +173,7 @@ section
 	z-index: 20
 	right: 186px
 	top: 108px
+	transition-delay: 0.1s
 	&:hover
 		color: $lBlue
 	&:before
@@ -170,6 +185,9 @@ section
 		left: -1.2rem
 		top: 50%
 		transform: translate(0%, -50%) skew(-$skew)
+		transition: all 0.3s ease
+.signup:hover:before
+	transform: translate(1300%, -50%) skew(-$skew)
 
 svg.replaced-svg:not(.native)
 	fill: inherit
@@ -191,6 +209,8 @@ svg.replaced-svg:not(.native)
 		fill: $dGrey
 	&:hover
 		fill: $lBlue
+		animation: jump
+		animation-duration: 0.6s
 	svg
 		width: 36px
 		height: 20px
@@ -565,72 +585,6 @@ svg.replaced-svg:not(.native)
 		opacity: 1
 		visibility: visible
 
-#connect_wrapper
-	width: 50%
-	max-height: rem(550)
-	position: fixed
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%) skew(-$skew)
-	z-index: 960
-	opacity: 0
-	visibility: hidden
-	padding: 3rem 5rem
-	background-color: $w
-	transition: all 0.3s ease
-	&.activeOverlay
-		opacity: 1
-		visibility: visible
-.connect_img
-	position: absolute
-	z-index: 2
-	width: rem(436)
-	height: rem(600)
-	top: 50%
-	right: 0.5rem
-	transform: translate(0%, -50%) skew($skew)
-.connect_figure
-	transform: skew($skew)
-	position: absolute
-	z-index: 3
-	right: 1.25rem
-	bottom: -3rem
-#closeConnect
-	padding: 0
-	transform: skew($skew)
-	position: absolute
-	top: rem(24)
-	right: rem(24)
-	fill: $red
-	&:hover
-		fill: $lBlue
-#connect_form, #connect_form_2
-	position: relative
-	z-index: 5
-	transform: skew($skew)
-	width: 50%
-	h2
-		font-size: rem(36)
-		font-weight: bold
-		color: $dGrey
-	input[type=text], input[type=tel], textarea
-		width: 100%
-		margin-top: rem(36)
-		border: none
-		border-bottom: 2px solid $dGrey
-		color: $lGrey
-		font-size: rem(18)
-		padding: rem(12) 0
-		background-color: transparent
-	textarea
-		max-width: 100%
-		max-height: rem(180)
-	.checkup
-		margin-top: rem(36)
-	input[type=submit]
-		background-color: transparent
-		border: 1px solid transparent
-
 .lightbox
 	img
 		cursor: pointer
@@ -853,6 +807,11 @@ svg.replaced-svg:not(.native)
 	bottom: 0
 	height: 100%
 	width: auto
+	animation: lineGrow
+	animation-duration: 5s
+	// animation-delay: 0.8s
+	animation-fill-mode: forwards
+	overflow: hidden
 .figure_13
 	width: rem(150)
 	height: rem(270)

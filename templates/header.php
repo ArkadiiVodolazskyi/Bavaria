@@ -117,19 +117,9 @@
 </div>
 
 <div id="connect_wrapper">
-	<form id="connect_form">
-		<h2>Свяжитесь с нами</h2>
-		<input type="text" id="connect_name" placeholder="Ваше имя" />
-		<input type="tel" id="connect_tel" placeholder="Номер телефона" />
-		<textarea id="connect_msg" placeholder="Ваше сообщение"></textarea>
-		<div class="checkup">
-			<input
-				id="connect_submit"
-				type="submit"
-				value="Отправить сообщение"
-			/>
-		</div>
-	</form>
+	<h2>Свяжитесь с нами</h2>
+	<?php echo do_shortcode( '[gravityform id=1 title=false description=false ajax=true]' ); ?>
+
 	<img src="<?= B_IMG_DIR ?>/connect_img.png" class="connect_img" />
 	<img
 		src="<?= B_IMG_DIR ?>/figure_1.svg"
