@@ -20,7 +20,7 @@
 
     <!-- Fullscreen video -->
     <div id="video">
-      <?= get_field('video_section')['video']; ?>
+      <iframe src="<?= get_field('video_section')['video']; ?>"></iframe>
     </div>
 
     <section class="banner blog_banner">

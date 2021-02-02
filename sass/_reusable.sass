@@ -81,29 +81,6 @@ $lGrey: #737a84
 		background-color: rgba($color, $opacity)
 		transition: all 0.2s linear
 
-// Keyframes --------------------------------------------------
-@keyframes fadeIn
-	0%
-		opacity: 0
-		visibility: hidden
-	100%
-		opacity: 1
-		visibility: visible
-
-@keyframes jump
-	0%
-		transform: translate(-50%, 0%)
-	25%
-		transform: translate(-50%, -30%)
-	100%
-		transform: translate(-50%, 0%)
-
-@keyframes lineGrow
-	0%
-		max-height: 0px !important
-	100%
-		max-height: 2000px !important
-
 // ---------------------------------------------------------------- Common styles
 *
 	font-family: 'Inter', sans-serif
@@ -127,11 +104,12 @@ html
 body
 	position: relative
 	z-index: 1
-	opacity: 1
-	visibility: visible
-	&.loading
-		opacity: 0
-		visibility: hidden
+	opacity: 0
+	&.loaded
+		animation: bodyFadeIn
+		animation-duration: 0.8s
+		animation-delay: 0s
+		animation-fill-mode: forwards
 
 section
 	position: relative
@@ -204,13 +182,13 @@ svg.replaced-svg:not(.native)
 	transform: translate(-50%, 0)
 	cursor: pointer
 	fill: $w
-	transition: none
+	opacity: 0
+	animation: next 1s 2.5s 1 forwards
 	&.dark
 		fill: $dGrey
 	&:hover
 		fill: $lBlue
-		animation: jump
-		animation-duration: 0.6s
+		animation: next 1s 3s 1 forwards, jump 0.6s 0s 1 none
 	svg
 		width: 36px
 		height: 20px
@@ -228,7 +206,8 @@ svg.replaced-svg:not(.native)
 
 .video
 	width: 30%
-	margin-top: rem(36)
+	height: 3rem
+	margin-top: 1rem
 	display: flex
 	align-items: center
 	&:hover
@@ -252,6 +231,12 @@ svg.replaced-svg:not(.native)
 		left: 50%
 		transform: translate(-50%, -50%)
 		transition: all 0.3s ease
+		opacity: 0
+		animation: video_triangle
+		animation-duration: 0.3s
+		animation-delay: 2.4s
+		animation-fill-mode: forwards
+		animation-timing-function: ease-in
 	.rect
 		width: rem(80)
 		height: 60px
@@ -261,6 +246,12 @@ svg.replaced-svg:not(.native)
 		left: 30%
 		transform: translate(0%, -50%) skew(-$skew)
 		transition: all 0.3s ease
+		opacity: 0
+		animation: video_rect
+		animation-duration: 0.5s
+		animation-delay: 2.0s
+		animation-fill-mode: forwards
+		animation-timing-function: ease-in
 	a, button
 		color: $w
 		margin-left: rem(28)
@@ -355,6 +346,7 @@ svg.replaced-svg:not(.native)
 			margin-top: rem(300)
 			font-size: rem(24)
 			font-weight: bold
+			padding-right: 10px
 			svg
 				flex: 1 0 auto
 				position: relative
@@ -374,7 +366,7 @@ svg.replaced-svg:not(.native)
 					width: 0%
 					height: 100%
 					background-color: $red
-					transition: all 0.2s linear
+					transition: all 0.3s linear
 			span
 				transform: skew($skew)
 
@@ -651,35 +643,66 @@ svg.replaced-svg:not(.native)
 		position: absolute
 		width: auto
 		height: 10rem
+		left: 0
+		opacity: 0
+		animation: figure_11
+		animation-duration: 1s
+		animation-delay: 2s
+		animation-fill-mode: forwards
 	.figure_42
 		position: absolute
 		width: auto
 		height: 9rem
 		left: -2rem
 		bottom: 0.2rem
+		opacity: 0
+		animation: figure_12
+		animation-duration: 1s
+		animation-delay: 2.5s
+		animation-fill-mode: forwards
 .figure_2
 	position: absolute
 	z-index: 0
 	top: 0
+	&.appeared
+		.figure_21
+			animation: figure_21
+			animation-duration: 1s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+		.figure_22
+			animation: figure_22
+			animation-duration: 1s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+		.figure_23
+			animation: figure_23
+			animation-duration: 1s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
 	> *
 		position: absolute
 		top: 0
 	.figure_21
 		background-color: $lBlue
-		transform: skew(-$skew)
 		width: rem(179)
 		height: rem(155)
 		left: 0
+		opacity: 0
+		transform: skew(-$skew) translate(-300px, 0)
 	.figure_22
 		width: rem(206)
 		height: rem(211)
 		left: 0
+		opacity: 0
+		transform: translate(0, -200px)
 	.figure_23
 		background-color: $red
-		transform: skew(-$skew)
 		width: 4.3rem
 		height: rem(107)
 		left: 5.6rem
+		opacity: 0
+		transform: skew(-$skew) translate(300px, 0)
 .figure_3
 	position: absolute
 	top: 0
@@ -687,23 +710,45 @@ svg.replaced-svg:not(.native)
 		position: absolute
 	.figure_31
 		background-color: $red
-		transform: skew(-$skew)
 		width: 7.5rem
 		height: 22rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -200px)
 	.figure_32
 		background-color: $dBlue
-		transform: skew(-$skew)
 		width: 3rem
 		height: rem(245)
 		top: rem(-54)
 		left: 8.5rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -150px)
 	.figure_33
 		background-color: $lBlue
-		transform: skew(-$skew)
 		width: 2rem
 		height: rem(169)
 		top: rem(-70)
 		left: 8rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -100px)
+	&.appeared
+		.figure_31
+			animation: figure_31
+			animation-duration: 1s
+			animation-delay: 1s
+			animation-fill-mode: forwards
+			animation-timing-function: ease-in
+		.figure_32
+			animation: figure_32
+			animation-duration: 0.8s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+			animation-timing-function: ease-in
+		.figure_33
+			animation: figure_33
+			animation-duration: 0.6s
+			animation-delay: 1.9s
+			animation-fill-mode: forwards
+			animation-timing-function: ease-in
 .figure_4
 	width: rem(150)
 	height: rem(270)
@@ -715,10 +760,25 @@ svg.replaced-svg:not(.native)
 		position: absolute
 		width: auto
 		height: 10rem
+		opacity: 0
+		transform: translate(-150px, 0)
 	.figure_42
 		position: absolute
 		width: auto
 		height: 11rem
+		opacity: 0
+		transform: translate(20px, -100px)
+	&.appeared
+		.figure_41
+			animation: figure_41
+			animation-duration: 1s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+		.figure_42
+			animation: figure_42
+			animation-duration: 1s
+			animation-delay: 2s
+			animation-fill-mode: forwards
 .figure_6
 	position: absolute
 	top: 0
@@ -828,6 +888,42 @@ svg.replaced-svg:not(.native)
 		position: absolute
 		width: auto
 		height: 11rem
+.figure_14
+	position: relative
+	min-width: rem(120)
+	height: rem(345)
+	> *
+		position: absolute
+	.figure_31
+		background-color: $red
+		width: 1.5rem
+		height: 6rem
+		left: 1.5rem
+		bottom: -1rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -200px)
+	.figure_32
+		background-color: $dBlue
+		width: 3rem
+		height: 12rem
+		left: -1rem
+		top: 1rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -150px)
+	.figure_33
+		background-color: $lBlue
+		width: 2rem
+		height: 8rem
+		left: -1rem
+		opacity: 0
+		transform: skew(-14deg) translate(20px, -100px)
+	&.appeared
+		.figure_31
+			animation: skewLeft 1s 0.5s 1 forwards ease-in
+		.figure_32
+			animation: skewLeft 1s 1s 1 forwards ease-in
+		.figure_33
+			animation: skewLeft 1s 1.5s 1 forwards ease-in
 
 .copyLink
 	padding: 0
@@ -849,7 +945,8 @@ svg.replaced-svg:not(.native)
 		opacity: 1
 		visibility: visible
 
-
+.textAppear span.wow
+	white-space: break-spaces
 
 
 

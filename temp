@@ -1,3 +1,6 @@
+
+
+
 sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 npm install webpack webpack-cli webpack-dev-server path --save-dev
 
@@ -35,6 +38,7 @@ clonedSlider.classList.add("fullscreen");
 		animation: fadeIn
 		animation-duration: 0.5s
 		animation-delay: 1.8s
+		animation-fill-mode: forwards
 
 
 
@@ -42,3 +46,37 @@ class="program-card wow fadeInRight"
 data-wow-offset="-400"
 data-wow-duration="0.5s"
 data-wow-delay="<?= get_row_index()*0.2?>s"
+data-wow-delay="1s"
+
+
+animation: video_rect
+animation-duration: 0.5s
+animation-delay: 2.0s
+animation-fill-mode: forwards
+animation-timing-function: ease-in
+
+
+// Style iframe
+    (function () {
+      const iframeName = document.querySelector("#video iframe");
+      let iframeContent = iframeName.contentDocument;
+      // iframeContent.body.innerHTML =
+      //   iframeContent.body.innerHTML +
+      //   "<style>.wrapper{background-image: none; background-color: transparent;}</style>";
+    })();
+
+
+
+name - duration - delay - count - fill
+
+.next
+	opacity: 0
+	animation: next 1s 2.5s 1 forwards
+	&:hover
+		fill: $lBlue
+		animation: next 1s 3s 1 forwards, jump 0.6s 0s 1 none
+
+
+<h3 class="textAppear" data-delay="1.2">
+	<?= get_sub_field('title'); ?>
+</h3>

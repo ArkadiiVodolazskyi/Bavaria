@@ -348,27 +348,43 @@ header
 	align-items: center
 	&:hover
 		.line_1
-			transform: translate(-0.2rem, 1rem)
+			margin: 1rem -1.0rem 0 -1.3rem
 			fill: darken($lBlue, 5%)
 		.line_2
 			fill: lighten($dBlue, 5%)
 		.line_3
-			transform: translate(0.2rem, -1rem)
+			margin: -1rem -1.3rem 0 -1.0rem
 			fill: darken($red, 15%)
 		.logo_text
 			fill: lighten($dw, 20%)
 	svg
-		margin: 0 -1.1rem
 		height: 100%
 	.line_1
 		fill: $lBlue
-		transform: translate(0, 0)
+		margin: 0 -1.1rem
+		opacity: 0
+		transform: translate(-5px, 30px)
+		animation: logoLine1
+		animation-duration: 1.5s
+		animation-delay: 2.8s
+		animation-fill-mode: forwards
 	.line_2
+		opacity: 0
 		fill: $dBlue
-		transform: translate(0, 0)
+		margin: 0 -1.1rem
+		animation: logoLine2
+		animation-duration: 1.5s
+		animation-delay: 2.8s
+		animation-fill-mode: forwards
 	.line_3
 		fill: $red
-		transform: translate(0, 0)
+		margin: 0 -1.1rem
+		opacity: 0
+		transform: translate(5px, -30px)
+		animation: logoLine3
+		animation-duration: 1.5s
+		animation-delay: 2.8s
+		animation-fill-mode: forwards
 	.logo_text
 		width: 65%
 		height: 100%
@@ -377,6 +393,12 @@ header
 		left: 65%
 		top: 50%
 		transform: translate(-50%, -50%)
+		margin: 0 -1.1rem
+		opacity: 0
+		animation: fadeIn
+		animation-duration: 1.2s
+		animation-delay: 1.7s
+		animation-fill-mode: forwards
 
 .hamb_animate
 	width: 5rem
@@ -387,13 +409,12 @@ header
 	align-items: center
 	&:hover
 		.line_1
-			transform: translate(0px, 0)
+			margin-left: 0px
 			background-color: $lBlue
 		.line_2
-			transform: translate(0, 0)
 			background-color: $dBlue
 		.line_3
-			transform: translate(0px, 0)
+			margin-left: 0px
 			background-color: $red
 	> div
 		transition: all 0.3s ease
@@ -403,15 +424,21 @@ header
 		&:not(:first-child)
 			margin-top: 0.5rem
 	.line_1
-		transform: translate(7px, 0)
+		margin-left: 15px
 	.line_2
-		transform: translate(0, 0)
 		transition-delay: 0.05s
 	.line_3
-		transform: translate(-7px, 0)
+		margin-left: -15px
 		transition-delay: 0.1s
 
 #navCheckupBtn
+	opacity: 0
+	transform: skew(-$skew) translate(0, 50px)
+	animation: navCheckup
+	animation-duration: 1s
+	animation-delay: 3s
+	animation-timing-function: ease-in
+	animation-fill-mode: forwards
 	&.toBottom
 		position: fixed
 		right: 8%

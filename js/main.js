@@ -1,6 +1,38 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // text - smooth appear
+  (function () {
+    const textHolders = [...document.querySelectorAll(".textAppear")];
+
+    if (textHolders.length) {
+      for (let i = 0; i < textHolders.length; i++) {
+        const textSplice = [...textHolders[i].innerText];
+        textHolders[i].innerText = "";
+
+        const delay = parseInt(textHolders[i].getAttribute("data-delay")) || 0;
+
+        for (let j = 0; j < textSplice.length; j++) {
+          if (/[\n\r]+/g.test(textSplice[j])) {
+            const br = document.createElement("br");
+            textHolders[i].appendChild(br);
+          } else {
+            const letter = document.createElement("span");
+            letter.innerText = textSplice[j];
+            letter.classList.add("wow", "fadeInRight");
+            letter.setAttribute(
+              "data-wow-delay",
+              `${(j * 0.01 + delay).toFixed(2)}s`,
+            );
+            textHolders[i].appendChild(letter);
+          }
+        }
+      }
+    }
+  })();
+});
+
 window.addEventListener("load", () => {
   // Hide page content while loading
-  document.body.classList.remove("loading");
+  document.body.classList.add("loaded");
 
   // Global variables and functions
   const overlay = document.getElementById("overlay");
@@ -756,12 +788,50 @@ window.addEventListener("load", () => {
     });
 
     // Add hints
-    // const inputWrapperName = gf1.querySelector(".ginput_container:nth-of-type(1)");
-    // console.log(inputWrapperName);
+    document.addEventListener("DOMContentLoaded", () => {
+      const inputWrapperName = gf1.querySelector(
+        ".ginput_container:nth-of-type(1)",
+      );
+      console.log(inputWrapperName);
 
-    // const hintName = document.createElement("span");
-    // hintName.classList.add("hint");
-    // hintName.innerText = "Заполните это поле.".
-    // inputWrapperName.appendChild(hintName);
+      const hintName = document.createElement("span");
+      hintName.classList.add("hint");
+      hintName.innerText = "Заполните это поле.".inputWrapperName.appendChild(
+        hintName,
+      );
+    });
+
+    // Custom wow js- appear
+    (function () {
+      const heightToShow = 250;
+
+      const appears = [...document.querySelectorAll(".appear")];
+
+      // Also on load
+      for (let i = 0; i < appears.length; i++) {
+        if (
+          !(
+            appears[i].getBoundingClientRect().top + heightToShow >
+              innerHeight ||
+            appears[i].getBoundingClientRect().bottom - heightToShow < 0
+          )
+        ) {
+          appears[i].classList.add("appeared");
+        }
+      }
+      window.addEventListener("scroll", () => {
+        for (let i = 0; i < appears.length; i++) {
+          if (
+            !(
+              appears[i].getBoundingClientRect().top + heightToShow >
+                innerHeight ||
+              appears[i].getBoundingClientRect().bottom - heightToShow < 0
+            )
+          ) {
+            appears[i].classList.add("appeared");
+          }
+        }
+      });
+    })();
   })();
 });

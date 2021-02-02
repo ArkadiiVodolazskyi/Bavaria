@@ -171,12 +171,12 @@
 			</a>
 
 			<button class="hamb_animate">
-				<div class="line_1"></div>
-				<div class="line_2"></div>
-				<div class="line_3"></div>
+				<div class="line_1 wow fadeInLeft" data-wow-delay="1.2s" data-wow-duration="1s"></div>
+				<div class="line_2 wow fadeInLeft" data-wow-delay="1.3s" data-wow-duration="1s"></div>
+				<div class="line_3 wow fadeInLeft" data-wow-delay="1.4s" data-wow-duration="1s"></div>
 			</button>
 
-			<ul class="languages">
+			<ul class="languages wow fadeInDown" data-wow-delay="1.4s" data-wow-duration="1s">
 				<?php pll_the_languages(array(
 					'show_names'=>0,
 					'hide_if_empty'=>0,
@@ -187,19 +187,22 @@
 			<div class="empty" style="width: 10%"></div>
 
 			<div class="time">
-				<p>
+				<p class="wow fadeInDown" data-wow-delay="1.4s">
 					<?= get_field('schedule', 'options'); ?>
 				</p>
-				<span>График работы</span>
+				<span class="wow fadeInDown" data-wow-delay="1.2s">
+				График работы</span>
 			</div>
 
 			<div class="contact">
-					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
+					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown" data-wow-delay="1.5s">
 						<?= get_field('phones', 'options')[0]['number']; ?>
 					</a>
 					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
 				</p>
-				<span>Обратный звонок</span>
+				<span class="wow fadeInDown" data-wow-delay="1.3s">
+					Обратный звонок
+				</span>
 
 				<ul class="additional">
 					<?php while(have_rows('phones', 'options')): the_row(); ?>
@@ -231,7 +234,7 @@
 
 			<ul class="social">
 				<?php while(have_rows('social', 'options')): the_row(); ?>
-					<li>
+					<li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2 + 1.4?>s">
 						<a href="<?= get_sub_field('url'); ?>" class="social_link">
 							<img src="<?= B_IMG_DIR ?>/<?= get_sub_field('type'); ?>.svg" class="img-svg" />
 						</a>
@@ -241,11 +244,11 @@
 		</div>
 	</div>
 
-	<nav>
+	<nav class="wow fadeInRight" data-wow-delay="1.2s" data-wow-duration="1.5s">
 		<div class="wrapper">
 			<ul class="links">
 				<?php while(have_rows('header_nav', 'options')): the_row(); ?>
-					<li><a href="<?= get_sub_field('link')['url']; ?>">
+					<li><a href="<?= get_sub_field('link')['url']; ?>" class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.15 + 1.4?>s">
 						<?= get_sub_field('link')['title']; ?>
 					</a></li>
 				<?php endwhile; ?>

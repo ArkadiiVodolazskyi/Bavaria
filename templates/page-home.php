@@ -18,13 +18,18 @@
   <body>
 		<?php get_header(); ?>
 
+    <!-- Fullscreen video -->
+    <div id="video">
+      <iframe src="<?= get_field('banner')['video']['file']; ?>"></iframe>
+    </div>
+
     <?php while ( have_rows('banner') ): the_row(); ?>
       <section class="banner">
         <img src="<?= get_sub_field('img'); ?>" class="banner_img" />
 
         <div class="slogan">
           <div class="wrapper">
-            <h2>
+            <h2 class="textAppear" data-delay="2">
               <?= get_sub_field('text'); ?>
             </h2>
             <div class="video">
@@ -32,9 +37,9 @@
                 <span class="rect"></span>
                 <span class="triangle"></span>
               </div>
-              <a href="<?= get_sub_field('link')['url']; ?>" class="video_link">
-                <?= get_sub_field('link')['title']; ?>
-              </a>
+              <button id="openVideo" class="video_link">
+                <?= get_field('banner')['video']['text']; ?>
+              </button>
             </div>
           </div>
         </div>
@@ -44,7 +49,7 @@
             class="img-svg native figure_41"
             src="<?= B_IMG_DIR ?>/figure_41.svg"
           />
-          <img class="figure_42" src="<?= B_IMG_DIR ?>/figure_42.png" />
+          <img src="<?= B_IMG_DIR ?>/figure_42.png" class="figure_42" />
         </div>
 
         <a href="#services" class="next">
@@ -59,13 +64,13 @@
         <section id="services" class="services dark">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper">
-            <h3>
+            <h3 class="wow fadeInLeft">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -75,7 +80,7 @@
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card">
+                <div class="card appear" style="animation-delay: <?= get_row_index()*0.4?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
                   <div class="card_image">
                     <img src="<?= get_sub_field('img'); ?>" />
                   </div>
@@ -118,7 +123,7 @@
             />
           </svg>
 
-          <a href="#news" class="next">
+          <a href="#news" class="next" >
             <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
           </a>
         </section>
@@ -128,13 +133,13 @@
         <section id="news" class="news light p-5">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3>
+            <h3 class="wow fadeInLeft" data-wow-delay="1.4s">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -148,7 +153,7 @@
                       'numberposts' => 4
                     ] );
 
-                    foreach( $posts as $post ) {
+                    foreach( $posts as $key=>$post ) {
                       setup_postdata($post);
 
                       $url = get_permalink();
@@ -159,7 +164,8 @@
 
                       <a
                         href="<?= $url; ?>"
-                        class="card"
+                        class="card wow fadeInRight"
+                        data-wow-delay="<?= $key*0.2 + 1?>s"
                         style="background-image: url(<?= $img; ?>); ">
 
                         <div class="block_overlay">
@@ -183,7 +189,7 @@
             </div>
           </div>
 
-          <div class="figure_2" style="left: 38%">
+          <div class="figure_2 appear" style="left: 38%">
             <div class="figure_21"></div>
             <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
             <div class="figure_23"></div>
@@ -225,27 +231,27 @@
         <section id="portfolio" class="portfolio dark p-4">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3>
+            <h3 class="textAppear" data-delay="2">
               <?= get_sub_field('title'); ?>
             </h3>
 
             <div class="main">
               <?php while ( have_rows('central') ): the_row(); ?>
-                <div class="main_img">
+                <div class="main_img appear">
                   <img src="<?= get_sub_field('img'); ?>" />
                 </div>
                 <?php while ( have_rows('description') ): the_row(); ?>
                   <div class="text">
-                    <h4>
+                    <h4 class="textAppear" data-delay="1.5">
                       <?= get_sub_field('title'); ?>
                     </h4>
-                    <div>
+                    <div class="textAppear" data-delay="1.2">
                       <?= get_sub_field('text'); ?>
                     </div>
                   </div>
@@ -262,14 +268,16 @@
                   'numberposts' => 3
                 ] );
 
-                foreach( $posts as $post ) {
+                foreach( $posts as $key=>$post ) {
                   setup_postdata($post);
 
                   $url = get_permalink();
                   $img = get_field('banner');
                   $post_title = $post->post_title; ?>
 
-                <a href="<?= $url; ?>" class="card">
+                <a href="<?= $url; ?>"
+                  class="card wow fadeInRight"
+                  data-wow-delay="<?= $key*0.2 + 1?>s">
                   <img
                     src="<?= $img; ?>"
                     class="card_bg"
@@ -326,12 +334,12 @@
               d="M67.708 0h69.062L69.062 270.833H0z"
             />
           </svg>
-          <div class="figure_3" style="left: 60%">
+          <div class="figure_3 appear" style="left: 60%">
             <div class="figure_31"></div>
             <div class="figure_32"></div>
             <div class="figure_33"></div>
           </div>
-          <div class="figure_4">
+          <div class="figure_4 appear">
             <img
               class="img-svg native figure_41"
               src="<?= B_IMG_DIR ?>/figure_41.svg"
@@ -349,36 +357,37 @@
         <section id="info" class="info light">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3>
+            <h3 class="textAppear" data-delay="2">
               <?= get_sub_field('title'); ?>
             </h3>
 
             <div class="main">
               <div class="text">
-                <img
-                  src="<?= B_IMG_DIR ?>/triple_shared.svg"
-                  class="img-svg native"
-                />
-                <div>
+                <div class="figure_14 appear">
+                  <div class="figure_31"></div>
+                  <div class="figure_32"></div>
+                  <div class="figure_33"></div>
+                </div>
+                <div class="textAppear" data-delay="1">
                   <?php while ( have_rows('group') ): the_row(); ?>
                     <?= get_sub_field('text'); ?>
                   <?php endwhile; ?>
                 </div>
               </div>
               <div class="imgs">
-                <img src="<?= B_IMG_DIR ?>/red_shard.png" class="shard" />
+                <img src="<?= B_IMG_DIR ?>/red_shard.png" class="shard appear" />
 
                 <?php while ( have_rows('group') ): the_row(); ?>
-                  <img src="<?= get_sub_field('img'); ?>" class="photo" />
+                  <img src="<?= get_sub_field('img'); ?>" class="photo wow fadeInRight" data-wow-delay="1s" />
                 <?php endwhile; ?>
 
-                <div class="pros">
+                <div class="pros wow fadeInUp" data-wow-delay="1.5s">
                   <div class="pro_arrows">
                     <button class="pro_prev">
                       <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />

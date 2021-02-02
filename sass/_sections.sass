@@ -66,6 +66,11 @@ section.services
 				transform: skew(-$skew)
 				position: relative
 				background-color: $dGrey
+				opacity: 0
+				&.appeared
+					animation: serviceCards
+					animation-fill-mode: forwards
+					animation-timing-function: ease-in
 				&:hover
 					.card_image
 						opacity: 1
@@ -203,8 +208,15 @@ section.portfolio
 			height: 22rem
 			overflow: hidden
 			background-color: $b
-			transform: skew(-$skew)
 			position: relative
+			opacity: 0
+			transform: skew(-$skew) translateX(-300px)
+			&.appeared
+				animation: skewLeft
+				animation-duration: 1s
+				animation-delay: 1s
+				animation-fill-mode: forwards
+				animation-timing-function: linear
 			img
 				width: 125%
 				height: auto
@@ -241,7 +253,7 @@ section.info
 				justify-content: space-between
 				svg
 					min-width: rem(120)
-				div
+				div:not(.figure_14)
 					margin-left: rem(50)
 					> p
 						margin-top: rem(18)
@@ -252,7 +264,10 @@ section.info
 				.shard
 					width: rem(240)
 					position: absolute
-					transform: translate(-3rem, -100%)
+					opacity: 0
+					transform: translate(-20rem, -100%)
+					&.appeared
+						animation: shard 1s 1s 1 forwards ease-in
 				.photo
 					width: 100%
 				.pros
@@ -588,10 +603,10 @@ section.about_video
 		position: absolute
 		left: 50%
 		top: 50%
-		max-height: 90vh
+		max-height: 80vh
 		width: 80%
 		height: inherit
-		transform: translate(-50%, -50%)
+		transform: translate(-50%, -45%)
 
 // page-portfolio
 section.portfolio_main
