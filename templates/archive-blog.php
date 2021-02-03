@@ -16,7 +16,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>
+          <h2 class="textAppear" data-delay="2">
             Новости<br />
             и события
           </h2>
@@ -44,18 +44,19 @@
                 'numberposts' => -1
               ] );
 
-              foreach( $posts as $post ) {
+              foreach( $posts as $key=>$post ) {
                 setup_postdata($post);
 
                 $url = get_permalink();
                 $img = get_field('banner');
-                $date = get_the_date();
+                $date = date_i18n( 'j F Y', get_the_date(), false );
                 $post_title = $post->post_title;
               ?>
 
                 <a
                   href="<?= $url; ?>"
-                  class="card"
+                  class="card wow fadeInUp"
+                  data-wow-delay="<?= $key*0.3?>s"
                   style="background-image: url(<?= $img; ?>); ">
 
                   <div class="block_overlay">
@@ -76,6 +77,7 @@
 
             </div>
           </div>
+
           <ul class="navpages_2">
             <li>
               <button class="arrow page_prev">

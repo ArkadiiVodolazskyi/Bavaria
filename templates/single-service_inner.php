@@ -23,7 +23,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>
+          <h2 class="textAppear" data-delay="2">
             <?= get_the_title(); ?>
           </h2>
         </div>
@@ -106,13 +106,13 @@
             <?php while ( have_rows('about') ): the_row(); ?>
 
               <?php while ( have_rows('par_bold') ): the_row(); ?>
-                <p class="accent">
+                <p class="accent wow fadeInUp" data-wow-delay="1s">
                   <?= get_sub_field('text'); ?>
                 </p>
               <?php endwhile; ?>
 
               <?php while ( have_rows('par') ): the_row(); ?>
-                <p>
+                <p  class="wow fadeInUp" data-wow-delay="1s">
                   <?= get_sub_field('text'); ?>
                 </p>
               <?php endwhile; ?>
@@ -143,7 +143,7 @@
               <?php while ( have_rows('pricelist') ): the_row(); ?>
                 <table class="pricelist">
                   <thead>
-                    <tr>
+                    <tr class="wow fadeInUp">
                       <td>Услуга</td>
                       <td>Стандарт</td>
                       <td>★ Премиум</td>
@@ -151,7 +151,7 @@
                   </thead>
                   <tbody>
                     <?php while ( have_rows('rows') ): the_row(); ?>
-                      <tr>
+                      <tr class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.05?>s">
                         <td><?= get_sub_field('name'); ?></td>
                         <td><?= get_sub_field('standard'); ?> грн</td>
                         <td><?= get_sub_field('premium'); ?> грн</td>
@@ -162,7 +162,7 @@
               <?php endwhile; ?>
 
               <?php while ( have_rows('btn') ): the_row(); ?>
-                <div class="checkup openConnect">
+                <div class="checkup openConnect appear">
                   <button>
                     <?= get_sub_field('text'); ?>
                   </button>
@@ -330,15 +330,15 @@
         <?php while ( have_rows('galleryexamps') ): the_row(); ?>
           <section class="galleryexamps">
             <div class="wrapper mobwrapper">
-              <h2>Примеры работ</h2>
+              <h2 class="textAppear" data-delay="1">Примеры работ</h2>
               <div class="gallery lightbox mobslider">
-                <?php foreach( get_sub_field('imgs') as $image ): ?>
-                  <img src="<?= $image; ?>">
+                <?php foreach( get_sub_field('imgs') as $key=>$image ): ?>
+                  <img src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.2?>s">
                 <?php endforeach; ?>
               </div>
             </div>
 
-            <div class="figure_2" style="left: 75%">
+            <div class="figure_2 appear" style="left: 75%">
               <div class="figure_21"></div>
               <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
               <div class="figure_23"></div>
@@ -346,8 +346,8 @@
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="figure_12"
-              style="left: 8%"
+              class="figure_12 appear"
+              style="left: 8%; animation-delay: 1s"
               viewbox="0,0 140,270">
               <path
                 fill="transparent"
@@ -359,8 +359,8 @@
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="figure_12"
-              style="left: 26%"
+              class="figure_12 appear"
+              style="left: 26%; animation-delay: 1.5s"
               viewbox="0,0 140,270">
               <path
                 fill="transparent"
@@ -413,7 +413,7 @@
         <?php while ( have_rows('reviews') ): the_row(); ?>
           <section class="reviews">
             <div class="wrapper mobwrapper">
-              <div class="quote_cards mobslider">
+              <div class="quote_cards mobslider wow fadeInUp" data-wow-delay="1s">
                 <?php while ( have_rows('cards') ): the_row(); ?>
                   <div class="quote_card">
                     <span class="date"><?= get_sub_field('name'); ?>, <?= get_sub_field('date'); ?></span>
@@ -424,7 +424,7 @@
                   </div>
                 <?php endwhile; ?>
               </div>
-              <div class="arrows">
+              <div class="arrows wow fadeInUp" data-wow-delay="1.5s">
                 <button class="quote_prev">
                   <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
                 </button>
@@ -435,7 +435,8 @@
             </div>
 
             <div
-              class="figure_7 red"
+              class="figure_7 red wow fadeInDown"
+              data-wow-delay="1.5s"
               style="width: 20rem; height: 22.5rem; left: 35%"
             >
               <img
@@ -453,7 +454,7 @@
             <div class="wrapper">
               <div class="faq_list">
                 <?php while ( have_rows('cards') ): the_row(); ?>
-                  <div class="vacancy faq_item">
+                  <div class="vacancy faq_item wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
                     <h3>
                       <?= get_sub_field('question'); ?>
                       <button class="expand">
@@ -469,7 +470,7 @@
               </div>
             </div>
 
-            <div class="figure_11" style="height: 672px; left: 20%;">
+            <div class="figure_11 appear" style="height: 672px; left: 20%;">
               <img src="<?= B_IMG_DIR ?>/figure_111.png"
                 style="width: 220%; height: 170%;"
               />
@@ -483,21 +484,21 @@
           <section class="adv">
             <div class="wrapper">
               <div class="left_text">
-                <h2>
+                <h2 class="textAppear" data-delay="1">
                   <?= get_sub_field('title'); ?>
                 </h2>
-                <p>
+                <p class="textAppear" data-delay="1">
                   <?= get_sub_field('par'); ?>
                 </p>
 
                 <?php while ( have_rows('list') ): the_row(); ?>
                   <div class="list_wrapper">
-                    <h5 class="list_title">
+                    <h5 class="list_title wow fadeInUp">
                       <?= get_sub_field('title'); ?>
                     </h5>
                     <ul class="list">
                      <?php while ( have_rows('points') ): the_row(); ?>
-                        <li>
+                        <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
                           <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                           <span>
                             <?= get_sub_field('point'); ?>
@@ -511,8 +512,8 @@
               </div>
 
               <div class="right_img">
-                <img src="<?= get_sub_field('img'); ?>">
-                <img src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard">
+                <img src="<?= get_sub_field('img'); ?>" class="wow fadeInRight" data-wow-delay="1.8s">
+                <img src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard wow fadeInLeft" data-wow-delay="2s">
               </div>
             </div>
           </section>

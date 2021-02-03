@@ -16,7 +16,9 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>Портфолио</h2>
+          <h2 class="textAppear" data-delay="2">
+            Портфолио
+          </h2>
         </div>
       </div>
 
@@ -29,33 +31,41 @@
       </div>
     </section>
 
+    <?php
+
+      // Получить названия таксономий service_type
+      $taxonomies = get_terms( array( 'taxonomy' => array( 'service_type' )));
+
+    ?>
+
     <section class="portfolio_main">
       <div class="wrapper">
         <nav>
           <p class="nav_arrow">
             <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
           </p>
-          <button>
+          <button data-term = "all">
             <span>Все работы</span>
           </button>
-          <button>
-            <span>Техническое обслуживание</span>
-          </button>
-          <button>
-            <span>Все работы</span>
-          </button>
-          <button>
-            <span>Все работы</span>
-          </button>
-          <button>
-            <span>Техническое обслуживание</span>
-          </button>
-          <button>
-            <span>Все работы</span>
-          </button>
+
+          <?php
+            foreach ($taxonomies as $key=>$term) {
+              $termName = $term->name;
+              $termSlug = $term->slug;
+          ?>
+
+            <button class="wow fadeInRight"
+                    data-wow-delay="<?= $key*0.2 + 1; ?>s"
+                    data-term = "<?= $termSlug; ?>">
+              <span><?= $termName; ?></span>
+            </button>
+
+          <?php }; ?>
         </nav>
 
         <div class="other">
+
+            <p class="noPosts">По такому запросу постов нет</p>
 
             <?php
               $posts = get_posts( [
@@ -63,15 +73,18 @@
                 'numberposts' => -1
               ] );
 
-              foreach( $posts as $post ) {
+              foreach( $posts as $key=>$post ) {
                 setup_postdata($post);
 
                 $url = get_permalink();
                 $img = get_field('banner');
                 $post_title = $post->post_title;
+                $postTerm = get_the_terms( $post, 'service_type' )[0]->slug;
             ?>
 
-            <a href="<?= $url; ?>" class="card">
+            <a href="<?= $url; ?>"
+              class="card"
+              data-term = "<?= $postTerm; ?>">
               <img
                 src="<?= $img; ?>"
                 class="card_bg"
@@ -91,7 +104,7 @@
 
         </div>
 
-        <ul class="navpages_2">
+        <!-- <ul class="navpages_2">
           <li>
             <button class="arrow page_prev">
               <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
@@ -109,7 +122,8 @@
               <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
             </button>
           </li>
-        </ul>
+        </ul> -->
+
       </div>
     </section>
 

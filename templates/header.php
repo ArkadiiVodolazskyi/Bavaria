@@ -184,23 +184,23 @@
 				)); ?>
 			</ul>
 
-			<div class="empty" style="width: 10%"></div>
+			<div class="empty"></div>
 
 			<div class="time">
-				<p class="wow fadeInDown" data-wow-delay="1.4s">
+				<p class="wow fadeInDown" data-wow-delay="1.5s">
 					<?= get_field('schedule', 'options'); ?>
 				</p>
-				<span class="wow fadeInDown" data-wow-delay="1.2s">
+				<span>
 				График работы</span>
 			</div>
 
 			<div class="contact">
-					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown" data-wow-delay="1.5s">
+					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown" data-wow-delay="2s">
 						<?= get_field('phones', 'options')[0]['number']; ?>
 					</a>
 					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
 				</p>
-				<span class="wow fadeInDown" data-wow-delay="1.3s">
+				<span>
 					Обратный звонок
 				</span>
 
@@ -254,12 +254,14 @@
 				<?php endwhile; ?>
 			</ul>
 
-			<div id="navCheckupBtn" class="checkup">
+			<div class="checkup navCheckupBtn">
 				<button class="openConnect">Записаться на осмотр</button>
 			</div>
+
+			<img src="<?= B_IMG_DIR ?>/checkup.svg" class="img-svg smallCheckupBtn" >
 		</div>
 	</nav>
 </header>
 
 
-
+<div id="spinner" class="loading"></div>

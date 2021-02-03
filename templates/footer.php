@@ -2,22 +2,22 @@
 	<div class="wrapper">
 		<div class="copyright">
 			<div class="logowrap">
-				<a href="#" class="logo">
+				<a href="#" class="logo wow fadeInLeft">
 					<img src="<?= B_IMG_DIR ?>/logo.svg" class="img-svg native" />
 				</a>
-				<span class="slogan">
+				<span class="slogan textAppear" data-delay="1.5">
 					<?= get_field('slogan', 'options'); ?>
 				</span>
 			</div>
 			<div class="creators">
-				<p>© Bavaria 2010 — <?= date('Y'); ?></p>
-				<p>Создание сайта — DevPro</p>
+				<p class="textAppear" data-delay="2">© Bavaria 2010 — <?= date('Y'); ?></p>
+				<p class="textAppear" data-delay="2.2">Создание сайта — DevPro</p>
 			</div>
 		</div>
 
 		<?php while(have_rows('footer_nav', 'options')): the_row(); ?>
 			<div class="clients">
-				<h5>
+				<h5 class="wow fadeInUp">
 					<img
 						src="<?= B_IMG_DIR ?>/single_line.svg"
 						class="img-svg line"
@@ -29,7 +29,8 @@
 				</h5>
 				<ul>
 					<?php while(have_rows('links')): the_row(); ?>
-						<li><a href="<?= get_sub_field('link')['url']; ?>">
+						<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2?>s"
+							><a href="<?= get_sub_field('link')['url']; ?>">
 							<?= get_sub_field('link')['title']; ?>
 						</a></li>
 					<?php endwhile; ?>
@@ -38,13 +39,13 @@
 		<?php endwhile; ?>
 
 		<ul class="contacts">
-			<li>
+			<li class="wow fadeInRight" data-wow-delay="1s">
 				<img src="<?= B_IMG_DIR ?>/address.svg" class="img-svg" />
 				<a href="<?= get_field('contacts', 'options')['address']['url']; ?>">
 					<?= get_field('contacts', 'options')['address']['title']; ?>
 				</a>
 			</li>
-			<li>
+			<li class="wow fadeInRight" data-wow-delay="1.3s">
 				<img src="<?= B_IMG_DIR ?>/phone.svg" class="img-svg" />
 				<div class="phone_list">
 					<?php while(have_rows('contacts', 'options')): the_row();
@@ -55,13 +56,13 @@
 					<?php endwhile; endwhile; ?>
 				</div>
 			</li>
-			<li>
+			<li class="wow fadeInRight" data-wow-delay="1.6s">
 				<img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
 				<a href="mailto:<?= get_field('contacts', 'options')['email']; ?>">
 					<?= get_field('contacts', 'options')['email']; ?>
 				</a>
 			</li>
-			<li>
+			<li class="wow fadeInRight" data-wow-delay="1.9s">
 				<img src="<?= B_IMG_DIR ?>/time.svg" class="img-svg" />
 				<span>
 					<?= get_field('schedule', 'options'); ?>

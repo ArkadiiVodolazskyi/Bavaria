@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const delay = parseInt(textHolders[i].getAttribute("data-delay")) || 0;
 
         for (let j = 0; j < textSplice.length; j++) {
+          // const word = document.createElement("span");
+          // word.classList.add("word");
+          // console.log(textSplice[j]);
+
           if (/[\n\r]+/g.test(textSplice[j])) {
             const br = document.createElement("br");
             textHolders[i].appendChild(br);
@@ -32,7 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("load", () => {
   // Hide page content while loading
-  document.body.classList.add("loaded");
+  const spinner = document.getElementById("spinner");
+
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+    spinner.classList.add("loaded");
+  }, 500);
 
   // Global variables and functions
   const overlay = document.getElementById("overlay");
@@ -309,7 +318,9 @@ window.addEventListener("load", () => {
     const connect_wrapper = document.getElementById("connect_wrapper");
 
     if (connect_wrapper) {
-      const connectBtn = document.querySelectorAll(".openConnect");
+      const connectBtn = document.querySelectorAll(
+        ".openConnect, .smallCheckupBtn",
+      );
       const closeConnect = document.getElementById("closeConnect");
 
       connectBtn.forEach((btn) => {
@@ -405,6 +416,14 @@ window.addEventListener("load", () => {
       openVideo.addEventListener("click", () => {
         openOverlay(video);
       });
+
+      // Accent on close btn to find
+      video.addEventListener("click", () => {
+        closeOverlay.classList.add("accent");
+        setTimeout(() => {
+          closeOverlay.classList.remove("accent");
+        }, 500);
+      });
     }
   })();
 
@@ -423,6 +442,7 @@ window.addEventListener("load", () => {
 
         for (let k = 0; k < imgs.length; k++) {
           let clonedImg = imgs[k].cloneNode(false);
+          clonedImg.classList.remove("wow", "fadeInRight");
           clonedTape.appendChild(clonedImg);
         }
 
@@ -560,8 +580,9 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // copyLink button
+  // Share btns
   (function () {
+    // copyLink button
     const copyLinks = [...document.querySelectorAll(".copyLink")];
 
     if (copyLinks.length) {
@@ -581,53 +602,31 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // folio-main - change work types
-  (function () {
-    const navBtns = [
-      ...document.querySelectorAll(".portfolio_main nav button"),
-    ];
-
-    if (navBtns.length) {
-      // Mutate to dropdown on 360 screens
-      const nav = document.querySelector(".portfolio_main nav");
-      const navExpand = nav.querySelector(".nav_arrow");
-
-      navExpand.addEventListener("click", () => {
-        nav.classList.toggle("expanded");
-      });
-
-      // Default
-      navBtns[0].classList.add("active");
-
-      for (let i = 0; i < navBtns.length; i++) {
-        navBtns[i].addEventListener("click", (e) => {
-          for (let j = 0; j < navBtns.length; j++) {
-            navBtns[j].classList.remove("active");
-          }
-          navBtns[i].classList.add("active");
-          if (nav.classList.contains("expanded")) {
-            nav.classList.remove("expanded");
-          }
-        });
-      }
-    }
-  })();
-
   // make button fixed on scroll
   (function () {
-    const navCheckupBtn = document.getElementById("navCheckupBtn");
+    const navCheckupBtn = document.querySelectorAll(
+      ".navCheckupBtn, .smallCheckupBtn",
+    );
 
-    if (navCheckupBtn) {
+    if (navCheckupBtn.length) {
       if (window.pageYOffset > 250) {
-        navCheckupBtn.classList.add("toBottom");
+        navCheckupBtn.forEach((btn) => {
+          btn.classList.add("toBottom");
+        });
       } else {
-        navCheckupBtn.classList.remove("toBottom");
+        navCheckupBtn.forEach((btn) => {
+          btn.classList.remove("toBottom");
+        });
       }
       window.addEventListener("scroll", () => {
         if (window.pageYOffset > 250) {
-          navCheckupBtn.classList.add("toBottom");
+          navCheckupBtn.forEach((btn) => {
+            btn.classList.add("toBottom");
+          });
         } else {
-          navCheckupBtn.classList.remove("toBottom");
+          navCheckupBtn.forEach((btn) => {
+            btn.classList.remove("toBottom");
+          });
         }
       });
     }
@@ -803,7 +802,7 @@ window.addEventListener("load", () => {
 
     // Custom wow js- appear
     (function () {
-      const heightToShow = 250;
+      const heightToShow = 150;
 
       const appears = [...document.querySelectorAll(".appear")];
 
@@ -832,6 +831,70 @@ window.addEventListener("load", () => {
           }
         }
       });
+    })();
+
+    // folio-main - change work types
+    (function () {
+      const navBtns = [
+        ...document.querySelectorAll(".portfolio_main nav button"),
+      ];
+
+      if (navBtns.length) {
+        // Mutate to dropdown on 360 screens
+        const nav = document.querySelector(".portfolio_main nav");
+        const navExpand = nav.querySelector(".nav_arrow");
+
+        navExpand.addEventListener("click", () => {
+          nav.classList.toggle("expanded");
+        });
+
+        // Default
+        navBtns[0].classList.add("active");
+        const folioPosts = document.querySelectorAll(".other .card");
+        const noPosts = document.querySelector(".other .noPosts");
+        let serviceType = "all";
+        reorder();
+
+        for (let i = 0; i < navBtns.length; i++) {
+          navBtns[i].addEventListener("click", (e) => {
+            for (let j = 0; j < navBtns.length; j++) {
+              navBtns[j].classList.remove("active");
+            }
+            navBtns[i].classList.add("active");
+            if (nav.classList.contains("expanded")) {
+              nav.classList.remove("expanded");
+            }
+
+            // Reorder posts
+            serviceType = navBtns[i].getAttribute("data-term");
+            reorder();
+          });
+        }
+
+        // Reorder posts
+        function reorder() {
+          noPosts.classList.remove("active");
+          let count = 0;
+
+          for (let i = 0; i < folioPosts.length; i++) {
+            if (serviceType === "all") {
+              folioPosts[i].classList.add("active");
+              count++;
+            } else {
+              if (folioPosts[i].getAttribute("data-term") === serviceType) {
+                folioPosts[i].classList.add("active");
+                count++;
+              } else {
+                folioPosts[i].classList.remove("active");
+              }
+            }
+          }
+
+          if (count === 0) {
+            noPosts.classList.add("active");
+          }
+        }
+      }
     })();
   })();
 });

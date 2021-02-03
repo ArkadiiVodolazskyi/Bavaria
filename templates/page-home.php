@@ -74,7 +74,7 @@
               <?= get_sub_field('title'); ?>
             </h3>
 
-            <div class="figure_11" style="z-index: 0; left: 0%">
+            <div class="figure_11 appear" style="z-index: 0; left: 0%; animation-delay: 2s">
               <img src="<?= B_IMG_DIR ?>/figure_111.png" />
             </div>
 
@@ -99,8 +99,8 @@
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 42%"
+            class="figure_12 appear"
+            style="left: 36%; animation-delay: 1s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -112,8 +112,8 @@
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 58%"
+            class="figure_12 appear"
+            style="left: 58%; animation-delay: 1.5s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -197,8 +197,8 @@
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 8%"
+            class="figure_12 appear"
+            style="left: 8%; animation-delay: 1s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -210,8 +210,8 @@
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 24%"
+            class="figure_12 appear"
+            style="left: 24%; animation-delay: 1.5s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -300,8 +300,8 @@
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: -2%"
+            class="figure_12 appear"
+            style="left: -2%; animation-delay: 1s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -312,8 +312,8 @@
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 32%"
+            class="figure_12 appear"
+            style="left: 32%; animation-delay: 1.3s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"
@@ -324,8 +324,8 @@
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="figure_12"
-            style="left: 54%"
+            class="figure_12 appear"
+            style="left: 54%; animation-delay: 1.5s"
             viewbox="0,0 140,270">
             <path
               fill="transparent"

@@ -116,12 +116,12 @@
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
-			'rewrite' => array( 'slug' => 'folio', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'folio/%service_type%', 'with_front' => false ),
 			'has_archive' => 'folio',
 		));
 
 		// Create custom taxonomy - service
-		register_taxonomy('service_type', array('service_inner'), array(
+		register_taxonomy('service_type', array('service_inner', 'folio'), array(
 			'labels' => array(
 					'name'=>'Категории обслуживания'
 			),
@@ -164,29 +164,29 @@
 
 	// services
 	## Отфильтруем ЧПУ произвольного типа
-	// add_filter('post_type_link', 'services_permalink', 1, 2);
+	add_filter('post_type_link', 'services_permalink', 1, 2);
 
-	// function services_permalink( $permalink, $post ){
-	// 	// выходим если это не наш тип записи: без холдера %service_type%
-	// 	if( strpos($permalink, '%service_type%') === FALSE )
-	// 		return $permalink;
+	function services_permalink( $permalink, $post ){
+		// выходим если это не наш тип записи: без холдера %service_type%
+		if( strpos($permalink, '%service_type%') === FALSE )
+			return $permalink;
 
-	// 	// // Получаем элементы таксы
-	// 	// $terms = get_the_terms($post, 'service_type');
-	// 	// $taxonomy_slug = $terms[0]->slug;
-	// 	// return str_replace('%service_type%', $taxonomy_slug, $permalink );
+		// // Получаем элементы таксы
+		// $terms = get_the_terms($post, 'service_type');
+		// $taxonomy_slug = $terms[0]->slug;
+		// return str_replace('%service_type%', $taxonomy_slug, $permalink );
 
-	// 	$terms = get_the_terms($post, 'service_type');
-	// 	if( ! is_wp_error($terms) && !empty($terms) && is_object($terms[0]) ) {
-	// 		$taxonomy_slug = $terms[0]->slug;
-	// 		return str_replace('%service_type%', $taxonomy_slug, $permalink );
-	// 	}
-	// 	else {
-	// 		$slug = str_replace('%service_type%', $taxonomy_slug, $permalink );
-	// 		$basename = basename($slug);
-	// 		$slug = str_replace('/' . $basename, $basename, $slug );
-	// 		return $slug;
-	// 	}
-	// }
+		$terms = get_the_terms($post, 'service_type');
+		if( ! is_wp_error($terms) && !empty($terms) && is_object($terms[0]) ) {
+			$taxonomy_slug = $terms[0]->slug;
+			return str_replace('%service_type%', $taxonomy_slug, $permalink );
+		}
+		else {
+			$slug = str_replace('%service_type%', $taxonomy_slug, $permalink );
+			$basename = basename($slug);
+			$slug = str_replace('/' . $basename, $basename, $slug );
+			return $slug;
+		}
+	}
 
 ?>

@@ -104,16 +104,19 @@ html
 body
 	position: relative
 	z-index: 1
-	opacity: 0
+	background-color: $dGrey
+	transition: all 0.5s ease-in
+	> *:not(#spinner)
+		opacity: 0
 	&.loaded
-		animation: bodyFadeIn
-		animation-duration: 0.8s
-		animation-delay: 0s
-		animation-fill-mode: forwards
+		background-color: $w
+		> *:not(#spinner)
+			opacity: 1
 
 section
 	position: relative
 	z-index: 1
+	transition: all 0.5s ease
 	&.dark
 		background-color: $dGrey
 		*
@@ -149,8 +152,8 @@ section
 	text-transform: uppercase
 	position: absolute
 	z-index: 20
-	right: 186px
-	top: 108px
+	right: 10%
+	top: rem(108)
 	transition-delay: 0.1s
 	&:hover
 		color: $lBlue
@@ -309,7 +312,7 @@ svg.replaced-svg:not(.native)
 .other
 	display: flex
 	justify-content: flex-start
-	margin: rem(100) rem(-18) 0
+	margin: rem(100) 0 0
 	color: $w
 	.card
 		width: rem(492)
@@ -441,6 +444,13 @@ svg.replaced-svg:not(.native)
 		transform: skew(-$skew)
 		background-color: $w
 		box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+		opacity: 0
+		transform: skew(-$skew) translateX(300px)
+		&.appeared
+			animation: skewRight
+			animation-duration: 0.5s
+			animation-fill-mode: forwards
+			animation-timing-function: ease-in
 		.pro_icon
 			max-width: rem(72)
 			max-height: rem(72)
@@ -553,6 +563,7 @@ svg.replaced-svg:not(.native)
 		fill: $red
 	&.accent
 		transform: scale(1.5)
+		fill: $red
 	&:hover
 		fill: $lBlue
 	svg
@@ -637,7 +648,7 @@ svg.replaced-svg:not(.native)
 	height: rem(270)
 	position: absolute
 	bottom: -4rem
-	right: rem(490)
+	right: 25%
 	z-index: 10
 	.figure_41
 		position: absolute
@@ -846,6 +857,12 @@ svg.replaced-svg:not(.native)
 	transform: skew(-$skew)
 	background-color: $red
 	overflow: hidden
+	opacity: 0
+	transform: skew(-$skew) translateX(-300px)
+	&.appeared
+		animation: skewLeft
+		animation-duration: 1s
+		animation-fill-mode: forwards
 	&:after
 		content: ""
 		position: absolute
@@ -867,27 +884,43 @@ svg.replaced-svg:not(.native)
 	bottom: 0
 	height: 100%
 	width: auto
-	animation: lineGrow
-	animation-duration: 5s
-	// animation-delay: 0.8s
-	animation-fill-mode: forwards
-	overflow: hidden
+	opacity: 0
+	transform: translateX(-300px)
+	&.appeared
+		animation: left
+		animation-duration: 1s
+		animation-fill-mode: forwards
 .figure_13
 	width: rem(150)
 	height: rem(270)
 	position: absolute
 	bottom: -6rem
 	z-index: 10
+	&.appeared
+		.figure_41
+			animation: figure_41
+			animation-duration: 1s
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+		.figure_42
+			animation: figure_42
+			animation-duration: 1s
+			animation-delay: 2s
+			animation-fill-mode: forwards
 	.figure_41
 		position: absolute
 		width: auto
 		height: 10rem
 		fill: transparent !important
 		stroke: $w !important
+		opacity: 0
+		transform: translate(-150px, 0)
 	.figure_42
 		position: absolute
 		width: auto
 		height: 11rem
+		opacity: 0
+		transform: translate(20px, -100px)
 .figure_14
 	position: relative
 	min-width: rem(120)
@@ -948,5 +981,44 @@ svg.replaced-svg:not(.native)
 .textAppear span.wow
 	white-space: break-spaces
 
-
-
+#spinner
+	animation: spin 1s infinite linear
+	border: solid 2vmin transparent
+	border-radius: 50%
+	border-right-color: $lBlue
+	border-top-color: $lBlue
+	box-sizing: border-box
+	width: 20vmin
+	height: 20vmin
+	position: fixed
+	z-index: 950
+	left: calc(50% - 10vmin)
+	top: calc(50% - 10vmin)
+	&.loaded
+		display: none
+	&:before
+		animation: spin 2s infinite linear
+		border: solid 2vmin transparent
+		border-radius: 50%
+		border-right-color: $dBlue
+		border-top-color: $dBlue
+		box-sizing: border-box
+		content: ""
+		width: 16vmin
+		height: 16vmin
+		position: absolute
+		left: 0
+		top: 0
+	&:after
+		animation: spin 3s infinite linear
+		border: solid 2vmin transparent
+		border-radius: 50%
+		border-right-color: $red
+		border-top-color: $red
+		box-sizing: border-box
+		content: ""
+		width: 12vmin
+		height: 12vmin
+		position: absolute
+		left: 2vmin
+		top: 2vmin

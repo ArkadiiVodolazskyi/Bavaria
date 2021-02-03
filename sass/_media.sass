@@ -1,4 +1,4 @@
-@media (max-width: 1536px)
+@media (max-width: 1600px)
 	html
 		font-size: 20px
 	.wrapper
@@ -6,14 +6,36 @@
 	header
 		.empty
 			display: none
+		.logo_animate
+			margin-right: 0
+
+@media (max-width: 1400px)
+	.wrapper
+		width: 90%
+	header
+		.contacts .wrapper
+			.social, .languages
+				display: none
+			.empty
+				display: block
+				width: 25%
+		nav .wrapper .links li a
+			width: max-content
+		.navCheckupBtn
+			display: none
+		.smallCheckupBtn
+			display: inline-block
 
 @media (max-width: 1280px)
-	.wrapper
-		width: calc(100% -  32px)
+	#expandedMenu
+		> *:not(.closeOverlay):not(.languages)
+			padding: 8rem 1rem 0 2.5rem
 
 @media (max-width: 360px)
 	html
 		font-size: $fontSize360
+	.wrapper
+		width: calc(100% -  32px)
 	section
 		height: auto !important
 	.hidden_360, .figure_4, .figure_8 > .figure_42, .figure_9, .figure_10, .figure_12

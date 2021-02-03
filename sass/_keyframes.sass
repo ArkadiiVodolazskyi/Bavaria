@@ -1,8 +1,11 @@
+@keyframes spin
+	100%
+		transform: rotate(360deg)
 @keyframes bodyFadeIn
 	from
-		opacity: 0
+		background-color: $dGrey
 	to
-		opacity: 1
+		background-color: $w
 @keyframes fadeIn
 	0%
 		opacity: 0
@@ -17,11 +20,6 @@
 		transform: translate(-50%, -30%)
 	100%
 		transform: translate(-50%, 0%)
-@keyframes lineGrow
-	0%
-		max-height: 0px !important
-	100%
-		max-height: 2000px !important
 @keyframes logoLine1
 	from
 		opacity: 0
@@ -111,6 +109,7 @@
 	100%
 		opacity: 1
 		transform: skew(-$skew) translate(0, 0)
+
 @keyframes skewLeft
 	0%
 		opacity: 0
@@ -118,6 +117,21 @@
 	100%
 		opacity: 1
 		transform: skew(-$skew) translateX(0)
+@keyframes skewRight
+	0%
+		opacity: 0
+		transform: skew(-$skew) translateX(300px)
+	100%
+		opacity: 1
+		transform: skew(-$skew) translateX(0)
+@keyframes skewUp
+	0%
+		opacity: 0
+		transform: skew(-$skew) translateY(300px)
+	100%
+		opacity: 1
+		transform: skew(-$skew) translateY(0)
+
 @keyframes figure_31
 	0%
 		opacity: 0
@@ -162,3 +176,19 @@
 	100%
 		opacity: 1
 		transform: translate(-3rem, -100%)
+
+@keyframes left
+	0%
+		opacity: 0
+		transform: translateX(-300px)
+	100%
+		opacity: 1
+		transform: translateX(0px)
+
+@keyframes spanDown
+	0%
+		opacity: 0
+		transform: translateY(-100px)
+	100%
+		opacity: 0.6
+		transform: translateY(0)

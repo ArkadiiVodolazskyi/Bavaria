@@ -28,7 +28,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>
+          <h2 class="textAppear" data-delay="2">
             <?= get_the_title(); ?>
           </h2>
         </div>
@@ -46,16 +46,16 @@
     <section class="info_about">
       <div class="wrapper">
         <div class="left_text">
-          <p class="accent">
+          <p class="accent textAppear" data-delay="1">
             <?= get_field('about')['par_bold']; ?>
           </p>
-          <p>
+          <p class="wow textAppear" data-delay="1.2">
             <?= get_field('about')['par']; ?>
           </p>
         </div>
         <div class="right_master">
           <div class="master">
-            <div class="master_bg">
+            <div class="master_bg appear">
               <div class="master_name">
                 <?php while ( have_rows('masters') ): the_row(); ?>
                   <div class="name">
@@ -86,7 +86,7 @@
             </div>
           </div>
 
-          <div class="figure_13" style="right: 40px">
+          <div class="figure_13 appear" style="right: 40px">
             <img
               class="img-svg figure_41"
               src="<?= B_IMG_DIR ?>/figure_41.svg"
@@ -100,12 +100,12 @@
     <section class="about_video">
       <div class="wrapper">
         <div class="video_left">
-          <div class="img_bg">
+          <div class="img_bg appear">
             <img src="<?= get_field('video_section')['thumbnail']; ?>" >
           </div>
         </div>
         <div class="video_text">
-          <h2>
+          <h2 class="textAppear" data-delay="1">
             <?= get_field('video_section')['text']; ?>
           </h2>
           <div class="video">
@@ -119,7 +119,7 @@
       </div>
 
       <div
-        class="figure_7 red"
+        class="figure_7 red wow fadeInDown"
         style="width: 20rem; height: 22.5rem; left: 35%">
         <img
           class="img-svg figure_71"
@@ -129,8 +129,8 @@
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: -2%"
+        class="figure_12 appear"
+        style="left: -2%; ; animation-delay: 1s"
         viewbox="0,0 140,270">
         <path
           fill="transparent"
@@ -141,8 +141,8 @@
       </svg>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 32%"
+        class="figure_12 appear"
+        style="left: 32%; animation-delay: 1s"
         viewbox="0,0 140,270">
         <path
           fill="transparent"
@@ -153,8 +153,8 @@
       </svg>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 64%"
+        class="figure_12 appear"
+        style="left: 64%; animation-delay: 1s"
         viewbox="0,0 140,270">
         <path
           fill="transparent"
@@ -168,11 +168,11 @@
     <?php if (get_field('facts', 'options')): ?>
       <section class="facts">
         <div class="wrapper mobwrapper">
-          <h2 class="facts_title">Факты о нас</h2>
+          <h2 class="facts_title textAppear" data-delay="1">Факты о нас</h2>
           <div class="facts_cards mobslider">
 
             <?php while ( have_rows('facts', 'options') ): the_row(); ?>
-              <div class="card">
+              <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
                 <img
                   src="<?= get_sub_field('icon'); ?>"
                   class="img-svg native pro_icon"
@@ -186,7 +186,7 @@
           </div>
         </div>
 
-        <div class="figure_2" style="left: 78%">
+        <div class="figure_2 appear" style="left: 78%">
           <div class="figure_21"></div>
           <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
           <div class="figure_23"></div>
@@ -194,8 +194,8 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="figure_12"
-          style="left: 12%"
+          class="figure_12 appear"
+          style="left: 12%; animation-delay: 1s"
           viewbox="0,0 140,270"
         >
           <path
@@ -208,8 +208,8 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="figure_12"
-          style="left: 26%"
+          class="figure_12 appear"
+          style="left: 26%; animation-delay: 1.5s"
           viewbox="0,0 140,270"
         >
           <path

@@ -24,32 +24,29 @@
 
       <section class="post">
         <div class="wrapper">
-          <div class="date"><span>
+          <div class="date appear"><span>
             <?= date_i18n( 'j F Y', get_the_date(), false ); ?>
           </span></div>
-          <h2 class="blog_title">
+          <h2 class="blog_title textAppear" data-delay="1">
             <?= get_the_title(); ?>
-            <?php echo get_the_ID();
-            $type = get_post_type(get_the_ID());
-            echo $type; ?>
           </h2>
 
           <?php while ( have_rows('page-blog_inner') ): the_row(); ?>
 
           <?php while ( have_rows('paragraph_accent') ): the_row(); ?>
-            <p class="accent">
+            <p class="accent wow fadeInUp">
               <?= get_sub_field('text'); ?>
             </p>
           <?php endwhile; ?>
 
           <?php while ( have_rows('paragraph') ): the_row(); ?>
-            <p>
+            <p class="wow fadeInUp">
               <?= get_sub_field('text'); ?>
             </p>
           <?php endwhile; ?>
 
           <?php while ( have_rows('gallery') ): the_row(); ?>
-            <div class="gallery">
+            <div class="gallery wow fadeInUp">
               <button class="tape_prev">
                 <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
@@ -69,12 +66,12 @@
 
           <?php while ( have_rows('list') ): the_row(); ?>
             <div class="list_wrapper">
-              <h5 class="list_title">
+              <h5 class="list_title wow fadeInUp">
                 <?= get_sub_field('title'); ?>
               </h5>
               <ul class="list">
                 <?php while ( have_rows('points') ): the_row(); ?>
-                  <li>
+                  <li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2?>s">
                     <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                     <span><?= get_sub_field('text'); ?></span>
                   </li>
@@ -85,26 +82,44 @@
 
           <?php endwhile; ?>
 
+          <?php
+          //   $title = 'Привет, мир'; // заголовок
+          //   $summary = 'Короткое описание данной статьи, например можно использовать функцию WordPress the_excerpt()'; // анонс поста
+          //   $url = 'https://misha.agency?p=1'; // ссылка на пост
+          //   $image_url = 'https://misha.agency/wp-content/themes/truemisha/a/apple-touch-icon-144x144-precomposed.png' // URL изображения
+          // ?>
+          <!-- <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo urlencode( $url ); ?>&p[title]=<?php echo $title ?>&p[summary]=<?php echo $summary ?>&p[images][0]=<?php echo $image_url ?>" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" title="Поделиться ссылкой на Фейсбук" target="_parent">Поделиться</a> -->
+
+          <?php
+            $url = urlencode(get_permalink());
+            $title = urlencode('Зацени новость на сайте bavaria!');
+            // $image = urlencode(get_field('banner'));
+
+            $tgLink = 'tg://msg_url?url=' . $url . '&text=' . $title;
+            $fbLink = 'https://www.facebook.com/sharer/sharer.php?&p[url]=' . $url;
+            //  . '&p[title]=' . $title . '&p[images][0]=' . $image
+          ?>
+
           <div class="share">
-            <span>Поделитесь с друзьями:</span>
+            <span class="wow fadeInUp">Поделитесь с друзьями:</span>
             <ul>
-              <li>
-                <a href="https://www.facebook.com/">
+              <li class="wow fadeInUp" data-wow-delay="0.5s">
+                <a href="<?= $fbLink; ?>" class="shareFacebook" target="_blank">
                   <img
                     src="<?= B_IMG_DIR ?>/share_facebook.svg"
                     class="img-svg"
                   />
                 </a>
               </li>
-              <li>
-                <a href="https://telegram.org/">
+              <li class="wow fadeInUp" data-wow-delay="0.8s">
+                <a href="<?= $tgLink; ?>" class="shareTelegram">
                   <img
                     src="<?= B_IMG_DIR ?>/share_telegram.svg"
                     class="img-svg"
                   />
                 </a>
               </li>
-              <li>
+              <li class="wow fadeInUp" data-wow-delay="1.2s">
                 <button class="copyLink">
                   <img
                     src="<?= B_IMG_DIR ?>/share_link.svg"
@@ -122,7 +137,7 @@
 
     <section class="news light p-5 also_news">
       <div class="wrapper mobwrapper">
-        <h3>Читайте также</h3>
+        <h3 class="textAppear" data-delay="1">Читайте также</h3>
 
         <div class="cards">
           <div class="pages">
@@ -134,7 +149,7 @@
                   'numberposts' => 4
                 ] );
 
-                foreach( $posts as $post ) {
+                foreach( $posts as $key=>$post ) {
                   setup_postdata($post);
 
                   $url = get_permalink();
@@ -145,7 +160,8 @@
 
                   <a
                     href="<?= $url; ?>"
-                    class="card"
+                    class="card wow fadeInRight"
+                    data-wow-delay="<?= $key*0.2?>s"
                     style="background-image: url(<?= $img; ?>); ">
 
                     <div class="block_overlay">
@@ -169,7 +185,7 @@
         </div>
       </div>
 
-      <div class="figure_2" style="left: 74%">
+      <div class="figure_2 appear" style="left: 74%">
         <div class="figure_21"></div>
         <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
         <div class="figure_23"></div>
@@ -177,8 +193,8 @@
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 8%"
+        class="figure_12 appear"
+        style="left: 8%; animation-delay: 1s"
         viewbox="0,0 140,270"
       >
         <path
@@ -191,8 +207,8 @@
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 24%"
+        class="figure_12 appear"
+        style="left: 24%; animation-delay: 1.5s"
         viewbox="0,0 140,270"
       >
         <path

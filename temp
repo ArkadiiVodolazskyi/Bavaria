@@ -56,6 +56,10 @@ animation-fill-mode: forwards
 animation-timing-function: ease-in
 
 
+
+animation-delay: <?= get_row_index()*0.2?>s
+
+
 // Style iframe
     (function () {
       const iframeName = document.querySelector("#video iframe");
@@ -68,6 +72,7 @@ animation-timing-function: ease-in
 
 
 name - duration - delay - count - fill
+animation: skewRight 0.5s 2s ease-in 1 forwards
 
 .next
 	opacity: 0
@@ -80,3 +85,17 @@ name - duration - delay - count - fill
 <h3 class="textAppear" data-delay="1.2">
 	<?= get_sub_field('title'); ?>
 </h3>
+
+
+<div class="figure_11 appear" style="z-index: 0; left: 0%; animation-delay: 2s">
+	<img src="<?= B_IMG_DIR ?>/figure_111.png" />
+</div>
+
+class="figure_12 appear"
+style="left: 36%; animation-delay: 1s"
+
+
+
+echo '<pre>';
+print_r($postTerm);
+echo '</pre>';

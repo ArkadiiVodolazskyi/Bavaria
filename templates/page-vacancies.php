@@ -34,7 +34,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2>
+          <h2 class="textAppear" data-delay="2">
            <?= get_the_title(); ?>
           </h2>
         </div>
@@ -45,7 +45,7 @@
       <div class="wrapper">
 
         <?php while ( have_rows('vacancy') ): the_row(); ?>
-          <div class="vacancy">
+          <div class="vacancy wow fadeInLeft">
             <h3>
               <?= get_sub_field('title'); ?>
               <button class="expand">
@@ -91,11 +91,11 @@
     <?php if (get_field('facts', 'options')): ?>
       <section class="facts">
         <div class="wrapper mobwrapper">
-          <h2 class="facts_title">Факты о нас</h2>
+          <h2 class="facts_title textAppear" data-delay="1">Факты о нас</h2>
           <div class="facts_cards mobslider">
 
             <?php while ( have_rows('facts', 'options') ): the_row(); ?>
-              <div class="card">
+              <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
                 <img
                   src="<?= get_sub_field('icon'); ?>"
                   class="img-svg native pro_icon"
@@ -109,7 +109,7 @@
           </div>
         </div>
 
-        <div class="figure_2" style="left: 78%">
+        <div class="figure_2 appear" style="left: 78%">
           <div class="figure_21"></div>
           <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
           <div class="figure_23"></div>
@@ -117,8 +117,8 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="figure_12"
-          style="left: 12%"
+          class="figure_12 appear"
+          style="left: 12%; animation-delay: 1s"
           viewbox="0,0 140,270"
         >
           <path
@@ -131,8 +131,8 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="figure_12"
-          style="left: 26%"
+          class="figure_12 appear"
+          style="left: 26%; animation-delay: 1.5s"
           viewbox="0,0 140,270"
         >
           <path

@@ -21,33 +21,36 @@ header
 				fill: $w
 			.languages li
 				display: inline-block
-				font-size: rem(16)
+				font-size: 16px
 				color: $w
 				a
 					text-decoration: underline
 					opacity: 0.6
-			.time, .contact
+			.empty
+				width: 10%
+			.time
 				color: $w
 				text-align: right
-				p, a
+				p
 					color: $w
 				span
 					font-size: rem(16)
-					opacity: 0.6
+					opacity: 0
+					transform: translateY(-100px)
+					animation: spanDown 1s 3s ease-in 1 forwards
 			.contact
 				position: relative
 				padding-right: rem(44)
 				fill: $red
 				transition: all 0.3s ease
+				color: $w
+				text-align: right
 				&:hover
 					background-color: $w
 					a
 						color: $dGrey
 					span
 						color: $dGrey
-						position: relative
-						z-index: 20
-						user-select: none
 					.additional
 						opacity: 1
 						visibility: visible
@@ -56,17 +59,25 @@ header
 					top: 1.5rem
 					right: 0.5rem
 					transform: translate(-50%, 0%)
+					opacity: 0
+					animation: fadeIn 1s 3s ease-in 1 forwards
 				a
 					position: relative
 					fill: $red
 					font-weight: 500
+					color: $w
 					&:hover
 						color: $lBlue
 				span
 					color: $w
-					opacity: 0.6
+					position: relative
+					z-index: 20
 					font-size: rem(16)
 					text-decoration: underline
+					opacity: 0
+					user-select: none
+					transform: translateY(-100px)
+					animation: spanDown 1s 3.5s ease-in 1 forwards
 				.additional
 					width: 100%
 					position: absolute
@@ -118,10 +129,12 @@ header
 				align-items: center
 				justify-content: center
 				li a
+					width: min-content
 					margin: 0 1rem
 					font-size: rem(18)
 					font-weight: 500
 					color: $w
+					text-align: center
 					&:hover
 						color: $lBlue
 			.checkup
@@ -341,8 +354,8 @@ header
 	padding-top: 0 !important
 	padding-bottom: 0 !important
 	position: relative
-	width: rem(200)
-	height: rem(200)
+	width: 200px
+	height: 200px
 	display: flex
 	justify-content: center
 	align-items: center
@@ -359,9 +372,9 @@ header
 			fill: lighten($dw, 20%)
 	svg
 		height: 100%
+		margin: 0 -26px
 	.line_1
 		fill: $lBlue
-		margin: 0 -1.1rem
 		opacity: 0
 		transform: translate(-5px, 30px)
 		animation: logoLine1
@@ -371,14 +384,12 @@ header
 	.line_2
 		opacity: 0
 		fill: $dBlue
-		margin: 0 -1.1rem
 		animation: logoLine2
 		animation-duration: 1.5s
 		animation-delay: 2.8s
 		animation-fill-mode: forwards
 	.line_3
 		fill: $red
-		margin: 0 -1.1rem
 		opacity: 0
 		transform: translate(5px, -30px)
 		animation: logoLine3
@@ -431,7 +442,7 @@ header
 		margin-left: -15px
 		transition-delay: 0.1s
 
-#navCheckupBtn
+.navCheckupBtn
 	opacity: 0
 	transform: skew(-$skew) translate(0, 50px)
 	animation: navCheckup
@@ -444,3 +455,16 @@ header
 		right: 8%
 		bottom: 72px
 		z-index: 500
+.smallCheckupBtn
+	width: 36px
+	height: 36px
+	fill: $red !important
+	display: none
+	cursor: pointer
+	&.toBottom
+		position: fixed
+		right: 8%
+		bottom: 72px
+		z-index: 500
+	&:hover
+		fill: $lBlue !important

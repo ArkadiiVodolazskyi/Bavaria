@@ -24,26 +24,26 @@
 
     <section class="post service_post">
       <div class="wrapper">
-        <h2 class="blog_title">
+        <h2 class="blog_title textAppear" data-delay="1">
           <?= get_the_title(); ?>
         </h2>
 
         <?php while ( have_rows('single-folio') ): the_row(); ?>
 
           <?php while ( have_rows('paragraph_accent') ): the_row(); ?>
-            <p class="accent">
+            <p class="accent wow fadeInUp">
               <?= get_sub_field('text'); ?>
             </p>
           <?php endwhile; ?>
 
           <?php while ( have_rows('paragraph') ): the_row(); ?>
-            <p>
+            <p class="wow fadeInUp">
               <?= get_sub_field('text'); ?>
             </p>
           <?php endwhile; ?>
 
           <?php while ( have_rows('gallery') ): the_row(); ?>
-            <div class="gallery">
+            <div class="gallery wow fadeInUp">
               <button class="tape_prev">
                 <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
@@ -65,7 +65,7 @@
             <div class="result">
 
               <?php if ( get_sub_field('text') ): ?>
-                <div class="left_text">
+                <div class="left_text wow fadeInLeft">
                   <?= get_sub_field('text'); ?>
                 </div>
               <?php endif; ?>
@@ -74,12 +74,12 @@
 
                 <?php while ( have_rows('list') ): the_row(); ?>
                   <div class="list_wrapper">
-                    <h5 class="list_title">
+                    <h5 class="list_title wow fadeInRight" data-wow-delay="1s">
                       <?= get_sub_field('title'); ?>
                     </h5>
                     <ul class="list">
                       <?php while ( have_rows('points') ): the_row(); ?>
-                        <li>
+                        <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2 + 0.5?>s">
                           <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                           <span><?= get_sub_field('text'); ?></span>
                         </li>
@@ -88,21 +88,22 @@
                   </div>
                 <?php endwhile; ?>
 
-                <div class="checkup">
+                <div class="checkup appear">
                   <button>Записаться на осмотр</button>
                 </div>
 
                 <div
                   class="figure_8"
                   style="height: 95%; width: 170%; top: 3rem; left: 3.5rem">
-                  <div class="figure_9" style="width: 15%; left: 60%">
+                  <div class="figure_9 wow fadeInRight" data-wow-delay="1s"
+                    style="width: 15%; left: 60%">
                     <img
                       src="<?= B_IMG_DIR ?>/figure_91.png"
                       class="figure_91"
                     />
                   </div>
                   <img
-                    class="figure_42"
+                    class="figure_42 appear"
                     src="<?= B_IMG_DIR ?>/figure_42.png"
                     style="height: 55%; left: 65%; bottom: -4rem"
                   />
@@ -114,10 +115,18 @@
 
         <?php endwhile; ?>
 
+        <?php
+          $url = urlencode(get_permalink());
+          $title = urlencode('Зацени новость на сайте bavaria!');
+
+          $tgLink = 'tg://msg_url?url=' . $url . '&text=' . $title;
+          $fbLink = 'https://www.facebook.com/sharer/sharer.php?&p[url]=' . $url;
+        ?>
+
         <div class="share">
-          <span>Поделитесь с друзьями:</span>
+          <span class="wow fadeInUp">Поделитесь с друзьями:</span>
           <ul>
-            <li>
+            <li class="wow fadeInUp" data-wow-delay="0.5s">
               <a href="https://www.facebook.com/">
                 <img
                   src="<?= B_IMG_DIR ?>/share_facebook.svg"
@@ -125,15 +134,15 @@
                 />
               </a>
             </li>
-            <li>
-              <a href="https://telegram.org/">
+            <li class="wow fadeInUp" data-wow-delay="0.8s">
+              <a href="<?= $tgLink; ?>">
                 <img
                   src="<?= B_IMG_DIR ?>/share_telegram.svg"
                   class="img-svg"
                 />
               </a>
             </li>
-            <li>
+            <li class="wow fadeInUp" data-wow-delay="1.2s">
               <button class="copyLink">
                 <img
                   src="<?= B_IMG_DIR ?>/share_link.svg"
@@ -149,7 +158,7 @@
 
     <section class="news p-5">
       <div class="wrapper mobwrapper">
-        <h3>Читайте также</h3>
+        <h3 class="textAppear" data-delay="1">Читайте также</h3>
 
         <div class="other mobslider">
           <?php
@@ -158,14 +167,14 @@
               'numberposts' => 3
             ] );
 
-            foreach( $posts as $post ) {
+            foreach( $posts as $key=>$post ) {
               setup_postdata($post);
 
               $url = get_permalink();
               $img = get_field('banner');
               $post_title = $post->post_title; ?>
 
-            <a href="<?= $url; ?>" class="card">
+            <a href="<?= $url; ?>" class="card wow fadeInUp" data-wow-delay="<?= $key*0.2?>s">
               <img
                 src="<?= $img; ?>"
                 class="card_bg"
@@ -186,7 +195,7 @@
         </div>
       </div>
 
-      <div class="figure_2" style="left: 74%">
+      <div class="figure_2 appear" style="left: 74%">
         <div class="figure_21"></div>
         <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
         <div class="figure_23"></div>
@@ -194,8 +203,8 @@
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 8%"
+        class="figure_12 appear"
+        style="left: 8%; animation-delay: 1s"
         viewbox="0,0 140,270"
       >
         <path
@@ -208,8 +217,8 @@
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="figure_12"
-        style="left: 24%"
+        class="figure_12 appear"
+        style="left: 24%; animation-delay: 1.5s"
         viewbox="0,0 140,270"
       >
         <path
