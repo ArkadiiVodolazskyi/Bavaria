@@ -1,5 +1,5 @@
 
-#connect_wrapper
+#connect_wrapper, #resume_wrapper
 	width: 50%
 	max-height: rem(550)
 	position: fixed
@@ -29,7 +29,7 @@
 	z-index: 3
 	right: 1.25rem
 	bottom: -3rem
-#closeConnect
+#closeConnect, #closeResume
 	padding: 0
 	transform: skew($skew)
 	position: absolute
@@ -38,37 +38,9 @@
 	fill: $red
 	&:hover
 		fill: $lBlue
-#connect_form, #connect_form_2
-	position: relative
-	z-index: 5
-	transform: skew($skew)
-	width: 50%
-	h2
-		font-size: rem(36)
-		font-weight: bold
-		color: $dGrey
-	input[type=text], input[type=tel], textarea
-		width: 100%
-		margin-top: rem(36)
-		border: none
-		border-bottom: 2px solid $dGrey
-		color: $lGrey
-		font-size: rem(18)
-		padding: rem(12) 0
-		background-color: transparent
-	textarea
-		max-width: 100%
-		max-height: rem(180)
-	.checkup
-		margin-top: rem(36)
-	input[type=submit]
-		background-color: transparent
-		border: 1px solid transparent
-
 
 // Styling Gravity Forms
-
-#connect_wrapper
+#connect_wrapper, #resume_wrapper
 	width: 50%
 	max-height: rem(550)
 	position: fixed
@@ -89,7 +61,7 @@
 		font-weight: bold
 		color: $dGrey
 		transform: skew($skew)
-	#gform_wrapper_1
+	.gform_wrapper
 		position: relative
 		z-index: 5
 		transform: skew($skew)
@@ -150,7 +122,17 @@
 		z-index: 1
 		cursor: pointer
 		outline: none
+	input[type=file]
+		width: 100%
+		margin-top: rem(40)
+		background-color: transparent
+		border: none
+		font-size: 20px
+		cursor: pointer
+	.screen-reader-text
+		display: none
 	.gform_footer
+		width: max-content
 		position: relative
 		margin: 36px 0 0 0
 		padding: 0
@@ -171,7 +153,7 @@
 		display: none
 		opacity: 0
 		visibility: hidden
-	#gform_confirmation_wrapper_1
+	#gform_confirmation_wrapper_1, #gform_confirmation_wrapper_2
 		margin-top: 36px
 		transform: skew($skew)
 		text-align: center

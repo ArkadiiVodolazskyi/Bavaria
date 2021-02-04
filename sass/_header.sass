@@ -63,6 +63,7 @@ header
 					animation: fadeIn 1s 3s ease-in 1 forwards
 				a
 					position: relative
+					z-index: 15
 					fill: $red
 					font-weight: 500
 					color: $w
@@ -90,7 +91,11 @@ header
 					z-index: 10
 					text-align: left
 					transition: all 0.3s ease
+					display: flex
+					flex-direction: column
 					> li
+						display: flex
+						flex-direction: column
 						.type li svg
 							width: rem(20)
 							height: rem(20)
@@ -129,7 +134,7 @@ header
 				align-items: center
 				justify-content: center
 				li a
-					width: min-content
+					width: max-content
 					margin: 0 1rem
 					font-size: rem(18)
 					font-weight: 500
@@ -413,6 +418,7 @@ header
 
 .hamb_animate
 	width: 5rem
+	min-width: 100px
 	position: relative
 	display: flex
 	flex-direction: column
@@ -458,13 +464,21 @@ header
 .smallCheckupBtn
 	width: 36px
 	height: 36px
-	fill: $red !important
 	display: none
 	cursor: pointer
+	position: relative
 	&.toBottom
 		position: fixed
-		right: 8%
-		bottom: 72px
+		right: 4%
+		bottom: 40px
 		z-index: 500
-	&:hover
+	&:hover svg
 		fill: $lBlue !important
+	svg
+		width: 100%
+		height: 100%
+		fill: $red !important
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)

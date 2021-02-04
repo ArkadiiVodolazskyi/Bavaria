@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<div class="copyright">
 			<div class="logowrap">
-				<a href="#" class="logo wow fadeInLeft">
+				<a href="<?= get_home_url(); ?>" class="logo wow fadeInLeft">
 					<img src="<?= B_IMG_DIR ?>/logo.svg" class="img-svg native" />
 				</a>
 				<span class="slogan textAppear" data-delay="1.5">

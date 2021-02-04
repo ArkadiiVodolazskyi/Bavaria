@@ -18,6 +18,20 @@
   <body>
 		<?php get_header(); ?>
 
+    <div id="resume_wrapper">
+      <h2>Отправить резюме</h2>
+      <?php echo do_shortcode( '[gravityform id=2 title=false description=false ajax=true]' ); ?>
+
+      <img src="<?= B_IMG_DIR ?>/connect_img.png" class="connect_img" />
+      <img
+        src="<?= B_IMG_DIR ?>/figure_1.svg"
+        class="img-svg native connect_figure"
+      />
+      <button id="closeResume">
+        <img src="<?= B_IMG_DIR ?>/cross2.svg" class="img-svg" />
+      </button>
+    </div>
+
     <section class="banner blog_banner">
       <img
         src="<?= get_field('banner'); ?>"
@@ -79,7 +93,7 @@
               <?php endwhile; ?>
             <?php endwhile; ?>
 
-            <button class="send">
+            <button class="send resume">
               <span>Отправить резюме</span>
             </button>
           </div>

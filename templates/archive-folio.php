@@ -34,7 +34,10 @@
     <?php
 
       // Получить названия таксономий service_type
-      $taxonomies = get_terms( array( 'taxonomy' => array( 'service_type' )));
+      $taxonomies = get_terms( [
+        'taxonomy' => 'service_type',
+        'hide_empty' => false,
+      ] );
 
     ?>
 
@@ -52,6 +55,8 @@
             foreach ($taxonomies as $key=>$term) {
               $termName = $term->name;
               $termSlug = $term->slug;
+
+              if ($termName != 'Главная') {
           ?>
 
             <button class="wow fadeInRight"
@@ -60,7 +65,7 @@
               <span><?= $termName; ?></span>
             </button>
 
-          <?php }; ?>
+          <?php } }; ?>
         </nav>
 
         <div class="other">

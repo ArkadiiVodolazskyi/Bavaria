@@ -258,7 +258,9 @@
 				<button class="openConnect">Записаться на осмотр</button>
 			</div>
 
-			<img src="<?= B_IMG_DIR ?>/checkup.svg" class="img-svg smallCheckupBtn" >
+			<button class="smallCheckupBtn">
+				<img src="<?= B_IMG_DIR ?>/checkup.svg" class="img-svg" >
+			</button>
 		</div>
 	</nav>
 </header>

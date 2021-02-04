@@ -120,14 +120,6 @@
 			'has_archive' => 'folio',
 		));
 
-		// Create custom taxonomy - service
-		register_taxonomy('service_type', array('service_inner', 'folio'), array(
-			'labels' => array(
-					'name'=>'Категории обслуживания'
-			),
-			'hierarchical' => true
-		));
-
 		// Create custom post type - service -> service_inner
 		register_post_type('service_inner', array(
 				'labels'             	=> array(
@@ -156,9 +148,16 @@
 				'menu_position'      => null,
 				'supports'           => array('title','editor','author','thumbnail','excerpt','comments'),
 				'rewrite' => array( 'slug' => 'service/%service_type%', 'with_front' => false ),
-				// 'has_archive' => 'service',
 			)
 		);
+
+		// Create custom taxonomy - service
+		register_taxonomy('service_type', array('service_inner', 'folio'), array(
+			'labels' => array(
+					'name'=>'Категории обслуживания'
+			),
+			'hierarchical' => true
+		));
 
 	}
 

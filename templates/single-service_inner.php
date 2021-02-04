@@ -30,6 +30,25 @@
       </div>
     </section>
 
+    <?php
+
+      // Получить главные категории услуг - название и url
+      $mainPosts = get_posts(
+        array(
+          'posts_per_page' => -1,
+          'post_type' => 'service_inner',
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'service_type',
+              'field' => 'name',
+              'terms' => 'Главная',
+            )
+          )
+        )
+      );
+
+    ?>
+
     <section class="workshop">
       <div class="figure_1 hidden_360" style="bottom: unset; top: -7rem">
         <img
@@ -40,66 +59,62 @@
       </div>
 
       <div class="wrapper">
-        <aside>
-          <button class="navExpand">
-            <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-          </button>
-          <ul class="list">
-            <li>
-              <img
-                src="<?= B_IMG_DIR ?>/triple-square.svg"
-                class="img-svg native stripes"
-              />
-              <a href="">Детейлинг</a>
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg arrow" />
-              <ul class="sublist">
-                <li>
-                  <a href="">Рихтовка</a>
-                </li>
-                <li><a href="">Малярка</a></li>
-                <li><a href="">Безпокрасное удаление вмятин</a></li>
-                <li><a href="">Подбор цвета</a></li>
-                <li><a href="">Стапель</a></li>
-              </ul>
-            </li>
 
-            <li>
-              <img
-                src="<?= B_IMG_DIR ?>/triple-square.svg"
-                class="img-svg native stripes"
-              />
-              <a href="">Детейлинг</a>
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg arrow" />
-              <ul class="sublist">
+          <aside>
+            <button class="navExpand">
+              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+            </button>
+            <ul class="list">
+              <?php
+                foreach($mainPosts as $mainPost) {
+                  $mainTitle = $mainPost->post_title;
+                  $mainLink = $mainPost->guid;
+              ?>
                 <li>
-                  <a href="">Рихтовка</a>
-                </li>
-                <li><a href="">Малярка</a></li>
-                <li><a href="">Безпокрасное удаление вмятин</a></li>
-                <li><a href="">Подбор цвета</a></li>
-                <li><a href="">Стапель</a></li>
-              </ul>
-            </li>
+                  <img
+                    src="<?= B_IMG_DIR ?>/triple-square.svg"
+                    class="img-svg native stripes"
+                  />
+                  <a href="<?= $mainLink; ?>">
+                    <?= $mainTitle; ?>
+                  </a>
+                  <button class="arrow">
+                    <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                  </button>
 
-            <li>
-              <img
-                src="<?= B_IMG_DIR ?>/triple-square.svg"
-                class="img-svg native stripes"
-              />
-              <a href="">Детейлинг</a>
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg arrow" />
-              <ul class="sublist">
-                <li>
-                  <a href="">Рихтовка</a>
+                  <ul class="sublist">
+                    <?php
+                      // Get posts by cat title: subTitle, subLink
+                      $subPosts = get_posts(
+                        array(
+                          'posts_per_page' => -1,
+                          'post_type' => 'service_inner',
+                          'tax_query' => array(
+                            array(
+                              'taxonomy' => 'service_type',
+                              'field' => 'name',
+                              'terms' => $mainTitle,
+                            )
+                          )
+                        )
+                      );
+
+                      foreach($subPosts as $subPost) {
+                        $subTitle = $subPost->post_title;
+                        $subLink = $subPost->guid;
+                    ?>
+                      <li>
+                        <a href="<?= $subLink; ?>">
+                          <?= $subTitle; ?>
+                        </a>
+                      </li>
+                    <?php }; ?>
+                  </ul>
+
                 </li>
-                <li><a href="">Малярка</a></li>
-                <li><a href="">Безпокрасное удаление вмятин</a></li>
-                <li><a href="">Подбор цвета</a></li>
-                <li><a href="">Стапель</a></li>
-              </ul>
-            </li>
-          </ul>
-        </aside>
+              <?php }; ?>
+            </ul>
+          </aside>
 
         <main>
           <?php while ( have_rows('page-services_inner') ): the_row(); ?>

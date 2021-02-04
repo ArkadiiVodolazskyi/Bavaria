@@ -99,3 +99,30 @@ style="left: 36%; animation-delay: 1s"
 echo '<pre>';
 print_r($postTerm);
 echo '</pre>';
+
+term_id - name
+21 - Главная [category_parent] => 0 | [category_count] => 5
+14 - Детейлинг [category_parent] => 21 | [category_count] => 1
+17 - Ремонт [category_parent] => 21 | [category_count] => 1
+18 - Техническое обслуживание [category_parent] => 21 | [category_count] => 1
+
+
+
+
+// Получить посты указанного термина по id/имени термина
+$posts_array = get_posts(
+	array(
+		'posts_per_page' => -1,
+		'post_type' => 'service_inner',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'service_type',
+				'field' => 'name',
+				'terms' => 'Ремонт',
+			)
+		)
+	)
+);
+echo '<pre>';
+print_r($posts_array);
+echo '</pre>';

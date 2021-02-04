@@ -7,29 +7,312 @@
 		.empty
 			display: none
 		.logo_animate
-			margin-right: 0
+			margin-right: 1.5rem
 
 @media (max-width: 1400px)
 	.wrapper
 		width: 90%
 	header
 		.contacts .wrapper
-			.social, .languages
-				display: none
+			.social li
+				margin-left: 5px
+			> *:not(.empty)
+				width: max-content
+				white-space: nowrap
 			.empty
 				display: block
-				width: 25%
+				width: 100%
+				width: fill-available
 		nav .wrapper .links li a
 			width: max-content
 		.navCheckupBtn
 			display: none
 		.smallCheckupBtn
 			display: inline-block
+	.figure_1
+		right: 5%
 
 @media (max-width: 1280px)
 	#expandedMenu
 		> *:not(.closeOverlay):not(.languages)
 			padding: 8rem 1rem 0 2.5rem
+	header
+		.contacts .wrapper .social
+			display: none
+		nav .wrapper .links li a
+			margin: 0 12px
+	.other
+		justify-content: center
+		.card h5 span
+			font-size: 16px
+	.signup
+		right: 5%
+
+	section.services .wrapper .cards .card
+		.card_title h4
+			font-size: 1.2rem
+		.card_text
+			transform: translate(0, 1rem) skew($skew)
+	section.news .wrapper .cards .pages .page
+		justify-content: center
+	section.info .wrapper .main .imgs .pros
+		width: 80%
+
+	footer .wrapper
+		.copyright .logowrap
+			flex-direction: column
+			margin-bottom: 1.5rem
+			.slogan
+				align-self: flex-start
+				margin-top: 0.5rem
+				margin-left: 0
+		.clients li a
+			font-size: 16px
+		.contacts
+			justify-content: flex-start
+
+
+	.figure_2
+		left: 50% !important
+	.figure_4
+		right: 5%
+
+@media (max-width: 1100px)
+	header
+		.logo_animate
+			width: 150px
+			height: 150px
+			margin: -2rem 2rem -4rem 0
+			svg
+				margin: 0px -20px
+		nav
+			display: none
+
+	section.banner .slogan .wrapper h2
+		font-size: 2.3rem
+	footer
+		padding-bottom: 0
+		.wrapper
+			flex-wrap: wrap
+			justify-content: center
+			> *
+				width: 30%
+				margin: 0 2rem 3rem
+			.copyright
+				order: 1
+			.contacts
+				order: 2
+			.clients
+				order: 3
+
+@media (max-width: 1000px)
+	.figure_11 img
+		height: 150%
+	header
+		.contacts .wrapper
+			.languages, .time, .contact > span, .contact > p > svg, .empty
+				display: none
+			.logo_animate
+				order: 1
+				margin-right: 0
+			.contact
+				order: 2
+			.hamb_animate
+				order: 3
+	section.services
+		height: auto
+		padding: 152px 0 172px
+		.wrapper
+			h3
+				top: -80px
+				font-size: 46px
+			.figure_11
+				top: -152px
+			.cards
+				width: 100%
+				height: auto
+				position: relative
+				left: unset
+				top: unset
+				transform: translate(0, 0)
+				flex-direction: column
+				.card
+					width: 100%
+					height: 120px
+					transform: skew(0)
+					&.appeared
+						animation: serviceCardsUnskew
+						animation-fill-mode: forwards
+						animation-timing-function: ease-in
+					&:hover .card_title
+						left: 50%
+						top: 50%
+						transform: translate(-50%, -50%) skew(0) !important
+						text-align: center
+					&:not(:first-child)
+						margin-top: 2px
+					.card_image img
+						width: 150vw
+						height: auto
+						transform: translate(-50%, -50%) skew(0) !important
+					.card_title
+						width: min-content
+						position: absolute
+						left: 24px
+						top: 50%
+						transform: translate(0%, -50%) skew(0) !important
+						h4
+							font-size: 24px
+							transform: skew(0)
+						.card_text
+							display: none
+	section.portfolio
+		.wrapper
+			overflow: hidden
+			.main
+				margin-top: 3rem
+				flex-direction: column
+			.main_img
+				width: 85%
+			.text
+				width: 100%
+				margin: 36px 0 0 0
+				h4
+					font-size: 24px
+				div
+					margin-top: 18px
+					p
+						font-size: 18px
+	section.info .wrapper .main
+		flex-direction: column
+		.text
+			width: 100%
+			margin-top: 36px
+			> svg
+				display: none
+			> div
+				margin: 0
+				p
+					font-size: 18px
+		.imgs
+			width: 100%
+			margin-top: 100px
+			.shard
+				width: 8rem
+				transform: translate(-1.8rem, -100%)
+			.photo
+				width: 100%
+			.pros
+				width: 70%
+				margin: 0 auto
+				position: relative
+				right: unset
+				bottom: unset
+				margin-top: 36px
+				.pro_card
+					width: 100% !important
+					padding: 36px 16px
+					p
+						font-size: 16px
+
+@media (max-width: 850px)
+	footer .wrapper > *
+		width: 50%
+		margin: 0 0 3rem
+
+@media (max-width: 700px)
+	.figure_3
+		display: none
+
+@media (max-width: 600px)
+	section .wrapper > h3
+		font-size: 2.3rem
+
+	header
+		.contacts .wrapper
+			.logo_animate, .hamb_animate, .contact
+				padding-left: 0
+				padding-right: 0
+				margin-left: 0
+				margin-right: 0
+			.logo_animate
+				padding: 0
+				.logo_text
+					width: 90%
+					left: 70%
+			.contact
+				.additional, > svg
+					display: none
+				a
+					font-size: 16px
+				> svg
+					display: none
+				&:hover
+					background-color: transparent
+					a
+						color: $lBlue
+			.hamb_animate
+				min-width: 50px
+				margin-right: 1rem
+
+	section.news
+		padding-bottom: 12rem
+		.signup
+			bottom: 6rem
+	section.portfolio
+		padding: 72px 0 10rem
+		.signup
+			bottom: 5rem
+		.wrapper .main_img
+			height: 15rem
+	section.info
+		padding-bottom: 8rem
+		overflow: hidden
+		.wrapper .main .text div:not(.figure_14)
+			margin: 0
+
+	footer .wrapper
+		.copyright, .contacts
+			width: 100%
+		.clients
+			width:	50%
+
+	.signup
+		top: unset !important
+		bottom: 72px
+		&:before
+			width: 16px
+			height: 64px
+			left: -2rem
+
+	.figure_2, .figure_4
+		display: none
+
+@media (max-width: 500px)
+	.figure_14
+		display: none
+	section.info .wrapper .main .imgs
+		margin-top: 120px
+		.pros
+			width: 100%
+
+@media (max-width: 420px)
+	header .contacts .wrapper
+		.logo_animate
+			margin-top: -3.5rem
+			margin-right: -1.5rem
+			width: 100px
+			height: 100px
+			.logo_text
+				width: 70%
+				left: 65%
+			svg
+				margin: 0 -14px
+		.hamb_animate
+			min-width: 30px
+
+	.signup
+		right: 10%
 
 @media (max-width: 360px)
 	html
@@ -81,14 +364,6 @@
 		width: 80% !important
 		height: 200px !important
 		left: 3rem !important
-	.signup
-		top: unset !important
-		bottom: 72px
-		right: 16px
-		&:before
-			width: 16px
-			height: 64px
-			left: -2rem
 	.next:not(:nth-of-type(1))
 		display: none
 	.checkup
@@ -215,9 +490,11 @@
 		display: flex !important
 		flex-direction: row !important
 		flex-wrap: nowrap !important
+		justify-content: flex-start !important
 		align-items: flex-start !important
 		margin-left: 0 !important
 		margin-right: 0 !important
+		transition: all 0.3s linear
 		> *
 			width: 280px !important
 			flex: 1 0 auto !important
@@ -264,40 +541,9 @@
 		.checkup
 			margin: 36px 0 0 auto !important
 
-
-	header
-		.contacts .wrapper
-			.empty, .time, .social, .languages, .contact > ul, .contact > span, .contact > p > svg
-				display: none
-			.logo_animate, .hamb_animate, .contact
-				padding-left: 0
-				padding-right: 0
-				margin-left: 0
-				margin-right: 0
-			.logo_animate
-				margin-right: -1.5rem
-				padding: 0
-				width: 100px
-				height: 100px
-				order: 1
-			.contact
-				order: 2
-				a
-					font-size: 16px
-				> svg
-					display: none
-				&:hover
-					background-color: transparent
-					a
-						color: $lBlue
-			.hamb_animate
-				width: 30px
-				margin-right: 1rem
-				order: 3
-		nav
-			display: none
 	section.banner
 		height: 600px !important
+		overflow: hidden
 		.banner_img
 			height: 100%
 			width: auto
@@ -325,72 +571,19 @@
 			top: 50%
 			left: 50%
 			transform: translate(-50%, -50%)
-	section.services
-		height: auto
-		padding: 152px 0 172px
-		.wrapper
-			h3
-				top: -80px
-			.figure_11
-				top: -152px
-			.cards
-				width: 100%
-				height: auto
-				position: relative
-				left: unset
-				top: unset
-				transform: translate(0, 0)
-				flex-direction: column
-				.card
-					width: 100%
-					height: 120px
-					transform: skew(0)
-					&:hover .card_title
-						left: 50%
-						top: 50%
-						transform: translate(-50%, -50%) skew(0)
-					&:not(:first-child)
-						margin-top: 2px
-					.card_image img
-						width: auto
-						height: auto
-						transform: translate(-50%, -50%) skew(0)
-					.card_title
-						width: min-content
-						position: absolute
-						left: 24px
-						top: 50%
-						transform: translate(0%, -50%) skew(0)
-						h4
-							font-size: 24px
-							transform: skew(0)
-						.card_text
-							display: none
-	section.news
-		padding-bottom: 12rem
-		.figure_2
-			display: none
-		.signup
-			bottom: 6rem
-		.wrapper
-			overflow: hidden
-			.cards .pages .page
-				margin: 0 -0.75rem
-				.card
-					height: 360px
-					.date
-						font-size: 16px
-					.text
-						font-size: 18px
+	section.news .wrapper
+		overflow: hidden
+		.cards .pages .page
+			margin: 0 -0.75rem
+			justify-content: flex-start
+			.card
+				height: 360px
+				.date
+					font-size: 16px
+				.text
+					font-size: 18px
 	section.portfolio
-		padding: 72px 0 10rem
-		.signup
-			bottom: 5rem
 		.wrapper
-			overflow: hidden
-			.main
-				margin-top: 3rem
-				flex-direction: column
 			.main_img
 				width: 85%
 				height: 222px
@@ -404,55 +597,36 @@
 					p
 						font-size: 18px
 	section.info
-		padding: 72px 0 10rem
-		overflow: hidden
-		.signup
-			bottom: 5rem
-		.wrapper
-			.main
-				flex-direction: column
-				.text
-					width: 100%
-					margin-top: 36px
-					> svg
-						display: none
-					> div
-						margin: 0
-						p
-							font-size: 18px
-				.imgs
-					width: 100%
-					margin-top: 100px
-					.shard
-						width: 8rem
-						transform: translate(-1.8rem, -100%)
-					.photo
-						width: 140%
-						margin-left: -1.5rem
-					.pros
-						width: 100%
-						position: relative
-						right: unset
-						bottom: unset
-						margin-top: 36px
-						.pro_arrows
-							display: none
-						.pro_cards
-							transform: skew(0)
-							box-shadow: unset
-						.pro_card
-							width: 100% !important
-							position: relative
-							transform: translateX(0) !important
-							opacity: 1
-							visibility: visible
-							box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
-							padding: 36px 16px
-							svg
-								transform: skew(0)
-							p
-								transform: skew(0)
-								font-size: 16px
+		padding-bottom: 12rem
+		.wrapper .main
+			.textAppear
+				font-size: 18px
+			.photo
+				width: 140%
+				margin-left: -1.5rem
+			.pros
+				position: relative
+				right: unset
+				bottom: unset
+				margin-top: 36px
+				.pro_arrows
+					display: none
+				.pro_cards
+					transform: skew(0)
+					box-shadow: unset
+				.pro_card
+					width: 100% !important
+					position: relative
+					transform: translateX(0) !important
+					opacity: 1
+					visibility: visible
+					box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)
+					padding: 36px 16px
+					svg
+						transform: skew(0)
+					p
+						transform: skew(0)
+						font-size: 16px
 	section.blog_news
 		padding: 72px 0
 		.wrapper .cards
@@ -910,7 +1084,10 @@
 		padding-bottom: 2rem
 		.wrapper
 			flex-direction: column
-			padding-bottom: 4rem
+			padding-bottom: 6rem
+			> *
+				width: 100% !important
+				margin: 0 !important
 			.copyright
 				.logowrap
 					.logo
@@ -952,7 +1129,7 @@
 				li a
 					font-size: 16px
 			.contacts
-				padding: 24px 0 48px 0
+				padding: 24px 0
 				border-top: 1px solid rgba($w, 0.1)
 				li
 					a, span

@@ -10,25 +10,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const delay = parseInt(textHolders[i].getAttribute("data-delay")) || 0;
 
-        for (let j = 0; j < textSplice.length; j++) {
-          // const word = document.createElement("span");
-          // word.classList.add("word");
-          // console.log(textSplice[j]);
+        // Init
+        let word = document.createElement("span");
+        word.classList.add("word");
 
-          if (/[\n\r]+/g.test(textSplice[j])) {
+        for (let j = 0; j < textSplice.length; j++) {
+          if (textSplice[j] === " ") {
+            textHolders[i].innerHTML += " ";
+            textHolders[i].appendChild(word);
+            word = document.createElement("span"); // new word
+          } else if (/[\n\r]+/g.test(textSplice[j])) {
+            textHolders[i].innerHTML += " ";
+            textHolders[i].appendChild(word);
+            word = document.createElement("span"); // new word
             const br = document.createElement("br");
             textHolders[i].appendChild(br);
           } else {
             const letter = document.createElement("span");
             letter.innerText = textSplice[j];
-            letter.classList.add("wow", "fadeInRight");
+            letter.classList.add("wow", "fadeInRight", "letter");
             letter.setAttribute(
               "data-wow-delay",
               `${(j * 0.01 + delay).toFixed(2)}s`,
             );
-            textHolders[i].appendChild(letter);
+            word.appendChild(letter);
           }
         }
+        textHolders[i].innerHTML += " ";
+        textHolders[i].appendChild(word);
       }
     }
   })();
@@ -188,6 +197,75 @@ window.addEventListener("load", () => {
     }
   })();
 
+  // open resume form
+  (function () {
+    const resume_wrapper = document.getElementById("resume_wrapper");
+    const sendBtns = [...document.querySelectorAll(".resume")];
+
+    if (sendBtns.length && resume_wrapper) {
+      const closeResume = document.getElementById("closeResume");
+
+      for (let i = 0; i < sendBtns.length; i++) {
+        sendBtns[i].addEventListener("click", () => {
+          openOverlay(resume_wrapper);
+        });
+      }
+
+      closeResume.addEventListener("click", () => {
+        resume_wrapper.classList.remove("activeOverlay");
+        overlay.classList.remove("activeOverlay");
+      });
+
+      // Move label up
+      const gf2 = document.getElementById("gform_2");
+      const inputs = [...gf2.querySelectorAll("#input_2_2")]; // msg
+      const labels = [...gf2.querySelectorAll("#field_2_2 > .gfield_label")]; // msg
+
+      for (let i = 0; i < inputs.length; i++) {
+        // On focus move label up
+        inputs[i].addEventListener("focus", () => {
+          labels[i].classList.add("focused");
+        });
+        inputs[i].addEventListener("blur", () => {
+          if (inputs[i].value === "") {
+            labels[i].classList.remove("focused");
+          }
+        });
+      }
+
+      // Validate - field is not empty
+      const subWrapper = gf2.querySelector(".gform_footer"); // send
+      const submit = gf2.querySelector("#gform_submit_button_2"); // send
+      subWrapper.classList.add("invalid");
+      submit.disabled = true;
+
+      const fileInput = gf2.querySelector("#input_2_1");
+      fileInput.addEventListener("change", () => {
+        const fileFormat = fileInput.value.match(/\.([^\.]+)$/)[1];
+        if (fileFormat === "pdf" || fileFormat === "docx") {
+          subWrapper.classList.remove("invalid");
+          submit.disabled = false;
+        } else {
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
+        }
+      });
+
+      // If inputs are valid
+      const imgs = resume_wrapper.querySelectorAll(
+        ".connect_img, .connect_figure",
+      );
+      gf2.addEventListener("submit", () => {
+        if (!subWrapper.classList.contains("invalid")) {
+          imgs.forEach((img) => {
+            img.style.display = "none";
+          });
+          console.log("Form submitted");
+        }
+      });
+    }
+  })();
+
   // page-about - master slider
   (function () {
     const masterNames = [...document.querySelectorAll(".master_name .name")];
@@ -249,10 +327,11 @@ window.addEventListener("load", () => {
   // page-service_post - expand nav
   (function () {
     const navPoints = [...document.querySelectorAll("aside .list > li")];
+    const navBtns = [...document.querySelectorAll("aside .list > li .arrow")];
 
     if (navPoints.length) {
       for (let i = 0; i < navPoints.length; i++) {
-        navPoints[i].addEventListener("click", (e) => {
+        navBtns[i].addEventListener("click", (e) => {
           e.preventDefault();
           navPoints[i].classList.toggle("active");
         });
@@ -735,7 +814,7 @@ window.addEventListener("load", () => {
       ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
     ]; // name, tel, msg
     const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
-    const subWrapper = gf1.querySelector(".gform_footer "); // send wrapper (bg)
+    const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
     const submit = gf1.querySelector("#gform_submit_button_1"); // send
     const imgs = document.querySelectorAll(".connect_img, .connect_figure");
 
@@ -778,7 +857,7 @@ window.addEventListener("load", () => {
       });
     }
 
-    // If inputs are not valid, prevent submission
+    // If inputs are valid
     gf1.addEventListener("submit", () => {
       imgs.forEach((img) => {
         img.style.display = "none";
@@ -787,18 +866,18 @@ window.addEventListener("load", () => {
     });
 
     // Add hints
-    document.addEventListener("DOMContentLoaded", () => {
-      const inputWrapperName = gf1.querySelector(
-        ".ginput_container:nth-of-type(1)",
-      );
-      console.log(inputWrapperName);
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   const inputWrapperName = gf1.querySelector(
+    //     ".ginput_container:nth-of-type(1)",
+    //   );
+    //   console.log(inputWrapperName);
 
-      const hintName = document.createElement("span");
-      hintName.classList.add("hint");
-      hintName.innerText = "Заполните это поле.".inputWrapperName.appendChild(
-        hintName,
-      );
-    });
+    //   const hintName = document.createElement("span");
+    //   hintName.classList.add("hint");
+    //   hintName.innerText = "Заполните это поле.".inputWrapperName.appendChild(
+    //     hintName,
+    //   );
+    // });
 
     // Custom wow js- appear
     (function () {
