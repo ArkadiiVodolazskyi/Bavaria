@@ -755,14 +755,15 @@ window.addEventListener("load", () => {
 
         const mobDots = wrapper.querySelectorAll(".dotsWrapper .mobDot");
 
-        // Find cards widths
-        const newCardsMargins = 8;
-        const cardWidths = [];
-        for (let j = 0; j < cards.length; j++) {
-          cards[j].style.marginLeft = `${newCardsMargins}px`;
-          cards[j].style.marginRight = `${newCardsMargins}px`;
-          cardWidths.push(cards[j].offsetWidth + 2 * newCardsMargins);
-        }
+        // Find cards widths: Hardcoded 280 + 16 = 296px
+        // const newCardsMargins = 8;
+        // const cardWidths = [];
+        // for (let j = 0; j < cards.length; j++) {
+        //   cards[j].style.marginLeft = `${newCardsMargins}px`;
+        //   cards[j].style.marginRight = `${newCardsMargins}px`;
+        //   cardWidths.push(cards[j].offsetWidth + 2 * newCardsMargins);
+        //   console.log(cards[j], cardWidths[j]);
+        // }
 
         // Link cards and mobDots together
         let cardsTranslate = 0;
@@ -771,7 +772,7 @@ window.addEventListener("load", () => {
         for (let j = 0; j < mobDots.length; j++) {
           mobDots[j].addEventListener("click", () => {
             for (let k = 0; k < j; k++) {
-              cardsTranslate -= cardWidths[k];
+              cardsTranslate -= 296;
             }
             mobsliders[
               i

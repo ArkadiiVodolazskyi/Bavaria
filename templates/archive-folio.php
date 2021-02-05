@@ -109,7 +109,7 @@
 
         </div>
 
-        <!-- <ul class="navpages_2">
+        <ul class="navpages_2">
           <li>
             <button class="arrow page_prev">
               <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
@@ -127,7 +127,7 @@
               <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
             </button>
           </li>
-        </ul> -->
+        </ul>
 
       </div>
     </section>

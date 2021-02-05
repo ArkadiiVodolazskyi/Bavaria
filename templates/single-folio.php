@@ -15,7 +15,7 @@
 		<title><?php the_title(); ?></title>
 		<?php wp_head(); ?>
   </head>
-  <body class="loading">
+  <body class="loading single-folio">
 		<?php get_header(); ?>
 
     <section class="banner blog_banner">

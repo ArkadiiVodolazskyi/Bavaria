@@ -135,13 +135,13 @@
               <?php while ( have_rows('cards') ): the_row(); ?>
                 <div class="brands mobwrapper">
 
-                  <h2 class="facts_title">
+                  <h2 class="facts_title textAppear" data-delay="1">
                     <?= get_sub_field('title'); ?>
                   </h2>
 
                   <div class="facts_cards mobslider">
                     <?php while ( have_rows('cards1') ): the_row(); ?>
-                      <div class="card">
+                      <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
                         <img
                           src="<?= get_sub_field('icon'); ?>"
                           class="img-svg native pro_icon"
@@ -195,17 +195,17 @@
       <?php while ( have_rows('popular') ): the_row(); ?>
         <section class="services dark popular">
           <div class="wrapper">
-            <h3>
+            <h3 class="wow fadeInLeft">
               <?= get_sub_field('title'); ?>
             </h3>
 
-            <div class="figure_11" style="z-index: 0; left: 0%">
+            <div class="figure_11 appear" style="z-index: 0; left: 0%">
               <img src="<?= B_IMG_DIR ?>/figure_111.png" />
             </div>
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card">
+                <div class="card appear" style="animation-delay: <?= get_row_index()*0.4?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
                   <div class="card_image">
                     <img src="<?= get_sub_field('img'); ?>" />
                   </div>
@@ -401,17 +401,9 @@
                 </p>
               </div>
               <div class="right_form">
-                <form id="connect_form_2">
-                  <input type="text" id="connect_name" placeholder="Ваше имя" />
-                  <input type="tel" id="connect_tel" placeholder="Номер телефона" />
-                  <div class="checkup">
-                    <input
-                      id="connect_submit"
-                      type="submit"
-                      value="Отправить сообщение"
-                    />
-                  </div>
-                </form>
+
+                <?php echo do_shortcode( '[gravityform id=3 title=false description=false ajax=true]' ); ?>
+
                 <img src="<?= get_sub_field('img'); ?>" class="connect_img" />
                 <img
                   src="<?= B_IMG_DIR ?>/figure_1.svg"
