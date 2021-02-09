@@ -550,7 +550,9 @@ section.info_about
 				font-weight: 500
 	.master_img
 		width: 60%
-		height: rem(600)
+		height: 140%
+		min-width: 172px
+		min-height: 290px
 		position: absolute
 		left:	-25%
 		transform: skew($skew)
@@ -619,7 +621,7 @@ section.about_video
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
-	> img, iframe
+	> img, iframe, video
 		position: absolute
 		left: 50%
 		top: 50%
@@ -631,7 +633,7 @@ section.about_video
 // page-portfolio
 section.portfolio_main
 	height: auto
-	padding: rem(96)
+	padding: rem(96) 0
 	background-color: $w
 	nav
 		display: flex
@@ -660,7 +662,7 @@ section.portfolio_main
 			position: absolute
 			z-index: 20
 			right: 1.5rem
-			top: 30px
+			top: 50%
 			transform: translate(0, -50%)
 			cursor: pointer
 			outline: none
@@ -782,6 +784,8 @@ section.also
 // page-contacts
 section.map_banner
 	width: 100%
+	height: auto
+	max-height: unset
 	padding-bottom: rem(100)
 	background-color: $dGrey
 	.wrapper
@@ -801,7 +805,7 @@ section.map_banner
 			height: 100%
 			background-image: linear-gradient(to right, rgba(24, 31, 41, 1), rgba(24, 31, 42, 0.9), rgba(24, 31, 41, 0.8), rgba(24, 31, 42, 0.5), rgba(24, 31, 42, 0.3),rgba(24, 31, 41, 0))
 	.contact_info
-		width: 35%
+		width: 100%
 		position: relative
 		z-index: 5
 		color: $w
@@ -826,7 +830,7 @@ section.map_banner
 						color: $lBlue
 		.phone_list
 			display: flex
-			flex-wrap: wrap
+			flex-direction: column
 		.phone
 			&:not(:first-child)
 				margin-top: rem(24)
@@ -935,6 +939,7 @@ section.workshop
 			a
 				font-size: rem(24)
 				font-weight: bold
+				width: 90%
 			.stripes
 				width: 18px
 				height: 18px
@@ -1178,6 +1183,7 @@ section.reviews
 		position: relative
 		right: 0
 		bottom: 0
+		padding-right: 2rem
 		button
 			fill: $w
 			outline: none
@@ -1231,9 +1237,9 @@ section.workexamps
 				transition: all 0.3s linear
 
 section.request
-	padding: 7rem
+	padding: 7rem 0
 	background-color: $dw
-	z-index: 10
+	z-index: 4
 	.wrapper
 		display: flex
 		justify-content: space-between
@@ -1260,6 +1266,8 @@ section.request
 			left: 20%
 			z-index: -1
 			transform: skew(0)
+		.connect_figure
+			bottom: -9rem
 
 section.faq
 	padding: rem(96) 0
@@ -1272,6 +1280,8 @@ section.faq
 		background-color: $w
 		&:not(:first-child)
 			border-top: 1px solid rgba($lGrey, 0.3)
+		*:not(h3)
+			font-size: 18px
 
 section.adv
 	padding: rem(160) 0 rem(80)

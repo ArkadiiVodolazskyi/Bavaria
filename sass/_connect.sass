@@ -1,21 +1,4 @@
 
-#connect_wrapper, #resume_wrapper
-	width: 50%
-	max-height: rem(550)
-	position: fixed
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%) skew(-$skew)
-	z-index: 960
-	opacity: 0
-	visibility: hidden
-	padding: 3rem 5rem
-	background-color: $w
-	transition: all 0.3s ease
-	&.activeOverlay
-		opacity: 1
-		visibility: visible
-
 .connect_img
 	position: absolute
 	z-index: 2
@@ -30,7 +13,7 @@
 	position: absolute
 	z-index: 3
 	right: 1.25rem
-	bottom: -9rem
+	bottom: -3rem
 #closeConnect, #closeResume
 	padding: 0
 	transform: skew($skew)
@@ -70,7 +53,7 @@
 
 // Styling Gravity Forms
 #connect_wrapper, #resume_wrapper
-	width: 50%
+	width: 780px
 	max-height: rem(550)
 	position: fixed
 	top: 50%
@@ -79,7 +62,7 @@
 	z-index: 960
 	opacity: 0
 	visibility: hidden
-	padding: 3rem 5rem
+	padding: 2rem 4rem
 	background-color: $w
 	transition: all 0.3s ease
 	&.activeOverlay
@@ -110,6 +93,7 @@
 			font-size: 18px
 			user-select: none
 			transition: all 0.3s ease
+			white-space: nowrap
 			&.focused
 				font-size: 14px
 				top: -6px

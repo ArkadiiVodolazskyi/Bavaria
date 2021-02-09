@@ -29,6 +29,7 @@
 			display: none
 		.smallCheckupBtn
 			display: inline-block
+
 	.figure_1
 		right: 5%
 
@@ -79,6 +80,25 @@
 			width: 80% !important
 		.figure_2
 			left: 75% !important
+	section.info_about .wrapper
+		flex-direction: column
+		.left_text
+			width: 100%
+			padding: 0
+		.right_master
+			width: 100%
+			margin-top: 8rem
+			align-items: center
+		.master
+			width: 550px
+	section.workshop .facts_cards .card
+		width: 90%
+	section.workexamps .wrapper .card
+		width: 280px
+	section.galleryexamps .wrapper .gallery
+		justify-content: center
+		img
+			width: 360px
 
 	footer .wrapper
 		.copyright .logowrap
@@ -111,6 +131,12 @@
 
 	section.banner .slogan .wrapper h2
 		font-size: 2.3rem
+	section.request
+		.connect_img, .connect_figure
+			display: none
+		.figure_8
+			width: 80%
+
 	footer
 		padding-bottom: 0
 		.wrapper
@@ -125,6 +151,21 @@
 				order: 2
 			.clients
 				order: 3
+
+	#closeOverlay
+		top: 2rem
+	#expandedMenu
+		flex-direction: column
+		height: auto
+		overflow: scroll
+		> *:not(.closeOverlay):not(.languages)
+			width: 100%
+			height: auto
+			padding: 2rem 0rem 2rem 3rem
+			&:first-child
+				padding: 5rem 0rem 2rem 3rem
+		.languages
+			top: 2rem
 
 @media (max-width: 1000px)
 	.figure_11 img
@@ -158,7 +199,7 @@
 				transform: translate(0, 0)
 				flex-direction: column
 				.card
-					width: 100%
+					width: 100% !important
 					height: 120px
 					transform: skew(0)
 					&.appeared
@@ -187,6 +228,10 @@
 							transform: skew(0)
 						.card_text
 							display: none
+	section.popular
+		padding-bottom: 72px
+		.master_arrows
+			display: none
 	section.portfolio
 		.wrapper
 			overflow: hidden
@@ -244,7 +289,83 @@
 	section.news
 		.figure_2
 			display: none
-
+	section.portfolio_main
+		padding: 0 0 72px
+		.wrapper
+			padding-top: 2rem
+			nav
+				width: 100vw
+				transform: skew(0)
+				flex-direction: column
+				max-height: 77px
+				position: absolute
+				z-index: 15
+				left: -2rem
+				top: 0
+				&.expanded
+					max-height: max-content
+					.nav_arrow
+						transform: rotate(180deg)
+					button
+						opacity: 1
+						visibility: visible
+						position: relative
+				button
+					width: 100%
+					background-color: $w
+					color: $dGrey
+					text-align: left
+					padding: 1.2rem
+					opacity: 0
+					visibility: hidden
+					position: absolute
+					&.active
+						opacity: 1
+						visibility: visible
+						position: relative
+				span
+					transform: skew(0)
+					font-size: 16px
+					font-weight: bold
+				.nav_arrow
+					display: block
+			.other
+				margin-top: 0
+				padding-top: 72px
+				flex-direction: column
+				align-items: center
+				.card
+					margin: 0 0 18px 0
+					h5
+						margin-top: 7.5rem
+	section.workplan
+		padding: 72px 0
+		overflow: hidden
+		.left_text, .right_text
+			width: 100%
+			margin-top: 0
+		.up_photos
+				height: auto
+				h2
+					width: 100%
+					font-size: 36px
+					word-break: break-word
+					.brand
+						max-width: max-content
+						width: 50%
+				> img
+					position: relative
+					width: auto !important
+					height: auto !important
+					max-width: 400px !important
+					max-height: 400px !important
+					margin: 18px
+					top: unset !important
+					left: unset !important
+					bottom: unset !important
+					right: unset !important
+		.figure_10
+			display: none
 
 	footer .wrapper > *
 		width: 50%
@@ -255,29 +376,21 @@
 		font-size: 2.3rem
 
 	section.info_about
-		.wrapper
-			flex-direction: column
-			.left_text
+		.video_left
+			width: 100%
+			.img_bg.appeared
 				width: 100%
-				padding-bottom: 7rem
-			.right_master
-				width: 100%
-			.video_left
-				width: 100%
-				.img_bg.appeared
-					width: 100%
-					img
-						height: 244px
-						object-fit: cover
-						object-position: center
-			.video_text
-				left: unset
-				right: 10px
-				transform: translate(0, 0)
-				width: 160px
-				h2
-					font-size: 24px
-
+				img
+					height: 244px
+					object-fit: cover
+					object-position: center
+		.video_text
+			left: unset
+			right: 10px
+			transform: translate(0, 0)
+			width: 160px
+			h2
+				font-size: 24px
 	.facts_cards
 		justify-content: center
 		.card
@@ -380,6 +493,32 @@
 					position: relative
 					opacity: 1
 					visibility: visible
+	#connect_wrapper, #resume_wrapper
+		width: 100%
+		max-height: max-content
+		padding: 72px 16px
+		transform: translate(-50%, -50%) skew(0)
+		h2
+			font-size: 22px
+			transform: skew(0)
+		.gform_wrapper
+			width: 100%
+			transform: skew(0)
+			input:not([type=submit]), textarea
+				padding: 12px 12px 12px 0
+				font-size: 16px
+				&:not(:nth-child(1))
+					margin-top: 36px
+			textarea
+				height: 80px
+			input[type=submit]
+				margin: 0 0 0 auto
+		.gform_footer
+			margin-left: auto
+		#closeConnect, #closeResume
+			transform: skew(0)
+		.connect_img, .connect_figure
+			display: none
 
 	.figure_3
 		display: none
@@ -436,29 +575,7 @@
 		button, input, a
 			padding: 16px 18px !important
 
-	#connect_wrapper
-		width: 100%
-		max-height: max-content
-		padding: 72px 16px
-		transform: translate(-50%, -50%) skew(0)
-		#connect_form
-			width: 100%
-			transform: skew(0)
-			h2
-				font-size: 22px
-			input, textarea
-				padding: 12px 12px 12px 0
-				font-size: 16px
-				&:not(:nth-child(1))
-					margin-top: 36px
-			textarea
-				height: 80px
-			.checkup
-				margin: 36px 0 0 auto
-		#closeConnect
-			transform: skew(0)
-		.connect_img, .connect_figure
-			display: none
+
 
 	.other
 		margin: 72px 0 0
@@ -526,7 +643,6 @@
 			top: 50%
 			left: 50%
 			transform: translate(-50%, -50%)
-
 	section.portfolio
 		.wrapper
 			.main_img
@@ -672,8 +788,6 @@
 			width: 100%
 			.master
 				margin-right: -4rem
-			.master_bg
-				height: 20rem
 			.master_name .name
 				width: 40%
 				h5
@@ -697,52 +811,7 @@
 			.video
 				margin-top: 3rem
 				margin-left: 1.5rem
-	section.portfolio_main
-		padding: 0 0 72px
-		.wrapper
-			nav
-				width: 360px
-				transform: skew(0)
-				flex-direction: column
-				max-height: 60px
-				position: absolute
-				z-index: 15
-				left: -16px
-				top: 0
-				&.expanded
-					max-height: max-content
-					.nav_arrow
-						transform: rotate(180deg)
-					button
-						opacity: 1
-						visibility: visible
-						position: relative
-				button
-					width: 100%
-					background-color: $w
-					color: $dGrey
-					text-align: left
-					padding: 1.2rem
-					opacity: 0
-					visibility: hidden
-					position: absolute
-					&.active
-						opacity: 1
-						visibility: visible
-						position: relative
-				span
-					transform: skew(0)
-					font-size: 16px
-					font-weight: bold
-				.nav_arrow
-					display: block
-			.other
-				margin-top: 0
-				padding-top: 72px
-				flex-direction: column
-				.card
-					width: 100%
-					margin: 0 0 18px 0
+
 	section.service_post
 		padding: 36px 0 72px
 		overflow: hidden
@@ -759,8 +828,10 @@
 		.wrapper
 			flex-direction: column
 			aside
-				width: 360px
+				width: 100%
 				position: absolute
+				left: 50%
+				transform: translate(-50%, 0)
 				z-index: 15
 				padding: 18px 0 36px
 				margin: 0 0 0 -16px
@@ -775,6 +846,9 @@
 						visibility: visible
 					.sublist
 						height: max-content
+					.list > li .arrow
+						opacity: 1
+						visibility: visible
 				.navExpand
 					display: block
 				.list > li
@@ -784,17 +858,17 @@
 						.stripes
 							display: none
 					.arrow
-						display: none
+						opacity: 0
+						visibility: hidden
+						right: 3rem
 					a
 						padding-left: 30px
 						font-size: 18px
 					.stripes
 						top: 2px
 						transform: translate(0, 0)
-				.sublist > li
-					margin-top: 16px
-					a
-						font-size: 16px
+				.sublist > li a
+					font-size: 16px
 			main
 				width: 100%
 				margin-top: 6rem
@@ -802,20 +876,6 @@
 					font-size: 18px
 					&.accent
 						font-size: 20px
-				.brands
-					.facts_title
-						margin-top: 2rem
-					.facts_cards
-						width: 100%
-						.card
-							transform: skew(0)
-							.pro_text
-								transform: skew(0)
-								font-size: 18px
-							.pro_icon
-								transform: skew(0) !important
-								width: 48px
-								height: 48px
 				.pricelist
 					display: block
 					overflow-x: auto
@@ -846,40 +906,17 @@
 				text-align: right
 				padding-right: 8px
 	section.workplan
-		padding: 72px 0
-		overflow: hidden
 		.left_text
-			width: 100%
+			margin-bottom: 2rem
 			p
 				font-size: 18px
 		.right_text
-			width: 100%
 			h3
 				font-size: 36px
 			ol li
 				font-size: 18px
-		.up_photos
-			height: auto
-			h2
-				width: 100%
-				font-size: 36px
-				word-break: break-word
-				.brand
-					max-width: max-content
-					width: 50%
-			> img
-				position: relative
-				width: auto !important
-				height: auto !important
-				max-width: 400px !important
-				max-height: 400px !important
-				&:nth-of-type(2)
-					margin-top: 18px
-					top: unset
-					left: 10%
-				&:nth-of-type(3)
-					left: -5%
-					top: -3rem
+	section.galleryexamps
+		overflow: hidden
 	section.workexamps
 		padding: 72px 0
 		overflow: hidden
@@ -904,11 +941,12 @@
 					font-size: 18px
 			.right_form
 				width: 100%
+				margin-top: 2rem
 				.connect_img, .connect_figure
 					display: none
 				.figure_8
 					height: 250px !important
-					left: 15rem !important
+					left: 9rem !important
 					top: 1rem !important
 	section.reviews
 		overflow: hidden
@@ -922,14 +960,14 @@
 			width: 100% !important
 			.quote_card
 				width: 100% !important
+				flex: 1 0 auto
 				.date
 					font-size: 16px
 				p
 					font-size: 18px
-			.arrows
-				display: none
 	section.faq
 		padding: 72px 0
+		overflow: hidden
 		.figure_11
 			height: 300px !important
 			max-height: 100%
@@ -999,8 +1037,7 @@
 				background: none
 		.wrapper
 			order: 1
-			padding: 136px 0 36px 0
-			max-width: 360px
+			padding: 170px 0 36px 0
 		.contact_info
 			width: 100%
 			.below
@@ -1227,7 +1264,20 @@
 				font-size: 16px
 		.dotsWrapper
 			margin-left: 16px
-
+	section.workshop .brands
+		.facts_title
+			margin-top: 2rem
+		.facts_cards
+			width: 100%
+			.card
+				transform: skew(0)
+				.pro_text
+					transform: skew(0)
+					font-size: 18px
+				.pro_icon
+					transform: skew(0) !important
+					width: 48px
+					height: 48px
 
 
 
