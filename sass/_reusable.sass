@@ -63,7 +63,7 @@ $b: #000
 $dw: #f1f2f3
 
 $red: #d63d37 // rgb(214, 61, 55)
-$lBlue: #8dc1fb
+$lBlue: #8dc1fb // rgb(141, 193, 251)
 $dBlue: #2d568a // rgb(45, 86, 138)
 $lGrey: #737a84
 
@@ -241,7 +241,7 @@ svg.replaced-svg:not(.native)
 		animation-fill-mode: forwards
 		animation-timing-function: ease-in
 	.rect
-		width: rem(80)
+		width: 60px
 		height: 60px
 		background-color: $red
 		position: absolute
@@ -280,6 +280,7 @@ svg.replaced-svg:not(.native)
 	.arrow
 		fill: $dGrey
 		opacity: 0.1
+		outline: none
 		&.active
 			opacity: 1
 			&:hover
@@ -316,9 +317,9 @@ svg.replaced-svg:not(.native)
 	margin: rem(100) 0 0
 	color: $w
 	.card
-		width: 19rem
+		width: calc( 33% - 1.5rem )
 		height: rem(400)
-		margin: 0.4rem 0.75rem
+		margin: 0.75rem
 		cursor: pointer
 		position: relative
 		background-color: $dGrey
@@ -415,6 +416,7 @@ svg.replaced-svg:not(.native)
 	button
 		fill: $dGrey
 		opacity: 0.5
+		outline: none
 		&.active
 			opacity: 1
 		&:hover
@@ -453,8 +455,11 @@ svg.replaced-svg:not(.native)
 			animation-fill-mode: forwards
 			animation-timing-function: ease-in
 		.pro_icon
-			max-width: rem(72)
-			max-height: rem(72)
+			width: inherit
+			min-width: 60px
+			min-height: 60px
+			max-width: 72px
+			max-height: 72px
 			transform: skew($skew)
 		.pro_text
 			margin-left: rem(24)
@@ -470,7 +475,7 @@ svg.replaced-svg:not(.native)
 		margin-top: rem(24)
 		display: flex
 		justify-content: space-between
-		align-items: flex-start
+		align-items: center
 		font-size: rem(24)
 		line-height: 1.56
 		svg
@@ -503,8 +508,7 @@ svg.replaced-svg:not(.native)
 			color: $red
 		.expand
 			fill: $red
-			svg
-				transform: translate(-50%, -50%) rotate(180deg)
+			transform: rotate(180deg)
 	h3
 		color: $dGrey
 		text-align: left
@@ -519,6 +523,8 @@ svg.replaced-svg:not(.native)
 		fill: $dGrey
 		opacity: 1 !important
 		visibility: visible !important
+		outline: none
+		transform: rotate(0deg)
 		&:hover
 			fill: $lBlue
 		svg
@@ -527,7 +533,7 @@ svg.replaced-svg:not(.native)
 			position: absolute
 			left: 50%
 			top: 50%
-			transform: translate(-50%, -50%) rotate(0deg)
+			transform: translate(-50%, -50%)
 	p
 		margin-top: rem(36)
 		font-size: rem(18)

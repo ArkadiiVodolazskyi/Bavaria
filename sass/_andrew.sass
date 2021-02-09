@@ -1,0 +1,30 @@
+.wp-pagenavi
+	display: flex
+	align-items: center
+	justify-content: flex-end
+	min-height: 32px
+	font-size: 16px
+	line-height: 1.25
+	font-weight: bold
+	.current
+		color: #8dc1fb
+	.page
+		margin: 0 12px
+	a
+		color: #181f29
+		&:hover
+			color: #8dc1fb
+	.arrow
+		fill: #181f29
+		opacity: 0.1
+		outline: none
+		&.active
+			opacity: 1
+			&:hover
+				fill: #8dc1fb
+	.page_prev
+		margin-right: 0.5rem
+		transform: scale(2.5) rotate(90deg)
+	.page_next
+		margin-left: 0.5rem
+		transform: scale(2.5) rotate(-90deg)

@@ -25,11 +25,12 @@
 	right: 0.5rem
 	transform: translate(0%, -50%) skew($skew)
 .connect_figure
+	height: 270px
 	transform: skew($skew)
 	position: absolute
 	z-index: 3
 	right: 1.25rem
-	bottom: -3rem
+	bottom: -9rem
 #closeConnect, #closeResume
 	padding: 0
 	transform: skew($skew)
@@ -186,3 +187,84 @@
 		transform: skew($skew)
 		text-align: center
 		color: $dGrey
+
+
+// Form service-inner
+section.request .right_form
+	.gform_wrapper
+		max-width: 360px
+		z-index: 9
+		position: relative
+		form
+			font-size: 18px
+			transform: skew(14deg)
+		ul.gform_fields li
+			padding: 0
+			margin: 0
+			width: 100%
+			&:not(:first-child)
+				margin-top: 20px
+			label
+				width: 100%
+				position: absolute
+				left: 50%
+				top: 18px
+				transform: translate(-50%, 0%)
+				color: $lGrey
+				font-size: 18px
+				user-select: none
+				transition: all 0.3s ease
+				&.focused
+					font-size: 14px
+					top: -6px
+		.gform_body input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file])
+			width: 100%
+			background: transparent
+			border: none
+			border-bottom: 1px solid #181f29
+			padding: 12px 0
+			outline: none
+			&.invalid
+				color: $red
+				border-color: $red
+		.gform_footer
+			width: max-content
+			position: relative
+			margin: 36px 0 0 0
+			padding: 0
+			transform: skew(-$skew)
+			background-color: $red
+			transition: all 0.3s ease
+			cursor: pointer
+			&:hover
+				background-color: $lBlue
+			&.invalid
+				background-color: $lGrey
+				opacity: 0.3
+				&:hover
+					background-color: $lGrey
+					cursor: default
+			input[type=submit]
+				margin: 0
+				border: none
+				background: transparent
+				border: 1px solid transparent
+				color: $w
+				transform: skew($skew)
+				transition: all 0.3s ease
+				padding: 1rem 1.5rem
+				margin: 0 0 0 6px
+				position: relative
+				z-index: 1
+				cursor: pointer
+				outline: none
+		.validation_error, .validation_message, #gform_ajax_spinner_1
+			position: absolute
+			display: none
+			opacity: 0
+			visibility: hidden
+		#gform_confirmation_wrapper_1, #gform_confirmation_wrapper_2
+			margin-top: 36px
+			transform: skew($skew)
+			text-align: center
+			color: $dGrey
