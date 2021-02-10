@@ -126,3 +126,8 @@ $posts_array = get_posts(
 echo '<pre>';
 print_r($posts_array);
 echo '</pre>';
+
+
+
+<?php wp_pagenavi(array ( 'query' => $my_posts )); ?>
+<?php // the_posts_pagination(); ?>

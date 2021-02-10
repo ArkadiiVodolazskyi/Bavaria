@@ -213,11 +213,7 @@ section.portfolio
 			opacity: 0
 			transform: skew(-$skew) translateX(-300px)
 			&.appeared
-				animation: skewLeft
-				animation-duration: 1s
-				animation-delay: 1s
-				animation-fill-mode: forwards
-				animation-timing-function: linear
+				animation: skewLeft 1s 0.5s linear 1 forwards
 			img
 				width: 125%
 				height: auto
@@ -269,7 +265,7 @@ section.info
 					opacity: 0
 					transform: translate(-20rem, -100%)
 					&.appeared
-						animation: shard 1s 1s 1 forwards ease-in
+						animation: shard 1s 0.5s 1 forwards ease-in
 				.photo
 					width: 100%
 				.pros
@@ -526,7 +522,7 @@ section.info_about
 		opacity: 0
 		transform: skew(-$skew) translateX(300px)
 		&.appeared
-			animation: skewRight 0.7s 1s linear forwards
+			animation: skewRight 0.7s 0.5s linear forwards
 	.master_name
 		position: absolute
 		width: 100%
@@ -635,7 +631,7 @@ section.portfolio_main
 	height: auto
 	padding: rem(96) 0
 	background-color: $w
-	nav
+	nav:not(.pagination)
 		display: flex
 		transform: skew(-$skew)
 		box-shadow: 0 12px 24px 0 rgba(24, 31, 41, 0.12)
@@ -646,6 +642,7 @@ section.portfolio_main
 			padding: rem(36)
 			color: $dGrey
 			background-color: $w
+			outline: none
 			&:hover, &.active
 				color: $w
 				background-color: $dBlue
@@ -676,7 +673,7 @@ section.portfolio_main
 				top: 50%
 				transform: translate(-50%, -50%)
 	.other
-		margin-top: rem(72)
+		margin: rem(72) -1.5rem 0
 		position: relative
 		.card
 			background-color: $b

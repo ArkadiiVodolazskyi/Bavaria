@@ -8,6 +8,8 @@
 			display: none
 		.logo_animate
 			margin-right: 1.5rem
+	#connect_wrapper, #resume_wrapper
+		width: 740px
 
 @media (max-width: 1400px)
 	.wrapper
@@ -153,16 +155,16 @@
 				order: 3
 
 	#closeOverlay
-		top: 2rem
+		left: 1rem
+		top: 1.5rem
 	#expandedMenu
-		flex-direction: column
+		flex-wrap: wrap
 		height: auto
-		overflow: scroll
 		> *:not(.closeOverlay):not(.languages)
-			width: 100%
+			width: 50%
 			height: auto
 			padding: 2rem 0rem 2rem 3rem
-			&:first-child
+			&:nth-child(1), &:nth-child(2)
 				padding: 5rem 0rem 2rem 3rem
 		.languages
 			top: 2rem
@@ -395,32 +397,30 @@
 		justify-content: center
 		.card
 			width: 75%
+	section.about_video
+		overflow: hidden
 
-	#closeOverlay
-		width: 23px
-		height: 23px
-		left: unset
-		right: 25px
-		top: 25px
-		svg
-			width: 24px
-			height: 24px
 	#expandedMenu
 		flex-direction: column
 		height: auto
-		overflow: auto
+		overflow: hidden
 		> *:not(.closeOverlay):not(.languages)
 			width: 100%
-
 			background: $dGrey
 			padding: 24px 30px 24px 50px
-			&:first-child
-				padding-top: 84px
-		.languages
-			left: 50px
-			top: 24px
-			li a
-				font-size: 16px
+			transition-delay: 0s !important
+			&:nth-child(1)
+				padding: 110px 30px 24px 50px
+				max-height: 158px
+				overflow: hidden
+				&.expanded
+					max-height: 1000px
+			&:nth-child(2)
+				padding: 24px 30px 24px 50px
+				max-height: 78px
+				overflow: hidden
+				&.expanded
+					max-height: 1000px
 		.clients
 			order: 1
 			&:not(:first-child)
@@ -431,10 +431,15 @@
 		.phones
 			order: 3
 			border-top: 1px solid rgba($w, 0.1)
+			max-height: 78px
+			overflow: hidden
+			&.expanded
+				max-height: 1000px
 			h5
 				width: 100%
 				display: block
 				font-size: 24px
+				margin-bottom: 2rem
 				svg.line
 					transform: translate(-200%, -50%)
 				.arrow
@@ -453,13 +458,13 @@
 		.contacts
 			order: 4
 			padding-top: 0 !important
-			position: absolute
 			opacity: 0
 			visibility: hidden
+			max-height: 0px
 			&.expanded
-				position: relative
 				opacity: 1
 				visibility: visible
+				max-height: 1000px
 			> li
 				> svg
 					transform: translate(-2rem, 0px)
@@ -482,17 +487,9 @@
 					color: $lGrey
 					text-decoration: underline
 		.clients, .services, .phones
-			ul, li
-				position: absolute
-				opacity: 0
-				visibility: hidden
 			&.expanded
 				.arrow svg
 					transform: translate(-50%, -50%) rotate(180deg)
-				ul, li
-					position: relative
-					opacity: 1
-					visibility: visible
 	#connect_wrapper, #resume_wrapper
 		width: 100%
 		max-height: max-content
@@ -501,6 +498,7 @@
 		h2
 			font-size: 22px
 			transform: skew(0)
+			margin-left: 0
 		.gform_wrapper
 			width: 100%
 			transform: skew(0)
@@ -575,14 +573,13 @@
 		button, input, a
 			padding: 16px 18px !important
 
-
-
 	.other
 		margin: 72px 0 0
 		.card
 			height: 228px
 			h5
 				height: auto
+				margin-top: 8rem
 				p:before
 					display: none
 				span
@@ -1247,6 +1244,7 @@
 	section.post .wrapper .date
 		top: -9rem
 	section.facts
+		overflow: hidden
 		.figure_2
 			display: block
 		.wrapper
@@ -1279,8 +1277,19 @@
 					width: 48px
 					height: 48px
 
-
-
+	#closeOverlay
+		width: 23px
+		height: 23px
+		left: 310px
+		top: 25px
+		svg
+			width: 24px
+			height: 24px
+	#expandedMenu .languages
+		left: 50px
+		top: 24px
+		li a
+			font-size: 16px
 
 
 

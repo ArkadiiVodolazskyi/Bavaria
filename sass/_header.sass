@@ -3,6 +3,12 @@ header
 	position: absolute
 	z-index: 5
 	top: 0
+	&.roll
+		.contacts
+			.languages, .empty, .time, .contact, .social
+				display: none
+			.logo_animate
+			.hamb_animate
 	.contacts
 		backdrop-filter: blur(8.2px)
 		.wrapper
@@ -37,7 +43,7 @@ header
 					font-size: rem(16)
 					opacity: 0
 					transform: translateY(-100px)
-					animation: spanDown 1s 3s ease-in 1 forwards
+					animation: spanDown 1s 0.6s ease-in 1 forwards
 			.contact
 				position: relative
 				padding-right: rem(44)
@@ -60,7 +66,7 @@ header
 					right: 0.5rem
 					transform: translate(-50%, 0%)
 					opacity: 0
-					animation: fadeIn 1s 3s ease-in 1 forwards
+					animation: fadeIn 1s 0.6s ease-in 1 forwards
 				a
 					position: relative
 					z-index: 15
@@ -78,7 +84,7 @@ header
 					opacity: 0
 					user-select: none
 					transform: translateY(-100px)
-					animation: spanDown 1s 3.5s ease-in 1 forwards
+					animation: spanDown 1s 0.6s ease-in 1 forwards
 				.additional
 					width: 100%
 					position: absolute
@@ -186,15 +192,16 @@ header
 			transition-delay: 0.4s
 	.clients, .services
 		h5
+			width: 100%
 			font-size: rem(24)
 			font-weight: bold
 			position: relative
-			svg
+			svg.line
 				width: 16px
 				height: 24px
 				fill: $red
 				position: absolute
-				&.line
+				&
 					left: 0
 					top: 50%
 					transform: translate(-150%, -50%)
@@ -208,6 +215,9 @@ header
 				position: absolute
 				display: none
 				outline: none
+				fill: $red
+				&:hover
+					fill: $lBlue
 				> svg
 					position: absolute
 					left: 50%
@@ -313,7 +323,7 @@ header
 					color: $lBlue
 	.phone_list
 		display: flex
-		flex-wrap: wrap
+		flex-direction: column
 	.phone
 		.phone_first
 			display: flex
@@ -368,41 +378,32 @@ header
 	align-items: center
 	&:hover
 		.line_1
-			margin: 1rem -1.0rem 0 -1.3rem
 			fill: darken($lBlue, 5%)
+			transform: translate(-9px, 30px)
 		.line_2
 			fill: lighten($dBlue, 5%)
+			transform: translate(-7px, 20px)
 		.line_3
-			margin: -1rem -1.3rem 0 -1.0rem
 			fill: darken($red, 15%)
+			transform: translate(-5px, 10px)
 		.logo_text
 			fill: lighten($dw, 20%)
+			transform: translate(-55%, -40%)
 	svg
 		height: 100%
 		margin: 0 -26px
 	.line_1
 		fill: $lBlue
-		opacity: 0
-		transform: translate(-5px, 30px)
-		animation: logoLine1
-		animation-duration: 1.5s
-		animation-delay: 2.8s
-		animation-fill-mode: forwards
+		transform: translate(0, 0)
+		transition-delay: 0.15s
 	.line_2
-		opacity: 0
 		fill: $dBlue
-		animation: logoLine2
-		animation-duration: 1.5s
-		animation-delay: 2.8s
-		animation-fill-mode: forwards
+		transform: translate(0, 0)
+		transition-delay: 0.1s
 	.line_3
 		fill: $red
-		opacity: 0
-		transform: translate(5px, -30px)
-		animation: logoLine3
-		animation-duration: 1.5s
-		animation-delay: 2.8s
-		animation-fill-mode: forwards
+		transform: translate(0, 0)
+		transition-delay: 0.05s
 	.logo_text
 		width: 65%
 		height: 100%
@@ -411,12 +412,7 @@ header
 		left: 65%
 		top: 50%
 		transform: translate(-50%, -50%)
-		margin: 0 -1.1rem
-		opacity: 0
-		animation: fadeIn
-		animation-duration: 1.2s
-		animation-delay: 1.7s
-		animation-fill-mode: forwards
+		transition-delay: 0.2s
 
 .hamb_animate
 	width: 5rem
@@ -456,7 +452,7 @@ header
 	transform: skew(-$skew) translate(0, 50px)
 	animation: navCheckup
 	animation-duration: 1s
-	animation-delay: 3s
+	animation-delay: 2s
 	animation-timing-function: ease-in
 	animation-fill-mode: forwards
 	&.toBottom
