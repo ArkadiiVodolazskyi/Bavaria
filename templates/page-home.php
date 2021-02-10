@@ -20,12 +20,19 @@
 
     <!-- Fullscreen video -->
     <div id="video">
-      <iframe src="<?= get_field('banner')['video']['file']; ?>"></iframe>
+      <video autoplay controls>
+        <source src="<?= get_field('banner')['video']['file']; ?>" type="video/mp4">
+      </video>
     </div>
 
     <?php while ( have_rows('banner') ): the_row(); ?>
       <section class="banner">
-        <img src="<?= get_sub_field('img'); ?>" class="banner_img" />
+
+        <?php if (get_sub_field('banner_type') == 'img'): ?>
+          <img src="<?= get_sub_field('banner_item'); ?>" class="banner_img" />
+        <?php elseif (get_sub_field('banner_type') == 'video'): ?>
+          <video autoplay muted loop src="<?= get_sub_field('banner_item'); ?>" class="banner_img wow fadeIn" data-wow-delay="1s"></video>
+        <?php endif; ?>
 
         <div class="slogan">
           <div class="wrapper">
@@ -74,13 +81,13 @@
               <?= get_sub_field('title'); ?>
             </h3>
 
-            <div class="figure_11 appear" style="z-index: 0; left: 0%; animation-delay: 2s">
+            <div class="figure_11 appear" style="z-index: 0; left: 0%; animation-delay: 1s">
               <img src="<?= B_IMG_DIR ?>/figure_111.png" />
             </div>
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card appear" style="animation-delay: <?= get_row_index()*0.4?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
+                <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
                   <div class="card_image">
                     <img src="<?= get_sub_field('img'); ?>" />
                   </div>
@@ -133,13 +140,13 @@
         <section id="news" class="news light p-5">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3 class="wow fadeInLeft" data-wow-delay="1.4s">
+            <h3 class="wow fadeInLeft">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -165,7 +172,7 @@
                       <a
                         href="<?= $url; ?>"
                         class="card wow fadeInRight"
-                        data-wow-delay="<?= $key*0.2 + 1?>s"
+                        data-wow-delay="<?= $key*0.2 + 0.5?>s"
                         style="background-image: url(<?= $img; ?>); ">
 
                         <div class="block_overlay">
@@ -231,13 +238,13 @@
         <section id="portfolio" class="portfolio dark p-4">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3 class="textAppear" data-delay="2">
+            <h3 class="textAppear">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -248,10 +255,10 @@
                 </div>
                 <?php while ( have_rows('description') ): the_row(); ?>
                   <div class="text">
-                    <h4 class="textAppear" data-delay="1.5">
+                    <h4 class="textAppear">
                       <?= get_sub_field('title'); ?>
                     </h4>
-                    <div class="textAppear" data-delay="1.2">
+                    <div class="textAppear">
                       <?= get_sub_field('text'); ?>
                     </div>
                   </div>
@@ -277,7 +284,7 @@
 
                 <a href="<?= $url; ?>"
                   class="card wow fadeInRight"
-                  data-wow-delay="<?= $key*0.2 + 1?>s">
+                  data-wow-delay="<?= $key*0.2 + 0.3?>s">
                   <img
                     src="<?= $img; ?>"
                     class="card_bg"
@@ -357,13 +364,13 @@
         <section id="info" class="info light">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight" data-wow-delay="1.4s">
+            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper mobwrapper">
-            <h3 class="textAppear" data-delay="2">
+            <h3 class="textAppear">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -374,7 +381,7 @@
                   <div class="figure_32"></div>
                   <div class="figure_33"></div>
                 </div>
-                <div class="textAppear" data-delay="1">
+                <div class="textAppear">
                   <?php while ( have_rows('group') ): the_row(); ?>
                     <?= get_sub_field('text'); ?>
                   <?php endwhile; ?>
@@ -384,10 +391,10 @@
                 <img src="<?= B_IMG_DIR ?>/red_shard.png" class="shard appear" />
 
                 <?php while ( have_rows('group') ): the_row(); ?>
-                  <img src="<?= get_sub_field('img'); ?>" class="photo wow fadeInRight" data-wow-delay="1s" />
+                  <img src="<?= get_sub_field('img'); ?>" class="photo wow fadeInRight" />
                 <?php endwhile; ?>
 
-                <div class="pros wow fadeInUp" data-wow-delay="1.5s">
+                <div class="pros wow fadeInUp">
                   <div class="pro_arrows">
                     <button class="pro_prev">
                       <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
@@ -436,5 +443,6 @@
 
 		<?php get_footer(); ?>
     <?php wp_footer(); ?>
+
   </body>
 </html>

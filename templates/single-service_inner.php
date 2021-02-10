@@ -66,11 +66,11 @@
             </button>
             <ul class="list">
               <?php
-                foreach($mainPosts as $mainPost) {
+                foreach($mainPosts as $key=>$mainPost) {
                   $mainTitle = $mainPost->post_title;
                   $mainLink = $mainPost->guid;
               ?>
-                <li>
+                <li class="wow fadeInUp" data-wow-delay="<?= $key*0.2?>s">
                   <img
                     src="<?= B_IMG_DIR ?>/triple-square.svg"
                     class="img-svg native stripes"
@@ -239,7 +239,7 @@
             <?php while ( have_rows('workplan') ): the_row(); ?>
 
               <?php while ( have_rows('par') ): the_row(); ?>
-                <div class="left_text">
+                <div class="left_text wow fadeInLeft">
                   <p>
                     <?= get_sub_field('text'); ?>
                   </p>
@@ -253,7 +253,7 @@
                     <img src="<?= get_sub_field('logo'); ?>" class="brand">
                   </h2>
                   <?php foreach( get_sub_field('imgs') as $image ): ?>
-                    <img src="<?= $image['url']; ?>">
+                    <img src="<?= $image['url']; ?>" class="wow fadeIn">
                   <?php endforeach; ?>
                 </div>
               <?php endwhile; ?>
@@ -265,7 +265,7 @@
                   </h3>
                   <ol type="1" start="1">
                     <?php while ( have_rows('points') ): the_row(); ?>
-                      <li>
+                      <li class="wow fadeInUp">
                         <?= get_sub_field('text'); ?>
                       </li>
                     <?php endwhile; ?>
@@ -291,16 +291,44 @@
         <?php while ( have_rows('workexamps') ): the_row(); ?>
           <section class="workexamps">
             <div class="wrapper mobwrapper">
-              <h2>Примеры работ</h2>
+              <h2>
+                <?= get_sub_field('title'); ?>
+              </h2>
               <div class="exampscards mobslider">
-                <?php while ( have_rows('cards') ): the_row(); ?>
-                  <a href="<?= get_sub_field('link')['url']; ?>" class="card">
-                    <img src="<?= get_sub_field('img'); ?>">
+
+
+                <?php
+                  // If this page is main
+                  $currentTerm = get_the_terms( get_the_ID(), 'service_type' )[0]->slug;
+                  // Find this page slug
+                  $currentSlug = basename( get_permalink() );
+
+                  $posts = get_posts( [
+                    'post_type' => 'folio',
+                    'numberposts' => -1
+                  ] );
+
+                  foreach( $posts as $key=>$post ) {
+                    setup_postdata($post);
+
+                    $url = get_permalink();
+                    $img = get_field('banner');
+                    $post_title = $post->post_title;
+                    $postTerm = get_the_terms( $post, 'service_type' )[0]->slug;
+
+                    if ($currentTerm == 'main' && $postTerm == $currentSlug) {
+                ?>
+                  <a href="<?= $url; ?>" class="card wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
+                    <div class="img_wrapper">
+                      <img src="<?= $img; ?>">
+                    </div>
                     <span>
-                      <?= get_sub_field('link')['title']; ?>
+                      <?= $post_title; ?>
                     </span>
                   </a>
-                <?php endwhile; ?>
+                <?php }};
+                    wp_reset_postdata(); ?>
+
               </div>
             </div>
 
@@ -309,13 +337,11 @@
               <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
               <div class="figure_23"></div>
             </div>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="figure_12"
               style="left: 12%"
-              viewbox="0,0 140,270"
-            >
+              viewbox="0,0 140,270">
               <path
                 fill="transparent"
                 stroke="rgba(45, 86, 138, 0.04)"
@@ -323,13 +349,11 @@
                 d="M67.708 0h69.062L69.062 270.833H0z"
               />
             </svg>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="figure_12"
               style="left: 26%"
-              viewbox="0,0 140,270"
-            >
+              viewbox="0,0 140,270">
               <path
                 fill="transparent"
                 stroke="rgba(45, 86, 138, 0.04)"
@@ -390,9 +414,17 @@
 
       <?php if ( get_sub_field('request') ): ?>
         <?php while ( have_rows('request') ): the_row(); ?>
-          <section class="request">
+
+          <?php
+            // If this page is main
+            $currentTerm = get_the_terms( get_the_ID(), 'service_type' )[0]->slug;
+            $sectionBG = $currentTerm == 'main' ? '#f1f2f3' : '#fff';
+            $figure_8BG = $currentTerm == 'main' ? '#fff' : 'rgba(141, 193, 251, 0.3)';
+          ?>
+
+          <section class="request" style="background-color: <?= $sectionBG; ?>">
             <div class="wrapper">
-              <div class="left_text">
+              <div class="left_text wow fadeInLeft">
                 <h2>
                   <?= get_sub_field('title'); ?>
                 </h2>
@@ -400,7 +432,7 @@
                   <?= get_sub_field('text'); ?>
                 </p>
               </div>
-              <div class="right_form">
+              <div class="right_form appear">
 
                 <?php echo do_shortcode( '[gravityform id=3 title=false description=false ajax=true]' ); ?>
 
@@ -409,7 +441,7 @@
                   src="<?= B_IMG_DIR ?>/figure_1.svg"
                   class="img-svg native connect_figure"
                 />
-                <div class="figure_8"></div>
+                <div class="figure_8" style="background-color: <?= $figure_8BG; ?>"></div>
               </div>
             </div>
           </section>
@@ -469,9 +501,34 @@
                       </button>
                     </h3>
 
-                    <p>
-                      <?= get_sub_field('answer'); ?>
-                    </p>
+                    <?php while ( have_rows('answer') ): the_row(); ?>
+
+                      <?php while ( have_rows('par') ): the_row(); ?>
+                        <p>
+                          <?= get_sub_field('text'); ?>
+                        </p>
+                      <?php endwhile; ?>
+
+                      <?php while ( have_rows('list') ): the_row(); ?>
+                        <div class="list_wrapper">
+                          <h5 class="list_title">
+                            <?= get_sub_field('title'); ?>
+                          </h5>
+                          <ul class="list">
+                            <?php while ( have_rows('points') ): the_row(); ?>
+                              <li>
+                                <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
+                                <span>
+                                  <?= get_sub_field('point'); ?>
+                                </span>
+                              </li>
+                            <?php endwhile; ?>
+                          </ul>
+                        </div>
+                      <?php endwhile; ?>
+
+                    <?php endwhile; ?>
+
                   </div>
                 <?php endwhile; ?>
               </div>

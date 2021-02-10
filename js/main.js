@@ -44,37 +44,70 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("load", () => {
-  // Hide page content while loading
-  const spinner = document.getElementById("spinner");
-
-  setTimeout(() => {
-    document.body.classList.add("loaded");
-    spinner.classList.add("loaded");
-  }, 500);
 
   // Global variables and functions
+  const body = document.body;
   const overlay = document.getElementById("overlay");
   const closeOverlay = document.getElementById("closeOverlay");
   const expandedMenu = document.querySelector("#expandedMenu");
+  const header = document.querySelector("header");
+
+  // Hide page content while loading
+  const spinner = document.getElementById("spinner");
+  setTimeout(() => {
+    body.classList.add("loaded");
+    spinner.classList.add("loaded");
+  }, 500);
+
+  overlay.addEventListener("click", () => {
+    const activeOverlays = document.querySelectorAll(".activeOverlay");
+    activeOverlays.forEach((activeOverlay) => {
+      activeOverlay.classList.remove("activeOverlay");
+    });
+    body.classList.remove("discroll");
+  });
+  closeOverlay.addEventListener("click", () => {
+    closeOverlay.classList.remove("red");
+    const activeOverlays = document.querySelectorAll(".activeOverlay");
+    body.classList.remove("discroll")
+    activeOverlays.forEach((activeOverlay) => {
+      activeOverlay.classList.remove("activeOverlay");
+    });
+  });
 
   function openOverlay(element) {
     overlay.classList.add("activeOverlay");
     closeOverlay.classList.add("activeOverlay");
+    body.classList.add("discroll")
     element.classList.add("activeOverlay");
+  }
 
-    closeOverlay.addEventListener("click", () => {
-      closeOverlay.classList.remove("red");
+  function closeOverlays(element) {
+    element.addEventListener("click", () => {
       const activeOverlays = document.querySelectorAll(".activeOverlay");
       activeOverlays.forEach((activeOverlay) => {
         activeOverlay.classList.remove("activeOverlay");
       });
-    });
-    overlay.addEventListener("click", () => {
-      activeOverlays.forEach((activeOverlay) => {
-        activeOverlay.classList.remove("activeOverlay");
-      });
+      body.classList.remove("discroll");
     });
   }
+
+  // Adapt nav for scrolling
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 0) {
+      header.classList.add("roll");
+    } else if (window.pageYOffset === 0) {
+      header.classList.remove("roll");
+    }
+  });
+
+  // Close all on overlay click
+  overlay.addEventListener("click", () => {
+    const activeOverlays = document.querySelectorAll(".activeOverlay");
+    activeOverlays.forEach((activeOverlay) => {
+      activeOverlay.classList.remove("activeOverlay");
+    });
+  });
 
   // Use .img-svg on image to remove it with svg version
   (function () {
@@ -211,10 +244,7 @@ window.addEventListener("load", () => {
         });
       }
 
-      closeResume.addEventListener("click", () => {
-        resume_wrapper.classList.remove("activeOverlay");
-        overlay.classList.remove("activeOverlay");
-      });
+      closeOverlays(closeResume);
 
       // Move label up
       const gf2 = document.getElementById("gform_2");
@@ -372,7 +402,7 @@ window.addEventListener("load", () => {
         } else {
           serviceCards[firstActiveIndex].classList.add("active");
           currentTransf = currentTransf + transDif;
-          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}), -50%`;
+          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}, -50%)`;
           serviceCards[lastActiveIndex].classList.remove("active");
           lastActiveIndex--;
         }
@@ -384,11 +414,19 @@ window.addEventListener("load", () => {
         } else {
           serviceCards[lastActiveIndex].classList.add("active");
           currentTransf = currentTransf - transDif;
-          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}), -50%`;
+          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}), -50%)`;
           serviceCards[firstActiveIndex].classList.remove("active");
           firstActiveIndex++;
         }
       });
+
+      // Show all cards on 1000- screens
+      if (window.innerWidth < 1000) {
+        serviceTape.style.transform = `matrix(1, 0, 0, 1, 0, 0)`;
+        serviceCards.forEach(card => {
+          card.classList.add("active");
+        });
+      }
     }
   })();
 
@@ -404,18 +442,10 @@ window.addEventListener("load", () => {
 
       connectBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
-          overlay.classList.add("activeOverlay");
-          connect_wrapper.classList.add("activeOverlay");
+          openOverlay(connect_wrapper);
         });
       });
-      closeConnect.addEventListener("click", () => {
-        connect_wrapper.classList.remove("activeOverlay");
-        overlay.classList.remove("activeOverlay");
-      });
-      overlay.addEventListener("click", () => {
-        connect_wrapper.classList.remove("activeOverlay");
-        overlay.classList.remove("activeOverlay");
-      });
+      closeOverlays(closeConnect);
     }
   })();
 
@@ -595,34 +625,29 @@ window.addEventListener("load", () => {
 
       // Default
       let quoteIndex = 0;
-      let perQuotes = 2;
-      for (let i = quoteIndex; i < perQuotes; i++) {
+      for (let i = 0; i < 2; i++) {
         quotes[i].classList.add("active");
       }
 
       quotePrev.addEventListener("click", () => {
-        quoteIndex -= perQuotes;
+        quoteIndex--;
         if (quoteIndex < 0) {
           quoteIndex = 0;
         }
         quotes.forEach((quote) => {
           quote.classList.remove("active");
         });
-        for (let i = quoteIndex; i < quoteIndex + perQuotes; i++) {
-          quotes[i].classList.add("active");
-        }
+        quotes[quoteIndex].classList.add("active");
       });
       quoteNext.addEventListener("click", () => {
-        quoteIndex += perQuotes;
+        quoteIndex++;
         if (quoteIndex > quotes.length - 1) {
           quoteIndex = quotes.length - 1;
         }
         quotes.forEach((quote) => {
           quote.classList.remove("active");
         });
-        for (let i = quoteIndex; i < quoteIndex + perQuotes; i++) {
-          quotes[i].classList.add("active");
-        }
+        quotes[quoteIndex].classList.add("active");
       });
     }
   })();
@@ -678,36 +703,6 @@ window.addEventListener("load", () => {
           }, 1000);
         });
       }
-    }
-  })();
-
-  // make button fixed on scroll
-  (function () {
-    const navCheckupBtn = document.querySelectorAll(
-      ".navCheckupBtn, .smallCheckupBtn",
-    );
-
-    if (navCheckupBtn.length) {
-      if (window.pageYOffset > 250) {
-        navCheckupBtn.forEach((btn) => {
-          btn.classList.add("toBottom");
-        });
-      } else {
-        navCheckupBtn.forEach((btn) => {
-          btn.classList.remove("toBottom");
-        });
-      }
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 250) {
-          navCheckupBtn.forEach((btn) => {
-            btn.classList.add("toBottom");
-          });
-        } else {
-          navCheckupBtn.forEach((btn) => {
-            btn.classList.remove("toBottom");
-          });
-        }
-      });
     }
   })();
 
@@ -806,6 +801,164 @@ window.addEventListener("load", () => {
       });
     }
   })();
+
+  // Styling Gravity Forms
+  (function () {
+    const gf1 = document.getElementById("gform_1");
+
+    const inputs = [
+      ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
+    ]; // name, tel, msg
+    const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
+    const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
+    const submit = gf1.querySelector("#gform_submit_button_1"); // send
+    const imgs = document.querySelectorAll(".connect_img, .connect_figure");
+
+    const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+
+    for (let i = 0; i < inputs.length; i++) {
+      // On focus move label up
+      inputs[i].addEventListener("focus", () => {
+        labels[i].classList.add("focused");
+      });
+      inputs[i].addEventListener("blur", () => {
+        if (inputs[i].value === "") {
+          labels[i].classList.remove("focused");
+        }
+      });
+      inputs[i].addEventListener("keyup", () => {
+        if (inputs[0].value === "") {
+          inputs[0].classList.add("invalid");
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
+        } else {
+          inputs[0].classList.remove("invalid");
+        }
+
+        if (telRegex.test(inputs[1].value) === false) {
+          inputs[1].classList.add("invalid");
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
+        } else {
+          inputs[1].classList.remove("invalid");
+        }
+
+        if (
+          inputs[0].value !== "" &&
+          telRegex.test(inputs[1].value) !== false
+        ) {
+          subWrapper.classList.remove("invalid");
+          submit.disabled = false;
+        }
+      });
+    }
+
+    // If inputs are valid
+    gf1.addEventListener("submit", () => {
+      imgs.forEach((img) => {
+        img.style.display = "none";
+      });
+      console.log("Form submitted");
+    });
+
+    // Custom wow js- appear
+    (function () {
+      const heightToShow = 150;
+
+      const appears = [...document.querySelectorAll(".appear")];
+
+      // Also on load
+      for (let i = 0; i < appears.length; i++) {
+        if (
+          !(
+            appears[i].getBoundingClientRect().top + heightToShow >
+              innerHeight ||
+            appears[i].getBoundingClientRect().bottom - heightToShow < 0
+          )
+        ) {
+          appears[i].classList.add("appeared");
+        }
+      }
+      window.addEventListener("scroll", () => {
+        for (let i = 0; i < appears.length; i++) {
+          if (
+            !(
+              appears[i].getBoundingClientRect().top + heightToShow >
+                innerHeight ||
+              appears[i].getBoundingClientRect().bottom - heightToShow < 0
+            )
+          ) {
+            appears[i].classList.add("appeared");
+          }
+        }
+      });
+    })();
+
+    // folio-main - change work types
+    (function () {
+      const navBtns = [
+        ...document.querySelectorAll(".portfolio_main nav button"),
+      ];
+
+      if (navBtns.length) {
+        // Mutate to dropdown on 960 screens
+        const nav = document.querySelector(".portfolio_main nav");
+        const navExpand = nav.querySelector(".nav_arrow");
+
+        navExpand.addEventListener("click", (e) => {
+          console.log("Click", e);
+          nav.classList.add("expanded");
+        });
+
+        // Default
+        navBtns[0].classList.add("active");
+        const folioPosts = document.querySelectorAll(".other .card");
+        const noPosts = document.querySelector(".other .noPosts");
+        let serviceType = "all";
+        reorder();
+
+        for (let i = 0; i < navBtns.length; i++) {
+          navBtns[i].addEventListener("click", (e) => {
+            console.log(e.target);
+            for (let j = 0; j < navBtns.length; j++) {
+              navBtns[j].classList.remove("active");
+            }
+            navBtns[i].classList.add("active");
+            if (nav.classList.contains("expanded")) {
+              nav.classList.remove("expanded");
+            }
+
+            // Reorder posts
+            serviceType = navBtns[i].getAttribute("data-term");
+            reorder();
+          });
+        }
+
+        // Reorder posts
+        function reorder() {
+          noPosts.classList.remove("active");
+          let count = 0;
+
+          for (let i = 0; i < folioPosts.length; i++) {
+            if (serviceType === "all") {
+              folioPosts[i].classList.add("active");
+              count++;
+            } else {
+              if (folioPosts[i].getAttribute("data-term") === serviceType) {
+                folioPosts[i].classList.add("active");
+                count++;
+              } else {
+                folioPosts[i].classList.remove("active");
+              }
+            }
+          }
+
+          if (count === 0) {
+            noPosts.classList.add("active");
+          }
+        }
+      }
+    })();
 
   // Styling Gravity Forms
   (function () {
@@ -976,5 +1129,68 @@ window.addEventListener("load", () => {
         }
       }
     })();
+
+    // service_request form
+    (function () {
+      const gf3 = document.getElementById("gform_3");
+
+      if (gf3) {
+        const inputs = [
+          ...gf3.querySelectorAll("#input_3_1, #input_3_5"),
+        ]; // name, tel
+        const labels = [...gf3.querySelectorAll(".gfield_label")]; // name, tel
+        const subWrapper = gf3.querySelector(".gform_footer"); // send wrapper (bg)
+        const submit = gf3.querySelector("#gform_submit_button_3"); // send
+        const imgs = document.querySelectorAll(".right_form .connect_img, .right_form .connect_figure");
+
+        const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+
+        for (let i = 0; i < inputs.length; i++) {
+          // On focus move label up
+          inputs[i].addEventListener("focus", () => {
+            labels[i].classList.add("focused");
+          });
+          inputs[i].addEventListener("blur", () => {
+            if (inputs[i].value === "") {
+              labels[i].classList.remove("focused");
+            }
+          });
+          inputs[i].addEventListener("keyup", () => {
+            if (inputs[0].value === "") {
+              inputs[0].classList.add("invalid");
+              subWrapper.classList.add("invalid");
+              submit.disabled = true;
+            } else {
+              inputs[0].classList.remove("invalid");
+            }
+
+            if (telRegex.test(inputs[1].value) === false) {
+              inputs[1].classList.add("invalid");
+              subWrapper.classList.add("invalid");
+              submit.disabled = true;
+            } else {
+              inputs[1].classList.remove("invalid");
+            }
+
+            if (
+              inputs[0].value !== "" &&
+              telRegex.test(inputs[1].value) !== false
+            ) {
+              subWrapper.classList.remove("invalid");
+              submit.disabled = false;
+            }
+          });
+        }
+
+        // If inputs are valid
+        gf3.addEventListener("submit", () => {
+          imgs.forEach((img) => {
+            img.style.display = "none";
+          });
+          console.log("Form submitted");
+        });
+      }
+    })();
+  })();
   })();
 });

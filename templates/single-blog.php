@@ -82,34 +82,26 @@
 
           <?php endwhile; ?>
 
-          <?php
-          //   $title = 'Привет, мир'; // заголовок
-          //   $summary = 'Короткое описание данной статьи, например можно использовать функцию WordPress the_excerpt()'; // анонс поста
-          //   $url = 'https://misha.agency?p=1'; // ссылка на пост
-          //   $image_url = 'https://misha.agency/wp-content/themes/truemisha/a/apple-touch-icon-144x144-precomposed.png' // URL изображения
-          // ?>
-          <!-- <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo urlencode( $url ); ?>&p[title]=<?php echo $title ?>&p[summary]=<?php echo $summary ?>&p[images][0]=<?php echo $image_url ?>" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" title="Поделиться ссылкой на Фейсбук" target="_parent">Поделиться</a> -->
 
           <?php
             $url = urlencode(get_permalink());
             $title = urlencode('Зацени новость на сайте bavaria!');
-            // $image = urlencode(get_field('banner'));
 
             $tgLink = 'tg://msg_url?url=' . $url . '&text=' . $title;
-            $fbLink = 'https://www.facebook.com/sharer/sharer.php?&p[url]=' . $url;
-            //  . '&p[title]=' . $title . '&p[images][0]=' . $image
+            $fbLink = 'https://www.facebook.com/sharer/sharer.php?u=' . $url;
           ?>
+
 
           <div class="share">
             <span class="wow fadeInUp">Поделитесь с друзьями:</span>
             <ul>
               <li class="wow fadeInUp" data-wow-delay="0.5s">
-                <a href="<?= $fbLink; ?>" class="shareFacebook" target="_blank">
+                <button class="shareFacebook">
                   <img
                     src="<?= B_IMG_DIR ?>/share_facebook.svg"
                     class="img-svg"
                   />
-                </a>
+                </button>
               </li>
               <li class="wow fadeInUp" data-wow-delay="0.8s">
                 <a href="<?= $tgLink; ?>" class="shareTelegram">
@@ -132,8 +124,6 @@
           </div>
         </div>
       </section>
-
-
 
     <section class="news light p-5 also_news">
       <div class="wrapper mobwrapper">
@@ -222,5 +212,12 @@
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>
+
+    <script>
+      document.querySelector(".shareFacebook").addEventListener("click", () => {
+        window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+        return false;
+      });
+    </script>
   </body>
 </html>

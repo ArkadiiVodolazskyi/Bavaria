@@ -60,7 +60,7 @@
           ?>
 
             <button class="wow fadeInRight"
-                    data-wow-delay="<?= $key*0.2 + 1; ?>s"
+                    data-wow-delay="<?= $key*0.2; ?>s"
                     data-term = "<?= $termSlug; ?>">
               <span><?= $termName; ?></span>
             </button>
@@ -73,12 +73,16 @@
             <p class="noPosts">По такому запросу постов нет</p>
 
             <?php
-              $posts = get_posts( [
-                'post_type' => 'folio',
-                'numberposts' => -1
-              ] );
 
-              foreach( $posts as $key=>$post ) {
+              wp_reset_query();
+              $my_posts = new WP_Query;
+              $myposts = $my_posts->query([
+                'post_type' => 'folio',
+                'posts_per_page' => get_field('per_page', 'options')['folio'],
+                'paged' => get_query_var('paged') ? get_query_var('paged') : 1, // получить посты с текущей страницы, установить текущую страницу в 1, если не определена
+              ]);
+
+              foreach( $myposts as $key=>$post ) {
                 setup_postdata($post);
 
                 $url = get_permalink();
@@ -106,28 +110,19 @@
             </a>
 
           <?php }; wp_reset_postdata(); ?>
-
         </div>
 
-        <ul class="navpages_2">
-          <li>
-            <button class="arrow page_prev">
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-            </button>
-          </li>
-          <li><button class="active">1</button></li>
-          <li><button>2</button></li>
-          <li><button>3</button></li>
-          <li><button>4</button></li>
-          <li><button>5</button></li>
-          <li>...</li>
-          <li><button>34</button></li>
-          <li>
-            <button class="arrow page_next active">
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-            </button>
-          </li>
-        </ul>
+        <?php the_posts_pagination([
+          'show_all'     => false, // показаны все страницы участвующие в пагинации
+          'end_size'     => 1,     // количество страниц на концах
+          'mid_size'     => 5,     // количество страниц вокруг текущей
+          'prev_next'    => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
+          'prev_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
+          'next_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
+          'add_args'     => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
+          'add_fragment' => '',     // Текст который добавится ко всем ссылкам.
+          'screen_reader_text' => __( 'Posts navigation' ),
+        ]); ?>
 
       </div>
     </section>

@@ -45,7 +45,7 @@ section.services
 			overflow: hidden
 			background-color: $b
 			opacity: 0.3
-			transition: all 0.3s ease
+			transition: all 0.3s linear
 			img
 				width: auto
 				height: 130%
@@ -53,7 +53,7 @@ section.services
 				left: 50%
 				top: 50%
 				transform: translate(-50%, -50%) skew($skew)
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 		.cards
 			width: 95%
 			height: 62.5%
@@ -89,7 +89,7 @@ section.services
 					position: relative
 					transform: translate(-2rem, 1rem)
 					text-align: left
-					transition: all 0.3s ease
+					transition: all 0.3s linear
 					h4
 						padding: 1rem
 						color: $w
@@ -176,7 +176,7 @@ section.news
 							right: 0
 							bottom: 0
 							background-color: rgba($dw, 1)
-							transition: all 0.3s ease
+							transition: all 0.3s linear
 						.date
 							position: relative
 							font-size: rem(16)
@@ -288,7 +288,7 @@ section.info
 					position: absolute
 					opacity: 0
 					visibility: hidden
-					transition: all 0.3s ease
+					transition: all 0.3s linear
 					svg, p
 						transform: skew($skew)
 					&.active
@@ -395,7 +395,7 @@ section.post
 				left: 0
 				opacity: 0
 				visibility: hidden
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 				&.active
 					opacity: 1
 					visibility: visible
@@ -418,13 +418,13 @@ section.post
 			top: 0
 			left: 0
 			transform: translateY(0px)
-			transition: all 0.3s ease
+			transition: all 0.3s linear
 			img
 				width: 230px
 				height: 150px
 				cursor: pointer
 				opacity: 0.3
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 				&:not(:first-child)
 					margin-top: rem(18)
 				&.active, &:hover
@@ -613,7 +613,7 @@ section.about_video
 	top: 0
 	width: 100vw
 	height: 100vh
-	transition: all 0.3s ease
+	transition: all 0.3s linear
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
@@ -757,7 +757,7 @@ section.service_post
 			button
 				color: $w
 		.figure_42
-			transition: all 0.5s ease 1.4s
+			transition: all 0.5s linear 1.4s
 			opacity: 0
 			transform: skew($skew) translateX(300px)
 			&.appeared
@@ -970,7 +970,7 @@ section.workshop
 			overflow: hidden
 			opacity: 0
 			visibility: hidden
-			transition: all 0.3s ease
+			transition: all 0.3s linear
 			li
 				display: block
 				color: $dGrey
@@ -1155,7 +1155,7 @@ section.reviews
 		opacity: 0
 		visibility: hidden
 		position: absolute
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		&.active
 			opacity: 1
 			visibility: visible

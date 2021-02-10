@@ -88,7 +88,7 @@
                   </div>
                 <?php endwhile; ?>
 
-                <div class="checkup appear">
+                <div class="checkup openConnect appear">
                   <button>Записаться на осмотр</button>
                 </div>
 
@@ -127,12 +127,12 @@
           <span class="wow fadeInUp">Поделитесь с друзьями:</span>
           <ul>
             <li class="wow fadeInUp" data-wow-delay="0.5s">
-              <a href="https://www.facebook.com/">
+              <button class="shareFacebook">
                 <img
                   src="<?= B_IMG_DIR ?>/share_facebook.svg"
                   class="img-svg"
                 />
-              </a>
+              </button>
             </li>
             <li class="wow fadeInUp" data-wow-delay="0.8s">
               <a href="<?= $tgLink; ?>">
@@ -232,5 +232,12 @@
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>
+
+    <script>
+      document.querySelector(".shareFacebook").addEventListener("click", () => {
+        window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+        return false;
+      });
+    </script>
   </body>
 </html>

@@ -1,37 +1,44 @@
 header
 	width: 100%
-	position: absolute
+	position: fixed
 	z-index: 5
 	top: 0
 	&.roll
 		.contacts
-			.languages, .empty, .time, .contact, .social
-				display: none
-			.logo_animate
-			.hamb_animate
+			.wrapper
+				padding: 0
+				max-height: 0
+				.languages, .empty, .time, .contact, .social
+					display: none
+				.logo_animate
+					top: -100px
+					.logo_text
+						left: 60%
+						top: 75%
+				.hamb_animate
+					position: absolute
+					left: 240px
+					top: 15px
+		nav .wrapper
+			padding: 0.7rem 0 0.7rem 16rem
 	.contacts
 		backdrop-filter: blur(8.2px)
+		position: relative
 		.wrapper
 			display: flex
 			align-items: center
 			justify-content: space-between
-			padding: rem(12) 0
-			> *
-				padding: rem(24)
-			.logo
-				margin-top: -1rem
-				margin-bottom: -4rem
-				padding-top: 0
-				padding-bottom: 0
-			.hamb svg
-				fill: $w
-			.languages li
-				display: inline-block
+			padding: 1.5rem 0 1.5rem 10.5rem
+			max-height: 200px
+			transition: all 0.3s linear
+			.languages li a
 				font-size: 16px
+				opacity: 0.6
 				color: $w
-				a
-					text-decoration: underline
-					opacity: 0.6
+				text-decoration: underline
+				&:hover
+					opacity: 1
+					color: $lBlue
 			.empty
 				width: 10%
 			.time
@@ -46,9 +53,10 @@ header
 					animation: spanDown 1s 0.6s ease-in 1 forwards
 			.contact
 				position: relative
-				padding-right: rem(44)
+				margin-top: -1rem
+				padding: 1rem 1.8rem 0rem 1.5rem
 				fill: $red
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 				color: $w
 				text-align: right
 				&:hover
@@ -75,16 +83,30 @@ header
 					color: $w
 					&:hover
 						color: $lBlue
-				span
-					color: $w
+				> .type
 					position: relative
 					z-index: 20
-					font-size: rem(16)
-					text-decoration: underline
-					opacity: 0
-					user-select: none
-					transform: translateY(-100px)
-					animation: spanDown 1s 0.6s ease-in 1 forwards
+					li
+						cursor: pointer
+						width: 36px
+						height: 36px
+						border-radius: 50%
+						position: relative
+						transition: all 0.2s linear
+						margin: -10px -8px
+						&.telegram:hover
+							box-shadow: 0 0 20px rgba(#4199FF, 0.3) inset
+						&.viber:hover
+							box-shadow: 0 0 20px rgba(#9A059A, 0.3) inset
+						&.whatsapp:hover
+							box-shadow: 0 0 20px rgba(#259832, 0.3) inset
+						a, svg
+							width: 20px
+							height: 20px
+							position: absolute
+							left: 50%
+							top: 50%
+							transform: translate(-50%, -50%)
 				.additional
 					width: 100%
 					position: absolute
@@ -96,7 +118,7 @@ header
 					padding: rem(24) rem(44) rem(24) rem(24)
 					z-index: 10
 					text-align: left
-					transition: all 0.3s ease
+					transition: all 0.3s linear
 					display: flex
 					flex-direction: column
 					> li
@@ -134,22 +156,29 @@ header
 			display: flex
 			align-items: center
 			justify-content: space-between
-			padding: rem(16) 0 rem(16) 10.5rem
+			padding: 0.7rem 0 0.7rem 10.5rem
 			.links
+				width: 100%
 				display: flex
 				align-items: center
-				justify-content: center
-				li a
-					width: max-content
-					margin: 0 1rem
-					font-size: rem(18)
-					font-weight: 500
-					color: $w
-					text-align: center
-					&:hover
-						color: $lBlue
+				justify-content: space-between
+				li
+					opacity: 0
+					transform: translateX(100px)
+					transition: all 0.2s linear
+					&.appeared
+						opacity: 1
+						transform: translateX(0)
+					a
+						width: max-content
+						font-size: rem(18)
+						font-weight: 500
+						color: $w
+						text-align: center
+						&:hover
+							color: $lBlue
 			.checkup
-				margin-bottom: -1.5rem
+				margin: 0 0 -1.5rem 1.5rem
 
 #expandedMenu
 	position: fixed
@@ -163,7 +192,7 @@ header
 	visibility: hidden
 	display: flex
 	color: $w
-	transition: all 0.3s ease
+	transition: all 0.3s linear
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
@@ -181,7 +210,7 @@ header
 		background: linear-gradient(207deg, #181f29, #153155)
 		backdrop-filter: blur(30px)
 		transform: translateY(100%)
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		&:nth-child(1)
 			transition-delay: 0.1s
 		&:nth-child(2)
@@ -353,7 +382,7 @@ header
 		transition-delay: 0.6s
 		display: flex
 		align-items: center
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		li
 			display: flex
 			align-items: center
@@ -367,15 +396,15 @@ header
 			height: 24px
 
 .logo_animate
-	margin: -1rem 2.5rem -4rem 0
-	padding-top: 0 !important
-	padding-bottom: 0 !important
-	position: relative
 	width: 200px
 	height: 200px
 	display: flex
 	justify-content: center
 	align-items: center
+	position: absolute
+	left: 0
+	top: 0
+	max-height: 300px
 	&:hover
 		.line_1
 			fill: darken($lBlue, 5%)
@@ -390,7 +419,7 @@ header
 			fill: lighten($dw, 20%)
 			transform: translate(-55%, -40%)
 	svg
-		height: 100%
+		height: inherit
 		margin: 0 -26px
 	.line_1
 		fill: $lBlue
@@ -415,7 +444,7 @@ header
 		transition-delay: 0.2s
 
 .hamb_animate
-	width: 5rem
+	width: 4rem
 	min-width: 100px
 	position: relative
 	display: flex
@@ -433,7 +462,7 @@ header
 			margin-left: 0px
 			background-color: $red
 	> div
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		background-color: $w
 		width: 100%
 		height: 4px
@@ -450,27 +479,14 @@ header
 .navCheckupBtn
 	opacity: 0
 	transform: skew(-$skew) translate(0, 50px)
-	animation: navCheckup
-	animation-duration: 1s
-	animation-delay: 2s
-	animation-timing-function: ease-in
-	animation-fill-mode: forwards
-	&.toBottom
-		position: fixed
-		right: 8%
-		bottom: 72px
-		z-index: 500
+	animation: navCheckup 1s 0s ease-in forwards
 .smallCheckupBtn
 	width: 36px
 	height: 36px
-	display: none
+	margin-left: 2rem
 	cursor: pointer
+	display: none
 	position: relative
-	&.toBottom
-		position: fixed
-		right: 4%
-		bottom: 40px
-		z-index: 500
 	&:hover svg
 		fill: $lBlue !important
 	svg

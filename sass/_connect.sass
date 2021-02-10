@@ -56,18 +56,22 @@
 	width: 850px
 	max-height: rem(550)
 	position: fixed
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%) skew(-$skew)
+	left: 60%
+	top: 40%
+	transform: translate(-50%, -50%) skew(0) scale(0) rotate(-30deg)
+	transform-origin: right top 0
 	z-index: 960
 	opacity: 0
 	visibility: hidden
 	padding: 2rem 4rem
 	background-color: $w
-	transition: all 0.3s ease
+	transition: all 0.2s linear
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
+		transform: translate(-50%, -50%) skew(-$skew) scale(1) rotate(0)
+		left: 50%
+		top: 50%
 	h2
 		font-size: rem(36)
 		font-weight: bold
@@ -93,7 +97,7 @@
 			color: $lGrey
 			font-size: 18px
 			user-select: none
-			transition: all 0.3s ease
+			transition: all 0.3s linear
 			white-space: nowrap
 			font-weight: 100
 			&.focused
@@ -108,7 +112,7 @@
 		color: $dGrey
 		font-size: 17px
 		outline: none
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		position: relative
 		font-weight: 600
 		&.invalid
@@ -125,14 +129,14 @@
 		color: $dGrey
 		font-size: rem(18)
 		outline: none
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		font-weight: 600
 	input[type=submit]
 		border: 1px solid transparent
 		background-color: transparent
 		color: $w
 		transform: skew($skew)
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		padding: 1rem 1.5rem
 		margin: 0 0 0 6px
 		position: relative
@@ -156,7 +160,7 @@
 		padding: 0
 		transform: skew(-$skew)
 		background-color: $red
-		transition: all 0.3s ease
+		transition: all 0.3s linear
 		cursor: pointer
 		&:hover
 			background-color: $lBlue
@@ -203,7 +207,7 @@ section.request .right_form
 				font-size: 18px
 				font-weight: 100
 				user-select: none
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 				&.focused
 					font-size: 14px
 					top: -6px
@@ -224,7 +228,7 @@ section.request .right_form
 			padding: 0
 			transform: skew(-$skew)
 			background-color: $red
-			transition: all 0.3s ease
+			transition: all 0.3s linear
 			cursor: pointer
 			&:hover
 				background-color: $lBlue
@@ -241,7 +245,7 @@ section.request .right_form
 				border: 1px solid transparent
 				color: $w
 				transform: skew($skew)
-				transition: all 0.3s ease
+				transition: all 0.3s linear
 				padding: 1rem 1.5rem
 				margin: 0 0 0 6px
 				position: relative

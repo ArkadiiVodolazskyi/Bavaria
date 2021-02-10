@@ -20,7 +20,9 @@
 
     <!-- Fullscreen video -->
     <div id="video">
-      <iframe src="<?= get_field('video_section')['video']; ?>"></iframe>
+      <video autoplay controls>
+        <source src="<?= get_field('video_section')['video']; ?>" type="video/mp4">
+      </video>
     </div>
 
     <section class="banner blog_banner">
