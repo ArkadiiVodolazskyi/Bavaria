@@ -30,7 +30,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
             <?= get_the_title(); ?>
           </h2>
         </div>
@@ -48,10 +48,10 @@
     <section class="info_about">
       <div class="wrapper">
         <div class="left_text">
-          <p class="accent textAppear" data-delay="1">
+          <p class="accent textAppear">
             <?= get_field('about')['par_bold']; ?>
           </p>
-          <p class="wow textAppear" data-delay="1.2">
+          <p class="wow textAppear">
             <?= get_field('about')['par']; ?>
           </p>
         </div>
@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="video_text">
-          <h2 class="textAppear" data-delay="1">
+          <h2 class="textAppear">
             <?= get_field('video_section')['text']; ?>
           </h2>
           <div class="video">
@@ -170,8 +170,8 @@
     <?php if (get_field('facts', 'options')): ?>
       <section class="facts">
         <div class="wrapper mobwrapper">
-          <h2 class="facts_title textAppear" data-delay="1">Факты о нас</h2>
-          <div class="facts_cards mobslider">
+          <h2 class="facts_title textAppear">Факты о нас</h2>
+          <div class="facts_cards mobslider mob100">
 
             <?php while ( have_rows('facts', 'options') ): the_row(); ?>
               <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">

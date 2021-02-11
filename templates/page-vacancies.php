@@ -48,7 +48,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
            <?= get_the_title(); ?>
           </h2>
         </div>
@@ -105,7 +105,7 @@
     <?php if (get_field('facts', 'options')): ?>
       <section class="facts">
         <div class="wrapper mobwrapper">
-          <h2 class="facts_title textAppear" data-delay="1">Факты о нас</h2>
+          <h2 class="facts_title textAppear">Факты о нас</h2>
           <div class="facts_cards mobslider">
 
             <?php while ( have_rows('facts', 'options') ): the_row(); ?>

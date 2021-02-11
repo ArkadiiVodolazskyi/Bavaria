@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             letter.classList.add("wow", "fadeInRight", "letter");
             letter.setAttribute(
               "data-wow-delay",
-              `${(j * 0.01 + delay).toFixed(2)}s`,
+              `${(j * 0.005 + delay).toFixed(2)}s`,
             );
             word.appendChild(letter);
           }
@@ -455,7 +455,7 @@ window.addEventListener("load", () => {
 
     if (galleries.length) {
       for (let i = 0; i < galleries.length; i++) {
-        const images = [...galleries[i].querySelectorAll(".tape > img")];
+        const images = [...galleries[i].querySelectorAll(".tape img")];
 
         if (images.length) {
           // Copy all to the big one
@@ -481,36 +481,6 @@ window.addEventListener("load", () => {
               bigImages[i].classList.add("active");
             });
           }
-
-          // Move tape with imgs
-          let currentTransf = 0;
-          const transDif = 170;
-          let firstImgOnTape = 0;
-          let lastImgOnTape = 3;
-
-          const tape_prev = galleries[i].querySelector(".tape_prev");
-          const tape_next = galleries[i].querySelector(".tape_next");
-
-          tape_prev.addEventListener("click", () => {
-            firstImgOnTape--;
-            if (firstImgOnTape < 0) {
-              firstImgOnTape = 0;
-            } else {
-              lastImgOnTape--;
-              currentTransf = currentTransf + transDif;
-              tape.style.transform = `matrix(1, 0, 0, 1, 0, ${currentTransf})`;
-            }
-          });
-          tape_next.addEventListener("click", () => {
-            lastImgOnTape++;
-            if (lastImgOnTape > bigImages.length - 1) {
-              lastImgOnTape = bigImages.length - 1;
-            } else {
-              firstImgOnTape++;
-              currentTransf = currentTransf - transDif;
-              tape.style.transform = `matrix(1, 0, 0, 1, 0, ${currentTransf})`;
-            }
-          });
         }
       }
     }
@@ -725,64 +695,6 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // mobslider
-  (function () {
-    const mobsliders = [...document.querySelectorAll(".mobslider")];
-
-    if (mobsliders.length) {
-      for (let i = 0; i < mobsliders.length; i++) {
-        const wrapper = mobsliders[i].closest(".mobwrapper");
-        const cards = [...mobsliders[i].children];
-
-        if (!wrapper.classList.contains("mobwrapper")) {
-          console.error("No wrapper for: ", mobsliders[i]);
-        }
-
-        // Make mobslider dots
-        const dotsWrapper = document.createElement("ul");
-        dotsWrapper.classList.add("dotsWrapper");
-        for (let j = 0; j < cards.length; j++) {
-          const mobDot = document.createElement("li");
-          mobDot.classList.add("mobDot");
-          dotsWrapper.appendChild(mobDot);
-        }
-        wrapper.appendChild(dotsWrapper);
-
-        const mobDots = wrapper.querySelectorAll(".dotsWrapper .mobDot");
-
-        // Find cards widths: Hardcoded 280 + 16 = 296px
-        // const newCardsMargins = 8;
-        // const cardWidths = [];
-        // for (let j = 0; j < cards.length; j++) {
-        //   cards[j].style.marginLeft = `${newCardsMargins}px`;
-        //   cards[j].style.marginRight = `${newCardsMargins}px`;
-        //   cardWidths.push(cards[j].offsetWidth + 2 * newCardsMargins);
-        //   console.log(cards[j], cardWidths[j]);
-        // }
-
-        // Link cards and mobDots together
-        let cardsTranslate = 0;
-        mobDots[0].classList.add("active");
-
-        for (let j = 0; j < mobDots.length; j++) {
-          mobDots[j].addEventListener("click", () => {
-            for (let k = 0; k < j; k++) {
-              cardsTranslate -= 296;
-            }
-            mobsliders[
-              i
-            ].style.transform = `matrix(1, 0, 0, 1, ${cardsTranslate}, 0)`;
-            mobDots.forEach((mobDot) => {
-              mobDot.classList.remove("active");
-            });
-            mobDots[j].classList.add("active");
-            cardsTranslate = 0;
-          });
-        }
-      }
-    }
-  })();
-
   // expand expandedMenu menus
   (function () {
     const expandedLists = [
@@ -901,180 +813,8 @@ window.addEventListener("load", () => {
       ];
 
       if (navBtns.length) {
-        // Mutate to dropdown on 960 screens
-        const nav = document.querySelector(".portfolio_main nav");
-        const navExpand = nav.querySelector(".nav_arrow");
-
-        navExpand.addEventListener("click", (e) => {
-          console.log("Click", e);
-          nav.classList.add("expanded");
-        });
-
-        // Default
-        navBtns[0].classList.add("active");
-        const folioPosts = document.querySelectorAll(".other .card");
-        const noPosts = document.querySelector(".other .noPosts");
-        let serviceType = "all";
-        reorder();
-
-        for (let i = 0; i < navBtns.length; i++) {
-          navBtns[i].addEventListener("click", (e) => {
-            console.log(e.target);
-            for (let j = 0; j < navBtns.length; j++) {
-              navBtns[j].classList.remove("active");
-            }
-            navBtns[i].classList.add("active");
-            if (nav.classList.contains("expanded")) {
-              nav.classList.remove("expanded");
-            }
-
-            // Reorder posts
-            serviceType = navBtns[i].getAttribute("data-term");
-            reorder();
-          });
-        }
-
-        // Reorder posts
-        function reorder() {
-          noPosts.classList.remove("active");
-          let count = 0;
-
-          for (let i = 0; i < folioPosts.length; i++) {
-            if (serviceType === "all") {
-              folioPosts[i].classList.add("active");
-              count++;
-            } else {
-              if (folioPosts[i].getAttribute("data-term") === serviceType) {
-                folioPosts[i].classList.add("active");
-                count++;
-              } else {
-                folioPosts[i].classList.remove("active");
-              }
-            }
-          }
-
-          if (count === 0) {
-            noPosts.classList.add("active");
-          }
-        }
-      }
-    })();
-
-  // Styling Gravity Forms
-  (function () {
-    const gf1 = document.getElementById("gform_1");
-
-    const inputs = [
-      ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
-    ]; // name, tel, msg
-    const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
-    const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
-    const submit = gf1.querySelector("#gform_submit_button_1"); // send
-    const imgs = document.querySelectorAll(".connect_img, .connect_figure");
-
-    const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
-
-    for (let i = 0; i < inputs.length; i++) {
-      // On focus move label up
-      inputs[i].addEventListener("focus", () => {
-        labels[i].classList.add("focused");
-      });
-      inputs[i].addEventListener("blur", () => {
-        if (inputs[i].value === "") {
-          labels[i].classList.remove("focused");
-        }
-      });
-      inputs[i].addEventListener("keyup", () => {
-        if (inputs[0].value === "") {
-          inputs[0].classList.add("invalid");
-          subWrapper.classList.add("invalid");
-          submit.disabled = true;
-        } else {
-          inputs[0].classList.remove("invalid");
-        }
-
-        if (telRegex.test(inputs[1].value) === false) {
-          inputs[1].classList.add("invalid");
-          subWrapper.classList.add("invalid");
-          submit.disabled = true;
-        } else {
-          inputs[1].classList.remove("invalid");
-        }
-
-        if (
-          inputs[0].value !== "" &&
-          telRegex.test(inputs[1].value) !== false
-        ) {
-          subWrapper.classList.remove("invalid");
-          submit.disabled = false;
-        }
-      });
-    }
-
-    // If inputs are valid
-    gf1.addEventListener("submit", () => {
-      imgs.forEach((img) => {
-        img.style.display = "none";
-      });
-      console.log("Form submitted");
-    });
-
-    // Add hints
-    // document.addEventListener("DOMContentLoaded", () => {
-    //   const inputWrapperName = gf1.querySelector(
-    //     ".ginput_container:nth-of-type(1)",
-    //   );
-    //   console.log(inputWrapperName);
-
-    //   const hintName = document.createElement("span");
-    //   hintName.classList.add("hint");
-    //   hintName.innerText = "Заполните это поле.".inputWrapperName.appendChild(
-    //     hintName,
-    //   );
-    // });
-
-    // Custom wow js- appear
-    (function () {
-      const heightToShow = 150;
-
-      const appears = [...document.querySelectorAll(".appear")];
-
-      // Also on load
-      for (let i = 0; i < appears.length; i++) {
-        if (
-          !(
-            appears[i].getBoundingClientRect().top + heightToShow >
-              innerHeight ||
-            appears[i].getBoundingClientRect().bottom - heightToShow < 0
-          )
-        ) {
-          appears[i].classList.add("appeared");
-        }
-      }
-      window.addEventListener("scroll", () => {
-        for (let i = 0; i < appears.length; i++) {
-          if (
-            !(
-              appears[i].getBoundingClientRect().top + heightToShow >
-                innerHeight ||
-              appears[i].getBoundingClientRect().bottom - heightToShow < 0
-            )
-          ) {
-            appears[i].classList.add("appeared");
-          }
-        }
-      });
-    })();
-
-    // folio-main - change work types
-    (function () {
-      const navBtns = [
-        ...document.querySelectorAll(".portfolio_main nav button"),
-      ];
-
-      if (navBtns.length) {
-        // Mutate to dropdown on 360 screens
-        const nav = document.querySelector(".portfolio_main nav");
+        // Mutate to dropdown on 960- screens
+        const nav = document.querySelector(".portfolio_main nav:not(.pagination)");
         const navExpand = nav.querySelector(".nav_arrow");
 
         navExpand.addEventListener("click", () => {
@@ -1130,67 +870,160 @@ window.addEventListener("load", () => {
       }
     })();
 
-    // service_request form
+    // Styling Gravity Forms
     (function () {
-      const gf3 = document.getElementById("gform_3");
+      const gf1 = document.getElementById("gform_1");
 
-      if (gf3) {
-        const inputs = [
-          ...gf3.querySelectorAll("#input_3_1, #input_3_5"),
-        ]; // name, tel
-        const labels = [...gf3.querySelectorAll(".gfield_label")]; // name, tel
-        const subWrapper = gf3.querySelector(".gform_footer"); // send wrapper (bg)
-        const submit = gf3.querySelector("#gform_submit_button_3"); // send
-        const imgs = document.querySelectorAll(".right_form .connect_img, .right_form .connect_figure");
+      const inputs = [
+        ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
+      ]; // name, tel, msg
+      const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
+      const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
+      const submit = gf1.querySelector("#gform_submit_button_1"); // send
+      const imgs = document.querySelectorAll(".connect_img, .connect_figure");
 
-        const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+      const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
 
-        for (let i = 0; i < inputs.length; i++) {
-          // On focus move label up
-          inputs[i].addEventListener("focus", () => {
-            labels[i].classList.add("focused");
-          });
-          inputs[i].addEventListener("blur", () => {
-            if (inputs[i].value === "") {
-              labels[i].classList.remove("focused");
-            }
-          });
-          inputs[i].addEventListener("keyup", () => {
-            if (inputs[0].value === "") {
-              inputs[0].classList.add("invalid");
-              subWrapper.classList.add("invalid");
-              submit.disabled = true;
-            } else {
-              inputs[0].classList.remove("invalid");
-            }
+      for (let i = 0; i < inputs.length; i++) {
+        // On focus move label up
+        inputs[i].addEventListener("focus", () => {
+          labels[i].classList.add("focused");
+        });
+        inputs[i].addEventListener("blur", () => {
+          if (inputs[i].value === "") {
+            labels[i].classList.remove("focused");
+          }
+        });
+        inputs[i].addEventListener("keyup", () => {
+          if (inputs[0].value === "") {
+            inputs[0].classList.add("invalid");
+            subWrapper.classList.add("invalid");
+            submit.disabled = true;
+          } else {
+            inputs[0].classList.remove("invalid");
+          }
 
-            if (telRegex.test(inputs[1].value) === false) {
-              inputs[1].classList.add("invalid");
-              subWrapper.classList.add("invalid");
-              submit.disabled = true;
-            } else {
-              inputs[1].classList.remove("invalid");
-            }
+          if (telRegex.test(inputs[1].value) === false) {
+            inputs[1].classList.add("invalid");
+            subWrapper.classList.add("invalid");
+            submit.disabled = true;
+          } else {
+            inputs[1].classList.remove("invalid");
+          }
 
-            if (
-              inputs[0].value !== "" &&
-              telRegex.test(inputs[1].value) !== false
-            ) {
-              subWrapper.classList.remove("invalid");
-              submit.disabled = false;
-            }
-          });
-        }
-
-        // If inputs are valid
-        gf3.addEventListener("submit", () => {
-          imgs.forEach((img) => {
-            img.style.display = "none";
-          });
-          console.log("Form submitted");
+          if (
+            inputs[0].value !== "" &&
+            telRegex.test(inputs[1].value) !== false
+          ) {
+            subWrapper.classList.remove("invalid");
+            submit.disabled = false;
+          }
         });
       }
+
+      // If inputs are valid
+      gf1.addEventListener("submit", () => {
+        imgs.forEach((img) => {
+          img.style.display = "none";
+        });
+        console.log("Form submitted");
+      });
+
+      // Custom wow js- appear
+      (function () {
+        const heightToShow = 150;
+
+        const appears = [...document.querySelectorAll(".appear")];
+
+        // Also on load
+        for (let i = 0; i < appears.length; i++) {
+          if (
+            !(
+              appears[i].getBoundingClientRect().top + heightToShow >
+                innerHeight ||
+              appears[i].getBoundingClientRect().bottom - heightToShow < 0
+            )
+          ) {
+            appears[i].classList.add("appeared");
+          }
+        }
+        window.addEventListener("scroll", () => {
+          for (let i = 0; i < appears.length; i++) {
+            if (
+              !(
+                appears[i].getBoundingClientRect().top + heightToShow >
+                  innerHeight ||
+                appears[i].getBoundingClientRect().bottom - heightToShow < 0
+              )
+            ) {
+              appears[i].classList.add("appeared");
+            }
+          }
+        });
+      })();
+
+      // service_request form
+      (function () {
+        const gf3 = document.getElementById("gform_3");
+
+        if (gf3) {
+          const inputs = [
+            ...gf3.querySelectorAll("#input_3_1, #input_3_5"),
+          ]; // name, tel
+          const labels = [...gf3.querySelectorAll(".gfield_label")]; // name, tel
+          const subWrapper = gf3.querySelector(".gform_footer"); // send wrapper (bg)
+          const submit = gf3.querySelector("#gform_submit_button_3"); // send
+          const imgs = document.querySelectorAll(".right_form .connect_img, .right_form .connect_figure");
+
+          const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+
+          for (let i = 0; i < inputs.length; i++) {
+            // On focus move label up
+            inputs[i].addEventListener("focus", () => {
+              labels[i].classList.add("focused");
+            });
+            inputs[i].addEventListener("blur", () => {
+              if (inputs[i].value === "") {
+                labels[i].classList.remove("focused");
+              }
+            });
+            inputs[i].addEventListener("keyup", () => {
+              if (inputs[0].value === "") {
+                inputs[0].classList.add("invalid");
+                subWrapper.classList.add("invalid");
+                submit.disabled = true;
+              } else {
+                inputs[0].classList.remove("invalid");
+              }
+
+              if (telRegex.test(inputs[1].value) === false) {
+                inputs[1].classList.add("invalid");
+                subWrapper.classList.add("invalid");
+                submit.disabled = true;
+              } else {
+                inputs[1].classList.remove("invalid");
+              }
+
+              if (
+                inputs[0].value !== "" &&
+                telRegex.test(inputs[1].value) !== false
+              ) {
+                subWrapper.classList.remove("invalid");
+                submit.disabled = false;
+              }
+            });
+          }
+
+          // If inputs are valid
+          gf3.addEventListener("submit", () => {
+            imgs.forEach((img) => {
+              img.style.display = "none";
+            });
+            console.log("Form submitted");
+          });
+        }
+      })();
     })();
-  })();
+
   })();
 });

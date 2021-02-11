@@ -23,7 +23,7 @@
 
       <div class="wrapper">
         <div class="contact_info">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
 						<?= get_the_title(); ?>
 					</h2>
 
@@ -35,7 +35,7 @@
 								<?php while(have_rows('phones', 'options')): the_row(); ?>
 									<div class="phone">
 										<div class="phone_first">
-											<a href="tel:<?= get_sub_field('number'); ?>" class="textAppear" data-delay="<?= get_row_index()*0.5 + 1.2?>s">
+											<a href="tel:<?= get_sub_field('number'); ?>" class="textAppear">
 												<?= get_sub_field('number'); ?>
 											</a>
 											<div class="phone_type">
@@ -49,7 +49,7 @@
 												<?php endforeach; ?>
 											</div>
 										</div>
-										<span class="textAppear" data-delay="<?= get_row_index()*0.5 + 1.3?>s">
+										<span class="textAppear">
 											<?= get_sub_field('workshop'); ?>
 										</span>
 									</div>
@@ -59,32 +59,32 @@
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/address.svg" class="img-svg" />
-              <a href="<?= get_field('contacts', 'options')['address']['url']; ?>" class="textAppear" data-delay="2s">
+              <a href="<?= get_field('contacts', 'options')['address']['url']; ?>" class="textAppear">
 								<?= get_field('contacts', 'options')['address']['title']; ?>
 							</a>
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
-              <a href="mailto:<?= get_field('contacts', 'options')['email']; ?>" class="textAppear" data-delay="2.3s">
+              <a href="mailto:<?= get_field('contacts', 'options')['email']; ?>" class="textAppear">
 								<?= get_field('contacts', 'options')['email']; ?>
 							</a>
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/time.svg" class="img-svg" />
-              <span class="textAppear" data-delay="2.7s">
+              <span class="textAppear">
 								<?= get_field('schedule', 'options'); ?>
 							</span>
             </li>
           </ul>
 
           <div class="below">
-            <div class="checkup appear" data-wow-delay="3s">
+            <div class="checkup appear">
               <button class="openConnect">Свяжитесь с нами</button>
             </div>
 
             <ul class="social">
               <?php while(have_rows('social', 'options')): the_row(); ?>
-                <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2 + 1.4?>s">
+                <li class="wow fadeInRight">
                   <a href="<?= get_sub_field('url'); ?>" class="social_link">
                     <img src="<?= B_IMG_DIR ?>/<?= get_sub_field('type'); ?>.svg" class="img-svg" />
                   </a>

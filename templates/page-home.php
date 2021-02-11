@@ -31,12 +31,12 @@
         <?php if (get_sub_field('banner_type') == 'img'): ?>
           <img src="<?= get_sub_field('banner_item'); ?>" class="banner_img" />
         <?php elseif (get_sub_field('banner_type') == 'video'): ?>
-          <video autoplay muted loop src="<?= get_sub_field('banner_item'); ?>" class="banner_img wow fadeIn" data-wow-delay="1s"></video>
+          <video autoplay muted loop src="<?= get_sub_field('banner_item'); ?>" class="banner_img fadeIn"></video>
         <?php endif; ?>
 
         <div class="slogan">
           <div class="wrapper">
-            <h2 class="textAppear" data-delay="2">
+            <h2 class="textAppear">
               <?= get_sub_field('text'); ?>
             </h2>
             <div class="video">
@@ -71,17 +71,17 @@
         <section id="services" class="services dark">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
+            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper">
-            <h3 class="wow fadeInLeft">
+            <h3 class="fadeInLeft">
               <?= get_sub_field('title'); ?>
             </h3>
 
-            <div class="figure_11 appear" style="z-index: 0; left: 0%; animation-delay: 1s">
+            <div class="figure_11 appear" style="z-index: 0; left: 0%;">
               <img src="<?= B_IMG_DIR ?>/figure_111.png" />
             </div>
 
@@ -140,24 +140,24 @@
         <section id="news" class="news light p-5">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
+            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
-          <div class="wrapper mobwrapper">
-            <h3 class="wow fadeInLeft">
+          <div class="wrapper">
+            <h3 class="fadeInLeft">
               <?= get_sub_field('title'); ?>
             </h3>
 
             <div class="cards">
               <div class="pages">
-                <div class="page mobslider">
+                <div class="page">
 
                   <?php
                     $posts = get_posts( [
                       'post_type' => 'blog',
-                      'numberposts' => 4
+                      'numberposts' => -1
                     ] );
 
                     foreach( $posts as $key=>$post ) {
@@ -171,8 +171,7 @@
 
                       <a
                         href="<?= $url; ?>"
-                        class="card wow fadeInRight"
-                        data-wow-delay="<?= $key*0.2 + 0.5?>s"
+                        class="card"
                         style="background-image: url(<?= $img; ?>); ">
 
                         <div class="block_overlay">
@@ -238,12 +237,12 @@
         <section id="portfolio" class="portfolio dark p-4">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
+            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
-          <div class="wrapper mobwrapper">
+          <div class="wrapper">
             <h3 class="textAppear">
               <?= get_sub_field('title'); ?>
             </h3>
@@ -267,7 +266,7 @@
             </div>
 
 
-            <div class="other mobslider">
+            <div class="other">
 
               <?php
                 $posts = get_posts( [
@@ -283,8 +282,7 @@
                   $post_title = $post->post_title; ?>
 
                 <a href="<?= $url; ?>"
-                  class="card wow fadeInRight"
-                  data-wow-delay="<?= $key*0.2 + 0.3?>s">
+                  class="card">
                   <img
                     src="<?= $img; ?>"
                     class="card_bg"
@@ -364,7 +362,7 @@
         <section id="info" class="info light">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup wow fadeInRight">
+            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
@@ -391,10 +389,10 @@
                 <img src="<?= B_IMG_DIR ?>/red_shard.png" class="shard appear" />
 
                 <?php while ( have_rows('group') ): the_row(); ?>
-                  <img src="<?= get_sub_field('img'); ?>" class="photo wow fadeInRight" />
+                  <img src="<?= get_sub_field('img'); ?>" class="photo fadeInRight" />
                 <?php endwhile; ?>
 
-                <div class="pros wow fadeInUp">
+                <div class="pros fadeInUp">
                   <div class="pro_arrows">
                     <button class="pro_prev">
                       <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
@@ -404,7 +402,7 @@
                     </button>
                   </div>
 
-                  <div class="pro_cards mobslider">
+                  <div class="pro_cards">
                     <?php while ( have_rows('cards') ): the_row(); ?>
                       <div class="pro_card">
                         <img
@@ -444,5 +442,79 @@
 		<?php get_footer(); ?>
     <?php wp_footer(); ?>
 
+    <script>
+
+      $(document).ready(function() {
+
+        $("section.news .wrapper .cards .pages .page").slick({
+          arrows: false,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          variableWidth: true,
+          responsive: [
+            {
+              breakpoint: 1600,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              }
+            },
+            {
+              breakpoint: 980,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+          ]
+        });
+
+        if (window.innerWidth < 601) {
+          $(".other").slick({
+            arrows: false,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+          });
+        }
+
+        if (window.innerWidth < 421) {
+          $("section.info .wrapper .main .imgs .pro_cards").slick({
+            arrows: false,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+          });
+        }
+
+      }
+
+    </script>
   </body>
 </html>

@@ -5,13 +5,16 @@
 				<a href="<?= get_home_url(); ?>" class="logo wow fadeInLeft">
 					<img src="<?= B_IMG_DIR ?>/logo.svg" class="img-svg native" />
 				</a>
-				<span class="slogan textAppear" data-delay="1.5">
+				<span class="slogan textAppear">
 					<?= get_field('slogan', 'options'); ?>
 				</span>
 			</div>
 			<div class="creators">
-				<p class="textAppear" data-delay="2">© Bavaria 2010 — <?= date('Y'); ?></p>
-				<p class="textAppear" data-delay="2.2">Создание сайта — DevPro</p>
+				<p class="textAppear">© Bavaria 2010 — <?= date('Y'); ?></p>
+				<a href="https://devpro.agency/" class="development">
+					<span class="textAppear">Создание сайта — </span>
+					<img src="<?= B_IMG_DIR ?>/devpro.svg" class="img-svg native">
+				</a>
 			</div>
 		</div>
 
@@ -39,13 +42,13 @@
 		<?php endwhile; ?>
 
 		<ul class="contacts">
-			<li class="wow fadeInRight" data-wow-delay="1s">
+			<li class="wow fadeInRight">
 				<img src="<?= B_IMG_DIR ?>/address.svg" class="img-svg" />
 				<a href="<?= get_field('contacts', 'options')['address']['url']; ?>">
 					<?= get_field('contacts', 'options')['address']['title']; ?>
 				</a>
 			</li>
-			<li class="wow fadeInRight" data-wow-delay="1.3s">
+			<li class="wow fadeInRight">
 				<img src="<?= B_IMG_DIR ?>/phone.svg" class="img-svg" />
 				<div class="phone_list">
 					<?php while(have_rows('contacts', 'options')): the_row();
@@ -56,13 +59,13 @@
 					<?php endwhile; endwhile; ?>
 				</div>
 			</li>
-			<li class="wow fadeInRight" data-wow-delay="1.6s">
+			<li class="wow fadeInRight">
 				<img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
 				<a href="mailto:<?= get_field('contacts', 'options')['email']; ?>">
 					<?= get_field('contacts', 'options')['email']; ?>
 				</a>
 			</li>
-			<li class="wow fadeInRight" data-wow-delay="1.9s">
+			<li class="wow fadeInRight">
 				<img src="<?= B_IMG_DIR ?>/time.svg" class="img-svg" />
 				<span>
 					<?= get_field('schedule', 'options'); ?>

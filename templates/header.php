@@ -171,12 +171,12 @@
 			</a>
 
 			<button class="hamb_animate">
-				<div class="line_1 wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="1s"></div>
-				<div class="line_2 wow fadeInLeft" data-wow-delay="0.4s" data-wow-duration="1s"></div>
-				<div class="line_3 wow fadeInLeft" data-wow-delay="0.5s" data-wow-duration="1s"></div>
+				<div class="line_1"></div>
+				<div class="line_2"></div>
+				<div class="line_3"></div>
 			</button>
 
-			<ul class="languages wow fadeInDown" data-wow-delay="0.5s" data-wow-duration="1s">
+			<ul class="languages" data-wow-duration="1s">
 				<?php pll_the_languages(array(
 					'show_names'=>0,
 					'hide_if_empty'=>0,
@@ -187,7 +187,7 @@
 			<div class="empty"></div>
 
 			<div class="time">
-				<p class="wow fadeInDown" data-wow-delay="0.5s">
+				<p class="wow fadeInDown">
 					<?= get_field('schedule', 'options'); ?>
 				</p>
 				<span>
@@ -195,11 +195,34 @@
 			</div>
 
 			<div class="contact">
-					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown" data-wow-delay="0.6s">
+					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown">
 						<?= get_field('phones', 'options')[0]['number']; ?>
 					</a>
 					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
 				</p>
+
+				<?php
+					// Viber links are different for mobile and desktop
+					function isMobileDevice(){
+						$aMobileUA = array(
+								'/iphone/i' => 'iPhone',
+								'/ipod/i' => 'iPod',
+								'/ipad/i' => 'iPad',
+								'/android/i' => 'Android',
+								'/blackberry/i' => 'BlackBerry',
+								'/webos/i' => 'Mobile'
+						);
+
+						//Return true if Mobile User Agent is detected
+						foreach($aMobileUA as $sMobileKey => $sMobileOS){
+								if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
+										return true;
+								}
+						}
+						//Otherwise return false..
+						return false;
+					}
+				?>
 
 				<ul class="type">
 					<?php while(have_rows('phones', 'options')): the_row();
@@ -209,9 +232,9 @@
 						foreach ($messengers as $messenger) {
 							// Form call link dependong on messger
 							if ($messenger == 'telegram') {
-								$link = 'https://telegram.me/TheSouthernCity';
+								$link = 'https://telegram.me/' . get_sub_field('telegram_username');
 							} else if ($messenger == 'viber') {
-								$link = 'viber://chat?number=+' . $number;
+								$link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
 							} else if ($messenger == 'whatsapp') {
 								$link = 'https://api.whatsapp.com/send?phone=' . $number;
 							}
@@ -257,7 +280,7 @@
 
 			<ul class="social">
 				<?php while(have_rows('social', 'options')): the_row(); ?>
-					<li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2 + 0.3?>s">
+					<li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
 						<a href="<?= get_sub_field('url'); ?>" class="social_link">
 							<img src="<?= B_IMG_DIR ?>/<?= get_sub_field('type'); ?>.svg" class="img-svg" />
 						</a>
@@ -271,7 +294,7 @@
 		<div class="wrapper">
 			<ul class="links">
 				<?php while(have_rows('header_nav', 'options')): the_row(); ?>
-					<li class="appear" style="transition-delay: <?= get_row_index()*0.1 + 0.2?>s">
+					<li class="appear" style="transition-delay: <?= get_row_index()*0.1 + 0.1?>s">
 						<a href="<?= get_sub_field('link')['url']; ?>">
 							<?= get_sub_field('link')['title']; ?>
 						</a>

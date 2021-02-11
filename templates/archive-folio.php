@@ -16,7 +16,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
             Портфолио
           </h2>
         </div>
@@ -59,8 +59,8 @@
               if ($termName != 'Главная') {
           ?>
 
-            <button class="wow fadeInRight"
-                    data-wow-delay="<?= $key*0.2; ?>s"
+            <button class="appear"
+                    style="animation-delay: <?= $key*0.1 + 0.1 ?>s"
                     data-term = "<?= $termSlug; ?>">
               <span><?= $termName; ?></span>
             </button>

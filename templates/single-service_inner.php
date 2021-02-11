@@ -19,11 +19,11 @@
 		<?php get_header(); ?>
 
     <section class="banner blog_banner">
-      <img src="<?= get_field('banner'); ?>" class="banner_img" />
+      <img alt="" src="<?= get_field('banner'); ?>" class="banner_img" />
 
       <div class="slogan">
         <div class="wrapper">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
             <?= get_the_title(); ?>
           </h2>
         </div>
@@ -62,7 +62,7 @@
 
           <aside>
             <button class="navExpand">
-              <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+              <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
             </button>
             <ul class="list">
               <?php
@@ -79,7 +79,7 @@
                     <?= $mainTitle; ?>
                   </a>
                   <button class="arrow">
-                    <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                    <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
                   </button>
 
                   <ul class="sublist">
@@ -121,13 +121,13 @@
             <?php while ( have_rows('about') ): the_row(); ?>
 
               <?php while ( have_rows('par_bold') ): the_row(); ?>
-                <p class="accent wow fadeInUp" data-wow-delay="1s">
+                <p class="accent wow fadeInUp">
                   <?= get_sub_field('text'); ?>
                 </p>
               <?php endwhile; ?>
 
               <?php while ( have_rows('par') ): the_row(); ?>
-                <p  class="wow fadeInUp" data-wow-delay="1s">
+                <p  class="wow fadeInUp">
                   <?= get_sub_field('text'); ?>
                 </p>
               <?php endwhile; ?>
@@ -135,11 +135,11 @@
               <?php while ( have_rows('cards') ): the_row(); ?>
                 <div class="brands mobwrapper">
 
-                  <h2 class="facts_title textAppear" data-delay="1">
+                  <h2 class="facts_title textAppear">
                     <?= get_sub_field('title'); ?>
                   </h2>
 
-                  <div class="facts_cards mobslider">
+                  <div class="facts_cards mobslider mob100">
                     <?php while ( have_rows('cards1') ): the_row(); ?>
                       <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
                         <img
@@ -200,14 +200,14 @@
             </h3>
 
             <div class="figure_11 appear" style="z-index: 0; left: 0%">
-              <img src="<?= B_IMG_DIR ?>/figure_111.png" />
+              <img alt="" src="<?= B_IMG_DIR ?>/figure_111.png" />
             </div>
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card appear" style="animation-delay: <?= get_row_index()*0.4?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
+                <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
                   <div class="card_image">
-                    <img src="<?= get_sub_field('img'); ?>" />
+                    <img alt="" src="<?= get_sub_field('img'); ?>" />
                   </div>
                   <a href="<?= get_sub_field('link')['url']; ?>" class="card_title">
                     <h4>
@@ -223,10 +223,10 @@
 
             <div class="master_arrows">
               <button class="master_prev">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
               <button class="master_next">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
             </div>
           </div>
@@ -250,10 +250,10 @@
                 <div class="up_photos">
                   <h2>
                     <?= get_sub_field('title'); ?>
-                    <img src="<?= get_sub_field('logo'); ?>" class="brand">
+                    <img alt="" src="<?= get_sub_field('logo'); ?>" class="brand">
                   </h2>
                   <?php foreach( get_sub_field('imgs') as $image ): ?>
-                    <img src="<?= $image['url']; ?>" class="wow fadeIn">
+                    <img alt="" src="<?= $image['url']; ?>" class="wow fadeIn">
                   <?php endforeach; ?>
                 </div>
               <?php endwhile; ?>
@@ -320,7 +320,7 @@
                 ?>
                   <a href="<?= $url; ?>" class="card wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
                     <div class="img_wrapper">
-                      <img src="<?= $img; ?>">
+                      <img alt="" src="<?= $img; ?>">
                     </div>
                     <span>
                       <?= $post_title; ?>
@@ -369,10 +369,10 @@
         <?php while ( have_rows('galleryexamps') ): the_row(); ?>
           <section class="galleryexamps">
             <div class="wrapper mobwrapper">
-              <h2 class="textAppear" data-delay="1">Примеры работ</h2>
+              <h2 class="textAppear">Примеры работ</h2>
               <div class="gallery lightbox mobslider">
                 <?php foreach( get_sub_field('imgs') as $key=>$image ): ?>
-                  <img src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.2?>s">
+                  <img alt="" src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.2?>s">
                 <?php endforeach; ?>
               </div>
             </div>
@@ -420,9 +420,10 @@
             $currentTerm = get_the_terms( get_the_ID(), 'service_type' )[0]->slug;
             $sectionBG = $currentTerm == 'main' ? '#f1f2f3' : '#fff';
             $figure_8BG = $currentTerm == 'main' ? '#fff' : 'rgba(141, 193, 251, 0.3)';
+            $paddings = $currentTerm == 'main' ? '9rem 0 12rem' : '7rem 0';
           ?>
 
-          <section class="request" style="background-color: <?= $sectionBG; ?>">
+          <section class="request" style="background-color: <?= $sectionBG; ?>; padding: <?= $paddings; ?>">
             <div class="wrapper">
               <div class="left_text wow fadeInLeft">
                 <h2>
@@ -436,7 +437,7 @@
 
                 <?php echo do_shortcode( '[gravityform id=3 title=false description=false ajax=true]' ); ?>
 
-                <img src="<?= get_sub_field('img'); ?>" class="connect_img" />
+                <img alt="" src="<?= get_sub_field('img'); ?>" class="connect_img" />
                 <img
                   src="<?= B_IMG_DIR ?>/figure_1.svg"
                   class="img-svg native connect_figure"
@@ -452,30 +453,29 @@
         <?php while ( have_rows('reviews') ): the_row(); ?>
           <section class="reviews">
             <div class="wrapper mobwrapper">
-              <div class="quote_cards mobslider wow fadeInUp" data-wow-delay="1s">
+              <div class="quote_cards mobslider wow fadeInUp">
                 <?php while ( have_rows('cards') ): the_row(); ?>
                   <div class="quote_card">
                     <span class="date"><?= get_sub_field('name'); ?>, <?= get_sub_field('date'); ?></span>
                     <p class="quote">
-                      <img src="<?= B_IMG_DIR ?>/quote.svg"  class="img-svg">
+                      <img alt="" src="<?= B_IMG_DIR ?>/quote.svg"  class="img-svg">
                       <?= get_sub_field('text'); ?>
                     </p>
                   </div>
                 <?php endwhile; ?>
               </div>
-              <div class="arrows wow fadeInUp" data-wow-delay="1.5s">
+              <div class="arrows wow fadeInUp">
                 <button class="quote_prev">
-                  <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                  <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
                 </button>
                 <button class="quote_next">
-                  <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                  <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
                 </button>
               </div>
             </div>
 
             <div
               class="figure_7 red wow fadeInDown"
-              data-wow-delay="1.5s"
               style="width: 20rem; height: 22.5rem; left: 35%"
             >
               <img
@@ -497,7 +497,7 @@
                     <h3>
                       <?= get_sub_field('question'); ?>
                       <button class="expand">
-                        <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                        <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
                       </button>
                     </h3>
 
@@ -517,7 +517,7 @@
                           <ul class="list">
                             <?php while ( have_rows('points') ): the_row(); ?>
                               <li>
-                                <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
+                                <img alt="" src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                                 <span>
                                   <?= get_sub_field('point'); ?>
                                 </span>
@@ -535,7 +535,7 @@
             </div>
 
             <div class="figure_11 appear" style="height: 672px; left: 20%;">
-              <img src="<?= B_IMG_DIR ?>/figure_111.png"
+              <img alt="" src="<?= B_IMG_DIR ?>/figure_111.png"
                 style="width: 220%; height: 170%;"
               />
             </div>
@@ -548,10 +548,10 @@
           <section class="adv">
             <div class="wrapper">
               <div class="left_text">
-                <h2 class="textAppear" data-delay="1">
+                <h2 class="textAppear">
                   <?= get_sub_field('title'); ?>
                 </h2>
-                <p class="textAppear" data-delay="1">
+                <p class="textAppear">
                   <?= get_sub_field('par'); ?>
                 </p>
 
@@ -563,7 +563,7 @@
                     <ul class="list">
                      <?php while ( have_rows('points') ): the_row(); ?>
                         <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
-                          <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
+                          <img alt="" src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                           <span>
                             <?= get_sub_field('point'); ?>
                           </span>
@@ -576,8 +576,8 @@
               </div>
 
               <div class="right_img">
-                <img src="<?= get_sub_field('img'); ?>" class="wow fadeInRight" data-wow-delay="1.8s">
-                <img src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard wow fadeInLeft" data-wow-delay="2s">
+                <img alt="" src="<?= get_sub_field('img'); ?>" class="wow fadeInRight" data-wow-delay="1.8s">
+                <img alt="" src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard wow fadeInLeft" data-wow-delay="2s">
               </div>
             </div>
           </section>

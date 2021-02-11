@@ -16,7 +16,7 @@
 
       <div class="slogan">
         <div class="wrapper">
-          <h2 class="textAppear" data-delay="2">
+          <h2 class="textAppear">
             Новости<br />
             и события
           </h2>
@@ -71,7 +71,7 @@
                 <a
                   href="<?= $url; ?>"
                   class="card wow fadeInUp"
-                  data-wow-delay="<?= $key*0.3?>s"
+                  data-wow-delay="<?= $key*0.2?>s"
                   style="background-image: url(<?= $img; ?>); ">
 
                   <div class="block_overlay">

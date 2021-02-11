@@ -24,7 +24,7 @@
 
     <section class="post service_post">
       <div class="wrapper">
-        <h2 class="blog_title textAppear" data-delay="1">
+        <h2 class="blog_title textAppear">
           <?= get_the_title(); ?>
         </h2>
 
@@ -74,12 +74,12 @@
 
                 <?php while ( have_rows('list') ): the_row(); ?>
                   <div class="list_wrapper">
-                    <h5 class="list_title wow fadeInRight" data-wow-delay="1s">
+                    <h5 class="list_title wow fadeInRight">
                       <?= get_sub_field('title'); ?>
                     </h5>
                     <ul class="list">
                       <?php while ( have_rows('points') ): the_row(); ?>
-                        <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2 + 0.5?>s">
+                        <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
                           <img src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
                           <span><?= get_sub_field('text'); ?></span>
                         </li>
@@ -95,7 +95,7 @@
                 <div
                   class="figure_8"
                   style="height: 95%; width: 170%; top: 3rem; left: 3.5rem">
-                  <div class="figure_9 wow fadeInRight" data-wow-delay="1s"
+                  <div class="figure_9 wow fadeInRight"
                     style="width: 15%; left: 60%">
                     <img
                       src="<?= B_IMG_DIR ?>/figure_91.png"
@@ -126,7 +126,7 @@
         <div class="share">
           <span class="wow fadeInUp">Поделитесь с друзьями:</span>
           <ul>
-            <li class="wow fadeInUp" data-wow-delay="0.5s">
+            <li class="wow fadeInUp" data-wow-delay="0.2s">
               <button class="shareFacebook">
                 <img
                   src="<?= B_IMG_DIR ?>/share_facebook.svg"
@@ -134,7 +134,7 @@
                 />
               </button>
             </li>
-            <li class="wow fadeInUp" data-wow-delay="0.8s">
+            <li class="wow fadeInUp" data-wow-delay="0.4s">
               <a href="<?= $tgLink; ?>">
                 <img
                   src="<?= B_IMG_DIR ?>/share_telegram.svg"
@@ -142,7 +142,7 @@
                 />
               </a>
             </li>
-            <li class="wow fadeInUp" data-wow-delay="1.2s">
+            <li class="wow fadeInUp" data-wow-delay="0.6s">
               <button class="copyLink">
                 <img
                   src="<?= B_IMG_DIR ?>/share_link.svg"
@@ -156,15 +156,15 @@
       </div>
     </section>
 
-    <section class="news p-5">
+    <section class="news p-5 widePaginateCards">
       <div class="wrapper mobwrapper">
-        <h3 class="textAppear" data-delay="1">Читайте также</h3>
+        <h3 class="textAppear">Читайте также</h3>
 
         <div class="other mobslider">
           <?php
             $posts = get_posts( [
               'post_type' => 'folio',
-              'numberposts' => 3
+              'numberposts' => -1
             ] );
 
             foreach( $posts as $key=>$post ) {

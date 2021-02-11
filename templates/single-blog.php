@@ -27,7 +27,7 @@
           <div class="date appear"><span>
             <?= date_i18n( 'j F Y', get_the_date(), false ); ?>
           </span></div>
-          <h2 class="blog_title textAppear" data-delay="1">
+          <h2 class="blog_title textAppear">
             <?= get_the_title(); ?>
           </h2>
 
@@ -47,20 +47,14 @@
 
           <?php while ( have_rows('gallery') ): the_row(); ?>
             <div class="gallery wow fadeInUp">
-              <button class="tape_prev">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-              </button>
-              <div class="all mobwrapper">
-                <div class="tape mobslider">
+              <div class="all">
+                <div class="tape">
                   <?php $images = get_sub_field('imgs');
                         foreach( $images as $image ): ?>
                     <img src="<?= $image; ?>" />
                   <?php endforeach; ?>
                 </div>
               </div>
-              <button class="tape_next">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-              </button>
             </div>
           <?php endwhile; ?>
 
@@ -95,7 +89,7 @@
           <div class="share">
             <span class="wow fadeInUp">Поделитесь с друзьями:</span>
             <ul>
-              <li class="wow fadeInUp" data-wow-delay="0.5s">
+              <li class="wow fadeInUp" data-wow-delay="0.2s">
                 <button class="shareFacebook">
                   <img
                     src="<?= B_IMG_DIR ?>/share_facebook.svg"
@@ -103,7 +97,7 @@
                   />
                 </button>
               </li>
-              <li class="wow fadeInUp" data-wow-delay="0.8s">
+              <li class="wow fadeInUp" data-wow-delay="0.4s">
                 <a href="<?= $tgLink; ?>" class="shareTelegram">
                   <img
                     src="<?= B_IMG_DIR ?>/share_telegram.svg"
@@ -111,7 +105,7 @@
                   />
                 </a>
               </li>
-              <li class="wow fadeInUp" data-wow-delay="1.2s">
+              <li class="wow fadeInUp" data-wow-delay="0.6s">
                 <button class="copyLink">
                   <img
                     src="<?= B_IMG_DIR ?>/share_link.svg"
@@ -127,16 +121,16 @@
 
     <section class="news light p-5 also_news">
       <div class="wrapper mobwrapper">
-        <h3 class="textAppear" data-delay="1">Читайте также</h3>
+        <h3 class="textAppear">Читайте также</h3>
 
         <div class="cards">
           <div class="pages">
-            <div class="page mobslider">
+            <div class="page">
 
               <?php
                 $posts = get_posts( [
                   'post_type' => 'blog',
-                  'numberposts' => 4
+                  'numberposts' => -1
                 ] );
 
                 foreach( $posts as $key=>$post ) {
@@ -150,8 +144,7 @@
 
                   <a
                     href="<?= $url; ?>"
-                    class="card wow fadeInRight"
-                    data-wow-delay="<?= $key*0.2?>s"
+                    class="card"
                     style="background-image: url(<?= $img; ?>); ">
 
                     <div class="block_overlay">
@@ -214,10 +207,91 @@
     <?php wp_footer(); ?>
 
     <script>
-      document.querySelector(".shareFacebook").addEventListener("click", () => {
-        window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
-        return false;
+
+      $(document).ready(function() {
+
+        document.querySelector(".shareFacebook").addEventListener("click", () => {
+          window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+          return false;
+        });
+
+        $("section.news .wrapper .cards .pages .page").slick({
+          arrows: false,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          variableWidth: true,
+          responsive: [
+            {
+              breakpoint: 1600,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              }
+            },
+            {
+              breakpoint: 980,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+          ]
+        });
+
+        setTimeout(() => {
+          $("section.post .wrapper .gallery .tape").slick({
+            arrows: true,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            variableWidth: true,
+            vertical: true,
+            verticalSwiping: true,
+            touchThreshold: 300,
+            prevArrow: `
+              <button class="slick-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+            nextArrow: `
+              <button class="slick-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+          });
+        }, 3000);
+
       });
+
+
+
+
+
+
     </script>
   </body>
 </html>
