@@ -131,3 +131,46 @@ echo '</pre>';
 
 <?php wp_pagenavi(array ( 'query' => $my_posts )); ?>
 <?php // the_posts_pagination(); ?>
+
+
+
+
+	opacity: 0
+	visibility: hidden
+	position: absolute
+	&.activeWide
+		position: relative
+		opacity: 1
+		visibility: visible
+
+
+
+			// .logo_animate
+			// 	width: 150px
+			// 	height: 150px
+			// 	top: -70px
+			// 	svg
+			// 		margin: 0px -20px
+			// 	.logo_text
+			// 		min-width: auto
+			// 		left: 65%
+
+
+			mob100
+
+
+
+			section > .next
+	position: absolute
+	z-index: 20
+	bottom: rem(36)
+	left: 50%
+	transform: translate(-50%, 0)
+	cursor: pointer
+	fill: $w
+	animation: jump 1.5s linear running infinite
+	&.dark
+		fill: $dGrey
+	&:hover
+		fill: $lBlue
+		animation: jump 1.5s linear paused infinite

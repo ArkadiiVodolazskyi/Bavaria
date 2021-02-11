@@ -27,12 +27,21 @@ footer
 				.slogan
 					align-self: flex-end
 					margin-left: -1rem
-					font-size: rem(18)
+					font-size: 18px
 					font-weight: 500
-			.creators p
-				margin-top: 18px
-				font-size: rem(18)
-				font-weight: 500
+			.creators
+				p, a
+					margin-top: 18px
+					font-size: 18px
+					font-weight: 500
+				.development
+					display: flex
+					align-items: center
+					span
+						font-size: 18px
+						font-weight: 500
+					svg
+						width: 40px
 		.clients, .services
 			h5
 				font-size: rem(24)
@@ -86,7 +95,7 @@ footer
 					fill: $red
 				a
 					display: block
-					font-size: 1rem
+					font-size: 18px
 					&:hover
 						color: $lBlue
 				.phone_list > a

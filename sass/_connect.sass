@@ -69,9 +69,11 @@
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
-		transform: translate(-50%, -50%) skew(-$skew) scale(1) rotate(0)
 		left: 50%
 		top: 50%
+		transform: translate(-50%, -50%) skew(0) scale(1) rotate(0)
+		@media (min-width: 850px)
+			transform: translate(-50%, -50%) skew(-$skew) scale(1) rotate(0)
 	h2
 		font-size: rem(36)
 		font-weight: bold
@@ -99,7 +101,7 @@
 			user-select: none
 			transition: all 0.3s linear
 			white-space: nowrap
-			font-weight: 100
+			font-weight: 300
 			&.focused
 				font-size: 14px
 				top: -6px

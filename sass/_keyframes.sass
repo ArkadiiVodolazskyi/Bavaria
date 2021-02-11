@@ -15,11 +15,20 @@
 		visibility: visible
 @keyframes jump
 	0%
-		transform: translate(-50%, 0%)
-	25%
 		transform: translate(-50%, -30%)
+	50%
+		transform: translate(-50%, 0)
 	100%
-		transform: translate(-50%, 0%)
+		transform: translate(-50%, -30%)
+@keyframes shake
+	0%
+		transform: translate(100px, 100px)
+	33%
+		transform: translate(-100px, 100px)
+	66%
+		transform: translate(-100px, -100px)
+	100%
+		transform: translate(100px, -100px)
 @keyframes logoLine1
 	from
 		opacity: 0
@@ -187,7 +196,14 @@
 @keyframes left
 	0%
 		opacity: 0
-		transform: translateX(-300px)
+		transform: translate(-300px, 0)
+	100%
+		opacity: 1
+		transform: translate(0, 0)
+@keyframes right
+	0%
+		opacity: 0
+		transform: translateX(300px)
 	100%
 		opacity: 1
 		transform: translateX(0px)
