@@ -328,49 +328,46 @@ section > .next
 			margin-left: 12px
 			transform: scale(2.5) rotate(-90deg)
 
-.dotsWrapper
-	margin: 24px 0 0
-	padding-left: 8px
-	display: none
-	justify-content: flex-start
-	flex-wrap: wrap
-	.mobDot
-		width: 36px
-		height: 4px
-		background-color: $red
-		opacity: 0.3
-		cursor: pointer
-		margin: 0 18px 18px 0
-		&:hover
-			opacity: 1
-		&.active
-			opacity: 1
-
-.wideDotsWrapper
+.slick-dots
 	display: block
 	margin: 24px 0 0
 	padding-left: 8px
 	justify-content: flex-start
 	flex-wrap: wrap
-	.mobDot
+	li
 		width: 36px
 		height: 4px
 		background-color: $red
 		opacity: 0.3
 		cursor: pointer
 		margin: 0 18px 18px 0
+		transition: all 0.2s linear
 		&:hover
 			opacity: 1
-		&.active
+		&.slick-active
 			opacity: 1
-.widePaginateCards .card
-	opacity: 0 !important
-	visibility: hidden !important
-	position: absolute !important
-	&.activeWide
-		position: relative !important
-		opacity: 1 !important
-		visibility: visible !important
+		button
+			width: 100%
+			height: 100%
+			color: transparent
+			outline: none
+
+.slick-arrow
+	width: rem(36)
+	height: rem(20)
+	z-index: 20
+	fill: $dGrey
+	position: absolute
+	left: 50%
+	&:hover
+		fill: $lBlue
+	svg
+		width: 100%
+		height: 100%
+	&:nth-child(1)
+		transform: translate(-50%, -150%) rotate(180deg)
+	&:nth-child(2)
+		transform: translate(-50%, 150%) rotate(0deg)
 
 .other
 	display: flex
@@ -385,11 +382,6 @@ section > .next
 		cursor: pointer
 		position: relative
 		background-color: $dGrey
-		display: flex
-		flex-direction: column
-		justify-content: flex-end
-		align-items: flex-start
-		padding-bottom: rem(40)
 		overflow: hidden
 		&:hover
 			.card_bg
@@ -410,10 +402,11 @@ section > .next
 			display: flex
 			align-items: center
 			justify-content: flex-start
-			margin-top: rem(300)
 			font-size: rem(24)
 			font-weight: bold
-			padding-right: 10px
+			position: absolute
+			left: 0
+			top: 75%
 			svg
 				flex: 1 0 auto
 				position: relative

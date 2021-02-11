@@ -62,11 +62,9 @@
 			font-size: 1.2rem
 		.card_text
 			transform: translate(0, 1rem) skew($skew)
-	section.news .wrapper .cards .pages .page
-		justify-content: center
-		.card
-			width: 360px
-			margin: 18px
+	section.news .wrapper .cards .pages .page .card
+		width: 280px
+		height: 360px
 	section.info .wrapper .main .imgs .pros
 		width: 80%
 	section.post
@@ -598,8 +596,8 @@
 			height: 228px
 			h5
 				height: auto
-				margin-top: 8rem
 				overflow: visible
+				top: 65%
 				p:before
 					display: none
 				span
@@ -1163,7 +1161,10 @@
 		&:not(:first-child)
 			font-size: 18px
 
-
+	.other
+		display: block
+		.card
+			display: inline-block
 	.signup
 		top: unset !important
 		bottom: 72px
@@ -1200,28 +1201,13 @@
 		display: none
 	.dotsWrapper
 		display: flex
-	.mobslider
-		display: flex !important
-		flex-direction: row !important
-		flex-wrap: nowrap !important
-		justify-content: flex-start !important
-		align-items: flex-start !important
-		margin-left: 0 !important
-		margin-right: 0 !important
-		transition: all 0.3s linear
-		> *
-			flex: 1 0 auto !important
-			position: relative !important
-			opacity: 1 !important
-			visibility: visible !important
+
 
 	section.news .wrapper
 		overflow: hidden
 		.cards .pages .page
-			margin: 0 -0.75rem
-			justify-content: flex-start
+			margin: 0
 			.card
-				height: 360px
 				.date
 					font-size: 16px
 				.text
@@ -1279,14 +1265,19 @@
 				margin-top: 36px
 				width: 100vw !important
 				transform: translateX(-16px)
+				height: auto
 				.pro_arrows
 					display: none
 				.pro_cards
-					transform: skew(0)
+					transform: unset
 					box-shadow: unset
+					height: auto
 				.pro_card
+					display: inline-flex
+					width: 100vw
+					transform: none !important
 					position: relative
-					transform: translateX(0) !important
+					transform: unset
 					opacity: 1
 					visibility: visible
 					box-shadow: 0 rem(12) rem(24) 0 rgba(24, 31, 41, 0.12)

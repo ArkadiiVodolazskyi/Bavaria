@@ -124,10 +124,12 @@ section.news
 					top: 0
 					left: 0
 					position: relative
+					overflow: hidden
+					margin: 0 -18px
 					.card
-						width: calc( 25% - 1.5rem )
-						height: rem(400)
-						margin: rem(18)
+						width: 360px
+						height: 400px
+						margin: 18px
 						position: relative
 						cursor: pointer
 						background-position: center
@@ -178,6 +180,7 @@ section.news
 							position: relative
 							font-size: rem(16)
 							color: $lBlue
+							user-select: none
 							.arrow
 								opacity: 0
 								visibility: hidden
@@ -189,6 +192,7 @@ section.news
 						.text
 							font-size: rem(24)
 							font-weight: 500
+							user-select: none
 
 section.portfolio
 	background-color: $dGrey
@@ -380,14 +384,14 @@ section.post
 		justify-content: space-between
 		position: relative
 		.big
-			width: 85%
-			padding-top: 38vw
-			margin-right: rem(18)
+			width: 80%
+			height: 692px
 			position: relative
 			order: 1
 			img
 				width: 100%
 				height: 100%
+				display: block
 				position: absolute
 				top: 0
 				left: 0
@@ -399,27 +403,19 @@ section.post
 					visibility: visible
 		.all
 			width: 15%
+			height: 100%
 			min-width: rem(228)
-			padding-top: 34vw
-			overflow: hidden
 			position: relative
 			order: 2
-			position: relative
+			overflow: hidden
 		.tape
 			width: 100%
 			height: 100%
-			display: flex
-			flex-direction: column
-			justify-content: space-between
-			align-items: flex-end
-			position: absolute
-			top: 0
-			left: 0
-			transform: translateY(0px)
 			transition: all 0.3s linear
 			img
 				width: 230px
 				height: 150px
+				display: block
 				cursor: pointer
 				opacity: 0.3
 				transition: all 0.3s linear
@@ -427,22 +423,6 @@ section.post
 					margin-top: rem(18)
 				&.active, &:hover
 					opacity: 1
-		> button
-			position: absolute
-			z-index: 20
-			right: 4rem
-			fill: $dGrey
-			&:hover
-				fill: $lBlue
-			svg
-				width: rem(36)
-				height: rem(20)
-			&.tape_prev
-				top: 0
-				transform: translate(50%, 10%) rotate(180deg)
-			&.tape_next
-				bottom: 0
-				transform: translate(50%, -10%) rotate(0deg)
 	.list_wrapper
 		padding: 0 rem(130)
 		width: 110%
@@ -711,15 +691,6 @@ section.portfolio_main
 				visibility: visible
 	.navpages_2
 		margin-top: rem(36)
-
-section.also_news .wrapper .cards .pages .page .card
-	opacity: 0
-	visibility: hidden
-	position: absolute
-	&.activeWide
-		position: relative
-		opacity: 1
-		visibility: visible
 
 // page-portfolio_post
 section.service_post
