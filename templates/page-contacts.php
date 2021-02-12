@@ -23,7 +23,7 @@
 
       <div class="wrapper">
         <div class="contact_info">
-          <h2 class="textAppear">
+          <h2>
 						<?= get_the_title(); ?>
 					</h2>
 
@@ -35,7 +35,7 @@
 								<?php while(have_rows('phones', 'options')): the_row(); ?>
 									<div class="phone">
 										<div class="phone_first">
-											<a href="tel:<?= get_sub_field('number'); ?>" class="textAppear">
+											<a href="tel:<?= get_sub_field('number'); ?>">
 												<?= get_sub_field('number'); ?>
 											</a>
 											<div class="phone_type">
@@ -49,7 +49,7 @@
 												<?php endforeach; ?>
 											</div>
 										</div>
-										<span class="textAppear">
+										<span>
 											<?= get_sub_field('workshop'); ?>
 										</span>
 									</div>
@@ -59,32 +59,32 @@
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/address.svg" class="img-svg" />
-              <a href="<?= get_field('contacts', 'options')['address']['url']; ?>" class="textAppear">
+              <a href="<?= get_field('contacts', 'options')['address']['url']; ?>">
 								<?= get_field('contacts', 'options')['address']['title']; ?>
 							</a>
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/telegram.svg" class="img-svg" />
-              <a href="mailto:<?= get_field('contacts', 'options')['email']; ?>" class="textAppear">
+              <a href="mailto:<?= get_field('contacts', 'options')['email']; ?>">
 								<?= get_field('contacts', 'options')['email']; ?>
 							</a>
             </li>
             <li>
               <img src="<?= B_IMG_DIR ?>/time.svg" class="img-svg" />
-              <span class="textAppear">
+              <span>
 								<?= get_field('schedule', 'options'); ?>
 							</span>
             </li>
           </ul>
 
           <div class="below">
-            <div class="checkup appear">
+            <div class="checkup">
               <button class="openConnect">Свяжитесь с нами</button>
             </div>
 
             <ul class="social">
               <?php while(have_rows('social', 'options')): the_row(); ?>
-                <li class="wow fadeInRight">
+                <li>
                   <a href="<?= get_sub_field('url'); ?>" class="social_link">
                     <img src="<?= B_IMG_DIR ?>/<?= get_sub_field('type'); ?>.svg" class="img-svg" />
                   </a>

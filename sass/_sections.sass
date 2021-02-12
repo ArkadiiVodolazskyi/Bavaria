@@ -8,8 +8,6 @@ section.banner
 	background-size: 100%
 	background-color: $b
 	@include block_overlay($color: $b, $opacity: 0.4)
-	.banner_img_360
-		display: none
 	.banner_img
 		width: 100%
 		min-height: 600px
@@ -17,6 +15,10 @@ section.banner
 		z-index: -10
 		object-fit: cover
 		object-position: center
+		&.img
+			opacity: 0
+			visibility: hidden
+			position: absolute
 	.slogan
 		width: 100%
 		position: absolute
@@ -71,9 +73,7 @@ section.services
 				background-color: $dGrey
 				opacity: 0
 				&.appeared
-					animation: serviceCards
-					animation-fill-mode: forwards
-					animation-timing-function: ease-in
+					animation: serviceCards forwards ease-in
 				&:hover
 					.card_image
 						opacity: 1
@@ -109,9 +109,10 @@ section.services
 					opacity: 0
 					visibility: hidden
 
+
 section.news
 	.signup
-		top: 171px
+		top: 140px
 	.wrapper
 		.cards
 			margin-top: 24px
@@ -125,7 +126,7 @@ section.news
 					left: 0
 					position: relative
 					overflow: hidden
-					margin: 0 -18px
+					margin: 0 -24px
 					.card
 						width: 360px
 						height: 400px
@@ -214,7 +215,7 @@ section.portfolio
 			opacity: 0
 			transform: skew(-$skew) translateX(-300px)
 			&.appeared
-				animation: skewLeft 1s 0.5s linear 1 forwards
+				animation: skewLeft 0.5s 0.3s linear forwards
 			img
 				width: 125%
 				height: auto
@@ -266,7 +267,7 @@ section.info
 					opacity: 0
 					transform: translate(-20rem, -100%)
 					&.appeared
-						animation: shard 1s 0.5s 1 forwards ease-in
+						animation: shard 0.5s 0.3s forwards ease-in
 				.photo
 					width: 100%
 				.pros
@@ -359,7 +360,7 @@ section.post
 		opacity: 0
 		transform: skew(-$skew) translateX(-300px)
 		&.appeared
-			animation: skewLeft 0.5s 0.5s ease-in forwards
+			animation: skewLeft 0.5s 0.3s ease-in forwards
 		span
 			transform: skew($skew)
 			font-size: 16px
@@ -402,25 +403,27 @@ section.post
 					opacity: 1
 					visibility: visible
 		.all
-			width: 15%
+			width: 20%
 			height: 100%
+			margin-left: 18px
 			min-width: rem(228)
 			position: relative
 			order: 2
-			overflow: hidden
+			display: block
 		.tape
-			width: 100%
+			width: 230px
 			height: 100%
 			transition: all 0.3s linear
+			overflow: hidden
+			display: block
 			img
 				width: 230px
 				height: 150px
-				display: block
+				display: inline-block
 				cursor: pointer
 				opacity: 0.3
 				transition: all 0.3s linear
-				&:not(:first-child)
-					margin-top: rem(18)
+				margin: 18px 0 0 0
 				&.active, &:hover
 					opacity: 1
 	.list_wrapper
@@ -491,7 +494,7 @@ section.info_about
 	.master
 		position: relative
 	.master_bg
-		width: 90%
+		width: 80%
 		height: rem(400)
 		margin-left: auto
 		transform: skew(-$skew)
@@ -500,7 +503,7 @@ section.info_about
 		opacity: 0
 		transform: skew(-$skew) translateX(300px)
 		&.appeared
-			animation: skewRight 0.7s 0.5s linear forwards
+			animation: skewRight 0.5s 0.3s linear forwards
 	.master_name
 		position: absolute
 		width: 100%
@@ -528,12 +531,13 @@ section.info_about
 		min-width: 172px
 		min-height: 290px
 		position: absolute
+		z-index: 1
 		left:	-25%
 		transform: skew($skew)
 		overflow: hidden
 		bottom: 0
 		img
-			width: 100%
+			width: auto
 			height: 100%
 			position: absolute
 			opacity: 0
@@ -559,7 +563,7 @@ section.about_video
 				opacity: 0
 				transform: skew(-$skew) translateX(-300px)
 				&.appeared
-					animation: skewLeft 0.6s 1s ease-in 1 forwards
+					animation: skewLeft 0.6s 0.3s ease-in 1 forwards
 				img, iframe
 					width: auto
 					height: 100%
@@ -801,7 +805,7 @@ section.map_banner
 			> li
 				display: flex
 				&:not(:first-child)
-					margin-top: rem(24)
+					margin-top: 24px
 				> svg
 					width: 24px
 					height: 24px
@@ -817,7 +821,7 @@ section.map_banner
 			flex-direction: column
 		.phone
 			&:not(:first-child)
-				margin-top: rem(24)
+				margin-top: 24px
 			.phone_first
 				display: flex
 				align-items: center
@@ -848,11 +852,6 @@ section.map_banner
 					svg
 						width: 36px
 						height: 36px
-		.checkup
-			opacity: 0
-			transform: skew(-$skew) translateY(300px)
-			&.appeared
-				animation: skewLeft 0.5s 0s forwards linear
 
 // page-service_post
 section.workshop
@@ -876,7 +875,7 @@ section.workshop
 			position: absolute
 			z-index: 30
 			padding: 1rem
-			right: 12px
+			right: 24px
 			top: 16px
 			fill: $red
 			display: none
@@ -957,6 +956,7 @@ section.workshop
 			li
 				display: block
 				color: $dGrey
+				margin: 10px 0
 				&:not(:first-child)
 					margin-top: rem(12)
 				a
@@ -983,6 +983,8 @@ section.workshop
 		.pricelist
 			width:	100%
 			margin-top: rem(48)
+			position: relative
+			z-index: 1
 			td
 				padding: rem(18)
 				border: none
@@ -1008,28 +1010,21 @@ section.workshop
 
 section.popular
 	height: rem(960)
-	.card
-		width: 24.5% !important
-		opacity: 0
-		visibility: hidden
-		position: absolute !important
-		&.active
-			opacity: 1
-			visibility: visible
-			position: relative !important
-		img
-			height: 135%
-	.master_arrows
-		transform: skew(0)
-		left: unset
-		right: 0
-		bottom: 6rem
-		button
-			opacity: 1
-			fill: $w
-			outline: none
-			&:hover
-				fill: $lBlue
+	.wrapper
+		.cards
+			width: 90vw
+			height: 600px
+			display: inline-flex
+			justify-content: unset
+			left: 50%
+			transform: translate(-50%, -50%)
+			.card
+				width: 20vw !important
+				height: 600px
+				display: inline-block
+				opacity: 1
+				img
+					height: 135%
 
 section.workplan
 	padding: rem(150) 0 rem(96)
@@ -1113,6 +1108,8 @@ section.workplan
 
 section.galleryexamps
 	padding: rem(120) 0
+	color: $dGrey
+	background-color: $w
 	.wrapper
 		h2
 			font-size: rem(48)
@@ -1126,23 +1123,21 @@ section.galleryexamps
 				margin: 0.75rem
 
 section.reviews
-	padding: rem(120) 0
+	padding: 5rem 0 8rem
 	background-color: $dGrey
 	.quote_cards
-		display: flex
-		justify-content: space-between
+		width: 100%
+		margin: 0 -18px
+		display: block
+		overflow: hidden
 	.quote_card
-		width: calc(50% - 0.75rem)
+		width: 43vw
+		display: inline-block
+		margin: 0 18px
 		padding: rem(48) rem(36)
 		background-color: $w
-		opacity: 0
-		visibility: hidden
-		position: absolute
 		transition: all 0.3s linear
-		&.active
-			opacity: 1
-			visibility: visible
-			position: relative
+		vertical-align: top
 		.date
 			color: $red
 			font-size: rem(16)
@@ -1156,30 +1151,11 @@ section.reviews
 				margin-top: rem(84)
 				margin-bottom: rem(18)
 				fill: $red
-	.arrows
-		display: flex
-		justify-content: flex-end
-		margin-top: rem(48)
-		position: relative
-		right: 0
-		bottom: 0
-		padding-right: 2rem
-		button
-			fill: $w
-			outline: none
-			&:hover
-				fill: $lBlue
-			svg
-				transform: scale(2.5)
-		.quote_prev
-			transform: rotate(90deg)
-		.quote_next
-			margin-left: 0.5rem
-			transform: rotate(-90deg)
 
 section.workexamps
 	padding: rem(120) 0
 	color: $dGrey
+	background-color: $w
 	.wrapper
 		h2
 			font-size: rem(48)
@@ -1189,7 +1165,8 @@ section.workexamps
 			flex-wrap: wrap
 			margin: rem(72) -0.75rem 0
 		.card
-			width: calc(100% / 4 - 1.5rem)
+			width: 360px
+			height: 258px
 			margin: 0.75rem
 			&:hover
 				.img_wrapper
@@ -1238,7 +1215,7 @@ section.request
 		opacity: 0
 		transform: skew(-$skew) translateX(300px)
 		&.appeared
-			animation: skewRight 1s 0s 1 forwards
+			animation: skewRight 0.5s forwards
 		.figure_8
 			width: 60%
 			height: 120%

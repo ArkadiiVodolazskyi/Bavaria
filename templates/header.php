@@ -187,15 +187,16 @@
 			<div class="empty"></div>
 
 			<div class="time">
-				<p class="wow fadeInDown">
+				<p>
 					<?= get_field('schedule', 'options'); ?>
 				</p>
 				<span>
-				График работы</span>
+					График работы
+				</span>
 			</div>
 
 			<div class="contact">
-					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel wow fadeInDown">
+					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
 						<?= get_field('phones', 'options')[0]['number']; ?>
 					</a>
 					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />

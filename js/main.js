@@ -1,3 +1,20 @@
+// function to delete extra slides on smaller screens
+function deleteExtraSlides(width = 600, sliderSelector, leaveSlides = 4) {
+  let slidesLength = document.querySelector(sliderSelector).querySelectorAll(".slick-slide").length;
+  if (window.innerWidth <= width) {
+    for (let i = slidesLength - 1; i >= leaveSlides; i--) {
+      $(sliderSelector).slick('slickRemove', i);
+    }
+  }
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth <= width) {
+      for (let i = slidesLength - 1; i >= leaveSlides; i--) {
+        $(sliderSelector).slick('slickRemove', i);
+      }
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // text - smooth appear
   (function () {
@@ -31,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             letter.classList.add("wow", "fadeInRight", "letter");
             letter.setAttribute(
               "data-wow-delay",
-              `${(j * 0.005 + delay).toFixed(2)}s`,
+              `${(j * 0.002 + delay).toFixed(2)}s`,
             );
             word.appendChild(letter);
           }
@@ -73,13 +90,25 @@ window.addEventListener("load", () => {
     activeOverlays.forEach((activeOverlay) => {
       activeOverlay.classList.remove("activeOverlay");
     });
+
+    // Close hamb menu tabs
+    const expandedMenuTabs = document.querySelectorAll("#expandedMenu > .expanded");
+    if (expandedMenuTabs.length) {
+      setTimeout(() => {
+        expandedMenuTabs.forEach(tab => {
+          tab.classList.remove("expanded");
+        });
+      }, 0);
+    }
   });
 
-  function openOverlay(element) {
+  function openOverlay(element, withClose = true) {
     overlay.classList.add("activeOverlay");
-    closeOverlay.classList.add("activeOverlay");
     body.classList.add("discroll")
     element.classList.add("activeOverlay");
+    if (withClose) {
+      closeOverlay.classList.add("activeOverlay");
+    }
   }
 
   function closeOverlays(element) {
@@ -93,6 +122,9 @@ window.addEventListener("load", () => {
   }
 
   // Adapt nav for scrolling
+  if (window.pageYOffset > 0) {
+    header.classList.add("roll");
+  }
   window.addEventListener("scroll", () => {
     if (window.pageYOffset > 0) {
       header.classList.add("roll");
@@ -145,12 +177,25 @@ window.addEventListener("load", () => {
     wow = new WOW({
       boxClass: "wow",
       animateClass: "animated",
-      offset: 0,
+      offset: -100,
       mobile: true,
       live: true,
     });
     wow.init();
+
+    // Change duration to all the elements
+    const wows = document.querySelectorAll(".wow");
+
+    if (wows.length) {
+      for (let i = 0; i < wows.length; i++) {
+
+        wows[i].setAttribute("data-wow-duration", "0.5s");
+
+      }
+    }
   })();
+
+  // ---------------Other -----------------------
 
   // header - expand hamb
   (function () {
@@ -240,7 +285,7 @@ window.addEventListener("load", () => {
 
       for (let i = 0; i < sendBtns.length; i++) {
         sendBtns[i].addEventListener("click", () => {
-          openOverlay(resume_wrapper);
+          openOverlay(resume_wrapper, false);
         });
       }
 
@@ -442,7 +487,7 @@ window.addEventListener("load", () => {
 
       connectBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
-          openOverlay(connect_wrapper);
+          openOverlay(connect_wrapper, false);
         });
       });
       closeOverlays(closeConnect);
@@ -585,78 +630,8 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // page-service_post - change quote cards
+  // copyLink button
   (function () {
-    const quotes = [...document.querySelectorAll(".quote_card")];
-
-    if (quotes.length) {
-      const quotePrev = document.querySelector(".reviews .quote_prev");
-      const quoteNext = document.querySelector(".reviews .quote_next");
-
-      // Default
-      let quoteIndex = 0;
-      for (let i = 0; i < 2; i++) {
-        quotes[i].classList.add("active");
-      }
-
-      quotePrev.addEventListener("click", () => {
-        quoteIndex--;
-        if (quoteIndex < 0) {
-          quoteIndex = 0;
-        }
-        quotes.forEach((quote) => {
-          quote.classList.remove("active");
-        });
-        quotes[quoteIndex].classList.add("active");
-      });
-      quoteNext.addEventListener("click", () => {
-        quoteIndex++;
-        if (quoteIndex > quotes.length - 1) {
-          quoteIndex = quotes.length - 1;
-        }
-        quotes.forEach((quote) => {
-          quote.classList.remove("active");
-        });
-        quotes[quoteIndex].classList.add("active");
-      });
-    }
-  })();
-
-  // page-main - navpages - change pages in news section
-  (function () {
-    const pages = [
-      ...document.querySelectorAll("section.news:not(.blog_news) .pages .page"),
-    ];
-    const navpagesWrapper = document.querySelector("section.news .navpages");
-
-    if (pages.length && navpagesWrapper) {
-      for (let i = 0; i < pages.length; i++) {
-        const newNavpage = document.createElement("li");
-        navpagesWrapper.appendChild(newNavpage);
-      }
-
-      const navPages = [...navpagesWrapper.querySelectorAll("li")];
-
-      // Default
-      pages[0].classList.add("active");
-      navPages[0].classList.add("active");
-
-      for (let i = 0; i < navPages.length; i++) {
-        navPages[i].addEventListener("click", () => {
-          for (let j = 0; j < pages.length; j++) {
-            pages[j].classList.remove("active");
-            navPages[j].classList.remove("active");
-          }
-          pages[i].classList.add("active");
-          navPages[i].classList.add("active");
-        });
-      }
-    }
-  })();
-
-  // Share btns
-  (function () {
-    // copyLink button
     const copyLinks = [...document.querySelectorAll(".copyLink")];
 
     if (copyLinks.length) {
@@ -689,7 +664,10 @@ window.addEventListener("load", () => {
 
       for (let i = 0; i < expandArrows.length; i++) {
         expandArrows[i].addEventListener("click", () => {
-          footerMenus[i].classList.toggle("expanded");
+          footerMenus.forEach(footerMenu => {
+            footerMenu.classList.remove("expanded");
+          });
+          footerMenus[i].classList.add("expanded");
         });
       }
     }
@@ -702,16 +680,32 @@ window.addEventListener("load", () => {
         ".clients, .services, .phones, .contacts",
       ),
     ];
-    const expandMenuBtns = [...expandedMenu.querySelectorAll(".arrow")];
+    const expandMenuH5s = [...expandedMenu.querySelectorAll("h5")];
 
-    for (let i = 0; i < expandMenuBtns.length; i++) {
-      expandMenuBtns[i].addEventListener("click", () => {
-        expandedLists[i].classList.toggle("expanded");
-        if (i == 2) {
-          expandedLists[3].classList.toggle("expanded");
-        }
-      });
+    if (expandMenuH5s.length) {
+
+      for (let i = 0; i < expandMenuH5s.length; i++) {
+        expandMenuH5s[i].addEventListener("click", () => {
+          if (expandedLists[i].classList.contains("expanded")) {
+            expandedLists[i].classList.remove("expanded");
+            if (i == 2) {
+              expandedLists[3].classList.remove("expanded");
+            }
+          } else {
+            for (let j = 0; j < expandedLists.length; j++) {
+              expandedLists[j].classList.remove("expanded");
+            }
+            expandedLists[i].classList.add("expanded");
+            if (i == 2) {
+              expandedLists[3].classList.add("expanded");
+            }
+          }
+        });
+      }
+
     }
+
+
   })();
 
   // Styling Gravity Forms
@@ -775,7 +769,7 @@ window.addEventListener("load", () => {
 
     // Custom wow js- appear
     (function () {
-      const heightToShow = 150;
+      const heightToShow = -80; // lesser => earlier
 
       const appears = [...document.querySelectorAll(".appear")];
 

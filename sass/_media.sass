@@ -48,12 +48,10 @@
 			display: none
 		nav .wrapper .links li a
 			margin: 0 12px
-	.other
-		justify-content: center
-		.card
-			width: 328px
-			h5 span
-				font-size: 16px
+	.other .card
+		width: 328px
+		h5 span
+			font-size: 16px
 	.signup
 		right: 5%
 
@@ -96,7 +94,7 @@
 		.master
 			width: 550px
 	section.workshop .facts_cards .card
-		width: 90%
+		width: 100vw
 	section.workexamps .wrapper .card
 		width: 280px
 	section.galleryexamps .wrapper .gallery
@@ -136,7 +134,8 @@
 			display: none
 
 	section.banner .slogan .wrapper h2
-		font-size: 2.3rem
+		font-size: 36px
+		width: 90%
 	section.request
 		.connect_img, .connect_figure
 			display: none
@@ -283,13 +282,6 @@
 	section.post
 		.wrapper
 			width: 90%
-		.gallery .big
-			padding-top: 50vw
-		.gallery .all
-			padding-top: 43vw
-	section.news
-		.figure_2
-			display: none
 	section.portfolio_main
 		padding: 0 0 72px
 		.wrapper
@@ -316,7 +308,7 @@
 					background-color: $w
 					color: $dGrey
 					text-align: left
-					padding: 1.2rem
+					padding: 10px
 					opacity: 0
 					visibility: hidden
 					position: absolute
@@ -338,12 +330,13 @@
 			.other
 				margin-top: 0
 				padding-top: 72px
+				display: flex !important
 				flex-direction: column
 				align-items: center
 				.card
 					margin: 0 0 18px 0
 					h5
-						margin-top: 7.5rem
+						left: 10px
 	section.workplan
 		padding: 72px 0
 		overflow: hidden
@@ -376,6 +369,9 @@
 					right: unset !important
 		.figure_10
 			display: none
+	section.reviews .quote_card
+		width: 91vw
+
 
 	footer .wrapper > *
 		width: 50%
@@ -385,6 +381,16 @@
 	section .wrapper > h3
 		font-size: 2.3rem
 
+	section.banner
+		.banner_img
+			&.video
+				opacity: 0
+				visibility: hidden
+				position: absolute
+			&.img
+				opacity: 1
+				visibility: visible
+				position: relative
 	section.info_about
 		.video_left
 			width: 100%
@@ -407,11 +413,91 @@
 			width: 75%
 	section.about_video
 		overflow: hidden
+	section.workshop
+		padding: 0 0 72px
+		.wrapper
+			flex-direction: column
+			aside
+				width: 105vw
+				position: absolute
+				left: 52%
+				transform: translate(-50%, 0)
+				z-index: 15
+				padding: 18px 0 36px
+				margin: 0 0 0 -16px
+				max-height: 53px
+				overflow: hidden
+				a:not(.current)
+					opacity: 0
+					visibility: hidden
+					position: absolute
+				&:not(.expanded) *
+					margin: 0 !important
+				&.expanded
+					max-height: max-content
+					a:not(.current)
+						opacity: 1
+						visibility: visible
+						position: relative
+					.navExpand svg
+						transform: translate(-50%, -50%) rotate(180deg)
+					.stripes
+						opacity: 1
+						visibility: visible
+					.sublist
+						opacity: 1
+						visibility: visible
+				> .list
+					width: 92%
+					margin: 0 auto
+				.navExpand
+					display: block
+					top: 9px
+				.list > li
+					margin: 0
+					&:not(:first-child)
+						margin-top: 16px
+						.stripes
+							display: none
+					.arrow
+						display: none
+					a
+						padding-left: 30px
+						font-size: 18px
+					.stripes
+						top: 2px
+						transform: translate(0, 0)
+				.sublist
+					height: auto
+					overflow: hidden
+					opacity: 0
+					visibility: hidden
+					> li a
+						font-size: 16px
+			main
+				width: 100%
+				margin-top: 6rem
+				p
+					font-size: 18px
+					&.accent
+						font-size: 20px
+				.pricelist
+					display: block
+					overflow-x: auto
+					td
+						font-size: 16px
+						padding: 18px
+						&:nth-child(1)
+							max-width: 50%
+							padding-left: 0
+				.checkup
+					margin-top: 36px
 
 	#expandedMenu
 		flex-direction: column
 		height: auto
-		overflow: hidden
+		overflow: scroll
+		flex-wrap: nowrap
 		> *:not(.closeOverlay):not(.languages)
 			width: 100%
 			background: $dGrey
@@ -462,7 +548,7 @@
 				position: relative
 				margin-top: 20px
 				> svg
-					transform: translate(-2rem, 0px)
+					transform: translate(-36px, 0px)
 			a
 				font-size: 18px !important
 				font-weight: bold
@@ -481,7 +567,7 @@
 				max-height: 1000px
 			> li
 				> svg
-					transform: translate(-2rem, 0px)
+					transform: translate(-36px, 0px)
 				a, span
 					font-size: 18px
 		.clients, .services
@@ -495,20 +581,25 @@
 			li
 				> svg
 					top: 50%
-					transform: translate(-2rem, -50%)
+					transform: translate(-36px, -50%)
 				a
 					font-size: 16px
 					color: $lGrey
 					text-decoration: underline
 		.clients, .services, .phones
+			h5
+				cursor: pointer
+				transition: 0.3s linear
+				&:hover
+					color: $lBlue
 			&.expanded
 				.arrow svg
 					transform: translate(-50%, -50%) rotate(180deg)
 	#connect_wrapper, #resume_wrapper
 		width: 100%
-		max-height: max-content
+		max-height: 100vh
 		padding: 72px 16px
-		transform: translate(-50%, -50%) skew(0)
+		transform: translate(-50%, -50%) skew(0) !important
 		h2
 			font-size: 22px
 			transform: skew(0)
@@ -522,7 +613,7 @@
 				&:not(:nth-child(1))
 					margin-top: 36px
 			textarea
-				height: 80px
+				min-height: 80px
 			input[type=submit]
 				margin: 0 0 0 auto
 		.gform_footer
@@ -552,7 +643,7 @@
 		.figure_33
 			top: -4rem
 			left: 4.5rem
-	.figure_1, .figure_13, .figure_7
+	.figure_13, .figure_7
 		display: none
 	.figure_11
 		width: 180px
@@ -572,11 +663,16 @@
 		width: 80% !important
 		height: 200px !important
 		left: 3rem !important
-	.next:not(:nth-of-type(1))
+	.next:not(:nth-of-type(1)):not(.page-numbers)
 		display: none
 	.checkup
 		button, input, a
 			padding: 16px 18px !important
+	.navigation.pagination .nav-links
+		justify-content: center
+		flex-wrap: wrap
+		.page-numbers
+			margin: 10px
 
 	header .contacts .wrapper .contact
 		.additional, > svg, > .type
@@ -597,7 +693,7 @@
 			h5
 				height: auto
 				overflow: visible
-				top: 65%
+				left: 10px
 				p:before
 					display: none
 				span
@@ -630,7 +726,6 @@
 
 	section.banner
 		height: 600px !important
-		overflow: hidden
 		.banner_img
 			height: 100%
 			width: auto
@@ -638,8 +733,7 @@
 			top: 50%
 			left: 50%
 			transform: translate(-50%, -50%)
-		.banner_img_360
-			display: block
+			min-height: auto
 		.slogan
 			bottom: 15%
 			br
@@ -683,6 +777,7 @@
 			margin-top: 0
 			.pages .page .card
 				width: 100%
+				height: 203px
 	section.post
 		padding: 72px 0
 		.list_wrapper
@@ -704,11 +799,10 @@
 				.all
 					width: 100%
 					padding: 0
+					margin-left: 0
 				.tape
 					position: relative
-					flex-direction: row
-					margin: 0 -8px
-					transform: matrix(1, 0, 0, 1, 0, 0)
+					width: 100%
 					img
 						width: 328px
 						height: 220px
@@ -728,8 +822,6 @@
 						padding: 0
 	section.also_news
 		padding: 72px 0 !important
-		.figure_2
-			display: none
 	section.vacancies
 		padding: 72px 0
 		.wrapper
@@ -746,6 +838,7 @@
 					height: auto
 					background-color: $w
 					padding: 0 16px 24px
+					max-height: 3000px
 					.expand
 						right: 3rem
 				h3
@@ -811,72 +904,7 @@
 				font-size: 18px
 			.right_works
 				width: 100%
-	section.workshop
-		padding: 0 0 72px
-		.wrapper
-			flex-direction: column
-			aside
-				width: 105vw
-				position: absolute
-				left: 50%
-				transform: translate(-50%, 0)
-				z-index: 15
-				padding: 18px 0 36px
-				margin: 0 0 0 -16px
-				max-height: 53px
-				overflow: hidden
-				&.expanded
-					max-height: max-content
-					.navExpand svg
-						transform: translate(-50%, -50%) rotate(180deg)
-					.stripes
-						opacity: 1
-						visibility: visible
-					.list > li .arrow
-						opacity: 1
-						visibility: visible
-				> .list
-					width: 92%
-					margin: 0 auto
-				.navExpand
-					display: block
-					top: 9px
-				.list > li
-					margin: 0
-					&:not(:first-child)
-						margin-top: 24px
-						.stripes
-							display: none
-					.arrow
-						opacity: 0
-						visibility: hidden
-						right: 2rem
-					a
-						padding-left: 30px
-						font-size: 18px
-					.stripes
-						top: 2px
-						transform: translate(0, 0)
-				.sublist > li a
-					font-size: 16px
-			main
-				width: 100%
-				margin-top: 6rem
-				p
-					font-size: 18px
-					&.accent
-						font-size: 20px
-				.pricelist
-					display: block
-					overflow-x: auto
-					td
-						font-size: 16px
-						padding: 18px
-						&:nth-child(1)
-							max-width: 50%
-							padding-left: 0
-				.checkup
-					margin-top: 36px
+
 	section.popular
 		padding: 72px 0
 		.wrapper
@@ -939,7 +967,6 @@
 					left: 9rem !important
 					top: 1rem !important
 	section.reviews
-		overflow: hidden
 		.figure_7
 			left: unset !important
 			right: 0
@@ -947,10 +974,9 @@
 				width: auto
 				height: auto
 		.wrapper
-			width: 100% !important
+			.quote_cards
+				margin: 0
 			.quote_card
-				width: 100% !important
-				flex: 1 0 auto
 				.date
 					font-size: 16px
 				p
@@ -973,12 +999,12 @@
 				width: calc( 100% - 32px )
 				margin-left: auto
 				margin-right: auto
-				height: 90px
+				max-height: 9rem
 				background-color: $dw
 				padding: 0
 				&.active
 					width: 100%
-					height: auto
+					max-height: max-content
 					background-color: $w
 					padding: 0 16px 24px
 					h3
@@ -1074,7 +1100,7 @@
 				border-top: 1px solid rgba($w, 0.1)
 				overflow: hidden
 				max-height: 4rem
-				transition-duration: 0.8s
+				transition-duration: 0.6s
 				&.expanded
 					max-height: 500px
 					ul
@@ -1106,7 +1132,8 @@
 
 @media (max-width: 600px)
 	section .wrapper > h3
-		font-size: 2.3rem
+		font-size: 36px
+		width: 90%
 
 	header
 		.contacts .wrapper
@@ -1146,6 +1173,8 @@
 		overflow: hidden
 		.wrapper .main .text div:not(.figure_14)
 			margin: 0
+	section.reviews
+		padding: 72px 0
 
 	footer .wrapper
 		> *
@@ -1172,7 +1201,7 @@
 			width: 16px
 			height: 64px
 			left: -2rem
-	.figure_2, .figure_4
+	.figure_4
 		display: none
 
 @media (max-width: 500px)
@@ -1294,8 +1323,39 @@
 			.expand
 				top: 3.2rem
 	section.portfolio_main nav:not(.pagination) .nav_arrow
-		top: 30px
-		right: 30px
+		top: 27px
+		right: 27px
+	section.info_about
+		padding: 72px 0 0
+		.figure_13
+			right: -40px !important
+		.wrapper
+			flex-direction: column
+		.left_text
+			width: 100%
+			padding-bottom: 7rem
+			p
+				font-size: 18px
+				&.accent
+					font-size: 20px
+		.right_master
+			width: 100%
+			.master_bg
+				height: 18rem
+			.master_arrows
+				left: 40%
+			.master
+				margin-right: -4rem
+			.master_name
+				left: 30%
+				.name
+					width: 40%
+					h5
+						font-size: 24px
+					span
+						font-size: 16px
+			.master_img
+				left: -15%
 
 	footer .wrapper
 		padding-bottom: 8rem
@@ -1318,8 +1378,14 @@
 	.signup
 		right: 10%
 	.facts_cards
-		width: 100vw !important
-		margin-left: -16px !important
+		width: 100%
+		margin: 0
+		display: block
+		.card
+			width: 100vw
+			display: inline-flex
+	.figure_2
+		left: 65% !important
 
 
 

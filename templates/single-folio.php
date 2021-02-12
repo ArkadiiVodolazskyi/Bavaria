@@ -44,20 +44,14 @@
 
           <?php while ( have_rows('gallery') ): the_row(); ?>
             <div class="gallery wow fadeInUp">
-              <button class="tape_prev">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-              </button>
-              <div class="all mobwrapper">
-                <div class="tape mobslider">
+              <div class="all">
+                <div class="tape">
                   <?php $images = get_sub_field('imgs');
                         foreach( $images as $image ): ?>
                     <img src="<?= $image; ?>" />
                   <?php endforeach; ?>
                 </div>
               </div>
-              <button class="tape_next">
-                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-              </button>
             </div>
           <?php endwhile; ?>
 
@@ -156,11 +150,11 @@
       </div>
     </section>
 
-    <section class="news p-5 widePaginateCards">
-      <div class="wrapper mobwrapper">
+    <section class="news p-5">
+      <div class="wrapper">
         <h3 class="textAppear">Читайте также</h3>
 
-        <div class="other mobslider">
+        <div class="other">
           <?php
             $posts = get_posts( [
               'post_type' => 'folio',
@@ -174,7 +168,7 @@
               $img = get_field('banner');
               $post_title = $post->post_title; ?>
 
-            <a href="<?= $url; ?>" class="card wow fadeInUp" data-wow-delay="<?= $key*0.2?>s">
+            <a href="<?= $url; ?>" class="card">
               <img
                 src="<?= $img; ?>"
                 class="card_bg"
@@ -234,9 +228,115 @@
     <?php wp_footer(); ?>
 
     <script>
-      document.querySelector(".shareFacebook").addEventListener("click", () => {
-        window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
-        return false;
+
+      $(document).ready(function() {
+
+        document.querySelector(".shareFacebook").addEventListener("click", () => {
+          window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+          return false;
+        });
+
+        setTimeout(() => {
+          $("section.post .wrapper .gallery .tape").slick({
+            arrows: true,
+            draggable: false,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: false,
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            vertical: true,
+            verticalSwiping: true,
+            prevArrow: `
+              <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+            nextArrow: `
+              <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+              {
+                breakpoint: 450,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+            ]
+          });
+        }, 2000);
+
+        $(".other").slick({
+          arrows: false,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          variableWidth: true,
+          responsive: [
+            {
+              breakpoint: 1400,
+              settings: {
+                arrows: false,
+                draggable: true,
+                focusOnSelect: false,
+                infinite: false,
+                autoplay: false,
+                dots: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              }
+            },
+            {
+              breakpoint: 700,
+              settings: {
+                arrows: false,
+                draggable: true,
+                focusOnSelect: false,
+                infinite: false,
+                autoplay: false,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            },
+          ]
+        });
+
       });
     </script>
   </body>

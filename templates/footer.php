@@ -32,7 +32,7 @@
 				</h5>
 				<ul>
 					<?php while(have_rows('links')): the_row(); ?>
-						<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2?>s"
+						<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.1?>s"
 							><a href="<?= get_sub_field('link')['url']; ?>">
 							<?= get_sub_field('link')['title']; ?>
 						</a></li>

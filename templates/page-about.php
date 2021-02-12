@@ -226,5 +226,45 @@
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>
+
+    <script>
+
+      $(document).ready(function() {
+
+        if (window.innerWidth < 421) {
+          $(".facts_cards").slick({
+            arrows: false,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+          });
+        }
+
+        window.addEventListener("resize", () => {
+
+          if (window.innerWidth < 421) {
+            $(".facts_cards").slick({
+              arrows: false,
+              draggable: true,
+              focusOnSelect: false,
+              infinite: false,
+              autoplay: false,
+              dots: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+            });
+          }
+
+        });
+
+      });
+
+    </script>
   </body>
 </html>

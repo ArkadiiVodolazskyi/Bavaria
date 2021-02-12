@@ -76,7 +76,7 @@ header
 					right: 0.5rem
 					transform: translate(-50%, 0%)
 					opacity: 0
-					animation: fadeIn 1s 0.6s ease-in 1 forwards
+					animation: fadeIn 0.5s 0.3s ease-in 1 forwards
 				a
 					position: relative
 					z-index: 15
@@ -183,18 +183,18 @@ header
 				margin: 0 0 -1.5rem 1.5rem
 
 #expandedMenu
-	position: fixed
+	position: absolute
 	z-index: 0
 	top: 0
 	left: 0
-	width: 100vw
+	width: 101vw
 	height: 100vh
 	overflow: hidden
 	opacity: 0
 	visibility: hidden
 	display: flex
 	color: $w
-	transition: all 0.3s linear
+	transition: all 0.15s linear
 	&.activeOverlay
 		opacity: 1
 		visibility: visible
@@ -212,7 +212,8 @@ header
 		background: linear-gradient(207deg, #181f29, #153155)
 		backdrop-filter: blur(30px)
 		transform: translateY(100%)
-		transition: all 0.3s linear
+		margin: 0 -1px
+		transition: all 0.15s linear
 		&:nth-child(1)
 			transition-delay: 0.1s
 		&:nth-child(2)
@@ -381,7 +382,7 @@ header
 		transform: translateX(200%)
 		opacity: 0
 		visibility: hidden
-		transition-delay: 0.6s
+		transition-delay: 0.5s
 		display: flex
 		align-items: center
 		transition: all 0.3s linear
@@ -417,9 +418,9 @@ header
 		.line_3
 			fill: darken($red, 15%)
 			transform: translate(-5px, 10px)
-		.logo_text
-			fill: lighten($dw, 20%)
-			transform: translate(-55%, -40%)
+		// .logo_text
+		// 	fill: lighten($dw, 20%)
+		// 	transform: translate(-55%, -40%)
 	svg
 		height: inherit
 		margin: 0 -26px
@@ -481,7 +482,7 @@ header
 .navCheckupBtn
 	opacity: 0
 	transform: skew(-$skew) translate(0, 50px)
-	animation: navCheckup 1s 0s ease-in forwards
+	animation: navCheckup 0.5s 0s ease-in forwards
 .smallCheckupBtn
 	width: 36px
 	height: 36px

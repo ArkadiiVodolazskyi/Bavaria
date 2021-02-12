@@ -56,6 +56,7 @@ img
 $fontSize1920: 24px
 $fontSize360: 12px
 $skew: 14deg
+$paddingOverlay: 20px
 
 $dGrey: #181f29
 $w: #fff
@@ -92,7 +93,7 @@ $lGrey: #737a84
 
 // Transitions
 a, button, svg, img
-	transition: all 0.3s linear
+	transition: all 0.15s linear
 
 html
 	width: 100vw
@@ -105,22 +106,22 @@ body
 	position: relative
 	z-index: 1
 	background-color: $dGrey
-	transition: all 0.5s linear
+	transition: all 0.15s linear
 	overflow: hidden
 	> section, header, footer
 		opacity: 0
 	&.loaded
-		background-color: $w
 		> section, header, footer
 			opacity: 1
 	&.discroll
-		height: 100vh
+		height: 1000px
 		overflow: hidden
 
 section
 	position: relative
 	z-index: 1
-	transition: all 0.5s linear
+	transition: all 0.2s linear
+	background-color: $w
 	&.dark
 		background-color: $dGrey
 		*
@@ -170,7 +171,7 @@ section
 		left: -1.2rem
 		top: 50%
 		transform: translate(0%, -50%) skew(-$skew)
-		transition: all 0.3s linear
+		transition: all 0.2s linear
 .signup:hover:before
 	transform: translate(1300%, -50%) skew(-$skew)
 
@@ -225,7 +226,7 @@ section > .next
 	.figure
 		width: rem(30)
 		position: relative
-		transition: all 0.3s linear
+		transition: all 0.2s linear
 	.triangle
 		width: 0
 		height: 0
@@ -240,7 +241,7 @@ section > .next
 		opacity: 0
 		animation: video_triangle
 		animation-duration: 0.3s
-		animation-delay: 2.4s
+		animation-delay: 0.5s
 		animation-fill-mode: forwards
 		animation-timing-function: ease-in
 	.rect
@@ -255,7 +256,7 @@ section > .next
 		opacity: 0
 		animation: video_rect
 		animation-duration: 0.5s
-		animation-delay: 2.0s
+		animation-delay: 1s
 		animation-fill-mode: forwards
 		animation-timing-function: ease-in
 	a, button
@@ -298,6 +299,7 @@ section > .next
 // Restyle pagination from the_posts_pagination()
 .navigation.pagination
 	margin-top: 72px
+	padding: 0 12px
 	.screen-reader-text
 		display: none
 	.nav-links
@@ -352,7 +354,7 @@ section > .next
 			color: transparent
 			outline: none
 
-.slick-arrow
+section.post .slick-arrow
 	width: rem(36)
 	height: rem(20)
 	z-index: 20
@@ -364,10 +366,41 @@ section > .next
 	svg
 		width: 100%
 		height: 100%
-	&:nth-child(1)
-		transform: translate(-50%, -150%) rotate(180deg)
-	&:nth-child(2)
-		transform: translate(-50%, 150%) rotate(0deg)
+		transform: scale(2)
+	&.slick-disabled
+		opacity: 0.3
+		&:hover
+			fill: $dGrey
+	&:nth-of-type(1)
+		transform: translate(calc( -50% - 9px ), -50%) rotate(180deg)
+	&:nth-of-type(2)
+		transform: translate(calc( -50% - 9px ), 50%) rotate(0deg)
+
+section.reviews .slick-arrow, section.popular .slick-arrow
+	width: rem(36)
+	height: rem(20)
+	z-index: 20
+	fill: $dGrey
+	position: absolute
+	fill: $w
+	outline: none
+	bottom: -48px
+	right: 0
+	left: unset
+	&:hover
+		fill: $lBlue
+	&.slick-disabled
+		opacity: 0.3
+		&:hover
+			fill: $w
+	&:nth-of-type(1)
+		transform: translate(-2rem, 0)
+		svg
+			transform: rotate(90deg) scale(2.5)
+	&:nth-of-type(2)
+		transform: translate(0, 0)
+		svg
+			transform: rotate(-90deg) scale(2.5)
 
 .other
 	display: flex
@@ -375,9 +408,10 @@ section > .next
 	flex-wrap: wrap
 	margin: rem(100) 0 0
 	color: $w
+	overflow: hidden
 	.card
-		width: calc( 33% - 1.5rem )
-		height: rem(400)
+		width: 19rem
+		height: 16rem
 		margin: 0.75rem
 		cursor: pointer
 		position: relative
@@ -406,7 +440,8 @@ section > .next
 			font-weight: bold
 			position: absolute
 			left: 0
-			top: 75%
+			top: unset
+			bottom: 2rem
 			svg
 				flex: 1 0 auto
 				position: relative
@@ -468,6 +503,7 @@ section > .next
 
 .master_arrows
 	position: absolute
+	z-index: 5
 	left: 50%
 	bottom: 3rem
 	transform: skew($skew)
@@ -511,10 +547,7 @@ section > .next
 			opacity: 0
 			transform: skew(-$skew) translateX(300px)
 			&.appeared
-				animation: skewRight
-				animation-duration: 0.5s
-				animation-fill-mode: forwards
-				animation-timing-function: ease-in
+				animation: skewRight 0.25s forwards linear
 		.pro_icon
 			width: inherit
 			min-width: 60px
@@ -646,7 +679,7 @@ section > .next
 	height: 100%
 	backdrop-filter: blur(8.2px)
 	cursor: pointer
-	transition: all 0.3s linear
+	transition: opacity 0.15s linear
 	opacity: 0
 	visibility: hidden
 	&.activeOverlay
@@ -721,7 +754,7 @@ section > .next
 		height: 10rem
 		left: 0
 		opacity: 0
-		animation: figure_11 1s 0.5s forwards
+		animation: figure_11 0.5s 0.5s forwards
 	.figure_42
 		position: absolute
 		width: auto
@@ -729,18 +762,18 @@ section > .next
 		left: -2rem
 		bottom: 0.2rem
 		opacity: 0
-		animation: figure_11 1s 0.8s forwards
+		animation: figure_11 0.5s 0.8s forwards
 .figure_2
 	position: absolute
 	z-index: 0
 	top: 0
 	&.appeared
 		.figure_21
-			animation: figure_21 1s 0.5s forwards
+			animation: figure_21 0.3s 0.5s forwards
 		.figure_22
-			animation: figure_21 1s 0.7s forwards
+			animation: left 1s 0.6s forwards
 		.figure_23
-			animation: figure_21 1s 0.9s forwards
+			animation: figure_21 1s 0.3s forwards
 	> *
 		position: absolute
 		top: 0
@@ -793,11 +826,11 @@ section > .next
 		transform: skew(-14deg) translate(20px, -100px)
 	&.appeared
 		.figure_31
-			animation: figure_31 1s 0.5s forwards linear
+			animation: figure_31 0.7s 0.3s forwards linear
 		.figure_32
-			animation: figure_31 0.8s 0.7s forwards linear
+			animation: figure_31 0.5s 0.5s forwards linear
 		.figure_33
-			animation: figure_31 0.6s 0.9s forwards linear
+			animation: figure_31 0.3s 0.7s forwards linear
 .figure_4
 	width: rem(150)
 	height: rem(270)
@@ -819,9 +852,9 @@ section > .next
 		transform: translate(20px, -100px)
 	&.appeared
 		.figure_41
-			animation: figure_41 1s 0.5s forwards
+			animation: figure_41 0.5s 0.3s forwards
 		.figure_42
-			animation: figure_41 1s 0.8s forwards
+			animation: figure_41 0.5s 0.6s forwards
 .figure_6
 	position: absolute
 	top: 0
@@ -892,7 +925,7 @@ section > .next
 	opacity: 0
 	transform: skew(-$skew) translateX(-300px)
 	&.appeared
-		animation: skewLeft 1s forwards
+		animation: skewLeft 0.5s forwards
 	&:after
 		content: ""
 		position: absolute
@@ -927,9 +960,9 @@ section > .next
 	z-index: 10
 	&.appeared
 		.figure_41
-			animation: figure_41 1s 0.5s forwards
+			animation: figure_41 0.5s 0.3s forwards
 		.figure_42
-			animation: figure_41 1s 0.7s forwards
+			animation: figure_41 0.5s 0.6s forwards
 	.figure_41
 		position: absolute
 		width: auto
@@ -975,11 +1008,11 @@ section > .next
 		transform: skew(-14deg) translate(20px, -100px)
 	&.appeared
 		.figure_31
-			animation: skewLeft 1s 0.2s 1 forwards ease-in
+			animation: skewLeft 0.5s 0.2s forwards ease-in
 		.figure_32
-			animation: skewLeft 0.9s 0.4s 1 forwards ease-in
+			animation: skewLeft 0.4s 0.4s forwards ease-in
 		.figure_33
-			animation: skewLeft 0.8s 0.6s 1 forwards ease-in
+			animation: skewLeft 0.3s 0.6s forwards ease-in
 
 .copyLink
 	padding: 0

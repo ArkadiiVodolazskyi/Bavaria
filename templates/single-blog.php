@@ -257,40 +257,80 @@
         setTimeout(() => {
           $("section.post .wrapper .gallery .tape").slick({
             arrows: true,
-            draggable: true,
+            draggable: false,
             focusOnSelect: false,
             infinite: false,
             autoplay: false,
             dots: false,
             slidesToShow: 4,
-            slidesToScroll: 1,
-            variableWidth: true,
+            slidesToScroll: 2,
             vertical: true,
             verticalSwiping: true,
-            touchThreshold: 300,
             prevArrow: `
-              <button class="slick-prev">
+              <button type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
-                  <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
                 </svg>
               </button>
             `,
             nextArrow: `
-              <button class="slick-next">
+              <button type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
-                  <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
                 </svg>
               </button>
             `,
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 3,
+                  slidesToScroll: 2,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+              {
+                breakpoint: 450,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+            ]
           });
-        }, 3000);
+        }, 500);
 
       });
-
-
-
-
-
 
     </script>
   </body>

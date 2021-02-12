@@ -4,7 +4,6 @@
  * Template Post Type: service_inner
  */
 ?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
   <head>
@@ -19,7 +18,7 @@
 		<?php get_header(); ?>
 
     <section class="banner blog_banner">
-      <img alt="" src="<?= get_field('banner'); ?>" class="banner_img" />
+      <img src="<?= get_field('banner'); ?>" class="banner_img" />
 
       <div class="slogan">
         <div class="wrapper">
@@ -31,6 +30,8 @@
     </section>
 
     <?php
+
+      wp_reset_query();
 
       // Получить главные категории услуг - название и url
       $mainPosts = get_posts(
@@ -47,6 +48,12 @@
         )
       );
 
+    ?>
+
+    <?php
+      // Get current page
+      $pageTitle = get_the_title();
+      $pageTerm = get_the_terms( get_post(), 'service_type')[0]->slug;
     ?>
 
     <section class="workshop">
@@ -69,13 +76,21 @@
                 foreach($mainPosts as $key=>$mainPost) {
                   $mainTitle = $mainPost->post_title;
                   $mainLink = $mainPost->guid;
+                  $mainTerm = $mainPost->post_name; // For main items term equals name (because real term is 'main')
               ?>
-                <li class="wow fadeInUp" data-wow-delay="<?= $key*0.2?>s">
+                <li class="wow fadeInUp <?php echo $mainTerm == $pageTerm || $mainTitle == get_the_title() ? 'active' : ''; ?>"
+                    data-wow-delay="<?= $key*0.2?>s">
                   <img
                     src="<?= B_IMG_DIR ?>/triple-square.svg"
                     class="img-svg native stripes"
                   />
-                  <a href="<?= $mainLink; ?>">
+                  <?php if ( $mainTitle == $pageTitle ): ?>
+                    <a href="<?= $mainLink; ?>"
+                    class="current"
+                    style="color: #d63d37;">
+                  <?php else: ?>
+                    <a href="<?= $mainLink; ?>">
+                  <?php endif; ?>
                     <?= $mainTitle; ?>
                   </a>
                   <button class="arrow">
@@ -104,9 +119,13 @@
                         $subLink = $subPost->guid;
                     ?>
                       <li>
-                        <a href="<?= $subLink; ?>">
-                          <?= $subTitle; ?>
-                        </a>
+                        <?php if ( $subTitle == $pageTitle ): ?>
+                          <a href="<?= $subLink; ?>" style="color: #d63d37;" class="current">
+                        <?php else: ?>
+                          <a href="<?= $subLink; ?>">
+                        <?php endif; ?>
+                            <?= $subTitle; ?>
+                          </a>
                       </li>
                     <?php }; ?>
                   </ul>
@@ -133,15 +152,15 @@
               <?php endwhile; ?>
 
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="brands mobwrapper">
+                <div class="brands">
 
                   <h2 class="facts_title textAppear">
                     <?= get_sub_field('title'); ?>
                   </h2>
 
-                  <div class="facts_cards mobslider mob100">
+                  <div class="facts_cards">
                     <?php while ( have_rows('cards1') ): the_row(); ?>
-                      <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
+                      <div class="card appear" style="animation-delay: <?= get_row_index()*0.1?>s">
                         <img
                           src="<?= get_sub_field('icon'); ?>"
                           class="img-svg native pro_icon"
@@ -205,7 +224,7 @@
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
+                <div class="card" style="animation-delay: <?= get_row_index()*0.2?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
                   <div class="card_image">
                     <img alt="" src="<?= get_sub_field('img'); ?>" />
                   </div>
@@ -290,12 +309,11 @@
       <?php if ( get_sub_field('workexamps') ): ?>
         <?php while ( have_rows('workexamps') ): the_row(); ?>
           <section class="workexamps">
-            <div class="wrapper mobwrapper">
+            <div class="wrapper">
               <h2>
                 <?= get_sub_field('title'); ?>
               </h2>
-              <div class="exampscards mobslider">
-
+              <div class="exampscards">
 
                 <?php
                   // If this page is main
@@ -464,14 +482,6 @@
                   </div>
                 <?php endwhile; ?>
               </div>
-              <div class="arrows wow fadeInUp">
-                <button class="quote_prev">
-                  <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-                </button>
-                <button class="quote_next">
-                  <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-                </button>
-              </div>
             </div>
 
             <div
@@ -588,5 +598,166 @@
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>
+
+    <script>
+
+      $(document).ready(function() {
+
+        if (window.innerWidth < 421) {
+          $("section.workshop .brands .facts_cards").slick({
+            arrows: false,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+          });
+        }
+
+        $(".exampscards").slick({
+          arrows: false,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: false,
+          variableWidth: true,
+          responsive: [
+            {
+              breakpoint: 1600,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                dots: true,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+            {
+              breakpoint: 960,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: true,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+          ]
+        });
+
+        $("section.reviews .quote_cards").slick({
+          arrows: true,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: false,
+          variableWidth: true,
+          vertical: false,
+          verticalSwiping: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          prevArrow: `
+            <button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+              </svg>
+            </button>
+          `,
+          nextArrow: `
+            <button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+              </svg>
+            </button>
+          `,
+          responsive: [
+            {
+              breakpoint: 1000,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                dots: true,
+                draggable: true,
+                touchThreshold: 300,
+              }
+            },
+          ]
+        });
+
+        window.addEventListener("resize", () => {
+
+          if (window.innerWidth < 421) {
+            $("section.workshop .brands .facts_cards").slick({
+              arrows: false,
+              draggable: true,
+              focusOnSelect: false,
+              infinite: false,
+              autoplay: false,
+              dots: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+            });
+          }
+
+        });
+
+        $("section.popular .cards").slick({
+          arrows: true,
+          draggable: false,
+          focusOnSelect: false,
+          infinite: false,
+          autoplay: false,
+          dots: false,
+          variableWidth: true,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          vertical: false,
+          verticalSwiping: false,
+          prevArrow: `
+            <button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+              </svg>
+            </button>
+          `,
+          nextArrow: `
+            <button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+              </svg>
+            </button>
+          `,
+        });
+
+      });
+
+    </script>
   </body>
 </html>

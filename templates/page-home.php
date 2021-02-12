@@ -28,15 +28,12 @@
     <?php while ( have_rows('banner') ): the_row(); ?>
       <section class="banner">
 
-        <?php if (get_sub_field('banner_type') == 'img'): ?>
-          <img src="<?= get_sub_field('banner_item'); ?>" class="banner_img" />
-        <?php elseif (get_sub_field('banner_type') == 'video'): ?>
-          <video autoplay muted loop src="<?= get_sub_field('banner_item'); ?>" class="banner_img fadeIn"></video>
-        <?php endif; ?>
+        <img src="<?= get_sub_field('banner_img'); ?>" class="banner_img img" />
+        <video autoplay muted loop src="<?= get_sub_field('banner_video'); ?>" class="banner_img video"></video>
 
         <div class="slogan">
           <div class="wrapper">
-            <h2 class="textAppear">
+            <h2 class="wow fadeInLeft" data-wow-duration="0.5s">
               <?= get_sub_field('text'); ?>
             </h2>
             <div class="video">
@@ -71,13 +68,13 @@
         <section id="services" class="services dark">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
+            <button class="signup fadeInRight openConnect" data-wow-duration="0.5s">
               <?= get_sub_field('text'); ?>
-            </a>
+            </button>
           <?php endwhile; ?>
 
           <div class="wrapper">
-            <h3 class="fadeInLeft">
+            <h3 class="wow fadeInLeft" data-wow-duration="0.5s">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -87,7 +84,7 @@
 
             <div class="cards">
               <?php while ( have_rows('cards') ): the_row(); ?>
-                <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s; animation-duration: <?= 0.8 - get_row_index()*0.1?>s">
+                <div class="card appear" style="animation-delay: <?= get_row_index()*0.1?>s; animation-duration: 0.3s">
                   <div class="card_image">
                     <img src="<?= get_sub_field('img'); ?>" />
                   </div>
@@ -237,13 +234,13 @@
         <section id="portfolio" class="portfolio dark p-4">
 
           <?php while ( have_rows('link') ): the_row(); ?>
-            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight">
+            <a href="<?= get_sub_field('url'); ?>" class="signup fadeInRight" data-wow-duration="0.5s">
               <?= get_sub_field('text'); ?>
             </a>
           <?php endwhile; ?>
 
           <div class="wrapper">
-            <h3 class="textAppear">
+            <h3 class="wow fadeInLeft" data-wow-duration="0.5s">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -254,10 +251,10 @@
                 </div>
                 <?php while ( have_rows('description') ): the_row(); ?>
                   <div class="text">
-                    <h4 class="textAppear">
+                    <h4 class="wow fadeInUp" data-wow-duration="0.5s">
                       <?= get_sub_field('title'); ?>
                     </h4>
-                    <div class="textAppear">
+                    <div class="wow fadeInUp" data-wow-duration="0.5s">
                       <?= get_sub_field('text'); ?>
                     </div>
                   </div>
@@ -367,8 +364,8 @@
             </a>
           <?php endwhile; ?>
 
-          <div class="wrapper mobwrapper">
-            <h3 class="textAppear">
+          <div class="wrapper">
+            <h3 class="wow fadeInLeft" data-wow-duration="0.5s">
               <?= get_sub_field('title'); ?>
             </h3>
 
@@ -379,7 +376,7 @@
                   <div class="figure_32"></div>
                   <div class="figure_33"></div>
                 </div>
-                <div class="textAppear">
+                <div class="wow fadeInUp" data-wow-duration="0.5s">
                   <?php while ( have_rows('group') ): the_row(); ?>
                     <?= get_sub_field('text'); ?>
                   <?php endwhile; ?>
@@ -513,7 +510,45 @@
           });
         }
 
-      }
+        window.addEventListener("resize", () => {
+
+          if (window.innerWidth < 601) {
+            $(".other").slick({
+              arrows: false,
+              draggable: true,
+              focusOnSelect: false,
+              infinite: false,
+              autoplay: false,
+              dots: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+            });
+          }
+
+          if (window.innerWidth < 421) {
+            $("section.info .wrapper .main .imgs .pro_cards").slick({
+              arrows: false,
+              draggable: true,
+              focusOnSelect: false,
+              infinite: false,
+              autoplay: false,
+              dots: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+            });
+          }
+
+        });
+
+        deleteExtraSlides(
+          width = 980,
+          sliderSelector = 'section.news .wrapper .cards .pages .page',
+          leaveSlides = 4
+        );
+
+      });
 
     </script>
   </body>
