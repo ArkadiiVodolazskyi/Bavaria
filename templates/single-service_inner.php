@@ -302,6 +302,10 @@
               src="<?= B_IMG_DIR ?>/figure_101.svg"
               class="img-svg native figure_101"
             />
+            <img
+              src="<?= B_IMG_DIR ?>/mob_workplan.svg"
+              class="img-svg native figure_101_mob figure_101_mob"
+            />
           </div>
         </section>
       <?php endif; ?>

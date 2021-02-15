@@ -445,7 +445,7 @@
 
         $("section.news .wrapper .cards .pages .page").slick({
           arrows: false,
-          draggable: false,
+          draggable: true,
           focusOnSelect: false,
           infinite: false,
           autoplay: false,

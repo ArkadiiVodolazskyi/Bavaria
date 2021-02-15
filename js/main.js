@@ -1026,9 +1026,79 @@ window.addEventListener("load", () => {
 
 $(document).ready(function(){
 
+
   $( ".arm_head_callback" ).click(function(){
-   $( "#callback_form" ).toggleClass('open');
+   $( "#callback_form" ).addClass('activeOverlay');
+   $( "#overlay" ).addClass('activeOverlay');
   });
+  $( "#closeCallBack" ).click(function(){
+   $( "#callback_form" ).removeClass('activeOverlay');
+   $( "#overlay" ).removeClass('activeOverlay');
+  });
+
+  $('li.gfield input').on('focus',function(){
+    $( this ).parents('li').find('.gfield_label').addClass('focused');
+  });
+
+  (function () {
+    const gf4 = document.getElementById("gform_4");
+
+    if (gf4) {
+      const inputs = [
+        ...gf4.querySelectorAll("#input_4_1_3, #input_4_2"),
+      ]; // name, tel
+      const labels = [...gf4.querySelectorAll(".gfield_label")]; // name, tel
+      const subWrapper = gf4.querySelector(".gform_footer"); // send wrapper (bg)
+      const submit = gf4.querySelector("#gform_submit_button_4"); // send
+
+      const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
+
+      for (let i = 0; i < inputs.length; i++) {
+        // On focus move label up
+        inputs[i].addEventListener("focus", () => {
+          labels[i].classList.add("focused");
+        });
+        inputs[i].addEventListener("blur", () => {
+          if (inputs[i].value === "") {
+            labels[i].classList.remove("focused");
+          }
+        });
+        inputs[i].addEventListener("keyup", () => {
+          if (inputs[0].value === "") {
+            inputs[0].classList.add("invalid");
+            subWrapper.classList.add("invalid");
+            submit.disabled = true;
+          } else {
+            inputs[0].classList.remove("invalid");
+          }
+
+          if (telRegex.test(inputs[1].value) === false) {
+            inputs[1].classList.add("invalid");
+            subWrapper.classList.add("invalid");
+            submit.disabled = true;
+          } else {
+            inputs[1].classList.remove("invalid");
+          }
+
+          if (
+            inputs[0].value !== "" &&
+            telRegex.test(inputs[1].value) !== false
+          ) {
+            subWrapper.classList.remove("invalid");
+            submit.disabled = false;
+          }
+        });
+      }
+
+      // If inputs are valid
+      gf4.addEventListener("submit", () => {
+        imgs.forEach((img) => {
+          img.style.display = "none";
+        });
+        console.log("Form submitted");
+      });
+    }
+  })();
 
 
 });

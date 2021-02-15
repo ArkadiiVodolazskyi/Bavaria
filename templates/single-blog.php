@@ -282,6 +282,21 @@
             `,
             responsive: [
               {
+                breakpoint: 800,
+                settings: {
+                  arrows: false,
+                  draggable: true,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: true,
+                  slidesToShow: 1,
+                  slidesToScroll: 2,
+                  vertical: false,
+                  verticalSwiping: false,
+                }
+              },
+              {
                 breakpoint: 768,
                 settings: {
                   arrows: false,
