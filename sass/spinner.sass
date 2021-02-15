@@ -1,0 +1,151 @@
+$dGrey: #181f29
+$w: #fff
+$b: #000
+$dw: #f1f2f3
+
+$red: #d63d37 // rgb(214, 61, 55)
+$lBlue: #8dc1fb // rgb(141, 193, 251)
+$dBlue: #2d568a // rgb(45, 86, 138)
+
+$dur: 2.2s
+
+@keyframes line_1
+	0%
+		opacity: 0
+		transform: translate(50vw, -50%) skew(-15deg)
+	35%
+		opacity: 1
+		transform: translate(-60%, -50%) skew(-15deg)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	70%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	80%
+		opacity: 1
+		transform: translate(-100%, -50%) skew(-15deg)
+	90%
+		opacity: 1
+		transform: translate(-100%, -50%) skew(-15deg)
+	100%
+		opacity: 1
+		transform: translate(-270%, 100vh) skew(-15deg)
+
+@keyframes line_2
+	0%
+		opacity: 0
+		transform: translate(50vw, -50%) skew(-15deg)
+	10%
+		opacity: 0
+		transform: translate(50vw, -50%) skew(-15deg)
+	40%
+		opacity: 1
+		transform: translate(-60%, -50%) skew(-15deg)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	70%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	80%
+		opacity: 0.9
+		transform: translate(-20%, -80%) skew(-15deg)
+	90%
+		opacity: 1
+		transform: translate(-15%, -85%) skew(-15deg)
+	100%
+		opacity: 0
+		transform: translate(-25%, -85%) skew(-15deg)
+
+@keyframes line_3
+	0%
+		opacity: 0
+		transform: translate(50vw, -50%) skew(-15deg)
+	15%
+		opacity: 0
+		transform: translate(50vw, -50%) skew(-15deg)
+	45%
+		opacity: 1
+		transform: translate(-60%, -50%) skew(-15deg)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	70%
+		opacity: 1
+		transform: translate(-50%, -50%) skew(-15deg)
+	80%
+		opacity: 1
+		transform: translate(100%, -50%) skew(-15deg)
+	90%
+		opacity: 1
+		transform: translate(100%, -50%) skew(-15deg)
+	100%
+		opacity: 0
+		transform: translate(270%, -100vh) skew(-15deg)
+
+@keyframes logo_text
+	0%
+		opacity: 0
+	15%
+		opacity: 0
+	45%
+		opacity: 0
+	50%
+		opacity: 0ю3
+	70%
+		opacity: 1
+	80%
+		opacity: 1
+	90%
+		opacity: 0.9
+	100%
+		opacity: 0
+
+body
+	position: relative
+	background-color: $dGrey
+#spinner
+	position: fixed
+	left: 50%
+	top: 45%
+	transform: translate(-50%, -50%)
+	width: 250px
+	height: 250px
+	div
+		position: absolute
+		width: 64px
+		height: 100%
+	.line_1
+		background-color: $lBlue
+		left: 25%
+		top: 50%
+		// transform: translate(30%, -230%) skew(-15deg)
+		opacity: 0
+		animation: line_1 $dur ease-in forwards
+	.line_2
+		background-color: $dBlue
+		left: 50%
+		top: 50%
+		// transform: translate(40%, -230%) skew(-15deg)
+		opacity: 0
+		animation: line_2 $dur ease-in forwards
+	.line_3
+		background-color: $red
+		left: 75%
+		top: 50%
+		// transform: translate(40%, -230%) skew(-15deg)
+		opacity: 0
+		animation: line_3 $dur ease-in forwards
+	.logo_text
+		width: 65%
+		height: 100%
+		position: absolute
+		left: 53%
+		top: 50%
+		transform: translate(-50%, -50%)
+		animation: logo_text $dur ease-in forwards
+		path
+			fill: $dw
+			stroke-width: 5px
+

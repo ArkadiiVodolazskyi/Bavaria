@@ -174,3 +174,200 @@ echo '</pre>';
 	&:hover
 		fill: $lBlue
 		animation: jump 1.5s linear paused infinite
+
+
+
+
+
+$dGrey: #181f29
+$w: #fff
+$b: #000
+$dw: #f1f2f3
+
+$red: #d63d37 // rgb(214, 61, 55)
+$lBlue: #8dc1fb // rgb(141, 193, 251)
+$dBlue: #2d568a // rgb(45, 86, 138)
+$lGrey: #737a84
+
+$duration: 2s
+$delay: 0.3s
+
+@keyframes line_1
+	0%
+		opacity: 0
+		transform: translate(30%, -230%)
+	20%
+		opacity: 1
+		transform: translate(-55%, -40%)
+	30%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	70%
+		opacity: 1
+		transform: translate(-120%, -50%)
+	90%
+		opacity: 1
+		transform: translate(-130%, -50%)
+	100%
+		opacity: 0
+		transform: translate(-270%, 230%)
+
+@keyframes line_2
+	0%
+		opacity: 0
+		transform: translate(40%, -230%)
+	20%
+		opacity: 1
+		transform: translate(-55%, -40%)
+	30%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	70%
+		opacity: 1
+		transform: translate(-50%, -80%) rotate(75deg)
+	90%
+		opacity: 1
+		transform: translate(-50%, -90%) rotate(75deg)
+	100%
+		opacity: 0
+		transform: translate(-50%, -230%) rotate(75deg)
+
+@keyframes line_3
+	0%
+		opacity: 0
+		transform: translate(40%, -230%)
+	20%
+		opacity: 1
+		transform: translate(-55%, -40%)
+	30%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	70%
+		opacity: 1
+		transform: translate(120%, -50%)
+	90%
+		opacity: 1
+		transform: translate(130%, -50%)
+	100%
+		opacity: 0
+		transform: translate(230%, -230%)
+
+@keyframes logo_text
+	0%
+		opacity: 0
+		transform: translate(50vw, -50%)
+	20%
+		opacity: 1
+		transform: translate(-60%, -50%)
+	30%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	50%
+		opacity: 1
+		transform: translate(-50%, -50%)
+	70%
+		opacity: 1
+		transform: translate(-50%, 120%)
+	100%
+		opacity: 0
+		transform: translate(-50%, 70vh)
+
+body
+	position: relative
+	background-color: $dGrey
+#spinner
+	position: fixed
+	left: 50%
+	top: 45%
+	transform: translate(-50%, -50%)
+	width: 250px
+	height: 250px
+	svg
+		position: absolute
+		height: 100%
+	.line_1
+		z-index: 500
+		fill: $lBlue
+		left: 25%
+		top: 50%
+		transform: translate(30%, -230%)
+		opacity: 0
+		animation: line_1 $duration $delay*1 ease-in forwards
+	.line_2
+		z-index: 500
+		fill: $dBlue
+		left: 50%
+		top: 50%
+		transform: translate(40%, -230%)
+		opacity: 0
+		animation: line_2 $duration $delay*2 ease-in forwards
+	.line_3
+		z-index: 500
+		fill: $red
+		left: 75%
+		top: 50%
+		transform: translate(40%, -230%)
+		opacity: 0
+		animation: line_3 $duration $delay*3 ease-in forwards
+	.logo_text
+		width: 65%
+		height: 100%
+		fill: $dw
+		position: absolute
+		z-index: 600
+		left: 53%
+		top: 50%
+		transform: translate(50vw, -50%)
+		opacity: 0
+		animation: logo_text $duration $delay*4 ease-in forwards
+
+
+// Final placement
+// body
+// 	position: relative
+// 	background-color: $dGrey
+// #spinner
+// 	position: fixed
+// 	left: 50%
+// 	top: 45%
+// 	transform: translate(-50%, -50%)
+// 	width: 250px
+// 	height: 250px
+// 	svg
+// 		position: absolute
+// 		z-index: 500
+// 		height: 100%
+// 	.line_1
+// 		fill: $lBlue
+// 		left: 25%
+// 		top: 50%
+// 		transform: translate(10%, -230%)
+// 		animate: line_1 2s 0.5s forward 1 ease-in
+// 	.line_2
+// 		fill: $dBlue
+// 		left: 50%
+// 		top: 50%
+// 		transform: translate(-50%, -50%)
+// 	.line_3
+// 		fill: $red
+// 		left: 75%
+// 		top: 50%
+// 		transform: translate(-50%, -50%)
+// 	.logo_text
+// 		width: 65%
+// 		height: 100%
+// 		fill: $dw
+// 		position: absolute
+// 		z-index: 600
+// 		left: 53%
+// 		top: 50%
+// 		transform: translate(-50%, -50%)

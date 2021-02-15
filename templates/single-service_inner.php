@@ -57,7 +57,7 @@
     ?>
 
     <section class="workshop">
-      <div class="figure_1 hidden_360" style="bottom: unset; top: -7rem">
+      <div class="figure_1 hidden_360" style="bottom: unset; top: -8.5rem">
         <img
           class="img-svg native figure_41"
           src="<?= B_IMG_DIR ?>/figure_41.svg"

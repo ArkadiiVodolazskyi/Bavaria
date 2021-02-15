@@ -130,6 +130,16 @@
 	</button>
 </div>
 
+<div id="callback_form">
+
+<?php echo do_shortcode( '[gravityform id=4 title=false description=false ajax=true]' ); ?>
+
+<button id="closeConnect">
+		<img src="<?= B_IMG_DIR ?>/cross2.svg" class="img-svg" />
+	</button>
+
+</div>
+
 <header>
 	<div class="contacts">
 		<div class="wrapper">
@@ -195,90 +205,86 @@
 				</span>
 			</div>
 
-			<div class="contact">
-					<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
-						<?= get_field('phones', 'options')[0]['number']; ?>
-					</a>
-					<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-				</p>
+			<div class="arm_head_contact">
+				<div class="contact">
+						<a href="tel:<?= get_field('phones', 'options')[0]['number']; ?>" class="tel">
+							<?= get_field('phones', 'options')[0]['number']; ?>
+						</a>
+						<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+				
 
-				<?php
-					// Viber links are different for mobile and desktop
-					function isMobileDevice(){
-						$aMobileUA = array(
-								'/iphone/i' => 'iPhone',
-								'/ipod/i' => 'iPod',
-								'/ipad/i' => 'iPad',
-								'/android/i' => 'Android',
-								'/blackberry/i' => 'BlackBerry',
-								'/webos/i' => 'Mobile'
-						);
+					<?php
+						// Viber links are different for mobile and desktop
+						function isMobileDevice(){
+							$aMobileUA = array(
+									'/iphone/i' => 'iPhone',
+									'/ipod/i' => 'iPod',
+									'/ipad/i' => 'iPad',
+									'/android/i' => 'Android',
+									'/blackberry/i' => 'BlackBerry',
+									'/webos/i' => 'Mobile'
+							);
 
-						//Return true if Mobile User Agent is detected
-						foreach($aMobileUA as $sMobileKey => $sMobileOS){
-								if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
-										return true;
-								}
-						}
-						//Otherwise return false..
-						return false;
-					}
-				?>
-
-				<ul class="type">
-					<?php while(have_rows('phones', 'options')): the_row();
-						$messengers = get_sub_field('messengers');
-						$number = str_replace([' ', '-', '+'], '', get_sub_field('number')); // remove _, -, +
-
-						foreach ($messengers as $messenger) {
-							// Form call link dependong on messger
-							if ($messenger == 'telegram') {
-								$link = 'https://telegram.me/' . get_sub_field('telegram_username');
-							} else if ($messenger == 'viber') {
-								$link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
-							} else if ($messenger == 'whatsapp') {
-								$link = 'https://api.whatsapp.com/send?phone=' . $number;
+							//Return true if Mobile User Agent is detected
+							foreach($aMobileUA as $sMobileKey => $sMobileOS){
+									if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
+											return true;
+									}
 							}
-						?>
-						<li class="<?= $messenger ?>">
-							<a href="<?= $link; ?>">
-								<img
-									src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
-									class="img-svg native"
-								/>
-							</a>
-						</li>
-					<?php }; endwhile; ?>
-				</ul>
+							//Otherwise return false..
+							return false;
+						}
+					?>
 
-				<ul class="additional">
-					<?php while(have_rows('phones', 'options')): the_row(); ?>
-						<li>
-							<ul class="type">
-								<?php $messengers = get_sub_field('messengers');
-										foreach( $messengers as $messenger ): ?>
-										<?php if ($messenger): ?>
-											<li>
-												<img
-													src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
-													class="img-svg native"
-												/>
-											</li>
-										<?php endif; ?>
-								<?php endforeach; ?>
-							</ul>
-							<a href="tel:<?= get_sub_field('number'); ?>" class="phone">
-								<?= get_sub_field('number'); ?>
-							</a>
-							<span class="text">
-								<?= get_sub_field('workshop'); ?>
-							</span>
-						</li>
-					<?php endwhile; ?>
-				</ul>
+
+					<div class="additional">
+						<ul class="">
+							<?php while(have_rows('phones', 'options')): the_row(); ?>
+								<li>
+									<a href="tel:<?= get_sub_field('number'); ?>" class="phone">
+										<?= get_sub_field('number'); ?>
+									</a>
+									<span class="text">
+										<?= get_sub_field('workshop'); ?>
+									</span>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+
+						<ul class="type">
+							<?php while(have_rows('phones', 'options')): the_row();
+								$messengers = get_sub_field('messengers');
+								$number = str_replace([' ', '-', '+'], '', get_sub_field('number')); // remove _, -, +
+
+								foreach ($messengers as $messenger) {
+									// Form call link dependong on messger
+									if ($messenger == 'telegram') {
+										$link = 'https://telegram.me/' . get_sub_field('telegram_username');
+									} else if ($messenger == 'viber') {
+										$link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
+									} else if ($messenger == 'whatsapp') {
+										$link = 'https://api.whatsapp.com/send?phone=' . $number;
+									}
+								?>
+								<li class="<?= $messenger ?>">
+									<a href="<?= $link; ?>">
+										<img
+											src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
+											class="img-svg native"
+										/>
+									</a>
+								</li>
+							<?php }; endwhile; ?>
+						</ul>
+
+					</div>
+
+				</div>
+
+			  <div class="arm_head_callback">Обратный звонок</div>
+
 
 			</div>
-
 			<ul class="social">
 				<?php while(have_rows('social', 'options')): the_row(); ?>
 					<li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">

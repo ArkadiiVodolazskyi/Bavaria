@@ -79,7 +79,7 @@
             </h3>
 
             <div class="figure_11 appear" style="z-index: 0; left: 0%;">
-              <img src="<?= B_IMG_DIR ?>/figure_111.png" />
+              <img src="<?= B_IMG_DIR ?>/figure_1111.png" />
             </div>
 
             <div class="cards">
@@ -336,7 +336,7 @@
               d="M67.708 0h69.062L69.062 270.833H0z"
             />
           </svg>
-          <div class="figure_3 appear" style="left: 60%">
+          <div class="figure_3 appear">
             <div class="figure_31"></div>
             <div class="figure_32"></div>
             <div class="figure_33"></div>
