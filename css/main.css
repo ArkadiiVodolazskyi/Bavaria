@@ -3305,9 +3305,9 @@ section.galleryexamps {
     flex-wrap: wrap;
     margin: 3rem -0.75rem 0; }
     section.galleryexamps .wrapper .gallery img {
-      width: calc(100% / 4 - 1.5rem);
+      width: 360px;
       margin: 0.75rem;
-      height: 100%;
+      height: auto;
       outline: none;
     }
 

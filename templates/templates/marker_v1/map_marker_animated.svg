@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="70" viewBox="0 0 120 70">
+  <defs>
+    <clipPath id="clip-path">
+      <path d="M20,0A20,20,0,0,1,40,20c0,11.046-20,40-20,40S0,31.046,0,20A20,20,0,0,1,20,0Z" transform="translate(1320 439)" />
+    </clipPath>
+  </defs>
+  <g transform="translate(-1075 -556)">
+
+    <g transform="translate(1103 610)" fill="none">
+      <ellipse cx="32" cy="6" stroke="#d63d37" stroke-width="1">
+        <animate
+          id="rx_1"
+          attributeName="rx"
+          from="0"
+          to="60"
+          dur="6s"
+          repeatCount="indefinite" />
+        <animate
+          attributeName="ry"
+          from="0"
+          to="9.5"
+          dur="6s"
+          repeatCount="indefinite" />
+        <animate
+          attributeName="opacity"
+          from="0.4"
+          to="0.1"
+          dur="6s"
+          repeatCount="indefinite" />
+      </ellipse>
+    </g>
+
+    <g transform="translate(1103 610)" fill="none">
+      <ellipse cx="32" cy="6" stroke="#d63d37" stroke-width="1">
+        <animate
+          attributeName="rx"
+          from="0"
+          to="60"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 2s" />
+        <animate
+          attributeName="ry"
+          from="0"
+          to="9.5"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 2s" />
+        <animate
+          attributeName="opacity"
+          from="0.4"
+          to="0.1"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 2s" />
+      </ellipse>
+    </g>
+
+    <g transform="translate(1103 610)" fill="none">
+      <ellipse cx="32" cy="6" stroke="#d63d37" stroke-width="1">
+        <animate
+          attributeName="rx"
+          from="0"
+          to="60"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 4s" />
+        <animate
+          attributeName="ry"
+          from="0"
+          to="9.5"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 4s" />
+        <animate
+          attributeName="opacity"
+          from="0.4"
+          to="0.1"
+          dur="6s"
+          repeatCount="indefinite"
+          begin="rx_1.begin + 4s" />
+      </ellipse>
+    </g>
+
+    <g transform="translate(-205 117)" clip-path="url(#clip-path)">
+      <g transform="translate(71.218 59.218)">
+        <path d="M14.891,0H30.08L15.189,59.564H0Z" transform="translate(1237 380)" fill="#8dc1fb" fill-rule="evenodd"/>
+        <path d="M553.891,0H569.08L554.189,59.564H539Z" transform="translate(727.484 380)" fill="#d63d37" fill-rule="evenodd"/>
+        <path d="M284.891,0h14.891L284.891,59.564H270Z" transform="translate(981.891 380)" fill="#2d568a" fill-rule="evenodd"/>
+      </g>
+      <circle cx="9" cy="9" r="9" transform="translate(1331 450)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

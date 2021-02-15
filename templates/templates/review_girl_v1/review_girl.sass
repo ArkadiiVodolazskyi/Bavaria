@@ -1,0 +1,83 @@
+@import _review_girl_keyframes
+
+
+#review_girl
+	#thumb_left
+		opacity: 0
+		transform: translate(0, -300px)
+		animation: thumb_left 8s linear infinite
+	#thumb_right
+		opacity: 0
+		transform: translate(0, -300px)
+		animation: thumb_right 8s 2s linear infinite
+	#star_1
+		opacity: 0.9
+		transform: rotate(2deg) translate(1%, 1%)
+		transform-origin: 30% 30%
+		animation: star_1 4s linear infinite alternate-reverse
+	#star_2
+		opacity: 0.9
+		transform: rotate(-2deg) translate(-1%, -1%)
+		transform-origin: 90% 90%
+		animation: star_2 3s linear infinite alternate-reverse
+	#star_3
+		opacity: 0.7
+		transform: rotate(2deg) translate(-1%, -1%)
+		animation: star_3 5s linear infinite alternate-reverse
+	#note_logo
+		animation: note_logo 2.5s linear infinite alternate-reverse
+	#card_1
+		opacity: 0
+		transform: translate(0, 0)
+		animation: fadeIn 1s 0.2s linear forwards, card_1 10s linear infinite alternate-reverse
+	#card_2
+		opacity: 0
+		transform: translate(0, -2%)
+		animation: fadeIn 1s 0.5s linear forwards, card_2 10s linear infinite alternate-reverse
+	#card_3
+		opacity: 0
+		transform: translate(1%, -1%)
+		animation: fadeIn 1s 1s linear forwards, card_3 10s linear infinite alternate-reverse
+	.card_star_fill
+		opacity: 0
+		fill: #fff
+		animation: card_star_fill 1s linear forwards
+		&:nth-of-type(1)
+			animation-delay: 0.5s
+		&:nth-of-type(2)
+			animation-delay: 0.7s
+		&:nth-of-type(3)
+			animation-delay: 0.9s
+		&:nth-of-type(4)
+			animation-delay: 1.1s
+		&:nth-of-type(5)
+			animation-delay: 1.3s
+	.card_guy_fadeIn
+		opacity: 0
+		animation: fadeIn 1s linear forwards
+	#branch_1
+		filter: brightness(100%)
+		transform: rotate(0deg)
+		transform-origin: 10% 98%
+		animation: branch_1 5s linear infinite alternate-reverse
+	#branch_2
+		filter: brightness(100%)
+		transform: rotate(0deg)
+		transform-origin: 12% 98%
+		animation: branch_2 3.5s linear infinite alternate-reverse
+	#branch_3
+		filter: brightness(100%)
+		transform: rotate(0deg)
+		transform-origin: 15% 95%
+		animation: branch_3 4s linear infinite alternate-reverse
+	#branch_4
+		filter: brightness(100%)
+		transform: rotate(0deg)
+		transform-origin: 17% 95%
+		animation: branch_4 3s linear infinite alternate-reverse
+	.book
+		opacity: 0
+		animation: fadeIn 1.5s linear forwards
+	#left_foot
+		transform-origin: 70% 70%
+		animation: left_foot 3s linear infinite alternate-reverse
