@@ -390,9 +390,9 @@
       <?php if ( get_sub_field('galleryexamps') ): ?>
         <?php while ( have_rows('galleryexamps') ): the_row(); ?>
           <section class="galleryexamps">
-            <div class="wrapper mobwrapper">
+            <div class="wrapper">
               <h2 class="textAppear">Примеры работ</h2>
-              <div class="gallery lightbox mobslider">
+              <div class="gallery lightbox">
                 <?php foreach( get_sub_field('imgs') as $key=>$image ): ?>
                   <img alt="" src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.2?>s">
                 <?php endforeach; ?>
@@ -621,47 +621,52 @@
           });
         }
 
-        $(".exampscards").slick({
-          arrows: false,
-          draggable: false,
-          focusOnSelect: false,
-          infinite: false,
-          autoplay: false,
-          dots: false,
-          variableWidth: true,
-          responsive: [
-            {
-              breakpoint: 1600,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                dots: true,
-                draggable: true,
-                touchThreshold: 300,
-              }
-            },
-            {
-              breakpoint: 960,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                dots: true,
-                draggable: true,
-                touchThreshold: 300,
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                draggable: true,
-                touchThreshold: 300,
-              }
-            },
-          ]
-        });
+        if (window.innerWidth < 1600) {
+          $(".exampscards, .gallery").slick({
+            arrows: false,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            variableWidth: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            dots: true,
+            draggable: true,
+            touchThreshold: 300,
+            responsive: [
+              {
+                breakpoint: 1280,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+              {
+                breakpoint: 960,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+            ]
+          });
+        }
 
         $("section.reviews .quote_cards").slick({
           arrows: true,
@@ -715,6 +720,53 @@
         });
 
         window.addEventListener("resize", () => {
+
+          if (window.innerWidth < 1600) {
+            $(".exampscards, .gallery").slick({
+              arrows: false,
+              focusOnSelect: false,
+              infinite: false,
+              autoplay: false,
+              variableWidth: true,
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              dots: true,
+              draggable: true,
+              touchThreshold: 300,
+              responsive: [
+                {
+                  breakpoint: 1280,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: true,
+                    draggable: true,
+                    touchThreshold: 300,
+                  }
+                },
+                {
+                  breakpoint: 960,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: true,
+                    draggable: true,
+                    touchThreshold: 300,
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    draggable: true,
+                    touchThreshold: 300,
+                  }
+                },
+              ]
+            });
+          }
 
           if (window.innerWidth < 421) {
             $("section.workshop .brands .facts_cards").slick({

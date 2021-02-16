@@ -76,13 +76,8 @@ window.addEventListener("load", () => {
     spinner.classList.add("loaded");
   }, 500);
 
-  overlay.addEventListener("click", () => {
-    const activeOverlays = document.querySelectorAll(".activeOverlay");
-    activeOverlays.forEach((activeOverlay) => {
-      activeOverlay.classList.remove("activeOverlay");
-    });
-    body.classList.remove("discroll");
-  });
+  closeOverlays(overlay);
+
   closeOverlay.addEventListener("click", () => {
     closeOverlay.classList.remove("red");
     const activeOverlays = document.querySelectorAll(".activeOverlay");
@@ -102,13 +97,24 @@ window.addEventListener("load", () => {
     }
   });
 
+
   function openOverlay(element, withClose = true) {
     overlay.classList.add("activeOverlay");
-    body.classList.add("discroll")
+
+    iWidth = window.innerWidth;
+    body.classList.add("discroll");
+    body.style.width = `${window.innerWidth}px`;
+
     element.classList.add("activeOverlay");
     if (withClose) {
       closeOverlay.classList.add("activeOverlay");
     }
+
+    // Disable scroll
+    // const YOffset = window.pageYOffset;
+    // window.addEventListener("scroll", (e) => {
+    //   window.scrollTo(0, YOffset);
+    // });
   }
 
   function closeOverlays(element) {
@@ -118,6 +124,8 @@ window.addEventListener("load", () => {
         activeOverlay.classList.remove("activeOverlay");
       });
       body.classList.remove("discroll");
+      body.style.width = `100%`;
+      console.log(body.style.width);
     });
   }
 

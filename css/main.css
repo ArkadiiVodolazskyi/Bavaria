@@ -126,15 +126,13 @@ body {
   position: relative;
   z-index: 1;
   background-color: #181f29;
-  transition: all 0.15s linear;
-  overflow: hidden; }
+  transition: all 0.15s linear; }
   body > section, body header, body footer {
     opacity: 0; }
   body.loaded > section, body.loaded header, body.loaded footer {
     opacity: 1; }
   body.discroll {
-    height: 1000px;
-    overflow: hidden; }
+    /* position: fixed; */ }
 
 section {
   position: relative;
@@ -632,7 +630,7 @@ section.reviews .slick-arrow, section.popular .slick-arrow {
   .vacancy:not(:first-child) {
     margin-top: 1.5rem; }
   .vacancy.active {
-    max-height: max-content;
+    max-height: 3000px;
     background-color: #fff; }
     .vacancy.active > * {
       opacity: 1;
@@ -1224,17 +1222,17 @@ section.reviews .slick-arrow, section.popular .slick-arrow {
       background-color: #8dc1fb;
       left: 25%;
       top: 50%;
-      animation: line_1 3.5s ease-in forwards; }
+      animation: line_1 3.5s ease-in infinite; }
     #spinner .line_2 {
       background-color: #2d568a;
       left: 50%;
       top: 50%;
-      animation: line_2 3.5s ease-in forwards; }
+      animation: line_2 3.5s ease-in infinite; }
     #spinner .line_3 {
       background-color: #d63d37;
       left: 75%;
       top: 50%;
-      animation: line_3 3.5s ease-in forwards; }
+      animation: line_3 3.5s ease-in infinite; }
     #spinner .text_wrapper {
       position: absolute;
       z-index: 0;
@@ -1250,7 +1248,7 @@ section.reviews .slick-arrow, section.popular .slick-arrow {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      animation: logo_text 3.5s ease-in forwards; }
+      animation: logo_text 3.5s ease-in infinite; }
       #spinner .logo_text path {
         fill: #f1f2f3; }
 
@@ -1477,7 +1475,7 @@ section.reviews .slick-arrow, section.popular .slick-arrow {
     opacity: 0.6;
     transform: translateY(0); } }
 header {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   z-index: 5;
   top: 0; }
@@ -2842,11 +2840,12 @@ section.portfolio_main {
       height: 10px;
       position: absolute;
       z-index: 20;
-      right: 40px;
-      top: 40px;
+      right: 36px;
+      top: 26px;
       transform: translate(0, -50%);
       cursor: pointer;
-      outline: none; }
+      outline: none;
+      padding: 10px; }
       section.portfolio_main nav:not(.pagination) .nav_arrow:hover {
         fill: #8dc1fb; }
       section.portfolio_main nav:not(.pagination) .nav_arrow svg {
@@ -3303,7 +3302,8 @@ section.galleryexamps {
   section.galleryexamps .wrapper .gallery {
     display: flex;
     flex-wrap: wrap;
-    margin: 3rem -0.75rem 0; }
+    margin: 3rem -0.75rem 0;
+    overflow: hidden; }
     section.galleryexamps .wrapper .gallery img {
       width: 360px;
       margin: 0.75rem;
@@ -3926,12 +3926,10 @@ section.request .right_form .gform_wrapper {
   section.workexamps .wrapper .card {
     width: 280px; }
 
-  section.galleryexamps .wrapper .gallery {
-    justify-content: center; }
-    section.galleryexamps .wrapper .gallery img {
-      width: 360px;
-
-    }
+  section.galleryexamps .wrapper .gallery img {
+    width: 360px;
+    vertical-align: middle;
+  }
 
   footer .wrapper .copyright .logowrap {
     flex-direction: column;
@@ -4233,7 +4231,7 @@ section.banner{
     }
 
 .figure_1 {
-  right: 0;
+  right: 10%;
 }
 .figure_1 .figure_41{
   width: 86px;
@@ -4388,9 +4386,7 @@ section.workplan .up_photos > img{
   max-width:100%!important;
   max-height: unset!important;
 }
-section.galleryexamps .wrapper .gallery img {
-  width: 100%;
-}
+
 
 section.faq .faq_list{
   width: 100%;
@@ -4532,6 +4528,10 @@ section.faq .faq_list{
               padding-left: 0; }
         section.workshop .wrapper main .checkup {
           margin-top: 36px; }
+
+  section.galleryexamps .wrapper .gallery img {
+    width: 280px;
+  }
 
   #expandedMenu {
     flex-direction: column;
@@ -5243,7 +5243,7 @@ section.popular .master_arrows {
 
   section.galleryexamps {
     overflow: hidden;
-    padding: 72px 0 0;
+    padding: 72px 0;
   }
 
     section.galleryexamps .wrapper h2{
@@ -5345,7 +5345,7 @@ section.popular .master_arrows {
         padding: 0; }
         section.faq .wrapper .vacancy.active {
           width: 100%;
-          max-height: max-content;
+          max-height: 3000px;
           background-color: #fff;
           padding: 0 16px 24px; }
           section.faq .wrapper .vacancy.active h3 {

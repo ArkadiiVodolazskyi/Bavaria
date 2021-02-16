@@ -97,6 +97,8 @@
     </section>
 
     <script>
+      const marker_image = `<?= get_field('mark'); ?>`;
+
       // Initialize GMaps
       function initMap() {
         const coordinates = { lat: <?= get_field('coords')['lat']; ?>, lng: <?= get_field('coords')['lng']; ?> };
@@ -109,7 +111,8 @@
         const marker = new google.maps.Marker({
           position: coordinates,
           map: map,
-          icon: '<?= get_field('mark'); ?>',
+          optimized: false,
+          icon: marker_image,
         });
       }
     </script>
