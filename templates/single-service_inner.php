@@ -239,15 +239,15 @@
                 </div>
               <?php endwhile; ?>
             </div>
-
             <div class="master_arrows">
               <button class="master_prev">
-                <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
               <button class="master_next">
-                <img alt="" src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
+                <img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
               </button>
             </div>
+
           </div>
         </section>
       <?php endwhile; ?>
@@ -607,67 +607,6 @@
 
       $(document).ready(function() {
 
-        if (window.innerWidth < 421) {
-          $("section.workshop .brands .facts_cards").slick({
-            arrows: false,
-            draggable: true,
-            focusOnSelect: false,
-            infinite: false,
-            autoplay: false,
-            dots: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth: true,
-          });
-        }
-
-        if (window.innerWidth < 1600) {
-          $(".exampscards, .gallery").slick({
-            arrows: false,
-            focusOnSelect: false,
-            infinite: false,
-            autoplay: false,
-            variableWidth: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            dots: true,
-            draggable: true,
-            touchThreshold: 300,
-            responsive: [
-              {
-                breakpoint: 1280,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                  dots: true,
-                  draggable: true,
-                  touchThreshold: 300,
-                }
-              },
-              {
-                breakpoint: 960,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                  dots: true,
-                  draggable: true,
-                  touchThreshold: 300,
-                }
-              },
-              {
-                breakpoint: 600,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  dots: true,
-                  draggable: true,
-                  touchThreshold: 300,
-                }
-              },
-            ]
-          });
-        }
-
         $("section.reviews .quote_cards").slick({
           arrows: true,
           draggable: false,
@@ -719,6 +658,165 @@
           ]
         });
 
+        if (window.innerWidth < 1600) {
+          $(".exampscards, .gallery").slick({
+            arrows: false,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            variableWidth: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            dots: true,
+            draggable: true,
+            touchThreshold: 300,
+            responsive: [
+              {
+                breakpoint: 1280,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+              {
+                breakpoint: 960,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: true,
+                  draggable: true,
+                  touchThreshold: 300,
+                }
+              },
+            ]
+          });
+        }
+
+        if (window.innerWidth > 1000) {
+          $("section.popular .cards").slick({
+            arrows: true,
+            draggable: false,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: false,
+            variableWidth: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            vertical: false,
+            verticalSwiping: false,
+            prevArrow: `
+              <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+            nextArrow: `
+              <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
+                  <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
+                </svg>
+              </button>
+            `,
+          });
+        }
+
+        // services-inner - section popular - vertical slider
+        if (window.innerWidth <= 1000) {
+          const popularTape = document.querySelector("section.popular .wrapper .cards");
+          const popularCards = [...popularTape.querySelectorAll(".card")];
+
+          // Initial
+          const shift = popularCards[0].offsetHeight;
+          let currentShift = 0;
+          let firstSlide = 0;
+          let lastSlide = 3;
+          function reSlide(firstSlide, lastSlide) {
+            for (let i = 0; i < popularCards.length; i++) {
+              popularCards[i].style.opacity = "0";
+            }
+            for (let i = firstSlide; i <= lastSlide; i++) {
+              popularCards[i].style.opacity = "1";
+            }
+          }
+          reSlide(firstSlide, lastSlide);
+
+          const popularPrev = document.querySelector("section.popular .wrapper .master_arrows .master_prev");
+          const popularNext = document.querySelector("section.popular .wrapper .master_arrows .master_next");
+          if (lastSlide + 1 > popularCards.length - 1) {
+            popularNext.style.opacity = "0.5";
+          } else {
+            popularNext.style.opacity = "1";
+          }
+
+          popularPrev.addEventListener("click", () => {
+            if (!(firstSlide - 1 < 0)) {
+              firstSlide--;
+              lastSlide--;
+              currentShift += shift;
+              popularTape.style.transform = `translateY(${currentShift}px)`;
+              reSlide(firstSlide, lastSlide);
+            }
+            if (firstSlide - 1 < 0) {
+              popularPrev.style.opacity = "0.5";
+            } else {
+              popularPrev.style.opacity = "1";
+            }
+            if (lastSlide + 1 > popularCards.length - 1) {
+              popularNext.style.opacity = "0.5";
+            } else {
+              popularNext.style.opacity = "1";
+            }
+          });
+          popularNext.addEventListener("click", () => {
+            if (!(lastSlide + 1 > popularCards.length - 1)) {
+              firstSlide++;
+              lastSlide++;
+              currentShift -= shift;
+              popularTape.style.transform = `translateY(${currentShift}px)`;
+              reSlide(firstSlide, lastSlide);
+            }
+            if (firstSlide - 1 < 0) {
+              popularPrev.style.opacity = "0.5";
+            } else {
+              popularPrev.style.opacity = "1";
+            }
+            if (lastSlide + 1 > popularCards.length - 1) {
+              popularNext.style.opacity = "0.5";
+            } else {
+              popularNext.style.opacity = "1";
+            }
+          });
+        }
+
+        if (window.innerWidth < 421) {
+          $("section.workshop .brands .facts_cards").slick({
+            arrows: false,
+            draggable: true,
+            focusOnSelect: false,
+            infinite: false,
+            autoplay: false,
+            dots: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+          });
+        }
+
         window.addEventListener("resize", () => {
 
           if (window.innerWidth < 1600) {
@@ -768,6 +866,74 @@
             });
           }
 
+          // services-inner - section popular - vertical slider
+          if (window.innerWidth <= 1000) {
+            const popularTape = document.querySelector("section.popular .wrapper .cards");
+            const popularCards = [...popularTape.querySelectorAll(".card")];
+
+            // Initial
+            const shift = popularCards[0].offsetHeight;
+            let currentShift = 0;
+            let firstSlide = 0;
+            let lastSlide = 3;
+            function reSlide(firstSlide, lastSlide) {
+              for (let i = 0; i < popularCards.length; i++) {
+                popularCards[i].style.opacity = "0";
+              }
+              for (let i = firstSlide; i <= lastSlide; i++) {
+                popularCards[i].style.opacity = "1";
+              }
+            }
+            reSlide(firstSlide, lastSlide);
+
+            const popularPrev = document.querySelector("section.popular .wrapper .master_arrows .master_prev");
+            const popularNext = document.querySelector("section.popular .wrapper .master_arrows .master_next");
+            if (lastSlide + 1 > popularCards.length - 1) {
+              popularNext.style.opacity = "0.5";
+            } else {
+              popularNext.style.opacity = "1";
+            }
+
+            popularPrev.addEventListener("click", () => {
+              if (!(firstSlide - 1 < 0)) {
+                firstSlide--;
+                lastSlide--;
+                currentShift += shift;
+                popularTape.style.transform = `translateY(${currentShift}px)`;
+                reSlide(firstSlide, lastSlide);
+              }
+              if (firstSlide - 1 < 0) {
+                popularPrev.style.opacity = "0.5";
+              } else {
+                popularPrev.style.opacity = "1";
+              }
+              if (lastSlide + 1 > popularCards.length - 1) {
+                popularNext.style.opacity = "0.5";
+              } else {
+                popularNext.style.opacity = "1";
+              }
+            });
+            popularNext.addEventListener("click", () => {
+              if (!(lastSlide + 1 > popularCards.length - 1)) {
+                firstSlide++;
+                lastSlide++;
+                currentShift -= shift;
+                popularTape.style.transform = `translateY(${currentShift}px)`;
+                reSlide(firstSlide, lastSlide);
+              }
+              if (firstSlide - 1 < 0) {
+                popularPrev.style.opacity = "0.5";
+              } else {
+                popularPrev.style.opacity = "1";
+              }
+              if (lastSlide + 1 > popularCards.length - 1) {
+                popularNext.style.opacity = "0.5";
+              } else {
+                popularNext.style.opacity = "1";
+              }
+            });
+          }
+
           if (window.innerWidth < 421) {
             $("section.workshop .brands .facts_cards").slick({
               arrows: false,
@@ -782,34 +948,6 @@
             });
           }
 
-        });
-
-        $("section.popular .cards").slick({
-          arrows: true,
-          draggable: false,
-          focusOnSelect: false,
-          infinite: false,
-          autoplay: false,
-          dots: false,
-          variableWidth: true,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          vertical: false,
-          verticalSwiping: false,
-          prevArrow: `
-            <button type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
-                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
-              </svg>
-            </button>
-          `,
-          nextArrow: `
-            <button type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996">
-                <path d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"/>
-              </svg>
-            </button>
-          `,
         });
 
       });

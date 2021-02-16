@@ -20,7 +20,7 @@
 
     <!-- Fullscreen video -->
     <div id="video">
-      <video autoplay controls>
+      <video loop controls>
         <source src="<?= get_field('banner')['video']['file']; ?>" type="video/mp4">
       </video>
     </div>
@@ -39,7 +39,7 @@
             <div class="video">
               <div class="figure">
                 <span class="rect"></span>
-                <span class="triangle"></span>
+                <span class="triangle openVideo"></span>
               </div>
               <button id="openVideo" class="video_link">
                 <?= get_field('banner')['video']['text']; ?>

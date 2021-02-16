@@ -68,6 +68,8 @@ window.addEventListener("load", () => {
   const closeOverlay = document.getElementById("closeOverlay");
   const expandedMenu = document.querySelector("#expandedMenu");
   const header = document.querySelector("header");
+  let YOffset = null;
+  const videoPlayer = document.querySelector("#video video");
 
   // Hide page content while loading
   const spinner = document.getElementById("spinner");
@@ -77,14 +79,10 @@ window.addEventListener("load", () => {
   }, 500);
 
   closeOverlays(overlay);
+  closeOverlays(closeOverlay);
 
   closeOverlay.addEventListener("click", () => {
     closeOverlay.classList.remove("red");
-    const activeOverlays = document.querySelectorAll(".activeOverlay");
-    body.classList.remove("discroll")
-    activeOverlays.forEach((activeOverlay) => {
-      activeOverlay.classList.remove("activeOverlay");
-    });
 
     // Close hamb menu tabs
     const expandedMenuTabs = document.querySelectorAll("#expandedMenu > .expanded");
@@ -99,22 +97,19 @@ window.addEventListener("load", () => {
 
 
   function openOverlay(element, withClose = true) {
-    overlay.classList.add("activeOverlay");
+    // Disable scroll
+    YOffset = window.pageYOffset;
 
+    overlay.classList.add("activeOverlay");
     iWidth = window.innerWidth;
     body.classList.add("discroll");
+    body.style.top = `${-YOffset}px`;
     body.style.width = `${window.innerWidth}px`;
 
     element.classList.add("activeOverlay");
     if (withClose) {
       closeOverlay.classList.add("activeOverlay");
     }
-
-    // Disable scroll
-    // const YOffset = window.pageYOffset;
-    // window.addEventListener("scroll", (e) => {
-    //   window.scrollTo(0, YOffset);
-    // });
   }
 
   function closeOverlays(element) {
@@ -123,9 +118,15 @@ window.addEventListener("load", () => {
       activeOverlays.forEach((activeOverlay) => {
         activeOverlay.classList.remove("activeOverlay");
       });
+      closeOverlay.classList.remove("playVideo");
+      if (videoPlayer) {
+        videoPlayer.pause();
+      }
+
       body.classList.remove("discroll");
+      body.style.top = "unset";
+      window.scrollTo(0, YOffset);
       body.style.width = `100%`;
-      console.log(body.style.width);
     });
   }
 
@@ -139,14 +140,6 @@ window.addEventListener("load", () => {
     } else if (window.pageYOffset === 0) {
       header.classList.remove("roll");
     }
-  });
-
-  // Close all on overlay click
-  overlay.addEventListener("click", () => {
-    const activeOverlays = document.querySelectorAll(".activeOverlay");
-    activeOverlays.forEach((activeOverlay) => {
-      activeOverlay.classList.remove("activeOverlay");
-    });
   });
 
   // Use .img-svg on image to remove it with svg version
@@ -430,59 +423,6 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // page-service_post - services slider
-  (function () {
-    const serviceTape = document.querySelector(".popular .cards");
-
-    if (serviceTape) {
-      const serviceCards = [...serviceTape.querySelectorAll(".card ")];
-      const servicePrevBtn = document.querySelector(".popular .master_prev");
-      const serviceNextBtn = document.querySelector(".popular .master_next");
-
-      // Default
-      let currentTransf = 0;
-      const transDif = serviceCards[0].offsetWidth;
-      let firstActiveIndex = 0;
-      let lastActiveIndex = 3;
-      for (let i = firstActiveIndex; i <= lastActiveIndex; i++) {
-        serviceCards[i].classList.add("active");
-      }
-
-      servicePrevBtn.addEventListener("click", () => {
-        firstActiveIndex--;
-        if (firstActiveIndex < 0) {
-          firstActiveIndex = 0;
-        } else {
-          serviceCards[firstActiveIndex].classList.add("active");
-          currentTransf = currentTransf + transDif;
-          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}, -50%)`;
-          serviceCards[lastActiveIndex].classList.remove("active");
-          lastActiveIndex--;
-        }
-      });
-      serviceNextBtn.addEventListener("click", () => {
-        lastActiveIndex++;
-        if (lastActiveIndex > serviceCards.length - 1) {
-          lastActiveIndex = serviceCards.length - 1;
-        } else {
-          serviceCards[lastActiveIndex].classList.add("active");
-          currentTransf = currentTransf - transDif;
-          serviceTape.style.transform = `matrix(1, 0, 0, 1, ${currentTransf}), -50%)`;
-          serviceCards[firstActiveIndex].classList.remove("active");
-          firstActiveIndex++;
-        }
-      });
-
-      // Show all cards on 1000- screens
-      if (window.innerWidth < 1000) {
-        serviceTape.style.transform = `matrix(1, 0, 0, 1, 0, 0)`;
-        serviceCards.forEach(card => {
-          card.classList.add("active");
-        });
-      }
-    }
-  })();
-
   // connect_form - open form, open overlay
   (function () {
     const connect_wrapper = document.getElementById("connect_wrapper");
@@ -502,7 +442,7 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // page-news_post - gallery interaction
+  // single-blog - gallery interaction
   (function () {
     const galleries = [...document.querySelectorAll(".gallery")];
 
@@ -543,10 +483,14 @@ window.addEventListener("load", () => {
   (function () {
     const video = document.getElementById("video");
     const openVideo = document.getElementById("openVideo");
+    const triangle = document.querySelector(".openVideo");
 
     if (video && openVideo) {
       openVideo.addEventListener("click", () => {
         openOverlay(video);
+        videoPlayer.load();
+        videoPlayer.autoplay = true;
+        closeOverlay.classList.add("playVideo");
       });
 
       // Accent on close btn to find
@@ -555,6 +499,15 @@ window.addEventListener("load", () => {
         setTimeout(() => {
           closeOverlay.classList.remove("accent");
         }, 500);
+      });
+    }
+
+    if (triangle) {
+      triangle.addEventListener("click", () => {
+        openOverlay(video);
+        videoPlayer.load();
+        videoPlayer.autoplay = true;
+        closeOverlay.classList.add("playVideo");
       });
     }
   })();
@@ -657,63 +610,6 @@ window.addEventListener("load", () => {
         });
       }
     }
-  })();
-
-  // ========= Media =========
-
-  // Expand footer menus
-  (function () {
-    const footerMenus = document.querySelectorAll(
-      "footer .clients, footer .services",
-    );
-
-    if (footerMenus.length) {
-      const expandArrows = document.querySelectorAll("footer .arrow");
-
-      for (let i = 0; i < expandArrows.length; i++) {
-        expandArrows[i].addEventListener("click", () => {
-          footerMenus.forEach(footerMenu => {
-            footerMenu.classList.remove("expanded");
-          });
-          footerMenus[i].classList.add("expanded");
-        });
-      }
-    }
-  })();
-
-  // expand expandedMenu menus
-  (function () {
-    const expandedLists = [
-      ...expandedMenu.querySelectorAll(
-        ".clients, .services, .phones, .contacts",
-      ),
-    ];
-    const expandMenuH5s = [...expandedMenu.querySelectorAll("h5")];
-
-    if (expandMenuH5s.length) {
-
-      for (let i = 0; i < expandMenuH5s.length; i++) {
-        expandMenuH5s[i].addEventListener("click", () => {
-          if (expandedLists[i].classList.contains("expanded")) {
-            expandedLists[i].classList.remove("expanded");
-            if (i == 2) {
-              expandedLists[3].classList.remove("expanded");
-            }
-          } else {
-            for (let j = 0; j < expandedLists.length; j++) {
-              expandedLists[j].classList.remove("expanded");
-            }
-            expandedLists[i].classList.add("expanded");
-            if (i == 2) {
-              expandedLists[3].classList.add("expanded");
-            }
-          }
-        });
-      }
-
-    }
-
-
   })();
 
   // Styling Gravity Forms
@@ -1028,8 +924,68 @@ window.addEventListener("load", () => {
     })();
 
   })();
-});
 
+  // ========= Media =========
+
+  // Expand footer menus
+  (function () {
+    const footerMenus = document.querySelectorAll(
+      "footer .clients, footer .services",
+    );
+
+    if (footerMenus.length) {
+      const expandArrows = document.querySelectorAll("footer .arrow");
+
+      for (let i = 0; i < expandArrows.length; i++) {
+        expandArrows[i].addEventListener("click", () => {
+          footerMenus.forEach(footerMenu => {
+            footerMenu.classList.remove("expanded");
+          });
+          footerMenus[i].classList.add("expanded");
+        });
+      }
+    }
+  })();
+
+  // expand expandedMenu menus
+  (function () {
+    const expandedLists = [
+      ...expandedMenu.querySelectorAll(
+        ".clients, .services, .phones, .contacts",
+      ),
+    ];
+    const expandMenuH5s = [...expandedMenu.querySelectorAll("h5")];
+
+    if (expandMenuH5s.length) {
+
+      for (let i = 0; i < expandMenuH5s.length; i++) {
+        expandMenuH5s[i].addEventListener("click", () => {
+          if (expandedLists[i].classList.contains("expanded")) {
+            expandedMenu.style.overflow = "hidden";
+            expandedLists[i].classList.remove("expanded");
+            if (i == 2) {
+              expandedLists[3].classList.remove("expanded");
+            }
+          } else {
+            for (let j = 0; j < expandedLists.length; j++) {
+              expandedLists[j].classList.remove("expanded");
+            }
+            expandedMenu.style.overflow = "hidden";
+            expandedLists[i].classList.add("expanded");
+            if (i == 2) {
+              expandedLists[3].classList.add("expanded");
+              expandedMenu.style.overflow = "scroll";
+            }
+          }
+        });
+      }
+
+    }
+
+
+  })();
+
+});
 
 
 $(document).ready(function(){

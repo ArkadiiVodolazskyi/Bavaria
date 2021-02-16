@@ -246,7 +246,6 @@
         }
 
         window.addEventListener("resize", () => {
-
           if (window.innerWidth < 421) {
             $(".facts_cards").slick({
               arrows: false,
@@ -260,8 +259,19 @@
               variableWidth: true,
             });
           }
-
         });
+
+        // $("section.info_about .master_img").slick({
+        //   arrows: true,
+        //   draggable: false,
+        //   focusOnSelect: false,
+        //   infinite: false,
+        //   autoplay: false,
+        //   dots: false,
+        //   slidesToShow: 1,
+        //   slidesToScroll: 1,
+        //   variableWidth: true,
+        // });
 
       });
 
