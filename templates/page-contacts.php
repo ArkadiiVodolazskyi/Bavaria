@@ -13,13 +13,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="profile" href="https://gmpg.org/xfn/11" />
 		<title><?php the_title(); ?></title>
+
+    <!-- Initialize 2GIS -->
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+
 		<?php wp_head(); ?>
   </head>
   <body>
 		<?php get_header(); ?>
 
     <section class="banner blog_banner map_banner">
-      <div class="banner_img map wow fadeIn"></div>
+      <div id="map" class="banner_img map wow fadeIn"></div>
 
       <div class="wrapper">
         <div class="contact_info">
@@ -38,16 +42,32 @@
 											<a href="tel:<?= get_sub_field('number'); ?>">
 												<?= get_sub_field('number'); ?>
 											</a>
-											<div class="phone_type">
-												<?php $messengers = get_sub_field('messengers');
-													foreach( $messengers as $messenger ): ?>
-													<?php if ($messenger): ?>
-														<img
-															src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
-															class="img-svg native" />
-													<?php endif; ?>
-												<?php endforeach; ?>
-											</div>
+
+											<ul class="phone_type type">
+                        <?php $messengers = get_sub_field('messengers');
+                              $number = str_replace([' ', '-', '+'], '', get_sub_field('number')); // remove _, -, +
+
+                          foreach ($messengers as $messenger) {
+                            // Form call link dependong on messger
+                            if ($messenger == 'telegram') {
+                              $link = 'https://telegram.me/' . get_sub_field('telegram_username');
+                            } else if ($messenger == 'viber') {
+                              $link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
+                            } else if ($messenger == 'whatsapp') {
+                              $link = 'https://api.whatsapp.com/send?phone=' . $number;
+                            }
+                          ?>
+                          <li class="<?= $messenger ?>">
+                            <a href="<?= $link; ?>">
+                              <img
+                                src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
+                                class="img-svg native"
+                              />
+                            </a>
+                          </li>
+                        <?php }; ?>
+                      </ul>
+
 										</div>
 										<span>
 											<?= get_sub_field('workshop'); ?>
@@ -99,25 +119,23 @@
     <script>
       const marker_image = `<?= get_field('mark'); ?>`;
 
-      // Initialize GMaps
-      function initMap() {
-        const coordinates = { lat: <?= get_field('coords')['lat']; ?>, lng: <?= get_field('coords')['lng']; ?> };
-        const map = new google.maps.Map(document.querySelector(".map"), {
-          center: coordinates,
-          zoom: 17,
-          disableDefaultUI: true,
-          scrollwheel: true,
-        });
-        const marker = new google.maps.Marker({
-          position: coordinates,
-          map: map,
-          optimized: false,
-          icon: marker_image,
-        });
-      }
+      // Initialize 2GIS
+      var map;
+      DG.then(function () {
+          map = DG.map('map', {
+            center: [
+              <?= get_field('coords')['lat']; ?>,
+              <?= get_field('coords')['lng']; ?>
+            ],
+            zoom: 17
+          });
+          DG.marker([
+            <?= get_field('coords')['lat']; ?>,
+            <?= get_field('coords')['lng']; ?>
+          ]).addTo(map);
+      });
     </script>
 
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=<?= get_field('gmaps_api_key', 'options'); ?>&callback=initMap"></script>
 
     <?php get_footer(); ?>
     <?php wp_footer(); ?>

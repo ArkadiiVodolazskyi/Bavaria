@@ -135,239 +135,53 @@ echo '</pre>';
 
 
 
-	opacity: 0
-	visibility: hidden
-	position: absolute
-	&.activeWide
-		position: relative
-		opacity: 1
-		visibility: visible
+<?php
+	// Viber links are different for mobile and desktop
+	function isMobileDevice(){
+		$aMobileUA = array(
+				'/iphone/i' => 'iPhone',
+				'/ipod/i' => 'iPod',
+				'/ipad/i' => 'iPad',
+				'/android/i' => 'Android',
+				'/blackberry/i' => 'BlackBerry',
+				'/webos/i' => 'Mobile'
+		);
+
+		//Return true if Mobile User Agent is detected
+		foreach($aMobileUA as $sMobileKey => $sMobileOS){
+				if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
+						return true;
+				}
+		}
+		//Otherwise return false..
+		return false;
+	}
+?>
 
 
 
-			// .logo_animate
-			// 	width: 150px
-			// 	height: 150px
-			// 	top: -70px
-			// 	svg
-			// 		margin: 0px -20px
-			// 	.logo_text
-			// 		min-width: auto
-			// 		left: 65%
+<ul class="type">
+	<?php while(have_rows('phones', 'options')): the_row();
+		$messengers = get_sub_field('messengers');
+		$number = str_replace([' ', '-', '+'], '', get_sub_field('number')); // remove _, -, +
 
-
-			mob100
-
-
-
-			section > .next
-	position: absolute
-	z-index: 20
-	bottom: rem(36)
-	left: 50%
-	transform: translate(-50%, 0)
-	cursor: pointer
-	fill: $w
-	animation: jump 1.5s linear running infinite
-	&.dark
-		fill: $dGrey
-	&:hover
-		fill: $lBlue
-		animation: jump 1.5s linear paused infinite
-
-
-
-
-
-$dGrey: #181f29
-$w: #fff
-$b: #000
-$dw: #f1f2f3
-
-$red: #d63d37 // rgb(214, 61, 55)
-$lBlue: #8dc1fb // rgb(141, 193, 251)
-$dBlue: #2d568a // rgb(45, 86, 138)
-$lGrey: #737a84
-
-$duration: 2s
-$delay: 0.3s
-
-@keyframes line_1
-	0%
-		opacity: 0
-		transform: translate(30%, -230%)
-	20%
-		opacity: 1
-		transform: translate(-55%, -40%)
-	30%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	50%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	70%
-		opacity: 1
-		transform: translate(-120%, -50%)
-	90%
-		opacity: 1
-		transform: translate(-130%, -50%)
-	100%
-		opacity: 0
-		transform: translate(-270%, 230%)
-
-@keyframes line_2
-	0%
-		opacity: 0
-		transform: translate(40%, -230%)
-	20%
-		opacity: 1
-		transform: translate(-55%, -40%)
-	30%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	50%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	70%
-		opacity: 1
-		transform: translate(-50%, -80%) rotate(75deg)
-	90%
-		opacity: 1
-		transform: translate(-50%, -90%) rotate(75deg)
-	100%
-		opacity: 0
-		transform: translate(-50%, -230%) rotate(75deg)
-
-@keyframes line_3
-	0%
-		opacity: 0
-		transform: translate(40%, -230%)
-	20%
-		opacity: 1
-		transform: translate(-55%, -40%)
-	30%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	50%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	70%
-		opacity: 1
-		transform: translate(120%, -50%)
-	90%
-		opacity: 1
-		transform: translate(130%, -50%)
-	100%
-		opacity: 0
-		transform: translate(230%, -230%)
-
-@keyframes logo_text
-	0%
-		opacity: 0
-		transform: translate(50vw, -50%)
-	20%
-		opacity: 1
-		transform: translate(-60%, -50%)
-	30%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	50%
-		opacity: 1
-		transform: translate(-50%, -50%)
-	70%
-		opacity: 1
-		transform: translate(-50%, 120%)
-	100%
-		opacity: 0
-		transform: translate(-50%, 70vh)
-
-body
-	position: relative
-	background-color: $dGrey
-#spinner
-	position: fixed
-	left: 50%
-	top: 45%
-	transform: translate(-50%, -50%)
-	width: 250px
-	height: 250px
-	svg
-		position: absolute
-		height: 100%
-	.line_1
-		z-index: 500
-		fill: $lBlue
-		left: 25%
-		top: 50%
-		transform: translate(30%, -230%)
-		opacity: 0
-		animation: line_1 $duration $delay*1 ease-in forwards
-	.line_2
-		z-index: 500
-		fill: $dBlue
-		left: 50%
-		top: 50%
-		transform: translate(40%, -230%)
-		opacity: 0
-		animation: line_2 $duration $delay*2 ease-in forwards
-	.line_3
-		z-index: 500
-		fill: $red
-		left: 75%
-		top: 50%
-		transform: translate(40%, -230%)
-		opacity: 0
-		animation: line_3 $duration $delay*3 ease-in forwards
-	.logo_text
-		width: 65%
-		height: 100%
-		fill: $dw
-		position: absolute
-		z-index: 600
-		left: 53%
-		top: 50%
-		transform: translate(50vw, -50%)
-		opacity: 0
-		animation: logo_text $duration $delay*4 ease-in forwards
-
-
-// Final placement
-// body
-// 	position: relative
-// 	background-color: $dGrey
-// #spinner
-// 	position: fixed
-// 	left: 50%
-// 	top: 45%
-// 	transform: translate(-50%, -50%)
-// 	width: 250px
-// 	height: 250px
-// 	svg
-// 		position: absolute
-// 		z-index: 500
-// 		height: 100%
-// 	.line_1
-// 		fill: $lBlue
-// 		left: 25%
-// 		top: 50%
-// 		transform: translate(10%, -230%)
-// 		animate: line_1 2s 0.5s forward 1 ease-in
-// 	.line_2
-// 		fill: $dBlue
-// 		left: 50%
-// 		top: 50%
-// 		transform: translate(-50%, -50%)
-// 	.line_3
-// 		fill: $red
-// 		left: 75%
-// 		top: 50%
-// 		transform: translate(-50%, -50%)
-// 	.logo_text
-// 		width: 65%
-// 		height: 100%
-// 		fill: $dw
-// 		position: absolute
-// 		z-index: 600
-// 		left: 53%
-// 		top: 50%
-// 		transform: translate(-50%, -50%)
+		foreach ($messengers as $messenger) {
+			// Form call link dependong on messger
+			if ($messenger == 'telegram') {
+				$link = 'https://telegram.me/' . get_sub_field('telegram_username');
+			} else if ($messenger == 'viber') {
+				$link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
+			} else if ($messenger == 'whatsapp') {
+				$link = 'https://api.whatsapp.com/send?phone=' . $number;
+			}
+		?>
+		<li class="<?= $messenger ?>">
+			<a href="<?= $link; ?>">
+				<img
+					src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
+					class="img-svg native"
+				/>
+			</a>
+		</li>
+	<?php }; endwhile; ?>
+</ul>

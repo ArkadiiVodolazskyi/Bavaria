@@ -51,12 +51,12 @@
 			<li class="wow fadeInRight">
 				<img src="<?= B_IMG_DIR ?>/phone.svg" class="img-svg" />
 				<div class="phone_list">
-					<?php while(have_rows('contacts', 'options')): the_row();
-								while(have_rows('phones')): the_row(); ?>
-						<a href="tel:<?= get_sub_field('phone'); ?>">
-							<?= get_sub_field('phone'); ?>
+					<?php while(have_rows('phones', 'options')): the_row();
+								if(get_row_index() == 1 || get_row_index() == 2): ?>
+						<a href="tel:<?= get_sub_field('number'); ?>">
+							<?= get_sub_field('number'); ?>
 						</a>
-					<?php endwhile; endwhile; ?>
+					<?php endif; endwhile; ?>
 				</div>
 			</li>
 			<li class="wow fadeInRight">

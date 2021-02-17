@@ -113,7 +113,7 @@
           <div class="video">
             <div class="figure">
               <span class="rect"></span>
-              <span class="triangle"></span>
+              <span class="triangle openVideo"></span>
             </div>
             <button id="openVideo" class="video_btn">Посмотреть видео</button>
           </div>
@@ -169,9 +169,9 @@
 
     <?php if (get_field('facts', 'options')): ?>
       <section class="facts">
-        <div class="wrapper mobwrapper">
+        <div class="wrapper">
           <h2 class="facts_title textAppear">Факты о нас</h2>
-          <div class="facts_cards mobslider mob100">
+          <div class="facts_cards">
 
             <?php while ( have_rows('facts', 'options') ): the_row(); ?>
               <div class="card appear" style="animation-delay: <?= get_row_index()*0.2?>s">
@@ -260,18 +260,6 @@
             });
           }
         });
-
-        // $("section.info_about .master_img").slick({
-        //   arrows: true,
-        //   draggable: false,
-        //   focusOnSelect: false,
-        //   infinite: false,
-        //   autoplay: false,
-        //   dots: false,
-        //   slidesToShow: 1,
-        //   slidesToScroll: 1,
-        //   variableWidth: true,
-        // });
 
       });
 

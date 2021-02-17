@@ -57,7 +57,7 @@
     ?>
 
     <section class="workshop">
-      <div class="figure_1 hidden_360" style="bottom: unset; top: -8.5rem">
+      <div class="figure_1 hidden_360" style="bottom: unset; top: -210px">
         <img
           class="img-svg native figure_41"
           src="<?= B_IMG_DIR ?>/figure_41.svg"
@@ -79,7 +79,7 @@
                   $mainTerm = $mainPost->post_name; // For main items term equals name (because real term is 'main')
               ?>
                 <li class="wow fadeInUp <?php echo $mainTerm == $pageTerm || $mainTitle == get_the_title() ? 'active' : ''; ?>"
-                    data-wow-delay="<?= $key*0.2?>s">
+                    data-wow-delay="<?= $key*0.1?>s">
                   <img
                     src="<?= B_IMG_DIR ?>/triple-square.svg"
                     class="img-svg native stripes"
@@ -195,11 +195,21 @@
                 </table>
               <?php endwhile; ?>
 
-              <?php while ( have_rows('btn') ): the_row(); ?>
-                <div class="checkup openConnect appear">
-                  <button>
-                    <?= get_sub_field('text'); ?>
-                  </button>
+              <?php while ( have_rows('list') ): the_row(); ?>
+                <div class="list_wrapper">
+                  <h5 class="list_title wow fadeInUp">
+                    <?= get_sub_field('title'); ?>
+                  </h5>
+                  <ul class="list">
+                    <?php while ( have_rows('points') ): the_row(); ?>
+                      <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.1?>s">
+                        <img alt="" src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
+                        <span>
+                          <?= get_sub_field('point'); ?>
+                        </span>
+                      </li>
+                    <?php endwhile; ?>
+                  </ul>
                 </div>
               <?php endwhile; ?>
 
@@ -228,12 +238,12 @@
                   <div class="card_image">
                     <img alt="" src="<?= get_sub_field('img'); ?>" />
                   </div>
-                  <a href="<?= get_sub_field('link')['url']; ?>" class="card_title">
+                  <a href="<?= get_sub_field('link')['url'] ? get_sub_field('link')['url'] : '#'; ?>" class="card_title">
                     <h4>
-                      <?= get_sub_field('link')['title']; ?>
+                      <?= get_sub_field('link')['title'] ? get_sub_field('link')['title'] : ''; ?>
                     </h4>
                     <p class="card_text">
-                      <?= get_sub_field('text'); ?>
+                      <?= get_sub_field('text') ? get_sub_field('text') : ''; ?>
                     </p>
                   </a>
                 </div>
@@ -340,7 +350,7 @@
 
                     if ($currentTerm == 'main' && $postTerm == $currentSlug) {
                 ?>
-                  <a href="<?= $url; ?>" class="card wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
+                  <a href="<?= $url; ?>" class="card wow fadeInRight" data-wow-delay="<?= get_row_index()*0.1?>s">
                     <div class="img_wrapper">
                       <img alt="" src="<?= $img; ?>">
                     </div>
@@ -394,7 +404,7 @@
               <h2 class="textAppear">Примеры работ</h2>
               <div class="gallery lightbox">
                 <?php foreach( get_sub_field('imgs') as $key=>$image ): ?>
-                  <img alt="" src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.2?>s">
+                  <img alt="" src="<?= $image; ?>" class="wow fadeInRight" data-wow-delay="<?= $key*0.1?>s">
                 <?php endforeach; ?>
               </div>
             </div>
@@ -440,12 +450,11 @@
           <?php
             // If this page is main
             $currentTerm = get_the_terms( get_the_ID(), 'service_type' )[0]->slug;
-            $sectionBG = $currentTerm == 'main' ? '#f1f2f3' : '#fff';
             $figure_8BG = $currentTerm == 'main' ? '#fff' : 'rgba(141, 193, 251, 0.3)';
             $paddings = $currentTerm == 'main' ? '9rem 0 12rem' : '7rem 0';
           ?>
 
-          <section class="request" style="background-color: <?= $sectionBG; ?>; padding: <?= $paddings; ?>">
+          <section class="request" style="padding: <?= $paddings; ?>">
             <div class="wrapper">
               <div class="left_text wow fadeInLeft">
                 <h2>
@@ -507,7 +516,7 @@
             <div class="wrapper">
               <div class="faq_list">
                 <?php while ( have_rows('cards') ): the_row(); ?>
-                  <div class="vacancy faq_item wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
+                  <div class="vacancy faq_item wow fadeInRight" data-wow-delay="<?= get_row_index()*0.1?>s">
                     <h3>
                       <?= get_sub_field('question'); ?>
                       <button class="expand">
@@ -559,39 +568,48 @@
 
       <?php if ( get_sub_field('adv') ): ?>
         <?php while ( have_rows('adv') ): the_row(); ?>
-          <section class="adv">
+          <section id="wrapBack" class="adv">
             <div class="wrapper">
               <div class="left_text">
-                <h2 class="textAppear">
-                  <?= get_sub_field('title'); ?>
-                </h2>
-                <p class="textAppear">
-                  <?= get_sub_field('par'); ?>
-                </p>
 
-                <?php while ( have_rows('list') ): the_row(); ?>
-                  <div class="list_wrapper">
-                    <h5 class="list_title wow fadeInUp">
-                      <?= get_sub_field('title'); ?>
-                    </h5>
-                    <ul class="list">
-                     <?php while ( have_rows('points') ): the_row(); ?>
-                        <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.2?>s">
-                          <img alt="" src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
-                          <span>
-                            <?= get_sub_field('point'); ?>
-                          </span>
-                        </li>
-                      <?php endwhile; ?>
-                    </ul>
-                  </div>
+                <?php while ( have_rows('adv_flex') ): the_row(); ?>
+
+                  <?php while ( have_rows('title') ): the_row(); ?>
+                    <h2 class="textAppear">
+                      <?= get_sub_field('text'); ?>
+                    </h2>
+                  <?php endwhile;?>
+
+                  <?php while ( have_rows('par') ): the_row(); ?>
+                    <?= get_sub_field('text'); ?>
+                  <?php endwhile; ?>
+
+                  <?php while ( have_rows('list') ): the_row(); ?>
+                    <div class="list_wrapper">
+                      <h5 class="list_title wow fadeInUp">
+                        <?= get_sub_field('title'); ?>
+                      </h5>
+                      <ul class="list">
+                      <?php while ( have_rows('points') ): the_row(); ?>
+                          <li class="wow fadeInRight" data-wow-delay="<?= get_row_index()*0.1?>s">
+                            <img alt="" src="<?= B_IMG_DIR ?>/single_line.svg" class="img-svg" />
+                            <span>
+                              <?= get_sub_field('point'); ?>
+                            </span>
+                          </li>
+                        <?php endwhile; ?>
+                      </ul>
+                    </div>
+                  <?php endwhile; ?>
                 <?php endwhile; ?>
 
               </div>
 
+              <a href="#" class="adv_expand">Развернуть</a>
+
               <div class="right_img">
-                <img alt="" src="<?= get_sub_field('img'); ?>" class="wow fadeInRight" data-wow-delay="1.8s">
-                <img alt="" src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard wow fadeInLeft" data-wow-delay="2s">
+                <img alt="" src="<?= get_sub_field('img'); ?>" class="wow fadeInRight" data-wow-duration="0.5s">
+                <img alt="" src="<?= B_IMG_DIR ?>/service_adv2.png" class="shard wow fadeInLeft" data-wow-duration="0.5s">
               </div>
             </div>
           </section>
@@ -607,7 +625,7 @@
 
       $(document).ready(function() {
 
-        $("section.reviews .quote_cards").slick({
+        $("section.reviews .quote_cards").not('.slick-initialized').slick({
           arrows: true,
           draggable: false,
           focusOnSelect: false,
@@ -659,7 +677,7 @@
         });
 
         if (window.innerWidth < 1600) {
-          $(".exampscards, .gallery").slick({
+          $(".exampscards, .gallery").not('.slick-initialized').slick({
             arrows: false,
             focusOnSelect: false,
             infinite: false,
@@ -706,7 +724,7 @@
         }
 
         if (window.innerWidth > 1000) {
-          $("section.popular .cards").slick({
+          $("section.popular .cards").not('.slick-initialized').slick({
             arrows: true,
             draggable: false,
             focusOnSelect: false,
@@ -732,6 +750,12 @@
                 </svg>
               </button>
             `,
+            responsive: [
+              {
+                breakpoint: 1000,
+                settings: "unslick"
+              }
+            ]
           });
         }
 
@@ -804,7 +828,7 @@
         }
 
         if (window.innerWidth < 421) {
-          $("section.workshop .brands .facts_cards").slick({
+          $("section.workshop .brands .facts_cards").not('.slick-initialized').slick({
             arrows: false,
             draggable: true,
             focusOnSelect: false,
@@ -820,7 +844,7 @@
         window.addEventListener("resize", () => {
 
           if (window.innerWidth < 1600) {
-            $(".exampscards, .gallery").slick({
+            $(".exampscards, .gallery").not('.slick-initialized').slick({
               arrows: false,
               focusOnSelect: false,
               infinite: false,
@@ -935,7 +959,7 @@
           }
 
           if (window.innerWidth < 421) {
-            $("section.workshop .brands .facts_cards").slick({
+            $("section.workshop .brands .facts_cards").not('.slick-initialized').slick({
               arrows: false,
               draggable: true,
               focusOnSelect: false,

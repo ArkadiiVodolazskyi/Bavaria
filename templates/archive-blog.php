@@ -64,7 +64,7 @@
 
                 $url = get_permalink();
                 $img = get_field('banner');
-                $date = date_i18n( 'j F Y', get_the_date(), false );
+                $date = get_the_date('j F Y', $post->id);
                 $post_title = $post->post_title;
               ?>
 
@@ -96,7 +96,7 @@
           <?php the_posts_pagination([
             'show_all'     => false, // показаны все страницы участвующие в пагинации
             'end_size'     => 1,     // количество страниц на концах
-            'mid_size'     => 5,     // количество страниц вокруг текущей
+            'mid_size'     => 4,     // количество страниц вокруг текущей
             'prev_next'    => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
             'prev_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
             'next_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),

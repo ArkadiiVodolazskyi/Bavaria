@@ -152,7 +152,7 @@
 
     <section class="news p-5">
       <div class="wrapper">
-        <h3 class="textAppear">Читайте также</h3>
+        <h3 class="textAppear">Смотреть ещё</h3>
 
         <div class="other">
           <?php
@@ -264,22 +264,67 @@
             `,
             responsive: [
               {
-                breakpoint: 800,
+                breakpoint: 1700,
                 settings: {
-                  arrows: false,
-                  draggable: true,
+                  arrows: true,
+                  draggable: false,
                   focusOnSelect: false,
                   infinite: false,
                   autoplay: false,
-                  dots: true,
-                  slidesToShow: 1,
-                  slidesToScroll: 2,
-                  vertical: false,
-                  verticalSwiping: false,
+                  dots: false,
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
                 }
               },
               {
-                breakpoint: 768,
+                breakpoint: 1400,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 4,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 1280,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 960,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 850,
                 settings: {
                   arrows: false,
                   draggable: true,
@@ -291,10 +336,11 @@
                   slidesToScroll: 2,
                   vertical: false,
                   verticalSwiping: false,
+                  variableWidth: true,
                 }
               },
               {
-                breakpoint: 450,
+                breakpoint: 700,
                 settings: {
                   arrows: false,
                   draggable: true,
@@ -306,11 +352,12 @@
                   slidesToScroll: 1,
                   vertical: false,
                   verticalSwiping: false,
+                  variableWidth: true,
                 }
               },
             ]
           });
-        }, 2000);
+        }, 500);
 
         $(".other").slick({
           arrows: false,

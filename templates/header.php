@@ -87,16 +87,30 @@
 								<?= get_sub_field('workshop'); ?>
 							</span>
 
-							<div class="phone_type">
+							<ul class="phone_type type">
 								<?php $messengers = get_sub_field('messengers');
-										foreach( $messengers as $messenger ): ?>
-										<?php if ($messenger): ?>
+											$number = str_replace([' ', '-', '+'], '', get_sub_field('number')); // remove _, -, +
+
+									foreach ($messengers as $messenger) {
+										// Form call link dependong on messger
+										if ($messenger == 'telegram') {
+											$link = 'https://telegram.me/' . get_sub_field('telegram_username');
+										} else if ($messenger == 'viber') {
+											$link = 'viber://' . (isMobileDevice() ? 'add?number=' : 'chat?number=+') . $number;
+										} else if ($messenger == 'whatsapp') {
+											$link = 'https://api.whatsapp.com/send?phone=' . $number;
+										}
+									?>
+									<li class="<?= $messenger ?>">
+										<a href="<?= $link; ?>">
 											<img
 												src="<?= B_IMG_DIR ?>/type_<?= $messenger ?>.svg"
-												class="img-svg native" />
-										<?php endif; ?>
-									<?php endforeach; ?>
-							</div>
+												class="img-svg native"
+											/>
+										</a>
+									</li>
+								<?php }; ?>
+							</ul>
 
 						</div>
 					</div>
@@ -139,6 +153,29 @@
 	</button>
 
 </div>
+
+<?php
+	// Viber links are different for mobile and desktop
+	function isMobileDevice(){
+		$aMobileUA = array(
+				'/iphone/i' => 'iPhone',
+				'/ipod/i' => 'iPod',
+				'/ipad/i' => 'iPad',
+				'/android/i' => 'Android',
+				'/blackberry/i' => 'BlackBerry',
+				'/webos/i' => 'Mobile'
+		);
+
+		//Return true if Mobile User Agent is detected
+		foreach($aMobileUA as $sMobileKey => $sMobileOS){
+				if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
+						return true;
+				}
+		}
+		//Otherwise return false..
+		return false;
+	}
+?>
 
 <header>
 	<div class="contacts">
@@ -211,31 +248,6 @@
 							<?= get_field('phones', 'options')[0]['number']; ?>
 						</a>
 						<img src="<?= B_IMG_DIR ?>/arrow.svg" class="img-svg" />
-				
-
-					<?php
-						// Viber links are different for mobile and desktop
-						function isMobileDevice(){
-							$aMobileUA = array(
-									'/iphone/i' => 'iPhone',
-									'/ipod/i' => 'iPod',
-									'/ipad/i' => 'iPad',
-									'/android/i' => 'Android',
-									'/blackberry/i' => 'BlackBerry',
-									'/webos/i' => 'Mobile'
-							);
-
-							//Return true if Mobile User Agent is detected
-							foreach($aMobileUA as $sMobileKey => $sMobileOS){
-									if(preg_match($sMobileKey, $_SERVER['HTTP_USER_AGENT'])){
-											return true;
-									}
-							}
-							//Otherwise return false..
-							return false;
-						}
-					?>
-
 
 					<div class="additional">
 

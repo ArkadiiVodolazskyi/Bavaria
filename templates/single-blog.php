@@ -25,7 +25,7 @@
       <section class="post">
         <div class="wrapper">
           <div class="date appear"><span>
-            <?= date_i18n( 'j F Y', get_the_date(), false ); ?>
+            <?= get_the_date('j F Y'); ?>
           </span></div>
           <h2 class="blog_title textAppear">
             <?= get_the_title(); ?>
@@ -138,7 +138,7 @@
 
                   $url = get_permalink();
                   $img = get_field('banner');
-                  $date = get_the_date();
+                  $date = get_the_date('j F Y', $post->id);
                   $post_title = $post->post_title;
                 ?>
 
@@ -282,37 +282,67 @@
             `,
             responsive: [
               {
-                breakpoint: 800,
+                breakpoint: 1700,
                 settings: {
-                  arrows: false,
-                  draggable: true,
+                  arrows: true,
+                  draggable: false,
                   focusOnSelect: false,
                   infinite: false,
                   autoplay: false,
-                  dots: true,
-                  slidesToShow: 1,
-                  slidesToScroll: 2,
-                  vertical: false,
-                  verticalSwiping: false,
-                }
-              },
-              {
-                breakpoint: 768,
-                settings: {
-                  arrows: false,
-                  draggable: true,
-                  focusOnSelect: false,
-                  infinite: false,
-                  autoplay: false,
-                  dots: true,
+                  dots: false,
                   slidesToShow: 3,
-                  slidesToScroll: 2,
-                  vertical: false,
-                  verticalSwiping: false,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
                 }
               },
               {
-                breakpoint: 600,
+                breakpoint: 1400,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 4,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 1280,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 960,
+                settings: {
+                  arrows: true,
+                  draggable: false,
+                  focusOnSelect: false,
+                  infinite: false,
+                  autoplay: false,
+                  dots: false,
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  vertical: true,
+                  verticalSwiping: true,
+                }
+              },
+              {
+                breakpoint: 850,
                 settings: {
                   arrows: false,
                   draggable: true,
@@ -324,10 +354,11 @@
                   slidesToScroll: 2,
                   vertical: false,
                   verticalSwiping: false,
+                  variableWidth: true,
                 }
               },
               {
-                breakpoint: 450,
+                breakpoint: 700,
                 settings: {
                   arrows: false,
                   draggable: true,
@@ -339,11 +370,18 @@
                   slidesToScroll: 1,
                   vertical: false,
                   verticalSwiping: false,
+                  variableWidth: true,
                 }
               },
             ]
           });
         }, 500);
+
+        deleteExtraSlides(
+          width = 980,
+          sliderSelector = 'section.news .wrapper .cards .pages .page',
+          leaveSlides = 4
+        );
 
       });
 

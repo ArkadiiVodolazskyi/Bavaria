@@ -297,70 +297,6 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // open resume form
-  (function () {
-    const resume_wrapper = document.getElementById("resume_wrapper");
-    const sendBtns = [...document.querySelectorAll(".resume")];
-
-    if (sendBtns.length && resume_wrapper) {
-      const closeResume = document.getElementById("closeResume");
-
-      for (let i = 0; i < sendBtns.length; i++) {
-        sendBtns[i].addEventListener("click", () => {
-          openOverlay(resume_wrapper, false);
-        });
-      }
-
-      closeOverlays(closeResume);
-
-      // Move label up
-      const gf2 = document.getElementById("gform_2");
-      const inputs = [...gf2.querySelectorAll("#input_2_2")]; // msg
-      const labels = [...gf2.querySelectorAll("#field_2_2 > .gfield_label")]; // msg
-
-      for (let i = 0; i < inputs.length; i++) {
-        // On focus move label up
-        inputs[i].addEventListener("focus", () => {
-          labels[i].classList.add("focused");
-        });
-        inputs[i].addEventListener("blur", () => {
-          if (inputs[i].value === "") {
-            labels[i].classList.remove("focused");
-          }
-        });
-      }
-
-      // Validate - field is not empty
-      const subWrapper = gf2.querySelector(".gform_footer"); // send
-      const submit = gf2.querySelector("#gform_submit_button_2"); // send
-      subWrapper.classList.add("invalid");
-      submit.disabled = true;
-
-      const fileInput = gf2.querySelector("#input_2_1");
-      fileInput.addEventListener("change", () => {
-        const fileFormat = fileInput.value.match(/\.([^\.]+)$/)[1];
-        if (fileFormat === "pdf" || fileFormat === "docx") {
-          subWrapper.classList.remove("invalid");
-          submit.disabled = false;
-        } else {
-          subWrapper.classList.add("invalid");
-          submit.disabled = true;
-        }
-      });
-
-      // If inputs are valid
-      gf2.addEventListener("submit", () => {
-        if (!subWrapper.classList.contains("invalid")) {
-          const imgs = document.querySelectorAll("#resume_wrapper > img, #resume_wrapper > svg");
-          imgs.forEach((img) => {
-            img.style.display = "none";
-          });
-          console.log("Form submitted");
-        }
-      });
-    }
-  })();
-
   // page-about - master slider
   (function () {
     const masterNames = [...document.querySelectorAll(".master_name .name")];
@@ -439,25 +375,6 @@ window.addEventListener("load", () => {
       navExpand.addEventListener("click", () => {
         nav.classList.toggle("expanded");
       });
-    }
-  })();
-
-  // connect_form - open form, open overlay
-  (function () {
-    const connect_wrapper = document.getElementById("connect_wrapper");
-
-    if (connect_wrapper) {
-      const connectBtn = document.querySelectorAll(
-        ".openConnect, .smallCheckupBtn",
-      );
-      const closeConnect = document.getElementById("closeConnect");
-
-      connectBtn.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          openOverlay(connect_wrapper, false);
-        });
-      });
-      closeOverlays(closeConnect);
     }
   })();
 
@@ -631,8 +548,123 @@ window.addEventListener("load", () => {
     }
   })();
 
-  // Styling Gravity Forms
+  // Custom wow js- appear
   (function () {
+    const heightToShow = -80; // lesser => earlier
+
+    const appears = [...document.querySelectorAll(".appear")];
+
+    // Also on load
+    for (let i = 0; i < appears.length; i++) {
+      if (
+        !(
+          appears[i].getBoundingClientRect().top + heightToShow >
+            innerHeight ||
+          appears[i].getBoundingClientRect().bottom - heightToShow < 0
+        )
+      ) {
+        appears[i].classList.add("appeared");
+      }
+    }
+    window.addEventListener("scroll", () => {
+      for (let i = 0; i < appears.length; i++) {
+        if (
+          !(
+            appears[i].getBoundingClientRect().top + heightToShow >
+              innerHeight ||
+            appears[i].getBoundingClientRect().bottom - heightToShow < 0
+          )
+        ) {
+          appears[i].classList.add("appeared");
+        }
+      }
+    });
+  })();
+
+  // folio-main - change work types
+  (function () {
+    const navBtns = [
+      ...document.querySelectorAll(".portfolio_main nav button"),
+    ];
+
+    if (navBtns.length) {
+      // Mutate to dropdown on 960- screens
+      const nav = document.querySelector(".portfolio_main nav:not(.pagination)");
+      const navExpand = nav.querySelector(".nav_arrow");
+
+      navExpand.addEventListener("click", () => {
+        nav.classList.toggle("expanded");
+      });
+
+      // Default
+      navBtns[0].classList.add("active");
+      const folioPosts = document.querySelectorAll(".other .card");
+      const noPosts = document.querySelector(".other .noPosts");
+      let serviceType = "all";
+      reorder();
+
+      for (let i = 0; i < navBtns.length; i++) {
+        navBtns[i].addEventListener("click", (e) => {
+          for (let j = 0; j < navBtns.length; j++) {
+            navBtns[j].classList.remove("active");
+          }
+          navBtns[i].classList.add("active");
+          if (nav.classList.contains("expanded")) {
+            nav.classList.remove("expanded");
+          }
+
+          // Reorder posts
+          serviceType = navBtns[i].getAttribute("data-term");
+          reorder();
+        });
+      }
+
+      // Reorder posts
+      function reorder() {
+        noPosts.classList.remove("active");
+        let count = 0;
+
+        for (let i = 0; i < folioPosts.length; i++) {
+          if (serviceType === "all") {
+            folioPosts[i].classList.add("active");
+            count++;
+          } else {
+            if (folioPosts[i].getAttribute("data-term") === serviceType) {
+              folioPosts[i].classList.add("active");
+              count++;
+            } else {
+              folioPosts[i].classList.remove("active");
+            }
+          }
+        }
+
+        if (count === 0) {
+          noPosts.classList.add("active");
+        }
+      }
+    }
+  })();
+
+  // Connect from
+  (function () {
+    // connect_form - open form, open overlay
+    const connect_wrapper = document.getElementById("connect_wrapper");
+
+    if (connect_wrapper) {
+      const connectBtn = document.querySelectorAll(
+        ".openConnect, .smallCheckupBtn",
+      );
+      const closeConnect = document.getElementById("closeConnect");
+
+      connectBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          openOverlay(connect_wrapper, false);
+        });
+      });
+      closeOverlays(closeConnect);
+    }
+
+    // Form options
     const gf1 = document.getElementById("gform_1");
 
     const inputs = [
@@ -641,6 +673,8 @@ window.addEventListener("load", () => {
     const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
     const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
     const submit = gf1.querySelector("#gform_submit_button_1"); // send
+    const imgs = gf1.querySelectorAll(".connect_img, .connect_figure");
+    console.log(gf1);
 
     const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
 
@@ -683,121 +717,93 @@ window.addEventListener("load", () => {
 
     // If inputs are valid
     gf1.addEventListener("submit", () => {
-      const imgs = document.querySelectorAll("#connect_wrapper > img, #connect_wrapper > svg");
       imgs.forEach((img) => {
         img.style.display = "none";
+        console.log(img);
       });
       console.log("Form submitted");
     });
 
-    // Custom wow js- appear
-    (function () {
-      const heightToShow = -80; // lesser => earlier
+  })();
 
-      const appears = [...document.querySelectorAll(".appear")];
+  // open resume form
+  (function () {
+    const resume_wrapper = document.getElementById("resume_wrapper");
+    const sendBtns = [...document.querySelectorAll(".resume")];
 
-      // Also on load
-      for (let i = 0; i < appears.length; i++) {
-        if (
-          !(
-            appears[i].getBoundingClientRect().top + heightToShow >
-              innerHeight ||
-            appears[i].getBoundingClientRect().bottom - heightToShow < 0
-          )
-        ) {
-          appears[i].classList.add("appeared");
-        }
+    if (sendBtns.length && resume_wrapper) {
+      const closeResume = document.getElementById("closeResume");
+
+      for (let i = 0; i < sendBtns.length; i++) {
+        sendBtns[i].addEventListener("click", () => {
+          openOverlay(resume_wrapper, false);
+        });
       }
-      window.addEventListener("scroll", () => {
-        for (let i = 0; i < appears.length; i++) {
-          if (
-            !(
-              appears[i].getBoundingClientRect().top + heightToShow >
-                innerHeight ||
-              appears[i].getBoundingClientRect().bottom - heightToShow < 0
-            )
-          ) {
-            appears[i].classList.add("appeared");
+
+      closeOverlays(closeResume);
+
+      // Move label up
+      const gf2 = document.getElementById("gform_2");
+      const inputs = [...gf2.querySelectorAll("#input_2_2")]; // msg
+      const labels = [...gf2.querySelectorAll("#field_2_2 > .gfield_label")]; // msg
+
+      for (let i = 0; i < inputs.length; i++) {
+        // On focus move label up
+        inputs[i].addEventListener("focus", () => {
+          labels[i].classList.add("focused");
+        });
+        inputs[i].addEventListener("blur", () => {
+          if (inputs[i].value === "") {
+            labels[i].classList.remove("focused");
           }
+        });
+      }
+
+      // Validate - field is not empty
+      const subWrapper = gf2.querySelector(".gform_footer"); // send
+      const submit = gf2.querySelector("#gform_submit_button_2"); // send
+      subWrapper.classList.add("invalid");
+      submit.disabled = true;
+
+      const fileInput = gf2.querySelector("#input_2_1");
+      fileInput.addEventListener("change", () => {
+        const fileFormat = fileInput.value.match(/\.([^\.]+)$/)[1];
+        if (fileFormat === "pdf" || fileFormat === "docx") {
+          subWrapper.classList.remove("invalid");
+          submit.disabled = false;
+        } else {
+          subWrapper.classList.add("invalid");
+          submit.disabled = true;
         }
       });
-    })();
 
-    // folio-main - change work types
-    (function () {
-      const navBtns = [
-        ...document.querySelectorAll(".portfolio_main nav button"),
-      ];
-
-      if (navBtns.length) {
-        // Mutate to dropdown on 960- screens
-        const nav = document.querySelector(".portfolio_main nav:not(.pagination)");
-        const navExpand = nav.querySelector(".nav_arrow");
-
-        navExpand.addEventListener("click", () => {
-          nav.classList.toggle("expanded");
-        });
-
-        // Default
-        navBtns[0].classList.add("active");
-        const folioPosts = document.querySelectorAll(".other .card");
-        const noPosts = document.querySelector(".other .noPosts");
-        let serviceType = "all";
-        reorder();
-
-        for (let i = 0; i < navBtns.length; i++) {
-          navBtns[i].addEventListener("click", (e) => {
-            for (let j = 0; j < navBtns.length; j++) {
-              navBtns[j].classList.remove("active");
-            }
-            navBtns[i].classList.add("active");
-            if (nav.classList.contains("expanded")) {
-              nav.classList.remove("expanded");
-            }
-
-            // Reorder posts
-            serviceType = navBtns[i].getAttribute("data-term");
-            reorder();
+      // If inputs are valid
+      const imgs = resume_wrapper.querySelectorAll(
+        ".connect_img, .connect_figure",
+      );
+      gf2.addEventListener("submit", () => {
+        if (!subWrapper.classList.contains("invalid")) {
+          imgs.forEach((img) => {
+            img.style.display = "none";
           });
+          console.log("Form submitted");
         }
+      });
+    }
+  })();
 
-        // Reorder posts
-        function reorder() {
-          noPosts.classList.remove("active");
-          let count = 0;
+  // service_request form
+  (function () {
+    const gf3 = document.getElementById("gform_3");
 
-          for (let i = 0; i < folioPosts.length; i++) {
-            if (serviceType === "all") {
-              folioPosts[i].classList.add("active");
-              count++;
-            } else {
-              if (folioPosts[i].getAttribute("data-term") === serviceType) {
-                folioPosts[i].classList.add("active");
-                count++;
-              } else {
-                folioPosts[i].classList.remove("active");
-              }
-            }
-          }
-
-          if (count === 0) {
-            noPosts.classList.add("active");
-          }
-        }
-      }
-    })();
-
-    // Styling Gravity Forms
-    (function () {
-      const gf1 = document.getElementById("gform_1");
-
+    if (gf3) {
       const inputs = [
-        ...gf1.querySelectorAll("#input_1_1, #input_1_5, #input_1_4"),
-      ]; // name, tel, msg
-      const labels = [...gf1.querySelectorAll(".gfield_label")]; // name, tel, msg
-      const subWrapper = gf1.querySelector(".gform_footer"); // send wrapper (bg)
-      const submit = gf1.querySelector("#gform_submit_button_1"); // send
-      const imgs = document.querySelectorAll(".connect_img, .connect_figure");
+        ...gf3.querySelectorAll("#input_3_1, #input_3_5"),
+      ]; // name, tel
+      const labels = [...gf3.querySelectorAll(".gfield_label")]; // name, tel
+      const subWrapper = gf3.querySelector(".gform_footer"); // send wrapper (bg)
+      const submit = gf3.querySelector("#gform_submit_button_3"); // send
+      const imgs = document.querySelectorAll(".right_form .connect_img, .right_form .connect_figure");
 
       const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
 
@@ -839,110 +845,16 @@ window.addEventListener("load", () => {
       }
 
       // If inputs are valid
-      gf1.addEventListener("submit", () => {
+      gf3.addEventListener("submit", () => {
         imgs.forEach((img) => {
           img.style.display = "none";
         });
         console.log("Form submitted");
       });
-
-      // Custom wow js- appear
-      (function () {
-        const heightToShow = 150;
-
-        const appears = [...document.querySelectorAll(".appear")];
-
-        // Also on load
-        for (let i = 0; i < appears.length; i++) {
-          if (
-            !(
-              appears[i].getBoundingClientRect().top + heightToShow >
-                innerHeight ||
-              appears[i].getBoundingClientRect().bottom - heightToShow < 0
-            )
-          ) {
-            appears[i].classList.add("appeared");
-          }
-        }
-        window.addEventListener("scroll", () => {
-          for (let i = 0; i < appears.length; i++) {
-            if (
-              !(
-                appears[i].getBoundingClientRect().top + heightToShow >
-                  innerHeight ||
-                appears[i].getBoundingClientRect().bottom - heightToShow < 0
-              )
-            ) {
-              appears[i].classList.add("appeared");
-            }
-          }
-        });
-      })();
-
-      // service_request form
-      (function () {
-        const gf3 = document.getElementById("gform_3");
-
-        if (gf3) {
-          const inputs = [
-            ...gf3.querySelectorAll("#input_3_1, #input_3_5"),
-          ]; // name, tel
-          const labels = [...gf3.querySelectorAll(".gfield_label")]; // name, tel
-          const subWrapper = gf3.querySelector(".gform_footer"); // send wrapper (bg)
-          const submit = gf3.querySelector("#gform_submit_button_3"); // send
-          const imgs = document.querySelectorAll(".right_form .connect_img, .right_form .connect_figure");
-
-          const telRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})?([ .-]?)([0-9]{4})/;
-
-          for (let i = 0; i < inputs.length; i++) {
-            // On focus move label up
-            inputs[i].addEventListener("focus", () => {
-              labels[i].classList.add("focused");
-            });
-            inputs[i].addEventListener("blur", () => {
-              if (inputs[i].value === "") {
-                labels[i].classList.remove("focused");
-              }
-            });
-            inputs[i].addEventListener("keyup", () => {
-              if (inputs[0].value === "") {
-                inputs[0].classList.add("invalid");
-                subWrapper.classList.add("invalid");
-                submit.disabled = true;
-              } else {
-                inputs[0].classList.remove("invalid");
-              }
-
-              if (telRegex.test(inputs[1].value) === false) {
-                inputs[1].classList.add("invalid");
-                subWrapper.classList.add("invalid");
-                submit.disabled = true;
-              } else {
-                inputs[1].classList.remove("invalid");
-              }
-
-              if (
-                inputs[0].value !== "" &&
-                telRegex.test(inputs[1].value) !== false
-              ) {
-                subWrapper.classList.remove("invalid");
-                submit.disabled = false;
-              }
-            });
-          }
-
-          // If inputs are valid
-          gf3.addEventListener("submit", () => {
-            imgs.forEach((img) => {
-              img.style.display = "none";
-            });
-            console.log("Form submitted");
-          });
-        }
-      })();
-    })();
-
+    }
   })();
+
+  // ========= Media =========
 
   // Expand footer menus
   (function () {
@@ -1000,34 +912,6 @@ window.addEventListener("load", () => {
     }
 
 
-  })();
-
-  // services-inner - adv expand
-  (function() {
-    const advTextBlock = document.querySelector("section.adv .left_text");
-    const adv_expand = document.querySelector("section.adv .adv_expand");
-    console.log(advTextBlock, advTextBlock.offsetHeight);
-
-    if (adv_expand) {
-      if (advTextBlock.offsetHeight > 300) {
-        adv_expand.style.display = "block";
-        advTextBlock.classList.add("wrapped");
-
-        adv_expand.addEventListener("click", (e) => {
-          advTextBlock.classList.toggle("wrapped");
-          // html.style.scrollBehavior = "smooth";
-          // setTimeout(() => {
-          //   html.style.scrollBehavior = "unset";
-          // }, 500);
-          if (advTextBlock.classList.contains("wrapped")) {
-            adv_expand.innerText = "Развернуть";
-          } else {
-            adv_expand.innerText = "Свернуть";
-            adv_expand.href = "#wrapBack";
-          }
-        });
-      }
-    }
   })();
 
 });

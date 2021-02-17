@@ -162,7 +162,7 @@
 
                       $url = get_permalink();
                       $img = get_field('banner');
-                      $date = date_i18n( 'j F Y', get_the_date(), false );
+                      $date = get_the_date('j F Y', $post->id);
                       $post_title = $post->post_title;
                     ?>
 
@@ -400,7 +400,7 @@
                   </div>
 
                   <div class="pro_cards">
-                    <?php while ( have_rows('cards') ): the_row(); ?>
+                    <?php while ( have_rows('facts', 'options') ): the_row(); ?>
                       <div class="pro_card">
                         <img
                           src="<?= get_sub_field('icon'); ?>"
