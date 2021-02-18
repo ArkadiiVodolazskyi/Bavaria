@@ -15,7 +15,7 @@
 		<title><?php the_title(); ?></title>
 
     <!-- Initialize 2GIS -->
-    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full&skin=dark&lazy=true"></script>
 
 		<?php wp_head(); ?>
   </head>
@@ -120,19 +120,27 @@
       const marker_image = `<?= get_field('mark'); ?>`;
 
       // Initialize 2GIS
-      var map;
       DG.then(function () {
-          map = DG.map('map', {
-            center: [
-              <?= get_field('coords')['lat']; ?>,
-              <?= get_field('coords')['lng']; ?>
-            ],
-            zoom: 17
-          });
-          DG.marker([
-            <?= get_field('coords')['lat']; ?>,
-            <?= get_field('coords')['lng']; ?>
-          ]).addTo(map);
+        let map = DG.map('map', {
+          // ! center works inaccurate and also depends on zoom value
+          center: [
+            46.36530671109659, // 1920: 46.338
+            30.716060025921607 // 1920: 30.716
+          ],
+          zoom: 16, // 1920: 16
+          zoomControl: true,
+          icon: marker_image,
+        });
+
+        DG.marker([
+          46.36530671109659,
+          30.716060025921607
+        ]).addTo(map).bindPopup('Автоцентр BAVARIA');
+
+        // Создаем маркер в Новосибирске с картинкой по умолчанию:
+        // var marker = new DG.Markers.Common({geoPoint: new DG.GeoPoint(82.927810142519, 55.028936234826) });
+        // // Добавим маркер на карту:
+        // map.markers.add(marker);
       });
     </script>
 

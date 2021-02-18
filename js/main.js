@@ -1006,7 +1006,6 @@ window.addEventListener("load", () => {
   (function() {
     const advTextBlock = document.querySelector("section.adv .left_text");
     const adv_expand = document.querySelector("section.adv .adv_expand");
-    console.log(advTextBlock, advTextBlock.offsetHeight);
 
     if (adv_expand) {
       if (advTextBlock.offsetHeight > 300) {
@@ -1027,6 +1026,39 @@ window.addEventListener("load", () => {
           }
         });
       }
+    }
+  })();
+
+  // archive-folio, archive-blog - manually add prev/last arrow if there is no any
+  (function() {
+    const pagesUl = document.querySelector(".page-numbers");
+
+    if (pagesUl) {
+
+      if (!pagesUl.querySelector("li:first-child > *").classList.contains("prev")) {
+        const newPrev = document.createElement("li");
+        newPrev.innerHTML = `
+          <a class="prev inactive page-numbers" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996" class="img-svg replaced-svg">
+              <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"></path>
+            </svg>
+          </a>
+        `;
+        pagesUl.prepend(newPrev);
+      }
+
+      if (!pagesUl.querySelector("li:last-child > *").classList.contains("next")) {
+        const newNext = document.createElement("li");
+        newNext.innerHTML = `
+          <a class="next inactive page-numbers" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7.996" viewBox="0 0 14 7.996" class="img-svg replaced-svg">
+              <path fill="transparent" d="M-692 165l-7-8h2.406l4.594 5.247 4.594-5.247H-685l-7 8z" transform="translate(699 -157)"></path>
+            </svg>
+          </a>
+        `;
+        pagesUl.append(newNext);
+      }
+
     }
   })();
 

@@ -198,5 +198,4 @@
 	add_filter('upload_mimes', 'codeless_file_types_to_uploads');
 
 
-
 ?>

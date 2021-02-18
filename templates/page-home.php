@@ -29,7 +29,7 @@
       <section class="banner">
 
         <img src="<?= get_sub_field('banner_img'); ?>" class="banner_img img" />
-        <video autoplay muted loop src="<?= get_sub_field('banner_video'); ?>" class="banner_img video"></video>
+        <!-- <video autoplay muted loop src="<?= get_sub_field('banner_video'); ?>" class="banner_img video"></video> -->
 
         <div class="slogan">
           <div class="wrapper">

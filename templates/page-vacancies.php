@@ -123,7 +123,7 @@
           </div>
         </div>
 
-        <div class="figure_2 appear" style="left: 78%">
+        <div class="figure_2 appear" style="left: 75%">
           <div class="figure_21"></div>
           <img class="figure_22" src="<?= B_IMG_DIR ?>/figure_22.png" />
           <div class="figure_23"></div>

@@ -262,20 +262,26 @@
         </section>
       <?php endwhile; ?>
 
-      <?php if ( get_sub_field('workplan') ): ?>
+      <?php if ( get_sub_field('workplan') ):
+            $isPar = false;
+            $isUpPhotos = false; ?>
         <section class="workplan">
           <div class="wrapper">
             <?php while ( have_rows('workplan') ): the_row(); ?>
 
-              <?php while ( have_rows('par') ): the_row(); ?>
+              <?php if ( get_sub_field('par') ):
+                    $isPar = true;
+                    while ( have_rows('par') ): the_row(); ?>
                 <div class="left_text wow fadeInLeft">
                   <p>
                     <?= get_sub_field('text'); ?>
                   </p>
                 </div>
-              <?php endwhile; ?>
+              <?php endwhile; endif; ?>
 
-              <?php while ( have_rows('photo') ): the_row(); ?>
+              <?php if ( get_sub_field('photo') ):
+                    $isUpPhotos = true;
+                  while ( have_rows('photo') ): the_row(); ?>
                 <div class="up_photos">
                   <h2>
                     <?= get_sub_field('title'); ?>
@@ -285,7 +291,7 @@
                     <img alt="" src="<?= $image['url']; ?>" class="wow fadeIn">
                   <?php endforeach; ?>
                 </div>
-              <?php endwhile; ?>
+              <?php endwhile; endif; ?>
 
               <?php while ( have_rows('list') ): the_row(); ?>
                 <div class="right_text">
@@ -307,7 +313,7 @@
 
           <div class="figure_8" style="width: 40%; height: 40%; top: 0; left: 30%; "></div>
 
-          <div class="figure_10" style="top: -3rem; left: 68%;">
+          <div class="figure_10" style="top: -3rem; left: <?= $isPar ? '68' : '15'; ?>%; display:  <?= $isUpPhotos ? 'none' : 'block'; ?>;">
             <img
               src="<?= B_IMG_DIR ?>/figure_101.svg"
               class="img-svg native figure_101"
@@ -557,11 +563,12 @@
               </div>
             </div>
 
-            <div class="figure_11 appear" style="height: 672px; left: 20%;">
+            <div class="figure_11 appear" style="height: 790px; left: 20%;">
               <img alt="" src="<?= B_IMG_DIR ?>/figure_111.png"
-                style="width: 220%; height: 170%;"
+                style="width: 230%; height: 170%;"
               />
             </div>
+            <img class="figure_42" src="<?= B_IMG_DIR ?>/figure_42.png" />
           </section>
         <?php endwhile; ?>
       <?php endif; ?>

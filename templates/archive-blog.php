@@ -40,20 +40,10 @@
 
             <?php
 
-              // Navpages count fix
-              $all_posts = new WP_Query;
-              $all_posts = $all_posts->query([
-                'post_type' => 'blog',
-                'posts_per_page' => -1
-              ]);
-              $all_posts = count($all_posts);
-              $pages = $all_posts / get_field('per_page', 'options')['blog'];
-              // echo $pages;
-
               wp_reset_query();
-
               $my_posts = new WP_Query;
               $myposts = $my_posts->query([
+                'hide_empty' => false,
                 'post_type' => 'blog',
                 'posts_per_page' => get_field('per_page', 'options')['blog'],
                 'paged' => get_query_var('paged') ? get_query_var('paged') : 1, // получить посты с текущей страницы, установить текущую страницу в 1, если не определена
@@ -88,22 +78,48 @@
                   </div>
                 </a>
 
-              <?php } wp_reset_query(); ?>
+              <?php }; wp_reset_postdata(); ?>
 
             </div>
           </div>
 
-          <?php the_posts_pagination([
-            'show_all'     => false, // показаны все страницы участвующие в пагинации
-            'end_size'     => 1,     // количество страниц на концах
-            'mid_size'     => 4,     // количество страниц вокруг текущей
-            'prev_next'    => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
-            'prev_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
-            'next_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
-            'add_args'     => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
-            'add_fragment' => '',     // Текст который добавится ко всем ссылкам.
-            'screen_reader_text' => __( 'Posts navigation' ),
-          ]); ?>
+          <?php
+
+          function custom_page_navi( $totalpages, $page, $end_size, $mid_size ) {
+            $bignum = 999999999;
+
+            if ( $totalpages <= 1 || $page > $totalpages ) return;
+
+            return paginate_links( array(
+                'base'          => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
+                'format'        => '',
+                'current'       => max( 1, $page ),
+                'total'         => $totalpages,
+                'prev_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
+                'next_text'    => __('<img src="' . B_IMG_DIR . '/arrow.svg" class="img-svg" />'),
+                'type'          => 'list',
+                'show_all'      => false,
+                'end_size'      => $end_size,
+                'mid_size'      => $mid_size
+              )
+            );
+          }
+
+          // Edit:
+          $taxonomy = 'service_type';
+          $number   = get_field('per_page', 'options')['blog']; // number of terms to display per page
+
+          // Setup:
+          $page         = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+          $totalterms   = wp_count_terms( $taxonomy, array( 'hide_empty' => false ) );
+          $totalpages   = ceil( $totalterms / $number );
+
+          // Show custom page navigation
+          printf( '<nav class="pagination">%s</nav>',
+            custom_page_navi( $totalpages, $page, 1, 5 )
+          );
+
+          ?>
 
         </div>
       </div>
